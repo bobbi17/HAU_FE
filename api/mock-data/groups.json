@@ -1,0 +1,248 @@
+{
+  "groups": [
+    {
+      "id": "1",
+      "name": "Nhóm 04 - Đồ án Kiến trúc Dân dụng",
+      "code": "STUDIO-2023-04",
+      "description": "Nhóm chuyên nghiên cứu và phát triển đồ án kiến trúc dân dụng, tập trung vào thiết kế bền vững và hiện đại.",
+      "status": "active",
+      "course": "K65-KTDN",
+      "semester": "2023-2024",
+      "advisor": "TS. Nguyễn Văn Hải",
+      "advisorEmail": "hai.nguyen@hau.edu.vn",
+      "projectTitle": "Thiết kế tổ hợp chung cư cao tầng tại Hà Nội",
+      "projectDescription": "Thiết kế tổ hợp chung cư cao tầng 25 tầng kết hợp trung tâm thương mại tại khu đô thị mới.",
+      "projectStatus": "in_progress",
+      "progress": 65,
+      "createdAt": "2023-09-01T08:00:00Z",
+      "updatedAt": "2024-05-16T14:30:00Z",
+      "avatar": null,
+      "coverImage": "https://example.com/covers/group-4.jpg",
+      "settings": {
+        "allowMemberInvites": true,
+        "allowDocumentUploads": true,
+        "requireApprovalForUploads": false,
+        "allowTaskCreation": true,
+        "autoAcceptMeetings": true
+      }
+    },
+    {
+      "id": "2",
+      "name": "Nhóm 07 - Thiết kế Đô thị",
+      "code": "STUDIO-2023-07",
+      "description": "Nghiên cứu và thiết kế không gian đô thị bền vững, tập trung vào giao thông và cảnh quan.",
+      "status": "active",
+      "course": "K65-QHĐT",
+      "semester": "2023-2024",
+      "advisor": "TS. Trần Thị Minh",
+      "advisorEmail": "minh.tran@hau.edu.vn",
+      "projectTitle": "Quy hoạch khu đô thị sinh thái",
+      "projectDescription": "Quy hoạch tổng thể khu đô thị sinh thái với hệ thống giao thông xanh và không gian công cộng.",
+      "projectStatus": "in_progress",
+      "progress": 45,
+      "createdAt": "2023-09-01T08:00:00Z",
+      "updatedAt": "2024-05-15T10:20:00Z",
+      "avatar": null,
+      "coverImage": "https://example.com/covers/group-7.jpg",
+      "settings": {
+        "allowMemberInvites": true,
+        "allowDocumentUploads": true,
+        "requireApprovalForUploads": true,
+        "allowTaskCreation": true,
+        "autoAcceptMeetings": false
+      }
+    }
+  ],
+  "members": {
+    "1": [
+      {
+        "id": "mem_001",
+        "userId": "user_001",
+        "name": "Nguyễn Văn An",
+        "studentId": "651203",
+        "email": "an.nguyen@hau.edu.vn",
+        "phone": "0987 654 321",
+        "role": "leader",
+        "joinedAt": "2023-09-01T08:00:00Z",
+        "lastActive": "2024-05-16T14:30:00Z",
+        "skills": ["Revit", "AutoCAD", "3Ds Max", "Photoshop", "Lumion"],
+        "avatar": "https://example.com/avatars/an.jpg",
+        "status": "active",
+        "tasksCompleted": 24,
+        "tasksInProgress": 3,
+        "documentsUploaded": 8,
+        "meetingsAttended": 12
+      },
+      {
+        "id": "mem_002",
+        "userId": "user_002",
+        "name": "Trần Thị Lan",
+        "studentId": "651245",
+        "email": "lan.tran@hau.edu.vn",
+        "phone": "0986 543 210",
+        "role": "member",
+        "joinedAt": "2023-09-01T08:00:00Z",
+        "lastActive": "2024-05-16T13:45:00Z",
+        "skills": ["SketchUp", "Lumion", "Illustrator", "Enscape", "V-Ray"],
+        "avatar": "https://example.com/avatars/lan.jpg",
+        "status": "active",
+        "tasksCompleted": 18,
+        "tasksInProgress": 2,
+        "documentsUploaded": 5,
+        "meetingsAttended": 11
+      },
+      {
+        "id": "mem_003",
+        "userId": "user_003",
+        "name": "Phạm Minh Đức",
+        "studentId": "651289",
+        "email": "duc.pham@hau.edu.vn",
+        "phone": "0978 912 345",
+        "role": "member",
+        "joinedAt": "2023-09-01T08:00:00Z",
+        "lastActive": "2024-05-16T12:20:00Z",
+        "skills": ["AutoCAD", "Revit", "Excel", "Project", "Word"],
+        "avatar": "https://example.com/avatars/duc.jpg",
+        "status": "active",
+        "tasksCompleted": 15,
+        "tasksInProgress": 4,
+        "documentsUploaded": 3,
+        "meetingsAttended": 10
+      },
+      {
+        "id": "mem_004",
+        "userId": "user_004",
+        "name": "Lê Hoàng",
+        "studentId": "651312",
+        "email": "hoang.le@hau.edu.vn",
+        "phone": "0967 890 123",
+        "role": "member",
+        "joinedAt": "2023-09-01T08:00:00Z",
+        "lastActive": "2024-05-15T16:40:00Z",
+        "skills": ["SketchUp", "V-Ray", "Illustrator", "InDesign", "Photoshop"],
+        "avatar": null,
+        "status": "active",
+        "tasksCompleted": 12,
+        "tasksInProgress": 1,
+        "documentsUploaded": 2,
+        "meetingsAttended": 9
+      },
+      {
+        "id": "mem_005",
+        "userId": "user_005",
+        "name": "Ngô Thanh",
+        "studentId": "651298",
+        "email": "thanh.ngo@hau.edu.vn",
+        "phone": "0956 789 012",
+        "role": "member",
+        "joinedAt": "2023-09-01T08:00:00Z",
+        "lastActive": "2024-05-16T10:15:00Z",
+        "skills": ["AutoCAD", "3Ds Max", "Enscape", "After Effects", "Premiere"],
+        "avatar": null,
+        "status": "active",
+        "tasksCompleted": 10,
+        "tasksInProgress": 2,
+        "documentsUploaded": 1,
+        "meetingsAttended": 8
+      }
+    ]
+  },
+  "documents": {
+    "1": [
+      {
+        "id": "doc_001",
+        "name": "Ban-ve-ky-thuat-Studio-v2.pdf",
+        "type": "pdf",
+        "size": "14.5 MB",
+        "uploadedBy": "Nguyễn Văn An",
+        "uploadedById": "mem_001",
+        "uploadedAt": "2024-05-16T12:10:00Z",
+        "downloads": 24,
+        "permissions": "view,download",
+        "tags": ["technical", "drawing", "final"],
+        "description": "Bản vẽ kỹ thuật đầy đủ cho đồ án studio phiên bản 2",
+        "version": "2.0",
+        "status": "approved"
+      },
+      {
+        "id": "doc_002",
+        "name": "Render-Phoi-Canh-3D-Chinh.jpg",
+        "type": "jpg",
+        "size": "5.2 MB",
+        "uploadedBy": "Trần Thị Lan",
+        "uploadedById": "mem_002",
+        "uploadedAt": "2024-05-16T10:30:00Z",
+        "downloads": 18,
+        "permissions": "view,download",
+        "tags": ["render", "3d", "presentation"],
+        "description": "Render phối cảnh 3D chính cho phương án thiết kế",
+        "version": "1.0",
+        "status": "approved"
+      }
+    ]
+  },
+  "meetings": {
+    "1": [
+      {
+        "id": "meet_001",
+        "title": "Họp nhóm: Chỉnh sửa Mặt bằng tầng 1",
+        "description": "Thảo luận về thiết kế mặt bằng tầng 1 và phân công công việc tuần tới.",
+        "date": "2024-05-23",
+        "time": "14:00 - 15:30",
+        "isOnline": true,
+        "link": "https://meet.google.com/abc-defg-hij",
+        "location": null,
+        "organizer": "Nguyễn Văn An",
+        "organizerId": "mem_001",
+        "attendees": ["mem_001", "mem_002", "mem_003", "mem_004", "mem_005"],
+        "status": "scheduled",
+        "agenda": [
+          "Đánh giá bản vẽ mặt bằng tầng 1 hiện tại",
+          "Phân công chỉnh sửa chi tiết",
+          "Lên kế hoạch công việc tuần tới",
+          "Chuẩn bị cho buổi gặp cố vấn"
+        ]
+      }
+    ]
+  },
+  "tasks": {
+    "1": [
+      {
+        "id": "task_001",
+        "title": "Hoàn thiện mặt bằng tầng 1",
+        "description": "Chỉnh sửa và hoàn thiện bản vẽ mặt bằng tầng 1 theo ý kiến cố vấn.",
+        "assignee": "Nguyễn Văn An",
+        "assigneeId": "mem_001",
+        "status": "in-progress",
+        "priority": "high",
+        "dueDate": "2024-05-20",
+        "progress": 80,
+        "createdAt": "2024-05-10T09:00:00Z",
+        "updatedAt": "2024-05-16T14:30:00Z",
+        "estimatedHours": 12,
+        "actualHours": 9.5,
+        "attachments": ["doc_001"],
+        "comments": 3,
+        "tags": ["design", "drawing", "urgent"]
+      },
+      {
+        "id": "task_002",
+        "title": "Render ảnh phối cảnh",
+        "description": "Xuất render 3D chất lượng cao cho phương án thiết kế.",
+        "assignee": "Trần Thị Lan",
+        "assigneeId": "mem_002",
+        "status": "todo",
+        "priority": "medium",
+        "dueDate": "2024-05-25",
+        "progress": 0,
+        "createdAt": "2024-05-15T11:30:00Z",
+        "updatedAt": "2024-05-15T11:30:00Z",
+        "estimatedHours": 8,
+        "actualHours": 0,
+        "attachments": [],
+        "comments": 0,
+        "tags": ["render", "3d", "presentation"]
+      }
+    ]
+  }
+}

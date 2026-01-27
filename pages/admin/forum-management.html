@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Báo cáo - HauHub Admin</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/pages/admin.css">
+    <link rel="stylesheet" href="../../css/pages/forum-management.css">
+    
+    <!-- External Libraries -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Merriweather:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+</head>
+<body class="admin-dashboard">
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+<aside class="dashboard-sidebar" id="admin-sidebar">
+    <div class="sidebar-header">
+        <div class="brand-logo">
+            <span class="material-symbols-outlined logo-icon">architecture</span>
+        </div>
+        <div class="brand-info">
+            <h1 class="brand-name">HauHub</h1>
+            <p class="brand-subtitle">Admin Portal</p>
+        </div>
+    </div>
+    
+    <nav class="sidebar-nav">
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="admin-dashboard.html" class="nav-link">
+                    <span class="nav-icon material-symbols-outlined">dashboard</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="user-management.html" class="nav-link">
+                    <span class="nav-icon material-symbols-outlined">group</span>
+                    <span class="nav-text">Người dùng</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="department-management.html" class="nav-link">
+                    <span class="nav-icon material-symbols-outlined">school</span>
+                    <span class="nav-text">Đào tạo</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a href="forum-management.html" class="nav-link">
+                    <span class="nav-icon material-symbols-outlined">forum</span>
+                    <span class="nav-text">Diễn đàn</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="../ai/ai-documents.html" class="nav-link">
+                    <span class="nav-icon material-symbols-outlined">smart_toy</span>
+                    <span class="nav-text">Tài liệu AI</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="system-config.html" class="nav-link">
+                    <span class="nav-icon material-symbols-outlined">settings</span>
+                    <span class="nav-text">Cấu hình</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    
+    <div class="sidebar-footer">
+        <div class="user-profile">
+            <div class="user-avatar">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtmkkJF4tN3dFTJCHA7Bxu1Ic0IRrDB4IBR7WvPZFBZK7zQ3IDRtglLgn95BjUJg2zxPJ4SXgKfgbM4VBr5s42AjUu9BIaedrCoskkTd94vc8PNqx1rc-KKUFFLqXbMVdSX6oYBCoLopANZGPZ0xzszKO6FvhbuvNmq7SGuSmtMAM-vHbuivZVNBb24mXMN7DWtHg4RIf4ExvqFdGjPhm5u7vDy-64-3Y7un7j9s5jeW5oqkl4-zZ6TIucjA8c61W6_K-v10TwUeg" alt="Admin Avatar">
+            </div>
+            <div class="user-info">
+                <p class="user-name">Admin HauHub</p>
+                <p class="user-role">System Overseer</p>
+            </div>
+            <button class="logout-btn" id="logout-button">
+                <span class="material-symbols-outlined">logout</span>
+            </button>
+        </div>
+    </div>
+</aside>
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Top Navigation -->
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <div class="compass-icon">
+                        <svg class="compass-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <circle class="technical-line" cx="24" cy="24" r="18" stroke="currentColor" stroke-width="1.5"></circle>
+                            <path d="M24 8V12M24 36V40M8 24H12M36 24H40" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path>
+                            <path d="M24 16L20 24L24 32L28 24L24 16Z" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="1.5"></path>
+                            <circle cx="24" cy="24" fill="currentColor" r="2"></circle>
+                        </svg>
+                    </div>
+                    <div class="header-title">
+                        <h2>Quản lý Báo cáo</h2>
+                        <p>Hệ thống kiểm duyệt nội dung</p>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <div class="search-bar">
+                        <span class="material-symbols-outlined search-icon">search</span>
+                        <input type="text" placeholder="Tìm kiếm nhanh hệ thống..." 
+                               class="search-input" id="report-search">
+                    </div>
+                    
+                    <div class="header-actions">
+                        <button class="action-btn notification-btn" id="notifications-btn">
+                            <span class="material-symbols-outlined">notifications</span>
+                            <span class="notification-badge" id="notification-count">5</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Breadcrumbs -->
+                <nav class="breadcrumbs">
+                    <a href="admin-dashboard.html" class="breadcrumb-link">Quản trị viên</a>
+                    <span class="breadcrumb-separator">/</span>
+                    <span class="breadcrumb-current">Kiểm duyệt & Báo cáo</span>
+                </nav>
+                
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="header-content">
+                        <h1 class="page-title">Quản lý Báo cáo</h1>
+                        <p class="page-subtitle">
+                            Hệ thống kiểm duyệt nội dung tự động. Quản lý báo cáo vi phạm, xử lý nhanh và đảm bảo môi trường học tập lành mạnh.
+                        </p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn-secondary" id="refresh-reports-btn">
+                            <span class="material-symbols-outlined">refresh</span>
+                            Làm mới danh sách
+                        </button>
+                        <button class="btn-primary" id="export-reports-btn">
+                            <span class="material-symbols-outlined">file_download</span>
+                            Xuất báo cáo
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card pending">
+                        <div class="stat-header">
+                            <div>
+                                <p class="stat-label">Hàng chờ hiện tại</p>
+                                <h3 class="stat-value" id="pending-count">35</h3>
+                            </div>
+                            <span class="stat-icon">
+                                <span class="material-symbols-outlined">pending_actions</span>
+                            </span>
+                        </div>
+                        <div class="stat-trend new">+5 mới</div>
+                    </div>
+                    
+                    <div class="stat-card resolved">
+                        <div class="stat-header">
+                            <div>
+                                <p class="stat-label">Đã giải quyết (24h)</p>
+                                <h3 class="stat-value" id="resolved-count">89</h3>
+                            </div>
+                            <span class="stat-icon">
+                                <span class="material-symbols-outlined">verified</span>
+                            </span>
+                        </div>
+                        <div class="stat-trend success">+12%</div>
+                    </div>
+                    
+                    <div class="stat-card accuracy">
+                        <div class="stat-header">
+                            <div>
+                                <p class="stat-label">Tỉ lệ vi phạm thật</p>
+                                <h3 class="stat-value" id="accuracy-rate">72%</h3>
+                            </div>
+                            <span class="stat-icon">
+                                <span class="material-symbols-outlined">query_stats</span>
+                            </span>
+                        </div>
+                        <div class="stat-trend stable">ỔN ĐỊNH</div>
+                    </div>
+                </div>
+                
+                <!-- Main Content Grid -->
+                <div class="content-grid">
+                    <!-- Reports Table -->
+                    <div class="content-card main-content">
+                        <div class="card-header">
+                            <h3 class="card-title">Báo cáo vi phạm mới nhất</h3>
+                            <div class="card-filters">
+                                <div class="filter-group">
+                                    <label class="filter-label">Loại vi phạm</label>
+                                    <select class="filter-select" id="violation-type-filter">
+                                        <option value="all">Tất cả loại</option>
+                                        <option value="spam">Spam / Lừa đảo</option>
+                                        <option value="toxic">Ngôn từ độc hại</option>
+                                        <option value="ads">Quảng cáo</option>
+                                        <option value="offtopic">Sai chủ đề</option>
+                                        <option value="copyright">Vi phạm bản quyền</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="filter-group">
+                                    <label class="filter-label">Trạng thái</label>
+                                    <select class="filter-select" id="report-status-filter">
+                                        <option value="pending">Chờ xử lý</option>
+                                        <option value="all">Tất cả trạng thái</option>
+                                        <option value="resolved">Đã xử lý</option>
+                                        <option value="dismissed">Đã bỏ qua</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Nội dung bài viết</th>
+                                        <th>Lý do báo cáo</th>
+                                        <th class="text-center">Trạng thái</th>
+                                        <th class="text-right">Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="reports-table-body">
+                                    <!-- Reports will be loaded here -->
+                                    <tr class="report-item pending">
+                                        <td>
+                                            <div class="report-content">
+                                                <div class="report-title">"Lộ đề thi cuối kỳ môn Giải tích 1..."</div>
+                                                <div class="report-meta">
+                                                    <div class="user-avatar">LV</div>
+                                                    <div class="meta-details">
+                                                        <span class="user-name">Lê Văn Vĩnh</span>
+                                                        <span class="report-time">2h trước</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="violation-tag spam">Spam</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="status-indicator pending">
+                                                <span class="status-dot"></span>
+                                                <span class="status-text">Chờ xử lý</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="action-btn delete" data-report-id="1">
+                                                    <span class="material-symbols-outlined">delete</span>
+                                                </button>
+                                                <button class="action-btn block" data-report-id="1">
+                                                    <span class="material-symbols-outlined">block</span>
+                                                </button>
+                                                <button class="action-btn review" data-report-id="1">
+                                                    <span class="material-symbols-outlined">visibility</span>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr class="report-item pending">
+                                        <td>
+                                            <div class="report-content">
+                                                <div class="report-title">Chia sẻ tài liệu học tập bị dính link quảng cáo...</div>
+                                                <div class="report-meta">
+                                                    <div class="user-avatar">TH</div>
+                                                    <div class="meta-details">
+                                                        <span class="user-name">Trần Hạnh</span>
+                                                        <span class="report-time">5h trước</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="violation-tag ads">Quảng cáo</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="status-indicator pending">
+                                                <span class="status-dot"></span>
+                                                <span class="status-text">Chờ xử lý</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="action-btn delete" data-report-id="2">
+                                                    <span class="material-symbols-outlined">delete</span>
+                                                </button>
+                                                <button class="action-btn block" data-report-id="2">
+                                                    <span class="material-symbols-outlined">block</span>
+                                                </button>
+                                                <button class="action-btn review" data-report-id="2">
+                                                    <span class="material-symbols-outlined">visibility</span>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr class="report-item resolved">
+                                        <td>
+                                            <div class="report-content resolved">
+                                                <div class="report-title">Công kích cá nhân giảng viên Khoa CNTT</div>
+                                                <div class="report-meta">
+                                                    <div class="user-avatar">NM</div>
+                                                    <div class="meta-details">
+                                                        <span class="user-name">Nguyễn Minh</span>
+                                                        <span class="report-time">12h trước</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="violation-tag toxic">Độc hại</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="status-indicator resolved">
+                                                <span class="status-dot"></span>
+                                                <span class="status-text">Đã xử lý</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button class="text-link" data-report-id="3">
+                                                Xem lại
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr class="report-item pending">
+                                        <td>
+                                            <div class="report-content">
+                                                <div class="report-title">Đăng tải đáp án môn học có bản quyền</div>
+                                                <div class="report-meta">
+                                                    <div class="user-avatar">PT</div>
+                                                    <div class="meta-details">
+                                                        <span class="user-name">Phạm Tuấn</span>
+                                                        <span class="report-time">1 giờ trước</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="violation-tag copyright">Bản quyền</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="status-indicator pending">
+                                                <span class="status-dot"></span>
+                                                <span class="status-text">Chờ xử lý</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="action-btn delete" data-report-id="4">
+                                                    <span class="material-symbols-outlined">delete</span>
+                                                </button>
+                                                <button class="action-btn block" data-report-id="4">
+                                                    <span class="material-symbols-outlined">block</span>
+                                                </button>
+                                                <button class="action-btn review" data-report-id="4">
+                                                    <span class="material-symbols-outlined">visibility</span>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    
+                                    <tr class="report-item pending">
+                                        <td>
+                                            <div class="report-content">
+                                                <div class="report-title">Thảo luận không liên quan trong chủ đề học tập</div>
+                                                <div class="report-meta">
+                                                    <div class="user-avatar">NH</div>
+                                                    <div class="meta-details">
+                                                        <span class="user-name">Ngô Hải</span>
+                                                        <span class="report-time">3 giờ trước</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <span class="violation-tag offtopic">Sai chủ đề</span>
+                                        </td>
+                                        <td class="text-center">
+                                            <div class="status-indicator pending">
+                                                <span class="status-dot"></span>
+                                                <span class="status-text">Chờ xử lý</span>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="action-btn delete" data-report-id="5">
+                                                    <span class="material-symbols-outlined">delete</span>
+                                                </button>
+                                                <button class="action-btn block" data-report-id="5">
+                                                    <span class="material-symbols-outlined">block</span>
+                                                </button>
+                                                <button class="action-btn review" data-report-id="5">
+                                                    <span class="material-symbols-outlined">visibility</span>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <!-- Pagination -->
+                        <div class="table-footer">
+                            <div class="pagination-info">
+                                Trang <span class="highlight">1</span> / <span class="highlight">12</span>
+                            </div>
+                            <div class="pagination">
+                                <button class="pagination-btn prev" disabled>
+                                    <span class="material-symbols-outlined">chevron_left</span>
+                                </button>
+                                <button class="pagination-page active">1</button>
+                                <button class="pagination-page">2</button>
+                                <button class="pagination-btn next">
+                                    <span class="material-symbols-outlined">chevron_right</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Sidebar Content -->
+                    <div class="sidebar-content">
+                        <!-- Violation Trends -->
+                        <div class="sidebar-card">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <span class="material-symbols-outlined">insights</span>
+                                    Xu hướng vi phạm
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="trends-list">
+                                    <div class="trend-item">
+                                        <div class="trend-header">
+                                            <span class="trend-label">Spam / Lừa đảo</span>
+                                            <span class="trend-percent primary">42%</span>
+                                        </div>
+                                        <div class="trend-bar">
+                                            <div class="trend-progress primary" style="width: 42%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="trend-item">
+                                        <div class="trend-header">
+                                            <span class="trend-label">Ngôn từ độc hại</span>
+                                            <span class="trend-percent danger">28%</span>
+                                        </div>
+                                        <div class="trend-bar">
+                                            <div class="trend-progress danger" style="width: 28%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="trend-item">
+                                        <div class="trend-header">
+                                            <span class="trend-label">Sai chủ đề</span>
+                                            <span class="trend-percent info">30%</span>
+                                        </div>
+                                        <div class="trend-bar">
+                                            <div class="trend-progress info" style="width: 30%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="trend-item">
+                                        <div class="trend-header">
+                                            <span class="trend-label">Quảng cáo trái phép</span>
+                                            <span class="trend-percent warning">20%</span>
+                                        </div>
+                                        <div class="trend-bar">
+                                            <div class="trend-progress warning" style="width: 20%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="trend-item">
+                                        <div class="trend-header">
+                                            <span class="trend-label">Vi phạm bản quyền</span>
+                                            <span class="trend-percent secondary">15%</span>
+                                        </div>
+                                        <div class="trend-bar">
+                                            <div class="trend-progress secondary" style="width: 15%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Moderators -->
+                        <div class="sidebar-card">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <span class="material-symbols-outlined">groups</span>
+                                    Điều phối viên
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <div class="moderators-list">
+                                    <div class="moderator-item">
+                                        <div class="moderator-avatar">
+                                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDS6cPba0nvWnG-ELpsU5rREXory48r8BZ8Wlpkw0r0SsGbc3HFETTeBfdsld3piNjZtz_sRB1I4dyG5Vpkf6hkj8MfV3FcixNuB7On5tz45QqtggnEqNaUf9MPWwyS7vGxtZH7BF4XIscE5TiP9Z8Q57-ycmj4AVJLKfmC6wKxvhEhsDlfpcu3sJzDpAOeauy1VVNEaaCArm1oN47ndJ-0oArRhWjKensYzavWcgR7kQ3AZ4Aev0w4daR1TjinbcQcKA3oZcz75OU" alt="Admin Quan">
+                                        </div>
+                                        <div class="moderator-info">
+                                            <div class="moderator-name">Admin_Quan</div>
+                                            <div class="moderator-stats">54 báo cáo/ngày</div>
+                                        </div>
+                                        <div class="moderator-trend success">+12</div>
+                                    </div>
+                                    
+                                    <div class="moderator-item">
+                                        <div class="moderator-avatar">
+                                            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkJ5fxOGVsV26Ds6RtKXVkDAVJctmA7-jhldqtFiAMuoigO8cLKmkK2RMjofIWBqOddsUKWOJ_0CtnQRV72pOoPYB6vUj-jsCuJ0R3EOxcvOCe7jpQYzJgo3G3M7v04Z8um02cylZBxS2S-sDyzDh3Y5aQeoDQSfLEV-iXhBEdWTOEsQx4YpFmYwLI1M5esc11ggU3OwktzetzfB3ootoArCWWqBAv21hdEVf8dfzsuy1p0GP-RK3tmc0QQAi65SsWkB9mf04d11k" alt="Admin Linh">
+                                        </div>
+                                        <div class="moderator-info">
+                                            <div class="moderator-name">Admin_Linh</div>
+                                            <div class="moderator-stats">32 báo cáo/ngày</div>
+                                        </div>
+                                        <div class="moderator-trend down">-2</div>
+                                    </div>
+                                    
+                                    <div class="moderator-item">
+                                        <div class="moderator-avatar">
+                                            <div class="avatar-placeholder">AT</div>
+                                        </div>
+                                        <div class="moderator-info">
+                                            <div class="moderator-name">Admin_Thao</div>
+                                            <div class="moderator-stats">28 báo cáo/ngày</div>
+                                        </div>
+                                        <div class="moderator-trend success">+8</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- AI Suggestions -->
+                        <div class="sidebar-card ai-suggestion">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    <span class="material-symbols-outlined">lightbulb</span>
+                                    Gợi ý từ AI
+                                </h3>
+                            </div>
+                            <div class="card-body">
+                                <p class="ai-message">
+                                    "Từ khóa 'lộ đề' đang tăng đột biến 40%. Hãy xem xét siết chặt kiểm duyệt tại cụm <strong>Tin tức Sinh viên</strong>."
+                                </p>
+                                <button class="btn-primary full-width" id="update-standards-btn">
+                                    Cập nhật tiêu chuẩn
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Footer -->
+                <footer class="dashboard-footer">
+                    <div class="footer-left">
+                        <span>© 2024 HauHub University • Hệ thống kiểm duyệt thông minh</span>
+                    </div>
+                    <div class="footer-right">
+                        <a href="#" class="footer-link">Chính sách cộng đồng</a>
+                        <a href="#" class="footer-link">Hướng dẫn kiểm duyệt</a>
+                        <a href="#" class="footer-link">API hệ thống</a>
+                    </div>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <!-- Report Detail Modal -->
+    <div class="modal" id="report-detail-modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3 class="modal-title">Chi tiết Báo cáo</h3>
+                <button class="modal-close" id="close-report-modal">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="modal-body" id="report-detail-content">
+                <!-- Report details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Action Confirmation Modal -->
+    <div class="modal" id="action-modal">
+        <div class="modal-content small">
+            <div class="modal-header">
+                <h3 class="modal-title">Xác nhận hành động</h3>
+                <button class="modal-close" id="close-action-modal">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="action-icon">
+                    <span class="material-symbols-outlined" id="action-icon">warning</span>
+                </div>
+                <p id="action-message">Bạn có chắc chắn muốn thực hiện hành động này?</p>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-secondary" id="cancel-action">Hủy bỏ</button>
+                <button class="btn-primary" id="confirm-action">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script type="module" src="../../js/components/sidebar.js"></script>
+    <script type="module" src="../../js/components/modal.js"></script>
+    <script type="module" src="../../js/components/notification.js"></script>
+    <script type="module" src="../../js/services/admin-service.js"></script>
+    <script type="module" src="../../js/pages/forum-management.js"></script>
+</body>
+</html>

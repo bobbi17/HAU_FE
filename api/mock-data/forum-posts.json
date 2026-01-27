@@ -1,0 +1,119 @@
+{
+  "reports": [
+    {
+      "id": 1,
+      "title": "Lộ đề thi cuối kỳ môn Giải tích 1...",
+      "content": "Bài viết chia sẻ đề thi được cho là bị lộ trước kỳ thi...",
+      "authorName": "Lê Văn Vĩnh",
+      "authorId": "user_123",
+      "reporterName": "Nguyễn Văn A",
+      "reporterNote": "Nội dung vi phạm chính sách không chia sẻ tài liệu thi cử",
+      "violationType": "spam",
+      "status": "pending",
+      "createdAt": "2024-05-16T14:30:00Z",
+      "resolvedAt": null,
+      "postId": "post_456",
+      "category": "Tin tức Sinh viên"
+    },
+    {
+      "id": 2,
+      "title": "Chia sẻ tài liệu học tập bị dính link quảng cáo...",
+      "content": "Tài liệu học tập có chứa link dẫn đến trang web quảng cáo...",
+      "authorName": "Trần Hạnh",
+      "authorId": "user_456",
+      "reporterName": "Phạm Thị B",
+      "reporterNote": "Quảng cáo sản phẩm không liên quan đến học tập",
+      "violationType": "ads",
+      "status": "pending",
+      "createdAt": "2024-05-16T11:45:00Z",
+      "resolvedAt": null,
+      "postId": "post_789",
+      "category": "Tài liệu học tập"
+    },
+    {
+      "id": 3,
+      "title": "Công kích cá nhân giảng viên Khoa CNTT",
+      "content": "Bài viết có ngôn từ công kích, xúc phạm giảng viên...",
+      "authorName": "Nguyễn Minh",
+      "authorId": "user_789",
+      "reporterName": "Lê Thị C",
+      "reporterNote": "Ngôn từ độc hại, vi phạm quy tắc ứng xử",
+      "violationType": "toxic",
+      "status": "resolved",
+      "createdAt": "2024-05-15T09:20:00Z",
+      "resolvedAt": "2024-05-15T14:30:00Z",
+      "postId": "post_101",
+      "category": "Thảo luận học tập"
+    },
+    {
+      "id": 4,
+      "title": "Đăng tải đáp án môn học có bản quyền",
+      "content": "Chia sẻ đáp án từ sách có bản quyền của nhà xuất bản...",
+      "authorName": "Phạm Tuấn",
+      "authorId": "user_234",
+      "reporterName": "Trần Văn D",
+      "reporterNote": "Vi phạm bản quyền tài liệu học thuật",
+      "violationType": "copyright",
+      "status": "pending",
+      "createdAt": "2024-05-16T15:10:00Z",
+      "resolvedAt": null,
+      "postId": "post_202",
+      "category": "Tài liệu học tập"
+    },
+    {
+      "id": 5,
+      "title": "Thảo luận không liên quan trong chủ đề học tập",
+      "content": "Thảo luận về thể thao trong chủ đề Toán học...",
+      "authorName": "Ngô Hải",
+      "authorId": "user_567",
+      "reporterName": "Hoàng Thị E",
+      "reporterNote": "Sai chủ đề, làm loãng nội dung học tập",
+      "violationType": "offtopic",
+      "status": "pending",
+      "createdAt": "2024-05-16T13:20:00Z",
+      "resolvedAt": null,
+      "postId": "post_303",
+      "category": "Toán học"
+    }
+  ],
+  "stats": {
+    "pending": 35,
+    "resolved24h": 89,
+    "resolvedTotal": 1245,
+    "accuracy": 72,
+    "averageResponseTime": "2.5 giờ"
+  },
+  "trends": {
+    "spam": 42,
+    "toxic": 28,
+    "ads": 20,
+    "offtopic": 30,
+    "copyright": 15
+  },
+  "moderators": [
+    {
+      "id": "mod_1",
+      "name": "Admin_Quan",
+      "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuDS6cPba0nvWnG-ELpsU5rREXory48r8BZ8Wlpkw0r0SsGbc3HFETTeBfdsld3piNjZtz_sRB1I4dyG5Vpkf6hkj8MfV3FcixNuB7On5tz45QqtggnEqNaUf9MPWwyS7vGxtZH7BF4XIscE5TiP9Z8Q57-ycmj4AVJLKfmC6wKxvhEhsDlfpcu3sJzDpAOeauy1VVNEaaCArm1oN47ndJ-0oArRhWjKensYzavWcgR7kQ3AZ4Aev0w4daR1TjinbcQcKA3oZcz75OU",
+      "dailyReports": 54,
+      "trend": 12,
+      "accuracy": 85
+    },
+    {
+      "id": "mod_2",
+      "name": "Admin_Linh",
+      "avatar": "https://lh3.googleusercontent.com/aida-public/AB6AXuAkJ5fxOGVsV26Ds6RtKXVkDAVJctmA7-jhldqtFiAMuoigO8cLKmkK2RMjofIWBqOddsUKWOJ_0CtnQRV72pOoPYB6vUj-jsCuJ0R3EOxcvOCe7jpQYzJgo3G3M7v04Z8um02cylZBxS2S-sDyzDh3Y5aQeoDQSfLEV-iXhBEdWTOEsQx4YpFmYwLI1M5esc11ggU3OwktzetzfB3ootoArCWWqBAv21hdEVf8dfzsuy1p0GP-RK3tmc0QQAi65SsWkB9mf04d11k",
+      "dailyReports": 32,
+      "trend": -2,
+      "accuracy": 78
+    },
+    {
+      "id": "mod_3",
+      "name": "Admin_Thao",
+      "avatar": null,
+      "dailyReports": 28,
+      "trend": 8,
+      "accuracy": 82
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "documents": [
+    {
+      "id": 1,
+      "name": "Kế hoạch đào tạo 2024.pdf",
+      "type": "pdf",
+      "category": "Academic / Dept. IT",
+      "size": "2.4 MB",
+      "status": "vectorized",
+      "uploadedAt": "2024-05-16T14:10:00Z",
+      "processedAt": "2024-05-16T14:15:00Z",
+      "pages": 24,
+      "tokens": 12500,
+      "dimensions": 1536,
+      "model": "text-embedding-3-small",
+      "description": "Kế hoạch đào tạo năm học 2024-2025 cho khoa Công nghệ Thông tin. Bao gồm chương trình giảng dạy, lịch thi, và các hoạt động học thuật.",
+      "tags": ["academic", "planning", "2024", "curriculum", "it"],
+      "vectorId": "vec_001",
+      "chunks": 48,
+      "owner": "admin_01",
+      "accessLevel": "restricted"
+    },
+    {
+      "id": 2,
+      "name": "Quy_che_tuyen_sinh_2024.docx",
+      "type": "docx",
+      "category": "Admin / Dept. Admission",
+      "size": "845 KB",
+      "status": "processing",
+      "uploadedAt": "2024-05-16T14:22:00Z",
+      "processedAt": null,
+      "pages": 18,
+      "tokens": null,
+      "dimensions": null,
+      "model": null,
+      "description": "Quy chế tuyển sinh đại học chính quy năm 2024. Quy định về điều kiện, phương thức và thủ tục tuyển sinh.",
+      "tags": ["admission", "regulation", "2024", "enrollment"],
+      "vectorId": null,
+      "chunks": null,
+      "owner": "admin_01",
+      "accessLevel": "public"
+    },
+    {
+      "id": 3,
+      "name": "dataset_hust_qa.json",
+      "type": "json",
+      "category": "Dataset / Training",
+      "size": "12.2 MB",
+      "status": "failed",
+      "uploadedAt": "2024-05-16T12:20:00Z",
+      "processedAt": "2024-05-16T12:25:00Z",
+      "pages": null,
+      "tokens": null,
+      "dimensions": null,
+      "model": null,
+      "description": "Dataset câu hỏi và trả lời cho hệ thống AI hỗ trợ học tập.",
+      "tags": ["dataset", "training", "qa", "ai"],
+      "vectorId": null,
+      "chunks": null,
+      "owner": "admin_02",
+      "accessLevel": "internal",
+      "error": "JSON parsing error: Invalid UTF-8 sequence at line 245"
+    },
+    {
+      "id": 4,
+      "name": "building_plan_2024.dwg",
+      "type": "dwg",
+      "category": "Architecture / Blueprint",
+      "size": "8.7 MB",
+      "status": "pending",
+      "uploadedAt": "2024-05-15T10:30:00Z",
+      "processedAt": null,
+      "pages": null,
+      "tokens": null,
+      "dimensions": null,
+      "model": null,
+      "description": "Bản vẽ kiến trúc tổng thể tòa nhà A1, khuôn viên đại học.",
+      "tags": ["architecture", "blueprint", "2024", "building", "plan"],
+      "vectorId": null,
+      "chunks": null,
+      "owner": "admin_03",
+      "accessLevel": "restricted"
+    },
+    {
+      "id": 5,
+      "name": "research_paper_ai_ethics.txt",
+      "type": "txt",
+      "category": "Research / Ethics",
+      "size": "156 KB",
+      "status": "vectorized",
+      "uploadedAt": "2024-05-16T11:45:00Z",
+      "processedAt": "2024-05-16T11:50:00Z",
+      "pages": 8,
+      "tokens": 4200,
+      "dimensions": 1536,
+      "model": "text-embedding-3-small",
+      "description": "Bài nghiên cứu về đạo đức trong phát triển và ứng dụng trí tuệ nhân tạo trong giáo dục.",
+      "tags": ["research", "ethics", "ai", "education", "paper"],
+      "vectorId": "vec_002",
+      "chunks": 16,
+      "owner": "admin_01",
+      "accessLevel": "public"
+    }
+  ],
+  "statistics": {
+    "totalDocuments": 1284,
+    "totalStorage": "4.2 GB",
+    "storagePercentage": 84,
+    "totalTokens": 12500000,
+    "byStatus": {
+      "vectorized": 1050,
+      "processing": 3,
+      "pending": 45,
+      "failed": 186
+    },
+    "byType": {
+      "pdf": 845,
+      "docx": 210,
+      "json": 58,
+      "dwg": 42,
+      "txt": 129
+    },
+    "dailyUploads": 24,
+    "dailyProcessing": 18,
+    "successRate": 82.5
+  },
+  "system": {
+    "cpuUsage": 42,
+    "ramUsage": 78,
+    "storageUsage": 84,
+    "networkUsage": 12,
+    "gpuUsage": 35,
+    "vectorDBSize": "2.8 GB",
+    "vectorDBHealth": "healthy",
+    "aiModelStatus": "operational",
+    "lastBackup": "2024-05-15T23:00:00Z",
+    "uptime": "14 days, 6 hours"
+  },
+  "activityLogs": [
+    {
+      "id": 1,
+      "timestamp": "2024-05-16T14:22:00Z",
+      "type": "upload",
+      "user": "admin_01",
+      "document": "Quy_che_tuyen_sinh_2024.docx",
+      "message": "Document uploaded successfully"
+    },
+    {
+      "id": 2,
+      "timestamp": "2024-05-16T14:22:04Z",
+      "type": "processing",
+      "user": "system",
+      "document": "Quy_che_tuyen_sinh_2024.docx",
+      "message": "Starting chunking process"
+    },
+    {
+      "id": 3,
+      "timestamp": "2024-05-16T14:22:08Z",
+      "type": "warning",
+      "user": "system",
+      "document": "Quy_che_tuyen_sinh_2024.docx",
+      "message": "Detected 2 non-UTF8 characters, automatic sanitization applied"
+    },
+    {
+      "id": 4,
+      "timestamp": "2024-05-16T14:22:12Z",
+      "type": "info",
+      "user": "system",
+      "document": "Quy_che_tuyen_sinh_2024.docx",
+      "message": "Successfully indexed 84 chunks into Pinecone cluster"
+    },
+    {
+      "id": 5,
+      "timestamp": "2024-05-16T14:22:15Z",
+      "type": "success",
+      "user": "system",
+      "document": "Quy_che_tuyen_sinh_2024.docx",
+      "message": "PROCESS_COMPLETE: Synchronization successful"
+    }
+  ]
+}

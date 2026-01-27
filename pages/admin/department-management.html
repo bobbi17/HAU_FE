@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Đào tạo - HauHub Admin</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/pages/admin.css">
+    <link rel="stylesheet" href="../../css/pages/subjects.css">
+    
+    <!-- External Libraries -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+</head>
+<body class="admin-dashboard">
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+<aside class="dashboard-sidebar" id="admin-sidebar">
+    <div class="sidebar-header">
+        <div class="brand-logo">
+            <span class="material-symbols-outlined logo-icon">architecture</span>
+        </div>
+        <div class="brand-info">
+            <h1 class="brand-name">HauHub</h1>
+            <p class="brand-subtitle">Admin Portal</p>
+        </div>
+    </div>
+    
+    <nav class="sidebar-nav">
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="admin-dashboard.html" class="nav-link">
+                    <span class="nav-icon material-symbols-outlined">dashboard</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="user-management.html" class="nav-link">
+                    <span class="nav-icon material-symbols-outlined">group</span>
+                    <span class="nav-text">Người dùng</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a href="department-management.html" class="nav-link">
+                    <span class="nav-icon material-symbols-outlined">school</span>
+                    <span class="nav-text">Đào tạo</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="forum-management.html" class="nav-link">
+                    <span class="nav-icon material-symbols-outlined">forum</span>
+                    <span class="nav-text">Diễn đàn</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="../ai/ai-documents.html" class="nav-link">
+                    <span class="nav-icon material-symbols-outlined">smart_toy</span>
+                    <span class="nav-text">Tài liệu AI</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="system-config.html" class="nav-link">
+                    <span class="nav-icon material-symbols-outlined">settings</span>
+                    <span class="nav-text">Cấu hình</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    
+    <div class="sidebar-footer">
+        <div class="user-profile">
+            <div class="user-avatar">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtmkkJF4tN3dFTJCHA7Bxu1Ic0IRrDB4IBR7WvPZFBZK7zQ3IDRtglLgn95BjUJg2zxPJ4SXgKfgbM4VBr5s42AjUu9BIaedrCoskkTd94vc8PNqx1rc-KKUFFLqXbMVdSX6oYBCoLopANZGPZ0xzszKO6FvhbuvNmq7SGuSmtMAM-vHbuivZVNBb24mXMN7DWtHg4RIf4ExvqFdGjPhm5u7vDy-64-3Y7un7j9s5jeW5oqkl4-zZ6TIucjA8c61W6_K-v10TwUeg" alt="Admin Avatar">
+            </div>
+            <div class="user-info">
+                <p class="user-name">Admin HauHub</p>
+                <p class="user-role">System Overseer</p>
+            </div>
+            <button class="logout-btn" id="logout-button">
+                <span class="material-symbols-outlined">logout</span>
+            </button>
+        </div>
+    </div>
+</aside>
+        
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Top Navigation -->
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <div class="compass-icon">
+                        <svg class="compass-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <circle class="technical-line" cx="24" cy="24" r="18" stroke="currentColor" stroke-width="1.5"></circle>
+                            <path d="M24 8V12M24 36V40M8 24H12M36 24H40" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path>
+                            <path d="M24 16L20 24L24 32L28 24L24 16Z" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="1.5"></path>
+                            <circle cx="24" cy="24" fill="currentColor" r="2"></circle>
+                        </svg>
+                    </div>
+                    <div class="header-title">
+                        <h2>Quản lý Đào tạo</h2>
+                        <p>Hệ thống quản lý chương trình đào tạo HauHub</p>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <div class="search-bar">
+                        <span class="material-symbols-outlined search-icon">search</span>
+                        <input type="text" placeholder="Tìm kiếm..." class="search-input" id="global-search">
+                    </div>
+                    
+                    <div class="header-actions">
+                        <button class="action-btn notification-btn" id="notifications-btn">
+                            <span class="material-symbols-outlined">notifications</span>
+                            <span class="notification-badge">5</span>
+                        </button>
+                        <button class="action-btn help-btn" id="help-btn">
+                            <span class="material-symbols-outlined">help</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Breadcrumbs -->
+                <nav class="breadcrumbs">
+                    <a href="admin-dashboard.html" class="breadcrumb-link">Quản trị viên</a>
+                    <span class="breadcrumb-separator">/</span>
+                    <span class="breadcrumb-current">Quản lý Đào tạo</span>
+                </nav>
+                
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="header-content">
+                        <h1 class="page-title">Hệ thống Đào tạo</h1>
+                        <p class="page-subtitle">
+                            Quản lý toàn diện cấu trúc đào tạo: Khoa, Ngành và Môn học. Đảm bảo tính nhất quán và cập nhật kịp thời.
+                        </p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn-secondary" id="export-data-btn">
+                            <span class="material-symbols-outlined">file_download</span>
+                            Xuất dữ liệu
+                        </button>
+                        <button class="btn-primary" id="quick-action-btn">
+                            <span class="material-symbols-outlined">rocket_launch</span>
+                            Hành động nhanh
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div>
+                                <p class="stat-label">Tổng Khoa</p>
+                                <h3 class="stat-value" id="total-faculties">8</h3>
+                            </div>
+                            <span class="stat-badge success">+2 năm nay</span>
+                        </div>
+                        <div class="stat-chart">
+                            <svg class="chart-svg" viewBox="0 0 100 30" preserveAspectRatio="none">
+                                <path d="M0 25 Q10 20 20 22 T40 15 T60 18 T80 5 T100 12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
+                                <path d="M0 25 Q10 20 20 22 T40 15 T60 18 T80 5 T100 12 V30 H0 Z" fill="url(#facultyGradient)"></path>
+                                <defs>
+                                    <linearGradient id="facultyGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+                                        <stop offset="0%" stop-color="currentColor" stop-opacity="0.1"></stop>
+                                        <stop offset="100%" stop-color="currentColor" stop-opacity="0"></stop>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div>
+                                <p class="stat-label">Tổng Ngành</p>
+                                <h3 class="stat-value" id="total-majors">24</h3>
+                            </div>
+                            <div class="live-indicator">
+                                <span class="live-dot"></span>
+                                <span class="live-text">LIVE</span>
+                            </div>
+                        </div>
+                        <div class="stat-chart">
+                            <svg class="chart-svg" viewBox="0 0 100 30" preserveAspectRatio="none">
+                                <path d="M0 20 L10 18 L20 25 L30 15 L40 22 L50 10 L60 20 L70 5 L80 15 L90 8 L100 12" 
+                                      fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div>
+                                <p class="stat-label">Môn học</p>
+                                <h3 class="stat-value" id="total-subjects">156</h3>
+                            </div>
+                            <span class="stat-badge info">+15 mới</span>
+                        </div>
+                        <div class="stat-chart">
+                            <svg class="chart-svg" viewBox="0 0 100 30" preserveAspectRatio="none">
+                                <path d="M0 28 C20 28 30 10 50 10 C70 10 80 25 100 25" 
+                                      fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div>
+                                <p class="stat-label">Sinh viên</p>
+                                <h3 class="stat-value" id="active-students">8,560</h3>
+                            </div>
+                            <span class="stat-badge warning">+2.4%</span>
+                        </div>
+                        <div class="stat-chart">
+                            <svg class="chart-svg" viewBox="0 0 100 30" preserveAspectRatio="none">
+                                <path d="M0 15 Q15 25 30 20 T60 28 T90 10 T100 15" 
+                                      fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2">
+                                </path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Navigation Tabs -->
+                <div class="tabs-navigation">
+                    <div class="tabs-list">
+                        <button class="tab-btn active" data-tab="departments">
+                            <span class="material-symbols-outlined">apartment</span>
+                            Khoa & Ngành
+                        </button>
+                        <button class="tab-btn" data-tab="subjects">
+                            <span class="material-symbols-outlined">menu_book</span>
+                            Môn học
+                        </button>
+                        <button class="tab-btn" data-tab="curriculum">
+                            <span class="material-symbols-outlined">calendar_clock</span>
+                            Chương trình
+                        </button>
+                        <button class="tab-btn" data-tab="reports">
+                            <span class="material-symbols-outlined">insights</span>
+                            Báo cáo
+                        </button>
+                    </div>
+                    
+                    <div class="tab-actions">
+                        <button class="btn-secondary btn-sm" id="tab-refresh">
+                            <span class="material-symbols-outlined">refresh</span>
+                        </button>
+                        <button class="btn-primary btn-sm" id="tab-add-new">
+                            <span class="material-symbols-outlined">add</span>
+                            Thêm mới
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Tab Content: Departments -->
+                <div class="tab-content active" id="departments-tab">
+                    <div class="content-grid">
+                        <!-- Left Column: Danh sách khoa -->
+                        <div class="content-column">
+                            <div class="content-card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Danh sách Khoa</h3>
+                                    <button class="btn-primary" id="add-faculty-btn">
+                                        <span class="material-symbols-outlined">add</span>
+                                        Thêm Khoa
+                                    </button>
+                                </div>
+                                
+                                <div class="table-container">
+                                    <table class="data-table">
+                                        <thead>
+                                            <tr>
+                                                <th>Mã Khoa</th>
+                                                <th>Tên Khoa</th>
+                                                <th>Số Ngành</th>
+                                                <th>Trưởng Khoa</th>
+                                                <th>Trạng thái</th>
+                                                <th>Thao tác</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="faculties-table-body">
+                                            <tr>
+                                                <td><span class="code-badge">K001</span></td>
+                                                <td>
+                                                    <div class="faculty-info">
+                                                        <div class="faculty-avatar">K</div>
+                                                        <div>
+                                                            <div class="faculty-name">Kiến trúc</div>
+                                                            <div class="faculty-description">Khoa Kiến trúc và Quy hoạch</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td><span class="count-badge">4</span></td>
+                                                <td>PGS.TS Nguyễn Văn A</td>
+                                                <td><span class="status-badge active">Hoạt động</span></td>
+                                                <td>
+                                                    <div class="action-buttons">
+                                                        <button class="action-btn edit" data-id="1">
+                                                            <span class="material-symbols-outlined">edit</span>
+                                                        </button>
+                                                        <button class="action-btn delete" data-id="1">
+                                                            <span class="material-symbols-outlined">delete</span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="code-badge">K002</span></td>
+                                                <td>
+                                                    <div class="faculty-info">
+                                                        <div class="faculty-avatar">X</div>
+                                                        <div>
+                                                            <div class="faculty-name">Xây dựng</div>
+                                                            <div class="faculty-description">Khoa Công trình Xây dựng</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td><span class="count-badge">3</span></td>
+                                                <td>TS. Trần Thị B</td>
+                                                <td><span class="status-badge active">Hoạt động</span></td>
+                                                <td>
+                                                    <div class="action-buttons">
+                                                        <button class="action-btn edit" data-id="2">
+                                                            <span class="material-symbols-outlined">edit</span>
+                                                        </button>
+                                                        <button class="action-btn delete" data-id="2">
+                                                            <span class="material-symbols-outlined">delete</span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td><span class="code-badge">K003</span></td>
+                                                <td>
+                                                    <div class="faculty-info">
+                                                        <div class="faculty-avatar">Q</div>
+                                                        <div>
+                                                            <div class="faculty-name">Quy hoạch</div>
+                                                            <div class="faculty-description">Khoa Quy hoạch Đô thị & Nông thôn</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td><span class="count-badge">2</span></td>
+                                                <td>TS. Lê Văn C</td>
+                                                <td><span class="status-badge active">Hoạt động</span></td>
+                                                <td>
+                                                    <div class="action-buttons">
+                                                        <button class="action-btn edit" data-id="3">
+                                                            <span class="material-symbols-outlined">edit</span>
+                                                        </button>
+                                                        <button class="action-btn delete" data-id="3">
+                                                            <span class="material-symbols-outlined">delete</span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                                <div class="table-footer">
+                                    <div class="pagination">
+                                        <button class="pagination-btn prev" disabled>
+                                            <span class="material-symbols-outlined">chevron_left</span>
+                                        </button>
+                                        <span class="page-info">Trang <strong>1</strong> của <strong>3</strong></span>
+                                        <button class="pagination-btn next">
+                                            <span class="material-symbols-outlined">chevron_right</span>
+                                        </button>
+                                    </div>
+                                    <div class="table-summary">
+                                        Hiển thị 3/8 khoa
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Right Column: Thống kê & Form -->
+                        <div class="content-column">
+                            <!-- Chart Card -->
+                            <div class="content-card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Phân bổ sinh viên</h3>
+                                    <select class="chart-select" id="chart-period">
+                                        <option value="2024">Năm 2024</option>
+                                        <option value="2023">Năm 2023</option>
+                                        <option value="2022">Năm 2022</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="chart-container">
+                                    <div class="pie-chart">
+                                        <div class="chart-wrapper">
+                                            <div class="chart-legend">
+                                                <div class="legend-item">
+                                                    <span class="legend-color" style="background-color: #287fbd"></span>
+                                                    <span>Kiến trúc</span>
+                                                    <span class="legend-value">32%</span>
+                                                </div>
+                                                <div class="legend-item">
+                                                    <span class="legend-color" style="background-color: #2b7ac6"></span>
+                                                    <span>Xây dựng</span>
+                                                    <span class="legend-value">28%</span>
+                                                </div>
+                                                <div class="legend-item">
+                                                    <span class="legend-color" style="background-color: #3f8fd9"></span>
+                                                    <span>Quy hoạch</span>
+                                                    <span class="legend-value">22%</span>
+                                                </div>
+                                                <div class="legend-item">
+                                                    <span class="legend-color" style="background-color: #5ca3eb"></span>
+                                                    <span>Nội thất</span>
+                                                    <span class="legend-value">18%</span>
+                                                </div>
+                                            </div>
+                                            <div class="chart-visual">
+                                                <svg class="pie-svg" viewBox="0 0 100 100">
+                                                    <circle cx="50" cy="50" r="40" fill="transparent" stroke="#287fbd" stroke-width="20" stroke-dasharray="100.5, 100" stroke-dashoffset="0"></circle>
+                                                    <circle cx="50" cy="50" r="40" fill="transparent" stroke="#2b7ac6" stroke-width="20" stroke-dasharray="78.5, 100" stroke-dashoffset="-100.5"></circle>
+                                                    <circle cx="50" cy="50" r="40" fill="transparent" stroke="#3f8fd9" stroke-width="20" stroke-dasharray="61.7, 100" stroke-dashoffset="-179"></circle>
+                                                    <circle cx="50" cy="50" r="40" fill="transparent" stroke="#5ca3eb" stroke-width="20" stroke-dasharray="50.5, 100" stroke-dashoffset="-240.7"></circle>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Quick Actions Card -->
+                            <div class="content-card">
+                                <div class="card-header">
+                                    <h3 class="card-title">Thao tác nhanh</h3>
+                                </div>
+                                
+                                <div class="quick-actions">
+                                    <button class="quick-action-btn" id="import-departments">
+                                        <span class="material-symbols-outlined">upload</span>
+                                        <span>Import dữ liệu</span>
+                                    </button>
+                                    <button class="quick-action-btn" id="export-report">
+                                        <span class="material-symbols-outlined">download</span>
+                                        <span>Xuất báo cáo</span>
+                                    </button>
+                                    <button class="quick-action-btn" id="manage-heads">
+                                        <span class="material-symbols-outlined">person</span>
+                                        <span>Quản lý trưởng khoa</span>
+                                    </button>
+                                    <button class="quick-action-btn" id="system-audit">
+                                        <span class="material-symbols-outlined">assistant</span>
+                                        <span>Kiểm tra hệ thống</span>
+                                    </button>
+                                </div>
+                                
+                                <div class="system-info">
+                                    <div class="info-item">
+                                        <span class="info-label">Cập nhật cuối:</span>
+                                        <span class="info-value">2 phút trước</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Phiên bản cấu trúc:</span>
+                                        <span class="info-value">v2.1.4</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">Trạng thái đồng bộ:</span>
+                                        <span class="info-value success">Đã đồng bộ</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tab Content: Subjects -->
+                <div class="tab-content" id="subjects-tab">
+                    <div class="filters-card">
+                        <div class="search-container">
+                            <div class="search-wrapper">
+                                <span class="material-symbols-outlined search-icon">search</span>
+                                <input type="text" id="subject-search-input" 
+                                       class="search-input" 
+                                       placeholder="Tìm theo mã hoặc tên môn học...">
+                            </div>
+                        </div>
+                        
+                        <div class="filters-container">
+                            <div class="filter-group">
+                                <label class="filter-label">Khoa quản lý</label>
+                                <select class="filter-select" id="department-filter">
+                                    <option value="all">Tất cả các khoa</option>
+                                    <option value="it">Công nghệ Thông tin</option>
+                                    <option value="architecture">Kiến trúc</option>
+                                    <option value="electronics">Điện tử Viễn thông</option>
+                                    <option value="basic">Cơ bản</option>
+                                    <option value="construction">Xây dựng</option>
+                                    <option value="business">Quản trị Kinh doanh</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label class="filter-label">Trạng thái</label>
+                                <select class="filter-select" id="status-filter">
+                                    <option value="all">Tất cả trạng thái</option>
+                                    <option value="active">Đang mở</option>
+                                    <option value="inactive">Đã đóng</option>
+                                    <option value="pending">Chờ duyệt</option>
+                                </select>
+                            </div>
+                            
+                            <button class="btn-secondary" id="more-filters-btn">
+                                <span class="material-symbols-outlined">tune</span>
+                                Lọc thêm
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="content-card">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th class="w-32">Mã môn</th>
+                                        <th>Tên môn học</th>
+                                        <th>Khoa quản lý</th>
+                                        <th class="text-center w-24">Số tín</th>
+                                        <th class="text-center w-40">Trạng thái</th>
+                                        <th class="text-right w-32">Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="subjects-table-body">
+                                    <tr class="subject-item">
+                                        <td><span class="subject-code">IT101</span></td>
+                                        <td>
+                                            <div class="subject-info">
+                                                <div class="subject-name">Lập trình C++</div>
+                                                <div class="subject-category">Nền tảng kỹ thuật</div>
+                                            </div>
+                                        </td>
+                                        <td><span class="department-name">Công nghệ thông tin</span></td>
+                                        <td class="text-center"><span class="credit-count">3</span></td>
+                                        <td class="text-center"><span class="status-badge active">Đang mở</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="action-btn view" data-subject-id="1">
+                                                    <span class="material-symbols-outlined">visibility</span>
+                                                </button>
+                                                <button class="action-btn edit" data-subject-id="1">
+                                                    <span class="material-symbols-outlined">edit_square</span>
+                                                </button>
+                                                <button class="action-btn delete" data-subject-id="1">
+                                                    <span class="material-symbols-outlined">delete</span>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="subject-item">
+                                        <td><span class="subject-code">IT102</span></td>
+                                        <td>
+                                            <div class="subject-info">
+                                                <div class="subject-name">Kiến trúc máy tính</div>
+                                                <div class="subject-category">Cấu trúc hệ thống</div>
+                                            </div>
+                                        </td>
+                                        <td><span class="department-name">Công nghệ thông tin</span></td>
+                                        <td class="text-center"><span class="credit-count">3</span></td>
+                                        <td class="text-center"><span class="status-badge active">Đang mở</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="action-btn view" data-subject-id="2">
+                                                    <span class="material-symbols-outlined">visibility</span>
+                                                </button>
+                                                <button class="action-btn edit" data-subject-id="2">
+                                                    <span class="material-symbols-outlined">edit_square</span>
+                                                </button>
+                                                <button class="action-btn delete" data-subject-id="2">
+                                                    <span class="material-symbols-outlined">delete</span>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="subject-item">
+                                        <td><span class="subject-code">AR201</span></td>
+                                        <td>
+                                            <div class="subject-info">
+                                                <div class="subject-name">Cơ sở thiết kế</div>
+                                                <div class="subject-category">Mỹ thuật & Hình học</div>
+                                            </div>
+                                        </td>
+                                        <td><span class="department-name">Kiến trúc</span></td>
+                                        <td class="text-center"><span class="credit-count">4</span></td>
+                                        <td class="text-center"><span class="status-badge active">Đang mở</span></td>
+                                        <td>
+                                            <div class="action-buttons">
+                                                <button class="action-btn view" data-subject-id="3">
+                                                    <span class="material-symbols-outlined">visibility</span>
+                                                </button>
+                                                <button class="action-btn edit" data-subject-id="3">
+                                                    <span class="material-symbols-outlined">edit_square</span>
+                                                </button>
+                                                <button class="action-btn delete" data-subject-id="3">
+                                                    <span class="material-symbols-outlined">delete</span>
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div class="table-footer">
+                            <div class="pagination-info">
+                                Hiển thị <span class="highlight">1-3</span> trên <span class="highlight">156</span> môn học
+                            </div>
+                            <div class="table-controls">
+                                <div class="rows-per-page">
+                                    <label>Hàng mỗi trang:</label>
+                                    <select class="rows-select" id="rows-per-page">
+                                        <option>10</option>
+                                        <option>25</option>
+                                        <option>50</option>
+                                        <option>100</option>
+                                    </select>
+                                </div>
+                                <div class="pagination">
+                                    <button class="pagination-btn prev" disabled>
+                                        <span class="material-symbols-outlined">chevron_left</span>
+                                    </button>
+                                    <button class="pagination-page active">1</button>
+                                    <button class="pagination-page">2</button>
+                                    <button class="pagination-page">3</button>
+                                    <button class="pagination-btn next">
+                                        <span class="material-symbols-outlined">chevron_right</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tab Content: Curriculum -->
+                <div class="tab-content" id="curriculum-tab">
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Chương trình đào tạo</h3>
+                            <button class="btn-primary" id="create-curriculum-btn">
+                                <span class="material-symbols-outlined">add</span>
+                                Tạo chương trình mới
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="empty-state">
+                                <span class="material-symbols-outlined">calendar_clock</span>
+                                <h4>Chưa có chương trình đào tạo</h4>
+                                <p>Tạo chương trình đào tạo mới để quản lý lộ trình học tập.</p>
+                                <button class="btn-primary">Tạo chương trình đầu tiên</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tab Content: Reports -->
+                <div class="tab-content" id="reports-tab">
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h3 class="card-title">Báo cáo & Thống kê</h3>
+                            <button class="btn-secondary" id="generate-report-btn">
+                                <span class="material-symbols-outlined">insights</span>
+                                Tạo báo cáo
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div class="reports-grid">
+                                <div class="report-card">
+                                    <div class="report-icon primary">
+                                        <span class="material-symbols-outlined">bar_chart</span>
+                                    </div>
+                                    <div class="report-info">
+                                        <h4>Phân tích tuyển sinh</h4>
+                                        <p>Xu hướng và dự báo tuyển sinh theo khoa</p>
+                                    </div>
+                                    <button class="btn-secondary btn-sm">Xem</button>
+                                </div>
+                                <div class="report-card">
+                                    <div class="report-icon success">
+                                        <span class="material-symbols-outlined">trending_up</span>
+                                    </div>
+                                    <div class="report-info">
+                                        <h4>Hiệu quả đào tạo</h4>
+                                        <p>Thống kê điểm và tỉ lệ hoàn thành môn học</p>
+                                    </div>
+                                    <button class="btn-secondary btn-sm">Xem</button>
+                                </div>
+                                <div class="report-card">
+                                    <div class="report-icon warning">
+                                        <span class="material-symbols-outlined">warning</span>
+                                    </div>
+                                    <div class="report-info">
+                                        <h4>Cảnh báo hệ thống</h4>
+                                        <p>Phát hiện bất thường trong quản lý đào tạo</p>
+                                    </div>
+                                    <button class="btn-secondary btn-sm">Xem</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Footer -->
+                <footer class="dashboard-footer">
+                    <div class="footer-left">
+                        <span>© 2024 HauHub University • Hệ thống quản lý đào tạo toàn diện</span>
+                    </div>
+                    <div class="footer-right">
+                        <a href="#" class="footer-link">Hướng dẫn sử dụng</a>
+                        <a href="#" class="footer-link">API Documentation</a>
+                        <a href="#" class="footer-link">Support</a>
+                    </div>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Faculty Modal -->
+    <div class="modal" id="add-faculty-modal">
+        <!-- Modal content from previous file -->
+    </div>
+
+    <!-- Add/Edit Subject Modal -->
+    <div class="modal" id="subject-modal">
+        <!-- Modal content from previous file -->
+    </div>
+
+    <!-- JavaScript Files -->
+    <script type="module" src="../../js/components/modal.js"></script>
+    <script type="module" src="../../js/components/notification.js"></script>
+    <script type="module" src="../../js/services/admin-service.js"></script>
+    <script type="module" src="../../js/pages/admin-dashboard.js"></script>
+    <script type="module" src="../../js/pages/department-management.js"></script>
+    <script type="module" src="../../js/pages/subject-management.js"></script>
+
+
+    <script>
+// Debug navigation
+console.log('=== DEBUG NAVIGATION ===');
+document.querySelectorAll('.nav-link').forEach((link, index) => {
+    console.log(`Link ${index}:`, link.href);
+    
+    // Thêm event listener để debug
+    link.addEventListener('click', function(e) {
+        console.log('Clicked on:', this.href);
+        console.log('Event details:', e);
+        
+        // Kiểm tra nếu có preventDefault
+        e.stopImmediatePropagation();
+        
+        // Force navigation
+        window.location.href = this.href;
+    }, true); // Capture phase
+    
+    // Thêm onclick attribute
+    link.setAttribute('onclick', `window.location.href='${link.href}'; return false;`);
+});
+
+// Kiểm tra xem có overlay nào chặn không
+const overlays = document.querySelectorAll('*');
+overlays.forEach(el => {
+    const style = window.getComputedStyle(el);
+    if (style.pointerEvents === 'none' && 
+        style.position !== 'static' &&
+        (el.offsetWidth > 100 || el.offsetHeight > 100)) {
+        console.log('Possible overlay blocking:', el);
+    }
+});
+</script>
+
+
+</body>
+</html>

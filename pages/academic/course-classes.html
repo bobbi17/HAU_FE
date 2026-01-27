@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh sách Lớp Học Phần | HauHub</title>
+    
+    <!-- CSS Files (Giữ nguyên) -->
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/pages/course-classes.css">
+    
+    <!-- Google Fonts & Icons (Giữ nguyên) -->
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (Giữ nguyên) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background-light": "#FCFAF7",
+                        "background-dark": "#101822",
+                        "deep-blue": "#0A2540",
+                    },
+                    fontFamily: {
+                        "display": ["Newsreader", "serif"],
+                        "sans": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body { font-family: 'Newsreader', serif; }
+        .architectural-grid {
+            background-image: radial-gradient(#e5e7eb 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+        }
+    </style>
+    
+    <!-- Favicon (Thêm như trang home) -->
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+</head>
+<body class="bg-background-light dark:bg-background-dark text-deep-blue min-h-screen">
+    <!-- Header sẽ được inject bởi JS (Thay thế header cũ) -->
+    <header></header>
+    
+    <!-- Main Content (Giữ nguyên) -->
+    <main class="main-content">
+        <div id="page-content">
+            <!-- Hero Section (Giữ nguyên) -->
+            <section class="hero-section">
+                <div class="hero-background architectural-grid"></div>
+                <div class="hero-decoration"></div>
+                <div class="hero-content">
+                    <span class="hero-subtitle">Học kỳ I • 2024-2025</span>
+                    <h1 class="hero-title">Danh Sách Lớp Học Phần Studio</h1>
+                    <p class="hero-description">
+                        Môi trường học tập chuyên sâu dành cho sinh viên Kiến trúc và Quy hoạch. 
+                        Đăng ký các lớp học đồ án và kỹ thuật studio tại đây.
+                    </p>
+                </div>
+            </section>
+            
+            <!-- Search & Filter Section (Giữ nguyên) -->
+            <section class="search-section">
+                <div class="search-container">
+                    <div class="search-bar">
+                        <div class="search-input-wrapper">
+                            <span class="material-symbols-outlined search-icon">search</span>
+                            <input type="text" 
+                                   id="search-input" 
+                                   class="search-input" 
+                                   placeholder="Tìm tên môn học, giảng viên...">
+                        </div>
+                        <div class="filter-buttons">
+                            <button class="filter-btn" id="filter-major-btn">
+                                <span>Chuyên ngành</span>
+                                <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                            </button>
+                            <button class="filter-btn" id="filter-semester-btn">
+                                <span>Học kỳ</span>
+                                <span class="material-symbols-outlined">keyboard_arrow_down</span>
+                            </button>
+                            <button class="filter-advanced-btn" id="advanced-filter-btn">
+                                <span class="material-symbols-outlined">tune</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Classes List Section (Giữ nguyên) -->
+            <section class="classes-section">
+                <div class="classes-container">
+                    <!-- Classes will be loaded by JS -->
+                    <div id="classes-list" class="classes-list">
+                        <div class="loading-indicator">
+                            <span class="material-symbols-outlined animate-spin">refresh</span>
+                            <p>Đang tải danh sách lớp học...</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Pagination/Load More (Giữ nguyên) -->
+                    <div class="load-more-section">
+                        <button id="load-more-btn" class="load-more-btn">
+                            Xem thêm các lớp khác
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Stats Section (Giữ nguyên) -->
+            <section class="stats-section">
+                <div class="stats-container">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <span class="material-symbols-outlined">school</span>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-number" id="total-classes">0</p>
+                                <p class="stat-label">Lớp học phần</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <span class="material-symbols-outlined">group</span>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-number" id="total-instructors">0</p>
+                                <p class="stat-label">Giảng viên</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <span class="material-symbols-outlined">check_circle</span>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-number" id="registered-classes">0</p>
+                                <p class="stat-label">Đã đăng ký</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <span class="material-symbols-outlined">schedule</span>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-number" id="available-slots">0</p>
+                                <p class="stat-label">Chỗ trống</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <!-- Footer sẽ được inject bởi JS (Thay thế footer cũ) -->
+    <footer></footer>
+    
+    <!-- THÊM: AI Chat Widget Container (như trang home) -->
+    <div id="ai-chat-widget"></div>
+    
+    <!-- Class Detail Modal (Giữ nguyên) -->
+    <div id="class-detail-modal" class="modal" style="display: none;">
+        <div class="modal-content large-modal">
+            <h3 class="modal-title" id="modal-class-name">Thông tin lớp học</h3>
+            <div class="modal-body">
+                <div class="class-detail-grid">
+                    <div class="class-info-section">
+                        <div class="class-header">
+                            <div class="class-code-badge" id="modal-class-code">ARC302</div>
+                            <div class="class-status" id="modal-class-status"></div>
+                        </div>
+                        <h4 class="class-subject" id="modal-class-subject">Thiết kế Kiến trúc Dân dụng 3</h4>
+                        <p class="class-description" id="modal-class-description"></p>
+                        
+                        <div class="class-details-grid">
+                            <div class="detail-item">
+                                <span class="detail-label">Mã môn học:</span>
+                                <span class="detail-value" id="detail-course-code">ARC302</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Số tín chỉ:</span>
+                                <span class="detail-value" id="detail-credits">3</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Loại môn:</span>
+                                <span class="detail-value" id="detail-type">Bắt buộc</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Học kỳ:</span>
+                                <span class="detail-value" id="detail-semester">HK1 - 2024-2025</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Sĩ số tối đa:</span>
+                                <span class="detail-value" id="detail-max-students">50</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Đã đăng ký:</span>
+                                <span class="detail-value" id="detail-registered">45</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="instructor-section">
+                        <h5 class="section-title">Giảng viên phụ trách</h5>
+                        <div class="instructor-card" id="instructor-card">
+                            <!-- Instructor info will be loaded by JS -->
+                        </div>
+                    </div>
+                    
+                    <div class="schedule-section">
+                        <h5 class="section-title">Lịch học</h5>
+                        <div class="schedule-card" id="schedule-card">
+                            <!-- Schedule info will be loaded by JS -->
+                        </div>
+                    </div>
+                    
+                    <div class="requirements-section">
+                        <h5 class="section-title">Yêu cầu tiên quyết</h5>
+                        <div class="requirements-list" id="requirements-list">
+                            <!-- Requirements will be loaded by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-outline" id="close-detail-btn">Đóng</button>
+                <button class="btn-primary" id="register-from-modal-btn">Đăng ký ngay</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Registration Modal (Giữ nguyên) -->
+    <div id="registration-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3 class="modal-title">Đăng ký lớp học phần</h3>
+            <div class="modal-body">
+                <form id="registration-form">
+                    <div class="form-group">
+                        <label for="confirm-class">Xác nhận lớp học</label>
+                        <div class="confirmation-card">
+                            <h4 id="confirm-class-name">Thiết kế Kiến trúc Dân dụng 3</h4>
+                            <p id="confirm-class-details">
+                                Mã lớp: <span id="confirm-class-code">ARC302</span> • 
+                                Giảng viên: <span id="confirm-instructor">TS. KTS Nguyễn Hoàng</span>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registration-note">Ghi chú đăng ký (tùy chọn)</label>
+                        <textarea id="registration-note" 
+                                  rows="3" 
+                                  placeholder="Nhập ghi chú nếu có yêu cầu đặc biệt..."></textarea>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="confirm-terms" required>
+                        <label for="confirm-terms">
+                            Tôi đã đọc và đồng ý với 
+                            <a href="#" class="link">điều khoản đăng ký học phần</a>
+                        </label>
+                    </div>
+                    
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="confirm-schedule" required>
+                        <label for="confirm-schedule">
+                            Tôi đã kiểm tra và xác nhận không trùng lịch học với các lớp đã đăng ký
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-cancel" id="cancel-registration-btn">Hủy</button>
+                <button class="btn-submit" id="submit-registration-btn">Xác nhận đăng ký</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Filter Modal (Giữ nguyên) -->
+    <div id="filter-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3 class="modal-title">Lọc lớp học</h3>
+            <div class="modal-body">
+                <form id="filter-form">
+                    <div class="form-group">
+                        <label for="filter-major">Chuyên ngành</label>
+                        <select id="filter-major" multiple>
+                            <option value="architecture">Kiến trúc</option>
+                            <option value="urban-planning">Quy hoạch Đô thị</option>
+                            <option value="interior-design">Thiết kế Nội thất</option>
+                            <option value="landscape">Kiến trúc Cảnh quan</option>
+                            <option value="construction">Xây dựng</option>
+                        </select>
+                        <p class="form-hint">Giữ Ctrl (Windows) hoặc Command (Mac) để chọn nhiều</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="filter-semester">Học kỳ</label>
+                        <select id="filter-semester">
+                            <option value="">Tất cả học kỳ</option>
+                            <option value="hk1-2024">HK1 2024-2025</option>
+                            <option value="hk2-2024">HK2 2024-2025</option>
+                            <option value="hk3-2024">HK3 2024-2025</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="filter-day">Ngày học</label>
+                        <select id="filter-day">
+                            <option value="">Tất cả ngày</option>
+                            <option value="monday">Thứ 2</option>
+                            <option value="tuesday">Thứ 3</option>
+                            <option value="wednesday">Thứ 4</option>
+                            <option value="thursday">Thứ 5</option>
+                            <option value="friday">Thứ 6</option>
+                            <option value="saturday">Thứ 7</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="filter-type">Loại môn học</label>
+                        <select id="filter-type">
+                            <option value="">Tất cả loại</option>
+                            <option value="required">Bắt buộc</option>
+                            <option value="elective">Tự chọn</option>
+                            <option value="project">Đồ án</option>
+                            <option value="theory">Lý thuyết</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="filter-availability">Trạng thái lớp</label>
+                        <select id="filter-availability">
+                            <option value="">Tất cả</option>
+                            <option value="available">Còn chỗ trống</option>
+                            <option value="full">Đã đầy</option>
+                            <option value="almost-full">Sắp đầy</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="filter-time">Khung giờ học</label>
+                        <select id="filter-time">
+                            <option value="">Tất cả khung giờ</option>
+                            <option value="morning">Sáng (Tiết 1-4)</option>
+                            <option value="afternoon">Chiều (Tiết 5-8)</option>
+                            <option value="evening">Tối (Tiết 9-12)</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-cancel" id="reset-filter-btn">Đặt lại</button>
+                <button class="btn-submit" id="apply-filter-btn">Áp dụng bộ lọc</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript (Kết hợp cũ và mới) -->
+    <script type="module">
+        // Import các component mới (như trang home)
+        import { Header } from '../../js/components/header.js';
+        import { Footer } from '../../js/components/footer.js';
+        import { AIChatWidget } from '../../js/components/chat-widget.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inject Header, Footer, Chat Widget (như trang home)
+            new Header();
+            new Footer();
+            new AIChatWidget();
+            
+            // Khởi tạo JS cũ của course classes (giữ nguyên chức năng)
+            initializeCourseClasses();
+        });
+        
+        // Giữ nguyên hàm initializeCourseClasses cũ (hoặc giữ script cũ)
+        function initializeCourseClasses() {
+            // Modals
+            const classDetailModal = document.getElementById('class-detail-modal');
+            const registrationModal = document.getElementById('registration-modal');
+            const filterModal = document.getElementById('filter-modal');
+            
+            // Close detail modal
+            const closeDetailBtn = document.getElementById('close-detail-btn');
+            if (closeDetailBtn && classDetailModal) {
+                closeDetailBtn.addEventListener('click', () => {
+                    classDetailModal.style.display = 'none';
+                });
+            }
+            
+            // Cancel registration
+            const cancelRegistrationBtn = document.getElementById('cancel-registration-btn');
+            if (cancelRegistrationBtn && registrationModal) {
+                cancelRegistrationBtn.addEventListener('click', () => {
+                    registrationModal.style.display = 'none';
+                });
+            }
+            
+            // Reset filter
+            const resetFilterBtn = document.getElementById('reset-filter-btn');
+            if (resetFilterBtn) {
+                resetFilterBtn.addEventListener('click', () => {
+                    const filterForm = document.getElementById('filter-form');
+                    if (filterForm) {
+                        filterForm.reset();
+                        alert('Đã đặt lại bộ lọc');
+                    }
+                });
+            }
+            
+            // Apply filter
+            const applyFilterBtn = document.getElementById('apply-filter-btn');
+            if (applyFilterBtn && filterModal) {
+                applyFilterBtn.addEventListener('click', () => {
+                    alert('Áp dụng bộ lọc lớp học');
+                    filterModal.style.display = 'none';
+                });
+            }
+            
+            // Advanced filter button
+            const advancedFilterBtn = document.getElementById('advanced-filter-btn');
+            if (advancedFilterBtn && filterModal) {
+                advancedFilterBtn.addEventListener('click', () => {
+                    filterModal.style.display = 'block';
+                });
+            }
+            
+            // Search functionality
+            const searchInput = document.getElementById('search-input');
+            const searchIcon = document.querySelector('.search-icon');
+            
+            function performSearch() {
+                const query = searchInput?.value.trim();
+                if (query) {
+                    alert(`Tìm kiếm lớp học: ${query}`);
+                }
+            }
+            
+            if (searchIcon) {
+                searchIcon.addEventListener('click', performSearch);
+            }
+            
+            if (searchInput) {
+                searchInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        performSearch();
+                    }
+                });
+            }
+            
+            // Load more button
+            const loadMoreBtn = document.getElementById('load-more-btn');
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', () => {
+                    alert('Tải thêm lớp học');
+                });
+            }
+            
+            // Demo classes
+            const classesList = document.getElementById('classes-list');
+            if (classesList) {
+                const classes = [
+                    { 
+                        code: 'ARC302', 
+                        name: 'Thiết kế Kiến trúc Dân dụng 3', 
+                        instructor: 'TS. KTS Nguyễn Hoàng',
+                        schedule: 'Thứ 3, 5 (8:00-11:30)',
+                        credits: 3,
+                        capacity: '45/50',
+                        type: 'Bắt buộc',
+                        status: 'Còn chỗ'
+                    },
+                    { 
+                        code: 'QH402', 
+                        name: 'Quy hoạch Đô thị Bền vững', 
+                        instructor: 'ThS. Trần Minh Tuấn',
+                        schedule: 'Thứ 2, 4 (13:30-17:00)',
+                        credits: 4,
+                        capacity: '40/45',
+                        type: 'Bắt buộc',
+                        status: 'Sắp đầy'
+                    },
+                    { 
+                        code: 'XD201', 
+                        name: 'Kết cấu Thép Ứng dụng', 
+                        instructor: 'TS. Lê Văn Cường',
+                        schedule: 'Thứ 6 (8:00-11:30)',
+                        credits: 3,
+                        capacity: '38/50',
+                        type: 'Bắt buộc',
+                        status: 'Còn chỗ'
+                    },
+                    { 
+                        code: 'NT301', 
+                        name: 'Nội thất Thương mại', 
+                        instructor: 'ThS. Phạm Thị Hương',
+                        schedule: 'Thứ 3 (13:30-17:00)',
+                        credits: 2,
+                        capacity: '30/35',
+                        type: 'Tự chọn',
+                        status: 'Còn chỗ'
+                    },
+                    { 
+                        code: 'KTS505', 
+                        name: 'Đồ án Kiến trúc Cao tầng', 
+                        instructor: 'TS. KTS Vũ Mạnh Hùng',
+                        schedule: 'Thứ 2, 4, 6 (8:00-11:30)',
+                        credits: 5,
+                        capacity: '48/50',
+                        type: 'Đồ án',
+                        status: 'Sắp đầy'
+                    },
+                    { 
+                        code: 'QH303', 
+                        name: 'Quy hoạch Giao thông', 
+                        instructor: 'ThS. Nguyễn Thị Lan',
+                        schedule: 'Thứ 5 (8:00-11:30)',
+                        credits: 3,
+                        capacity: '50/55',
+                        type: 'Bắt buộc',
+                        status: 'Còn chỗ'
+                    }
+                ];
+                
+                // Remove loading indicator
+                const loadingIndicator = classesList.querySelector('.loading-indicator');
+                if (loadingIndicator) {
+                    loadingIndicator.remove();
+                }
+                
+                // Update stats
+                document.getElementById('total-classes').textContent = classes.length;
+                document.getElementById('total-instructors').textContent = '6';
+                document.getElementById('registered-classes').textContent = '2';
+                document.getElementById('available-slots').textContent = '25';
+                
+                classes.forEach(classItem => {
+                    const classCard = document.createElement('div');
+                    classCard.className = 'class-card';
+                    classCard.innerHTML = `
+                        <div class="class-header">
+                            <span class="class-code">${classItem.code}</span>
+                            <span class="class-status ${classItem.status === 'Còn chỗ' ? 'available' : 'almost-full'}">
+                                ${classItem.status}
+                            </span>
+                        </div>
+                        <h3 class="class-name">${classItem.name}</h3>
+                        <div class="class-meta">
+                            <div class="meta-item">
+                                <span class="material-symbols-outlined">person</span>
+                                <span>${classItem.instructor}</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="material-symbols-outlined">schedule</span>
+                                <span>${classItem.schedule}</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="material-symbols-outlined">grade</span>
+                                <span>${classItem.credits} tín chỉ</span>
+                            </div>
+                        </div>
+                        <div class="class-footer">
+                            <div class="capacity-info">
+                                <span class="capacity-label">Sĩ số:</span>
+                                <span class="capacity-value">${classItem.capacity}</span>
+                            </div>
+                            <div class="class-actions">
+                                <button class="btn-detail">
+                                    <span class="material-symbols-outlined">info</span>
+                                    Chi tiết
+                                </button>
+                                <button class="btn-register">
+                                    <span class="material-symbols-outlined">add_circle</span>
+                                    Đăng ký
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Detail button
+                    const detailBtn = classCard.querySelector('.btn-detail');
+                    detailBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        
+                        // Set modal content
+                        document.getElementById('modal-class-code').textContent = classItem.code;
+                        document.getElementById('modal-class-subject').textContent = classItem.name;
+                        document.getElementById('modal-class-status').textContent = classItem.status;
+                        document.getElementById('detail-course-code').textContent = classItem.code;
+                        document.getElementById('detail-credits').textContent = classItem.credits;
+                        document.getElementById('detail-type').textContent = classItem.type;
+                        document.getElementById('detail-semester').textContent = 'HK1 - 2024-2025';
+                        
+                        // Show modal
+                        classDetailModal.style.display = 'block';
+                    });
+                    
+                    // Register button
+                    const registerBtn = classCard.querySelector('.btn-register');
+                    registerBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        
+                        // Set registration modal content
+                        document.getElementById('confirm-class-name').textContent = classItem.name;
+                        document.getElementById('confirm-class-code').textContent = classItem.code;
+                        document.getElementById('confirm-instructor').textContent = classItem.instructor;
+                        
+                        // Show registration modal
+                        registrationModal.style.display = 'block';
+                    });
+                    
+                    classesList.appendChild(classCard);
+                });
+            }
+            
+            // Register from modal button
+            const registerFromModalBtn = document.getElementById('register-from-modal-btn');
+            if (registerFromModalBtn && registrationModal) {
+                registerFromModalBtn.addEventListener('click', () => {
+                    alert('Mở form đăng ký từ modal chi tiết');
+                    classDetailModal.style.display = 'none';
+                    registrationModal.style.display = 'block';
+                });
+            }
+            
+            // Submit registration
+            const submitRegistrationBtn = document.getElementById('submit-registration-btn');
+            if (submitRegistrationBtn) {
+                submitRegistrationBtn.addEventListener('click', () => {
+                    const confirmTerms = document.getElementById('confirm-terms').checked;
+                    const confirmSchedule = document.getElementById('confirm-schedule').checked;
+                    
+                    if (confirmTerms && confirmSchedule) {
+                        alert('Đăng ký lớp học thành công!');
+                        registrationModal.style.display = 'none';
+                    } else {
+                        alert('Vui lòng xác nhận tất cả các điều khoản trước khi đăng ký');
+                    }
+                });
+            }
+            
+            // Close modals when clicking outside
+            window.addEventListener('click', (e) => {
+                if (classDetailModal && e.target === classDetailModal) {
+                    classDetailModal.style.display = 'none';
+                }
+                if (registrationModal && e.target === registrationModal) {
+                    registrationModal.style.display = 'none';
+                }
+                if (filterModal && e.target === filterModal) {
+                    filterModal.style.display = 'none';
+                }
+            });
+        }
+    </script>
+    
+    <!-- Giữ các script cũ nếu cần (đảm bảo không bị mất chức năng) -->
+    <script src="../../js/config/api-config.js"></script>
+    <script src="../../js/config/constants.js"></script>
+    <script src="../../js/utils/auth.js"></script>
+    <script src="../../js/utils/date-format.js"></script>
+    <script src="../../js/components/modal.js"></script>
+    <script src="../../js/components/notification.js"></script>
+    <script src="../../js/services/course-service.js"></script>
+    <script src="../../js/pages/course-classes.js" type="module"></script>
+</body>
+</html>

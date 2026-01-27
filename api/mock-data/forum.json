@@ -1,0 +1,72 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Toàn trường",
+      "slug": "all-school",
+      "description": "Thông báo chung, lịch học và các hoạt động ngoại khóa.",
+      "icon": "hub",
+      "threadCount": 1240,
+      "postCount": 5600,
+      "latestPost": {
+        "title": "Hướng dẫn đăng ký học phần Học kỳ 1",
+        "author": "Phòng Đào tạo",
+        "time": "2024-03-15T10:30:00Z"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Khoa Kiến trúc",
+      "slug": "architecture",
+      "description": "Đồ án, cấu tạo kiến trúc và mỹ thuật.",
+      "icon": "architecture",
+      "threadCount": 850,
+      "postCount": 3200,
+      "latestPost": {
+        "title": "Chia sẻ tài liệu Diễn họa tay 1",
+        "author": "GV. Minh Anh",
+        "time": "2024-03-14T15:45:00Z"
+      }
+    },
+    {
+      "id": 3,
+      "name": "Khoa Quy hoạch",
+      "slug": "planning",
+      "description": "Quy hoạch vùng, đô thị và quản lý hạ tầng.",
+      "icon": "map",
+      "threadCount": 420,
+      "postCount": 1100,
+      "latestPost": {
+        "title": "Xu hướng đô thị bền vững 2024",
+        "author": "TS. Hải Đăng",
+        "time": "2024-03-14T09:15:00Z"
+      }
+    }
+  ],
+  "trendingPosts": [
+    {
+      "id": 101,
+      "title": "[Đồ án] Tổng hợp mặt bằng chung cư cao cấp K62",
+      "excerpt": "Chia sẻ bộ mặt bằng chung cư cao cấp đạt điểm cao...",
+      "author": {
+        "id": 201,
+        "name": "KTS. Minh Tuấn",
+        "avatar": "/assets/avatars/member1.jpg"
+      },
+      "category": "Kiến trúc",
+      "views": 1245,
+      "replies": 42,
+      "time": "2 giờ trước"
+    }
+  ],
+  "activeMembers": [
+    {
+      "id": 301,
+      "name": "Nguyễn Văn A",
+      "avatar": "/assets/avatars/member1.jpg",
+      "role": "Sinh viên năm 4",
+      "postCount": 156,
+      "lastActive": "10 phút trước"
+    }
+  ]
+}

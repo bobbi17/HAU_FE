@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cấu hình Hệ thống - HauHub Admin</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/pages/admin.css">
+    <link rel="stylesheet" href="../../css/pages/system-config.css">
+    
+    <!-- External Libraries -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+</head>
+<body class="admin-dashboard">
+    <div class="dashboard-container">
+      <!-- Sidebar Navigation -->
+<aside class="dashboard-sidebar" id="admin-sidebar">
+    <div class="sidebar-header">
+        <div class="brand-logo">
+            <span class="material-symbols-outlined logo-icon">architecture</span>
+        </div>
+        <div class="brand-info">
+            <h1 class="brand-name">HauHub</h1>
+            <p class="brand-subtitle">Admin Portal</p>
+        </div>
+    </div>
+    
+    <nav class="sidebar-nav">
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="admin-dashboard.html" class="nav-link">
+                    <span class="nav-icon material-symbols-outlined">dashboard</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="user-management.html" class="nav-link">
+                    <span class="nav-icon material-symbols-outlined">group</span>
+                    <span class="nav-text">Người dùng</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="department-management.html" class="nav-link">
+                    <span class="nav-icon material-symbols-outlined">school</span>
+                    <span class="nav-text">Đào tạo</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="forum-management.html" class="nav-link">
+                    <span class="nav-icon material-symbols-outlined">forum</span>
+                    <span class="nav-text">Diễn đàn</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="../ai/ai-documents.html" class="nav-link">
+                    <span class="nav-icon material-symbols-outlined">smart_toy</span>
+                    <span class="nav-text">Tài liệu AI</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a href="system-config.html" class="nav-link">
+                    <span class="nav-icon material-symbols-outlined">settings</span>
+                    <span class="nav-text">Cấu hình</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    
+    <div class="sidebar-footer">
+        <div class="user-profile">
+            <div class="user-avatar">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtmkkJF4tN3dFTJCHA7Bxu1Ic0IRrDB4IBR7WvPZFBZK7zQ3IDRtglLgn95BjUJg2zxPJ4SXgKfgbM4VBr5s42AjUu9BIaedrCoskkTd94vc8PNqx1rc-KKUFFLqXbMVdSX6oYBCoLopANZGPZ0xzszKO6FvhbuvNmq7SGuSmtMAM-vHbuivZVNBb24mXMN7DWtHg4RIf4ExvqFdGjPhm5u7vDy-64-3Y7un7j9s5jeW5oqkl4-zZ6TIucjA8c61W6_K-v10TwUeg" alt="Admin Avatar">
+            </div>
+            <div class="user-info">
+                <p class="user-name">Admin HauHub</p>
+                <p class="user-role">System Overseer</p>
+            </div>
+            <button class="logout-btn" id="logout-button">
+                <span class="material-symbols-outlined">logout</span>
+            </button>
+        </div>
+    </div>
+</aside>
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Top Navigation -->
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <div class="compass-icon">
+                        <svg class="compass-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <circle class="technical-line" cx="24" cy="24" r="18" stroke="currentColor" stroke-width="1.5"></circle>
+                            <path d="M24 8V12M24 36V40M8 24H12M36 24H40" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path>
+                            <path d="M24 16L20 24L24 32L28 24L24 16Z" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="1.5"></path>
+                            <circle cx="24" cy="24" fill="currentColor" r="2"></circle>
+                        </svg>
+                    </div>
+                    <div class="header-title">
+                        <h2>Cấu hình Hệ thống</h2>
+                        <p>Điều chỉnh và tối ưu hóa cài đặt nền tảng</p>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <div class="search-bar">
+                        <span class="material-symbols-outlined search-icon">search</span>
+                        <input type="text" placeholder="Tìm cài đặt..." class="search-input" id="config-search">
+                    </div>
+                    
+                    <div class="header-actions">
+                        <div class="system-status">
+                            <div class="status-dot online"></div>
+                            <span class="status-text">Hệ thống ổn định</span>
+                        </div>
+                        <button class="action-btn notification-btn" id="notifications-btn">
+                            <span class="material-symbols-outlined">notifications</span>
+                            <span class="notification-badge">2</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Breadcrumbs -->
+                <nav class="breadcrumbs">
+                    <a href="admin-dashboard.html" class="breadcrumb-link">Quản trị viên</a>
+                    <span class="breadcrumb-separator">/</span>
+                    <span class="breadcrumb-current">Cấu hình & Cài đặt</span>
+                </nav>
+                
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="header-content">
+                        <h1 class="page-title">Cấu hình Hệ thống</h1>
+                        <p class="page-subtitle">
+                            Quản lý cài đặt hệ thống toàn diện, tối ưu hóa hiệu suất và bảo mật cho nền tảng HauHub.
+                            Mọi thay đổi sẽ ảnh hưởng trực tiếp đến trải nghiệm người dùng.
+                        </p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn-secondary" id="import-config-btn">
+                            <span class="material-symbols-outlined">upload</span>
+                            Nhập cấu hình
+                        </button>
+                        <button class="btn-primary" id="save-all-btn">
+                            <span class="material-symbols-outlined">save</span>
+                            Lưu tất cả thay đổi
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- System Status Cards -->
+                <div class="status-grid">
+                    <div class="status-card operational">
+                        <div class="status-icon">
+                            <span class="material-symbols-outlined">check_circle</span>
+                        </div>
+                        <div class="status-content">
+                            <h3 class="status-title">Trạng thái hệ thống</h3>
+                            <p class="status-value">Tất cả dịch vụ hoạt động bình thường</p>
+                        </div>
+                    </div>
+                    
+                    <div class="status-card version">
+                        <div class="status-icon">
+                            <span class="material-symbols-outlined">system_update</span>
+                        </div>
+                        <div class="status-content">
+                            <h3 class="status-title">Phiên bản hiện tại</h3>
+                            <p class="status-value">v2.5.1 • Cập nhật 5 ngày trước</p>
+                        </div>
+                    </div>
+                    
+                    <div class="status-card backup">
+                        <div class="status-icon">
+                            <span class="material-symbols-outlined">database</span>
+                        </div>
+                        <div class="status-content">
+                            <h3 class="status-title">Sao lưu gần nhất</h3>
+                            <p class="status-value">14:30 hôm nay • 2.4 GB</p>
+                        </div>
+                    </div>
+                    
+                    <div class="status-card security">
+                        <div class="status-icon">
+                            <span class="material-symbols-outlined">security</span>
+                        </div>
+                        <div class="status-content">
+                            <h3 class="status-title">Bảo mật</h3>
+                            <p class="status-value">Mức cao • SSL/TLS Enabled</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Configuration Tabs -->
+                <div class="config-tabs">
+                    <div class="tabs-header">
+                        <div class="tabs-list">
+                            <button class="tab-btn active" data-tab="general">
+                                <span class="material-symbols-outlined">tune</span>
+                                Chung
+                            </button>
+                            <button class="tab-btn" data-tab="security">
+                                <span class="material-symbols-outlined">lock</span>
+                                Bảo mật
+                            </button>
+                            <button class="tab-btn" data-tab="performance">
+                                <span class="material-symbols-outlined">speed</span>
+                                Hiệu năng
+                            </button>
+                            <button class="tab-btn" data-tab="notifications">
+                                <span class="material-symbols-outlined">notifications</span>
+                                Thông báo
+                            </button>
+                            <button class="tab-btn" data-tab="integration">
+                                <span class="material-symbols-outlined">link</span>
+                                Tích hợp
+                            </button>
+                            <button class="tab-btn" data-tab="backup">
+                                <span class="material-symbols-outlined">backup</span>
+                                Sao lưu
+                            </button>
+                            <button class="tab-btn" data-tab="maintenance">
+                                <span class="material-symbols-outlined">engineering</span>
+                                Bảo trì
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="tabs-content">
+                        <!-- General Settings Tab -->
+                        <div class="tab-pane active" id="general-tab">
+                            <div class="config-section">
+                                <h3 class="section-title">
+                                    <span class="material-symbols-outlined">public</span>
+                                    Cài đặt nền tảng
+                                </h3>
+                                
+                                <div class="settings-grid">
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="platform-name">Tên nền tảng</label>
+                                        <input type="text" id="platform-name" class="form-input" 
+                                               value="HauHub University Platform" placeholder="Nhập tên nền tảng">
+                                        <small class="setting-hint">Tên hiển thị cho người dùng</small>
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="default-language">Ngôn ngữ mặc định</label>
+                                        <select id="default-language" class="form-select">
+                                            <option value="vi">Tiếng Việt</option>
+                                            <option value="en">English</option>
+                                            <option value="ja">日本語</option>
+                                            <option value="ko">한국어</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="timezone">Múi giờ</label>
+                                        <select id="timezone" class="form-select">
+                                            <option value="Asia/Ho_Chi_Minh" selected>Asia/Ho Chi Minh (GMT+7)</option>
+                                            <option value="UTC">UTC</option>
+                                            <option value="America/New_York">America/New York (GMT-5)</option>
+                                            <option value="Europe/London">Europe/London (GMT+0)</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="date-format">Định dạng ngày tháng</label>
+                                        <select id="date-format" class="form-select">
+                                            <option value="dd/mm/yyyy">DD/MM/YYYY</option>
+                                            <option value="mm/dd/yyyy">MM/DD/YYYY</option>
+                                            <option value="yyyy-mm-dd">YYYY-MM-DD</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="config-section">
+                                <h3 class="section-title">
+                                    <span class="material-symbols-outlined">palette</span>
+                                    Giao diện & Hiển thị
+                                </h3>
+                                
+                                <div class="settings-grid">
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="theme-mode">Chế độ giao diện</label>
+                                        <select id="theme-mode" class="form-select">
+                                            <option value="auto">Tự động (theo hệ thống)</option>
+                                            <option value="light">Sáng</option>
+                                            <option value="dark">Tối</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="primary-color">Màu sắc chính</label>
+                                        <div class="color-picker">
+                                            <input type="color" id="primary-color" class="color-input" value="#0A2463">
+                                            <span class="color-value">#0A2463</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label">Kích thước chữ</label>
+                                        <div class="range-control">
+                                            <input type="range" id="font-size" min="12" max="18" value="14" step="1">
+                                            <div class="range-labels">
+                                                <span>Nhỏ</span>
+                                                <span>Trung bình</span>
+                                                <span>Lớn</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="logo-upload">Logo nền tảng</label>
+                                        <div class="file-upload">
+                                            <input type="file" id="logo-upload" class="file-input" accept="image/*">
+                                            <label for="logo-upload" class="file-label">
+                                                <span class="material-symbols-outlined">upload</span>
+                                                Tải lên logo mới
+                                            </label>
+                                            <small class="setting-hint">PNG hoặc SVG, tối đa 2MB</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="config-section">
+                                <h3 class="section-title">
+                                    <span class="material-symbols-outlined">person</span>
+                                    Cài đặt người dùng
+                                </h3>
+                                
+                                <div class="settings-list">
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">Cho phép đăng ký mới</h4>
+                                            <p class="setting-description">Cho phép người dùng tự đăng ký tài khoản mới</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="allow-registration" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">Xác thực email</h4>
+                                            <p class="setting-description">Yêu cầu xác thực email trước khi kích hoạt tài khoản</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="email-verification" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">Giới hạn đăng ký theo email trường</h4>
+                                            <p class="setting-description">Chỉ cho phép email có đuôi @hauhub.edu.vn</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="domain-restriction" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">Hiển thị trực tuyến</h4>
+                                            <p class="setting-description">Hiển thị trạng thái trực tuyến của người dùng</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="online-status" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Security Settings Tab -->
+                        <div class="tab-pane" id="security-tab">
+                            <div class="config-section">
+                                <h3 class="section-title">
+                                    <span class="material-symbols-outlined">password</span>
+                                    Xác thực & Mật khẩu
+                                </h3>
+                                
+                                <div class="settings-grid">
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="password-min-length">Độ dài mật khẩu tối thiểu</label>
+                                        <div class="range-control">
+                                            <input type="range" id="password-min-length" min="6" max="20" value="8" step="1">
+                                            <div class="range-value">8 ký tự</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="password-expiry">Thời hạn mật khẩu</label>
+                                        <select id="password-expiry" class="form-select">
+                                            <option value="30">30 ngày</option>
+                                            <option value="60" selected>60 ngày</option>
+                                            <option value="90">90 ngày</option>
+                                            <option value="0">Không giới hạn</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="max-attempts">Số lần thử đăng nhập tối đa</label>
+                                        <select id="max-attempts" class="form-select">
+                                            <option value="3">3 lần</option>
+                                            <option value="5" selected>5 lần</option>
+                                            <option value="10">10 lần</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="lockout-duration">Thời gian khóa tài khoản</label>
+                                        <select id="lockout-duration" class="form-select">
+                                            <option value="5">5 phút</option>
+                                            <option value="15" selected>15 phút</option>
+                                            <option value="30">30 phút</option>
+                                            <option value="60">1 giờ</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="settings-list">
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">Yêu cầu chữ hoa và số</h4>
+                                            <p class="setting-description">Mật khẩu phải chứa ít nhất 1 chữ hoa và 1 số</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="password-complexity" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">Không được trùng với lịch sử</h4>
+                                            <p class="setting-description">Ngăn sử dụng lại 5 mật khẩu gần nhất</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="password-history" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">Đăng nhập 2 lớp (2FA)</h4>
+                                            <p class="setting-description">Yêu cầu xác thực 2 bước cho tài khoản admin</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="two-factor-auth" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">Mã hóa đầu cuối</h4>
+                                            <p class="setting-description">Mã hóa dữ liệu người dùng ở phía client</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="end-to-end-encryption">
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="config-section">
+                                <h3 class="section-title">
+                                    <span class="material-symbols-outlined">shield_lock</span>
+                                    Bảo mật hệ thống
+                                </h3>
+                                
+                                <div class="settings-grid">
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="session-timeout">Thời gian hết hạn phiên</label>
+                                        <select id="session-timeout" class="form-select">
+                                            <option value="15">15 phút</option>
+                                            <option value="30" selected>30 phút</option>
+                                            <option value="60">1 giờ</option>
+                                            <option value="120">2 giờ</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="https-enforcement">Tuân thủ HTTPS</label>
+                                        <select id="https-enforcement" class="form-select">
+                                            <option value="disabled">Tắt</option>
+                                            <option value="admin-only" selected>Chỉ cho admin</option>
+                                            <option value="all-users">Tất cả người dùng</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="csp-policy">Content Security Policy</label>
+                                        <select id="csp-policy" class="form-select">
+                                            <option value="strict">Nghiêm ngặt</option>
+                                            <option value="balanced" selected>Cân bằng</option>
+                                            <option value="permissive">Cho phép</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="rate-limit">Giới hạn tốc độ API</label>
+                                        <select id="rate-limit" class="form-select">
+                                            <option value="100">100 request/phút</option>
+                                            <option value="500" selected>500 request/phút</option>
+                                            <option value="1000">1000 request/phút</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="settings-list">
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">Ghi nhật ký truy cập</h4>
+                                            <p class="setting-description">Ghi lại tất cả yêu cầu và hoạt động hệ thống</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="access-logging" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">Phát hiện xâm nhập</h4>
+                                            <p class="setting-description">Tự động phát hiện và chặn hoạt động đáng ngờ</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="intrusion-detection" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">Quét malware định kỳ</h4>
+                                            <p class="setting-description">Quét hệ thống hàng ngày tìm mã độc</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="malware-scan" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="config-section">
+                                <h3 class="section-title">
+                                    <span class="material-symbols-outlined">vpn_key</span>
+                                    Chứng chỉ SSL
+                                </h3>
+                                
+                                <div class="certificate-info">
+                                    <div class="certificate-item">
+                                        <span class="cert-label">Nhà cung cấp:</span>
+                                        <span class="cert-value">Let's Encrypt</span>
+                                    </div>
+                                    <div class="certificate-item">
+                                        <span class="cert-label">Thời hạn:</span>
+                                        <span class="cert-value">90 ngày (còn 42 ngày)</span>
+                                    </div>
+                                    <div class="certificate-item">
+                                        <span class="cert-label">Thuật toán:</span>
+                                        <span class="cert-value">RSA 2048-bit</span>
+                                    </div>
+                                    <div class="certificate-item">
+                                        <span class="cert-label">Trạng thái:</span>
+                                        <span class="cert-value status-active">Đang hoạt động</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="certificate-actions">
+                                    <button class="btn-secondary">
+                                        <span class="material-symbols-outlined">refresh</span>
+                                        Gia hạn SSL
+                                    </button>
+                                    <button class="btn-secondary">
+                                        <span class="material-symbols-outlined">visibility</span>
+                                        Xem chi tiết
+                                    </button>
+                                    <button class="btn-primary">
+                                        <span class="material-symbols-outlined">key</span>
+                                        Tạo CSR mới
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Performance Settings Tab -->
+                        <div class="tab-pane" id="performance-tab">
+                            <div class="config-section">
+                                <h3 class="section-title">
+                                    <span class="material-symbols-outlined">memory</span>
+                                    Tối ưu hóa hiệu năng
+                                </h3>
+                                
+                                <div class="performance-metrics">
+                                    <div class="metric-card">
+                                        <div class="metric-header">
+                                            <span class="metric-label">CPU Usage</span>
+                                            <span class="metric-value">42%</span>
+                                        </div>
+                                        <div class="metric-bar">
+                                            <div class="metric-progress" style="width: 42%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="metric-card">
+                                        <div class="metric-header">
+                                            <span class="metric-label">Memory</span>
+                                            <span class="metric-value">78%</span>
+                                        </div>
+                                        <div class="metric-bar">
+                                            <div class="metric-progress" style="width: 78%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="metric-card">
+                                        <div class="metric-header">
+                                            <span class="metric-label">Database</span>
+                                            <span class="metric-value">65%</span>
+                                        </div>
+                                        <div class="metric-bar">
+                                            <div class="metric-progress" style="width: 65%"></div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="metric-card">
+                                        <div class="metric-header">
+                                            <span class="metric-label">Response Time</span>
+                                            <span class="metric-value">142ms</span>
+                                        </div>
+                                        <div class="metric-bar">
+                                            <div class="metric-progress" style="width: 70%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="settings-grid">
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="cache-type">Loại cache</label>
+                                        <select id="cache-type" class="form-select">
+                                            <option value="redis">Redis (Khuyến nghị)</option>
+                                            <option value="memcached">Memcached</option>
+                                            <option value="file">File Cache</option>
+                                            <option value="none">Không dùng cache</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="cache-ttl">Thời gian cache (TTL)</label>
+                                        <select id="cache-ttl" class="form-select">
+                                            <option value="300">5 phút</option>
+                                            <option value="1800" selected>30 phút</option>
+                                            <option value="3600">1 giờ</option>
+                                            <option value="86400">24 giờ</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="database-pool">Database Connection Pool</label>
+                                        <select id="database-pool" class="form-select">
+                                            <option value="5">5 connections</option>
+                                            <option value="10" selected>10 connections</option>
+                                            <option value="20">20 connections</option>
+                                            <option value="50">50 connections</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="worker-threads">Worker Threads</label>
+                                        <select id="worker-threads" class="form-select">
+                                            <option value="2">2 threads</option>
+                                            <option value="4" selected>4 threads</option>
+                                            <option value="8">8 threads</option>
+                                            <option value="16">16 threads</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="settings-list">
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">Gzip Compression</h4>
+                                            <p class="setting-description">Nén dữ liệu trước khi gửi đến client</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="gzip-compression" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">HTTP/2 Protocol</h4>
+                                            <p class="setting-description">Sử dụng HTTP/2 cho kết nối nhanh hơn</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="http2-protocol" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">Database Indexing</h4>
+                                            <p class="setting-description">Tự động tạo index cho truy vấn thường xuyên</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="db-indexing" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">Query Optimization</h4>
+                                            <p class="setting-description">Tối ưu hóa truy vấn database tự động</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="query-optimization" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="config-section">
+                                <h3 class="section-title">
+                                    <span class="material-symbols-outlined">database</span>
+                                    Database Optimization
+                                </h3>
+                                
+                                <div class="settings-grid">
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="db-backup-frequency">Tần suất backup</label>
+                                        <select id="db-backup-frequency" class="form-select">
+                                            <option value="daily" selected>Hàng ngày</option>
+                                            <option value="weekly">Hàng tuần</option>
+                                            <option value="monthly">Hàng tháng</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="db-vacuum">Auto-Vacuum Interval</label>
+                                        <select id="db-vacuum" class="form-select">
+                                            <option value="never">Không tự động</option>
+                                            <option value="daily" selected>Hàng ngày</option>
+                                            <option value="weekly">Hàng tuần</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="connection-timeout">Connection Timeout</label>
+                                        <select id="connection-timeout" class="form-select">
+                                            <option value="5">5 giây</option>
+                                            <option value="10" selected>10 giây</option>
+                                                                                        <option value="30">30 giây</option>
+                                            <option value="60">60 giây</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="max-connections">Max Connections</label>
+                                        <select id="max-connections" class="form-select">
+                                            <option value="50">50 connections</option>
+                                            <option value="100" selected>100 connections</option>
+                                            <option value="200">200 connections</option>
+                                            <option value="500">500 connections</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="settings-list">
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">Query Logging</h4>
+                                            <p class="setting-description">Ghi lại các truy vấn chậm để phân tích</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="query-logging" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">Connection Pooling</h4>
+                                            <p class="setting-description">Sử dụng connection pooling cho hiệu suất cao</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="connection-pooling" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">Read Replicas</h4>
+                                            <p class="setting-description">Phân phối tải đọc sang database replica</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="read-replicas">
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="config-section">
+                                <h3 class="section-title">
+                                    <span class="material-symbols-outlined">bolt</span>
+                                    CDN & Asset Optimization
+                                </h3>
+                                
+                                <div class="settings-grid">
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="cdn-provider">CDN Provider</label>
+                                        <select id="cdn-provider" class="form-select">
+                                            <option value="cloudflare">Cloudflare</option>
+                                            <option value="aws" selected>AWS CloudFront</option>
+                                            <option value="google">Google Cloud CDN</option>
+                                            <option value="azure">Azure CDN</option>
+                                            <option value="none">Không sử dụng CDN</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="asset-versioning">Asset Versioning</label>
+                                        <select id="asset-versioning" class="form-select">
+                                            <option value="hash">Hash-based</option>
+                                            <option value="timestamp" selected>Timestamp-based</option>
+                                            <option value="none">Không sử dụng</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="image-optimization">Image Optimization</label>
+                                        <select id="image-optimization" class="form-select">
+                                            <option value="lossless">Lossless (chất lượng cao)</option>
+                                            <option value="balanced" selected>Cân bằng</option>
+                                            <option value="aggressive">Aggressive (tối ưu nhất)</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="browser-cache">Browser Cache TTL</label>
+                                        <select id="browser-cache" class="form-select">
+                                            <option value="3600">1 giờ</option>
+                                            <option value="86400" selected>24 giờ</option>
+                                            <option value="604800">7 ngày</option>
+                                            <option value="2592000">30 ngày</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="settings-list">
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">Minify CSS/JS</h4>
+                                            <p class="setting-description">Tự động minify file CSS và JavaScript</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="minify-assets" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">Lazy Loading</h4>
+                                            <p class="setting-description">Tải ảnh khi cuộn đến viewport</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="lazy-loading" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">WebP Format</h4>
+                                            <p class="setting-description">Tự động chuyển đổi ảnh sang định dạng WebP</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="webp-format" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Notifications Settings Tab -->
+                        <div class="tab-pane" id="notifications-tab">
+                            <div class="config-section">
+                                <h3 class="section-title">
+                                    <span class="material-symbols-outlined">notifications_active</span>
+                                    Cài đặt thông báo
+                                </h3>
+                                
+                                <div class="settings-list">
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">Email thông báo</h4>
+                                            <p class="setting-description">Gửi thông báo qua email cho người dùng</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="email-notifications" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">Push notifications</h4>
+                                            <p class="setting-description">Gửi thông báo đẩy đến trình duyệt</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="push-notifications" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">In-app notifications</h4>
+                                            <p class="setting-description">Hiển thị thông báo trong ứng dụng</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="inapp-notifications" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">SMS alerts</h4>
+                                            <p class="setting-description">Gửi cảnh báo quan trọng qua SMS</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="sms-alerts">
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="config-section">
+                                <h3 class="section-title">
+                                    <span class="material-symbols-outlined">mail</span>
+                                    Cấu hình Email
+                                </h3>
+                                
+                                <div class="settings-grid">
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="smtp-host">SMTP Host</label>
+                                        <input type="text" id="smtp-host" class="form-input" 
+                                               value="smtp.hauhub.edu.vn" placeholder="smtp.example.com">
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="smtp-port">SMTP Port</label>
+                                        <input type="number" id="smtp-port" class="form-input" 
+                                               value="587" placeholder="587">
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="smtp-username">SMTP Username</label>
+                                        <input type="text" id="smtp-username" class="form-input" 
+                                               value="noreply@hauhub.edu.vn" placeholder="username">
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="smtp-password">SMTP Password</label>
+                                        <input type="password" id="smtp-password" class="form-input" 
+                                               value="••••••••" placeholder="••••••••">
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="email-from">Email người gửi</label>
+                                        <input type="email" id="email-from" class="form-input" 
+                                               value="HauHub <noreply@hauhub.edu.vn>" placeholder="name@example.com">
+                                    </div>
+                                    
+                                    <div class="setting-group">
+                                        <label class="setting-label" for="email-reply-to">Email phản hồi</label>
+                                        <input type="email" id="email-reply-to" class="form-input" 
+                                               value="support@hauhub.edu.vn" placeholder="support@example.com">
+                                    </div>
+                                </div>
+                                
+                                <div class="settings-list">
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">SMTP Encryption</h4>
+                                            <p class="setting-description">Sử dụng SSL/TLS cho kết nối SMTP</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="smtp-encryption" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="setting-item">
+                                        <div class="setting-info">
+                                            <h4 class="setting-title">Email Queue</h4>
+                                            <p class="setting-description">Sử dụng hàng đợi cho email số lượng lớn</p>
+                                        </div>
+                                        <label class="switch">
+                                            <input type="checkbox" id="email-queue" checked>
+                                            <span class="slider"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="config-section">
+                                <h3 class="section-title">
+                                    <span class="material-symbols-outlined">forum</span>
+                                    Thông báo hệ thống
+                                </h3>
+                                
+                                <div class="notification-templates">
+                                    <div class="template-card">
+                                        <div class="template-header">
+                                            <span class="template-icon material-symbols-outlined">person_add</span>
+                                            <h4 class="template-title">Đăng ký tài khoản</h4>
+                                        </div>
+                                        <div class="template-content">
+                                            <p>Chào mừng {user_name} đến với HauHub! Vui lòng xác thực email của bạn để bắt đầu.</p>
+                                        </div>
+                                        <button class="btn-secondary template-edit">
+                                            <span class="material-symbols-outlined">edit</span>
+                                            Chỉnh sửa
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="template-card">
+                                        <div class="template-header">
+                                            <span class="template-icon material-symbols-outlined">lock_reset</span>
+                                            <h4 class="template-title">Đặt lại mật khẩu</h4>
+                                        </div>
+                                        <div class="template-content">
+                                            <p>Nhận được yêu cầu đặt lại mật khẩu. Nhấp vào liên kết để tạo mật khẩu mới.</p>
+                                        </div>
+                                        <button class="btn-secondary template-edit">
+                                            <span class="material-symbols-outlined">edit</span>
+                                            Chỉnh sửa
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="template-card">
+                                        <div class="template-header">
+                                            <span class="template-icon material-symbols-outlined">event_available</span>
+                                            <h4 class="template-title">Nhắc nhở sự kiện</h4>
+                                        </div>
+                                        <div class="template-content">
+                                            <p>Nhắc nhở: Sự kiện {event_name} sẽ bắt đầu sau {time_remaining}.</p>
+                                        </div>
+                                        <button class="btn-secondary template-edit">
+                                            <span class="material-symbols-outlined">edit</span>
+                                            Chỉnh sửa
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="template-card">
+                                        <div class="template-header">
+                                            <span class="template-icon material-symbols-outlined">system_update</span>
+                                            <h4 class="template-title">Bảo trì hệ thống</h4>
+                                        </div>
+                                        <div class="template-content">
+                                            <p>Hệ thống sẽ bảo trì từ {start_time} đến {end_time}. Vui lòng lưu công việc.</p>
+                                        </div>
+                                        <button class="btn-secondary template-edit">
+                                            <span class="material-symbols-outlined">edit</span>
+                                            Chỉnh sửa
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Integration Settings Tab -->
+                        <div class="tab-pane" id="integration-tab">
+                            <!-- Content will be added here -->
+                        </div>
+                        
+                        <!-- Backup Settings Tab -->
+                        <div class="tab-pane" id="backup-tab">
+                            <!-- Content will be added here -->
+                        </div>
+                        
+                        <!-- Maintenance Settings Tab -->
+                        <div class="tab-pane" id="maintenance-tab">
+                            <!-- Content will be added here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="../../js/utils.js"></script>
+    <script src="../../js/components/sidebar.js"></script>
+    <script src="../../js/pages/system-config.js"></script>
+    <script src="../../js/auth/logout.js"></script>
+</body>
+</html>

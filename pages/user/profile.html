@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hồ sơ cá nhân - HauHub</title>
+    
+    <!-- CSS Files (Giữ nguyên) -->
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/utilities.css">
+    <link rel="stylesheet" href="../../css/pages/profile.css">
+    
+    <!-- Fonts (Giữ nguyên) -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+    <!-- Favicon (Thêm như trang home) -->
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+</head>
+<body class="profile-page min-h-screen" data-user-type="student">
+    <!-- THÊM: Header sẽ được inject bởi JS (thay thế header cũ) -->
+    <header></header>
+
+    <!-- Main Content (Giữ nguyên) -->
+    <main class="profile-main">
+        <div class="profile-container">
+            <!-- Hero Profile Section (Giữ nguyên) -->
+            <section class="profile-hero">
+                <div class="hero-avatar">
+                    <div class="avatar-container">
+                        <img src="../../assets/images/avatars/current-user.jpg" alt="Profile Avatar" id="profile-avatar">
+                        <span class="verified-badge">
+                            Verified
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="hero-info">
+                    <div class="name-role">
+                        <h1 class="user-name" id="user-name">Nguyễn Văn A</h1>
+                        <div class="role-badges">
+                            <span class="user-id" id="user-id">SV202401</span>
+                            <span class="user-type" id="user-type">Sinh viên Chính quy</span>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-description">
+                        <p id="user-description">Khoa Kiến trúc & Quy hoạch • Sinh viên năm 3</p>
+                    </div>
+                    
+                    <div class="hero-actions">
+                        <button class="btn-primary" id="edit-profile-btn">
+                            <span class="material-symbols-outlined">edit</span>
+                            Chỉnh sửa hồ sơ
+                        </button>
+                        <button class="btn-secondary">
+                            <span class="material-symbols-outlined">share</span>
+                            Chia sẻ
+                        </button>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Profile Tabs (Giữ nguyên) -->
+            <nav class="profile-tabs">
+                <button class="tab-btn active" data-tab="personal">
+                    <span class="material-symbols-outlined">person</span>
+                    Thông tin cá nhân
+                </button>
+                <button class="tab-btn" data-tab="academic">
+                    <span class="material-symbols-outlined">school</span>
+                    <span id="tab-title-academic">Hồ sơ học vụ</span>
+                </button>
+                <button class="tab-btn" data-tab="security">
+                    <span class="material-symbols-outlined">lock</span>
+                    Tài khoản & bảo mật
+                </button>
+                <button class="tab-btn" data-tab="roles">
+                    <span class="material-symbols-outlined">security</span>
+                    Vai trò & quyền hạn
+                </button>
+            </nav>
+            
+            <!-- Tab Content (Giữ nguyên) -->
+            <div class="tab-content-container">
+                <!-- Tab 1: Thông tin cá nhân (Giữ nguyên) -->
+                <div class="tab-content active" id="tab-personal">
+                    <div class="form-section">
+                        <div class="section-header">
+                            <span class="material-symbols-outlined section-icon">person</span>
+                            <h3 class="section-title">Thông tin cơ bản</h3>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">Họ và tên</label>
+                                <input type="text" class="form-input" id="full-name" value="Nguyễn Văn A">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Ngày sinh</label>
+                                <input type="text" class="form-input" id="birthdate" value="15/05/2002">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Giới tính</label>
+                                <div class="radio-group">
+                                    <label class="radio-label">
+                                        <input type="radio" name="gender" value="male" checked>
+                                        <span class="radio-custom"></span>
+                                        <span class="radio-text">Nam</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="gender" value="female">
+                                        <span class="radio-custom"></span>
+                                        <span class="radio-text">Nữ</span>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Tên đăng nhập</label>
+                                <input type="text" class="form-input" id="username" value="vana.nguyen_2024" disabled>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-section">
+                        <div class="section-header">
+                            <span class="material-symbols-outlined section-icon">contact_mail</span>
+                            <h3 class="section-title">Thông tin liên hệ</h3>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <div class="input-with-badge">
+                                    <input type="email" class="form-input" id="email" value="vana.nguyen@hau.edu.vn">
+                                    <span class="verified-badge-small">
+                                        <span class="material-symbols-outlined">verified</span>
+                                        Verified
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Số điện thoại</label>
+                                <input type="text" class="form-input" id="phone" value="0987 654 321">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button class="btn-cancel">Hủy</button>
+                        <button class="btn-save">Lưu thay đổi</button>
+                    </div>
+                </div>
+                
+                <!-- Tab 2: Hồ sơ học vụ/Giảng dạy (Giữ nguyên) -->
+                <div class="tab-content" id="tab-academic">
+                    <!-- Sinh viên view (Giữ nguyên) -->
+                    <div class="student-view" id="student-view">
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-icon">
+                                    <span class="material-symbols-outlined">badge</span>
+                                </div>
+                                <h4 class="info-label">Mã sinh viên</h4>
+                                <p class="info-value" id="student-code">SV202401</p>
+                            </div>
+                            
+                            <div class="info-card">
+                                <div class="info-icon">
+                                    <span class="material-symbols-outlined">apartment</span>
+                                </div>
+                                <h4 class="info-label">Ngành học</h4>
+                                <p class="info-value" id="major">Kiến trúc Công trình</p>
+                            </div>
+                            
+                            <div class="info-card">
+                                <div class="info-icon">
+                                    <span class="material-symbols-outlined">calendar_month</span>
+                                </div>
+                                <h4 class="info-label">Năm nhập học</h4>
+                                <p class="info-value" id="enrollment-year">2024</p>
+                            </div>
+                            
+                            <div class="info-card">
+                                <div class="info-icon">
+                                    <span class="material-symbols-outlined">schedule</span>
+                                </div>
+                                <h4 class="info-label">Năm học hiện tại</h4>
+                                <p class="info-value" id="current-year">Năm 1</p>
+                            </div>
+                            
+                            <div class="info-card">
+                                <div class="info-icon">
+                                    <span class="material-symbols-outlined">task_alt</span>
+                                </div>
+                                <h4 class="info-label">Trạng thái học tập</h4>
+                                <p class="info-value" id="study-status">Đang học</p>
+                            </div>
+                            
+                            <div class="info-card">
+                                <div class="info-icon">
+                                    <span class="material-symbols-outlined">trending_up</span>
+                                </div>
+                                <h4 class="info-label">GPA / Tín chỉ</h4>
+                                <p class="info-value" id="gpa-credits">3.5 / 45 tín chỉ</p>
+                            </div>
+                        </div>
+                        
+                        <div class="academic-details">
+                            <div class="detail-section">
+                                <h3 class="detail-title">
+                                    <span class="material-symbols-outlined">menu_book</span>
+                                    Môn học đang đăng ký
+                                </h3>
+                                <div class="course-list">
+                                    <!-- Will be populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Giảng viên view (Giữ nguyên) -->
+                    <div class="lecturer-view" id="lecturer-view" style="display: none;">
+                        <div class="info-grid">
+                            <div class="info-card">
+                                <div class="info-icon">
+                                    <span class="material-symbols-outlined">account_balance</span>
+                                </div>
+                                <h4 class="info-label">Khoa / Bộ môn</h4>
+                                <p class="info-value" id="department">Kiến trúc & Quy hoạch</p>
+                            </div>
+                            
+                            <div class="info-card">
+                                <div class="info-icon">
+                                    <span class="material-symbols-outlined">school</span>
+                                </div>
+                                <h4 class="info-label">Học vị</h4>
+                                <p class="info-value" id="degree">Tiến sĩ Kiến trúc</p>
+                            </div>
+                            
+                            <div class="info-card">
+                                <div class="info-icon">
+                                    <span class="material-symbols-outlined">verified_user</span>
+                                </div>
+                                <h4 class="info-label">Chức vụ</h4>
+                                <p class="info-value" id="position">Phó Trưởng Khoa</p>
+                            </div>
+                            
+                            <div class="info-card">
+                                <div class="info-icon">
+                                    <span class="material-symbols-outlined">location_on</span>
+                                </div>
+                                <h4 class="info-label">Phòng làm việc</h4>
+                                <p class="info-value" id="office">P.402 Nhà A1</p>
+                            </div>
+                            
+                            <div class="info-card">
+                                <div class="info-icon">
+                                    <span class="material-symbols-outlined">description</span>
+                                </div>
+                                <h4 class="info-label">Loại hợp đồng</h4>
+                                <p class="info-value" id="contract-type">Cơ hữu</p>
+                            </div>
+                            
+                            <div class="info-card">
+                                <div class="info-icon">
+                                    <span class="material-symbols-outlined">calendar_month</span>
+                                </div>
+                                <h4 class="info-label">Ngày bắt đầu</h4>
+                                <p class="info-value" id="start-date">01/09/2010</p>
+                            </div>
+                        </div>
+                        
+                        <div class="lecturer-details">
+                            <div class="teaching-section">
+                                <h3 class="detail-title">
+                                    <span class="material-symbols-outlined">menu_book</span>
+                                    Các môn đang đảm nhiệm
+                                </h3>
+                                <div class="teaching-list">
+                                    <!-- Will be populated by JS -->
+                                </div>
+                            </div>
+                            
+                            <div class="research-section">
+                                <h3 class="detail-title">
+                                    <span class="material-symbols-outlined">science</span>
+                                    Nghiên cứu & Dự án
+                                </h3>
+                                <div class="research-list">
+                                    <!-- Will be populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tab 3: Tài khoản & bảo mật (Giữ nguyên) -->
+                <div class="tab-content" id="tab-security">
+                    <div class="security-section">
+                        <div class="section-header">
+                            <span class="material-symbols-outlined section-icon">key</span>
+                            <h3 class="section-title">Đổi mật khẩu</h3>
+                        </div>
+                        
+                        <div class="security-form">
+                            <div class="form-group">
+                                <label class="form-label">Mật khẩu hiện tại</label>
+                                <input type="password" class="form-input" id="current-password">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Mật khẩu mới</label>
+                                <input type="password" class="form-input" id="new-password">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Xác nhận mật khẩu mới</label>
+                                <input type="password" class="form-input" id="confirm-password">
+                            </div>
+                            
+                            <button class="btn-primary">Cập nhật mật khẩu</button>
+                        </div>
+                    </div>
+                    
+                    <div class="security-section">
+                        <div class="section-header">
+                            <span class="material-symbols-outlined section-icon">history</span>
+                            <h3 class="section-title">Hoạt động gần đây</h3>
+                        </div>
+                        
+                        <div class="activity-list">
+                            <!-- Will be populated by JS -->
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tab 4: Vai trò & quyền hạn (Giữ nguyên) -->
+                <div class="tab-content" id="tab-roles">
+                    <div class="roles-section">
+                        <div class="section-header">
+                            <span class="material-symbols-outlined section-icon">groups</span>
+                            <h3 class="section-title">Vai trò hiện tại</h3>
+                        </div>
+                        
+                        <div class="roles-list">
+                            <!-- Will be populated by JS -->
+                        </div>
+                    </div>
+                    
+                    <div class="roles-section">
+                        <div class="section-header">
+                            <span class="material-symbols-outlined section-icon">admin_panel_settings</span>
+                            <h3 class="section-title">Quyền hạn</h3>
+                        </div>
+                        
+                        <div class="permissions-list">
+                            <!-- Will be populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- XÓA FOOTER CŨ VÀ THAY THẾ BẰNG -->
+    <!-- Footer sẽ được inject bởi JS -->
+    <footer></footer>
+
+    <!-- THÊM: AI Chat Widget Container -->
+    <div id="ai-chat-widget"></div>
+
+    <!-- JavaScript (Kết hợp cũ và mới) -->
+    <script type="module">
+        // Import các component mới (như trang home)
+        import { Header } from '../../js/components/header.js';
+        import { Footer } from '../../js/components/footer.js';
+        import { AIChatWidget } from '../../js/components/chat-widget.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inject Header, Footer, Chat Widget (như trang home)
+            new Header();
+            new Footer();
+            new AIChatWidget();
+            
+            // Khởi tạo JS cũ của profile (giữ nguyên)
+            initializeProfile();
+        });
+        
+        // Giữ nguyên hàm initializeProfile cũ
+        function initializeProfile() {
+            // Tab navigation
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tabId = btn.dataset.tab;
+                    
+                    // Remove active class from all
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked
+                    btn.classList.add('active');
+                    document.getElementById(`tab-${tabId}`)?.classList.add('active');
+                });
+            });
+            
+            // Edit profile button
+            const editBtn = document.getElementById('edit-profile-btn');
+            if (editBtn) {
+                editBtn.addEventListener('click', () => {
+                    alert('Chức năng chỉnh sửa hồ sơ sẽ được mở');
+                });
+            }
+            
+            // Save changes button
+            const saveBtn = document.querySelector('.btn-save');
+            if (saveBtn) {
+                saveBtn.addEventListener('click', () => {
+                    alert('Đã lưu thay đổi');
+                });
+            }
+            
+            // Cancel button
+            const cancelBtn = document.querySelector('.btn-cancel');
+            if (cancelBtn) {
+                cancelBtn.addEventListener('click', () => {
+                    // Reset form values
+                    // Add reset logic here
+                });
+            }
+        }
+    </script>
+    
+    <!-- Giữ các script cũ nếu cần (đảm bảo không bị mất chức năng) -->
+    <script src="../../js/components/header.js"></script>
+    <script src="../../js/services/user-service.js"></script>
+    <script src="../../js/pages/profile.js"></script>
+</body>
+</html>

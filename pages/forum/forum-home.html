@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diễn Đàn - HauHub</title>
+    
+    <!-- CSS Files (Giữ nguyên) -->
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/utilities.css">
+    <link rel="stylesheet" href="../../css/pages/forum.css">
+    
+    <!-- Fonts (Giữ nguyên) -->
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,500&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    
+    <!-- Favicon (Thêm như trang home) -->
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+</head>
+<body class="forum-page min-h-screen">
+    <!-- Header sẽ được inject bởi JS (Thay thế header cũ) -->
+    <header></header>
+    
+    <!-- Main Content (Giữ nguyên) -->
+    <main class="main-content">
+        <div id="page-content">
+            <div class="forum-main">
+                <div class="main-container">
+                    <!-- Hero Banner (Giữ nguyên) -->
+                    <section class="forum-hero">
+                        <div class="hero-content">
+                            <div class="hero-text">
+                                <h1 class="hero-title">
+                                    Kiến tạo tri thức <br/>
+                                    <span class="title-highlight">Cùng cộng đồng HauHub</span>
+                                </h1>
+                                <p class="hero-description">
+                                    Nơi giao lưu, chia sẻ kinh nghiệm học thuật và sáng tạo dành riêng cho sinh viên Kiến trúc &amp; Quy hoạch.
+                                </p>
+                                <div class="hero-buttons">
+                                    <button class="btn-primary">
+                                        Khám phá ngay
+                                    </button>
+                                    <button class="btn-secondary">
+                                        Nội quy
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="hero-illustration">
+                                <div class="illustration-background"></div>
+                                <div class="illustration-image"></div>
+                            </div>
+                        </div>
+                    </section>
+                    
+                    <!-- Forum Content (Giữ nguyên) -->
+                    <div class="forum-content">
+                        <!-- Left Column (Giữ nguyên) -->
+                        <div class="forum-left">
+                            <div class="section-header">
+                                <h2 class="section-title">Danh sách chuyên mục</h2>
+                                <a href="#" class="view-all-link">
+                                    Xem tất cả <span class="material-symbols-outlined">arrow_forward</span>
+                                </a>
+                            </div>
+                            
+                            <div class="categories-grid">
+                                <!-- Category 1 -->
+                                <div class="category-card">
+                                    <div class="category-header">
+                                        <div class="category-icon">
+                                            <span class="material-symbols-outlined">hub</span>
+                                        </div>
+                                        <span class="category-badge">Mới</span>
+                                    </div>
+                                    <h3 class="category-title">Toàn trường</h3>
+                                    <p class="category-description">
+                                        Thông báo chung, lịch học và các hoạt động ngoại khóa.
+                                    </p>
+                                    <div class="category-stats">
+                                        <div class="stat-item">
+                                            <span class="material-symbols-outlined">forum</span>
+                                            <span class="stat-number">1,240</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="material-symbols-outlined">description</span>
+                                            <span class="stat-number">5,600</span>
+                                        </div>
+                                    </div>
+                                    <div class="category-footer">
+                                        <p class="footer-label">Bài mới nhất:</p>
+                                        <p class="footer-title">Hướng dẫn đăng ký học phần Học kỳ 1</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Category 2 -->
+                                <div class="category-card">
+                                    <div class="category-header">
+                                        <div class="category-icon">
+                                            <span class="material-symbols-outlined">architecture</span>
+                                        </div>
+                                    </div>
+                                    <h3 class="category-title">Khoa Kiến trúc</h3>
+                                    <p class="category-description">
+                                        Đồ án, cấu tạo kiến trúc và mỹ thuật.
+                                    </p>
+                                    <div class="category-stats">
+                                        <div class="stat-item">
+                                            <span class="material-symbols-outlined">forum</span>
+                                            <span class="stat-number">850</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="material-symbols-outlined">description</span>
+                                            <span class="stat-number">3,200</span>
+                                        </div>
+                                    </div>
+                                    <div class="category-footer">
+                                        <p class="footer-label">Bài mới nhất:</p>
+                                        <p class="footer-title">Chia sẻ tài liệu Diễn họa tay 1</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Category 3 -->
+                                <div class="category-card">
+                                    <div class="category-header">
+                                        <div class="category-icon">
+                                            <span class="material-symbols-outlined">map</span>
+                                        </div>
+                                    </div>
+                                    <h3 class="category-title">Khoa Quy hoạch</h3>
+                                    <p class="category-description">
+                                        Quy hoạch vùng, đô thị và quản lý hạ tầng.
+                                    </p>
+                                    <div class="category-stats">
+                                        <div class="stat-item">
+                                            <span class="material-symbols-outlined">forum</span>
+                                            <span class="stat-number">420</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="material-symbols-outlined">description</span>
+                                            <span class="stat-number">1,100</span>
+                                        </div>
+                                    </div>
+                                    <div class="category-footer">
+                                        <p class="footer-label">Bài mới nhất:</p>
+                                        <p class="footer-title">Xu hướng đô thị bền vững 2024</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Category 4 -->
+                                <div class="category-card">
+                                    <div class="category-header">
+                                        <div class="category-icon">
+                                            <span class="material-symbols-outlined">apartment</span>
+                                        </div>
+                                    </div>
+                                    <h3 class="category-title">Khoa Xây dựng</h3>
+                                    <p class="category-description">
+                                        Kết cấu thép, bê tông và vật liệu xây dựng.
+                                    </p>
+                                    <div class="category-stats">
+                                        <div class="stat-item">
+                                            <span class="material-symbols-outlined">forum</span>
+                                            <span class="stat-number">310</span>
+                                        </div>
+                                        <div class="stat-item">
+                                            <span class="material-symbols-outlined">description</span>
+                                            <span class="stat-number">980</span>
+                                        </div>
+                                    </div>
+                                    <div class="category-footer">
+                                        <p class="footer-label">Bài mới nhất:</p>
+                                        <p class="footer-title">Giải pháp kết cấu cho nhà cao tầng</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Right Column (Sidebar) (Giữ nguyên) -->
+                        <aside class="forum-sidebar">
+                            <!-- Create Topic Button -->
+                            <button class="sidebar-btn create-topic-btn">
+                                <span class="material-symbols-outlined">edit_note</span>
+                                Tạo chủ đề mới
+                            </button>
+                            
+                            <!-- Trending Posts -->
+                            <div class="sidebar-card">
+                                <div class="card-header">
+                                    <span class="material-symbols-outlined">trending_up</span>
+                                    <h3 class="card-title">Bài viết nổi bật</h3>
+                                </div>
+                                <div class="card-content">
+                                    <div class="post-item">
+                                        <p class="post-title">
+                                            [Đồ án] Tổng hợp mặt bằng chung cư cao cấp K62
+                                        </p>
+                                        <div class="post-meta">
+                                            <span class="author">KTS. Minh Tuấn</span>
+                                            <span class="time">• 2 giờ trước</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="post-item">
+                                        <p class="post-title">
+                                            Kinh nghiệm thực tập tại văn phòng kiến trúc quốc tế
+                                        </p>
+                                        <div class="post-meta">
+                                            <span class="author">Trang Lê</span>
+                                            <span class="time">• 5 giờ trước</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="post-item">
+                                        <p class="post-title">
+                                            Thảo luận: SketchUp vs Revit trong thiết kế ý tưởng?
+                                        </p>
+                                        <div class="post-meta">
+                                            <span class="author">Hùng Nguyễn</span>
+                                            <span class="time">• 8 giờ trước</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Pinned Topics -->
+                            <div class="sidebar-card">
+                                <div class="card-header">
+                                    <span class="material-symbols-outlined">push_pin</span>
+                                    <h3 class="card-title">Chủ đề ghim</h3>
+                                </div>
+                                <div class="card-content">
+                                    <a href="#" class="pinned-topic">
+                                        <span class="material-symbols-outlined">label</span>
+                                        Hướng dẫn sử dụng thư viện HauHub
+                                    </a>
+                                    <a href="#" class="pinned-topic">
+                                        <span class="material-symbols-outlined">label</span>
+                                        Lịch thi học kỳ 2 - Toàn trường
+                                    </a>
+                                    <a href="#" class="pinned-topic">
+                                        <span class="material-symbols-outlined">label</span>
+                                        Quy định đăng bài và bản quyền đồ án
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <!-- Active Members -->
+                            <div class="sidebar-card">
+                                <div class="card-header">
+                                    <span class="material-symbols-outlined">groups</span>
+                                    <h3 class="card-title">Thành viên tích cực</h3>
+                                </div>
+                                <div class="card-content">
+                                    <div class="active-members">
+                                        <div class="member-avatar">
+                                            <img src="../../assets/images/avatars/member1.jpg" alt="Member 1">
+                                        </div>
+                                        <div class="member-avatar">
+                                            <img src="../../assets/images/avatars/member2.jpg" alt="Member 2">
+                                        </div>
+                                        <div class="member-avatar">
+                                            <img src="../../assets/images/avatars/member3.jpg" alt="Member 3">
+                                        </div>
+                                        <div class="member-avatar">
+                                            <img src="../../assets/images/avatars/member4.jpg" alt="Member 4">
+                                        </div>
+                                        <div class="member-more">
+                                            +12
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer sẽ được inject bởi JS (Thay thế footer cũ) -->
+    <footer></footer>
+    
+    <!-- THÊM: AI Chat Widget Container (như trang home) -->
+    <div id="ai-chat-widget"></div>
+    
+    <!-- JavaScript (Kết hợp cũ và mới) -->
+    <script type="module">
+        // Import các component mới (như trang home)
+        import { Header } from '../../js/components/header.js';
+        import { Footer } from '../../js/components/footer.js';
+        import { AIChatWidget } from '../../js/components/chat-widget.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inject Header, Footer, Chat Widget (như trang home)
+            new Header();
+            new Footer();
+            new AIChatWidget();
+            
+            // Khởi tạo JS cũ của forum home (giữ nguyên chức năng)
+            initializeForumHome();
+        });
+        
+        // Giữ nguyên hàm initializeForumHome cũ (hoặc giữ script cũ)
+        function initializeForumHome() {
+            // Create topic button
+            const createTopicBtn = document.querySelector('.create-topic-btn');
+            if (createTopicBtn) {
+                createTopicBtn.addEventListener('click', () => {
+                    alert('Mở form tạo chủ đề mới');
+                });
+            }
+            
+            // Category card clicks
+            document.querySelectorAll('.category-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const categoryTitle = this.querySelector('.category-title').textContent;
+                    alert(`Mở chuyên mục: ${categoryTitle}`);
+                });
+            });
+            
+            // View all link
+            const viewAllLink = document.querySelector('.view-all-link');
+            if (viewAllLink) {
+                viewAllLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    alert('Xem tất cả chuyên mục');
+                });
+            }
+            
+            // Hero buttons
+            const exploreBtn = document.querySelector('.btn-primary');
+            const rulesBtn = document.querySelector('.btn-secondary');
+            
+            if (exploreBtn) {
+                exploreBtn.addEventListener('click', () => {
+                    alert('Khám phá diễn đàn');
+                });
+            }
+            
+            if (rulesBtn) {
+                rulesBtn.addEventListener('click', () => {
+                    alert('Xem nội quy diễn đàn');
+                });
+            }
+            
+            // Pinned topics links
+            document.querySelectorAll('.pinned-topic').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const topicName = link.textContent.trim();
+                    alert(`Mở chủ đề: ${topicName}`);
+                });
+            });
+            
+            // Post item clicks
+            document.querySelectorAll('.post-item').forEach(post => {
+                post.addEventListener('click', function() {
+                    const postTitle = this.querySelector('.post-title').textContent;
+                    alert(`Mở bài viết: ${postTitle}`);
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.querySelector('.search-input');
+            const searchIcon = document.querySelector('.search-icon');
+            
+            function performSearch() {
+                const query = searchInput?.value.trim();
+                if (query) {
+                    alert(`Tìm kiếm: ${query}`);
+                }
+            }
+            
+            if (searchIcon) {
+                searchIcon.addEventListener('click', performSearch);
+            }
+            
+            if (searchInput) {
+                searchInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        performSearch();
+                    }
+                });
+            }
+            
+            // Social links
+            document.querySelectorAll('.social-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const icon = link.querySelector('.material-symbols-outlined').textContent;
+                    
+                    if (icon === 'public') {
+                        alert('Mở website');
+                    } else if (icon === 'mail') {
+                        alert('Gửi email');
+                    } else if (icon === 'share') {
+                        alert('Chia sẻ diễn đàn');
+                    }
+                });
+            });
+        }
+    </script>
+    
+    <!-- Giữ các script cũ nếu cần (đảm bảo không bị mất chức năng) -->
+    <script src="../../js/components/search.js"></script>
+    <script src="../../js/services/forum-service.js"></script>
+    <script src="../../js/pages/forum-home.js"></script>
+</body>
+</html>

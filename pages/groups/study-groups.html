@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Nhóm Học Tập - HauHub</title>
+    
+    <!-- Liên kết CSS (Giữ nguyên) -->
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/pages/groups.css">
+    
+    <!-- Fonts (Giữ nguyên) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <!-- Favicon (Thêm như trang home) -->
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+</head>
+<body class="min-h-screen">
+    <!-- Header sẽ được inject bởi JS (Thay thế header cũ) -->
+    <header></header>
+    
+    <!-- Main Content (Giữ nguyên) -->
+    <main class="main-content">
+        <div id="page-content">
+            <div class="groups-container">
+                <!-- Hero Section (Giữ nguyên) -->
+                <section class="groups-hero">
+                    <div class="hero-content">
+                        <div class="section-indicator">
+                            <span class="indicator-line"></span>
+                            <span class="section-label">Section 03 / Collaborative Space</span>
+                        </div>
+                        <h1 class="hero-title">
+                            Quản lý <span class="hero-subtitle">Nhóm học tập</span>
+                        </h1>
+                        <p class="hero-description">
+                            Nơi kết nối các Studio, trao đổi tài liệu kỹ thuật và cùng nhau hoàn thiện đồ án. 
+                            Hệ thống quản lý nhóm theo phân cấp đồ án kiến trúc.
+                        </p>
+                        <button class="btn-primary" id="create-group-btn">
+                            <span class="material-symbols-outlined">add_box</span>
+                            Tạo nhóm mới
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Groups Section (Giữ nguyên) -->
+                <section class="groups-main">
+                    <!-- Tabs Navigation (Giữ nguyên) -->
+                    <div class="groups-tabs">
+                        <button class="tab-btn active" data-tab="my-groups">
+                            <span class="tab-count">4</span>
+                            NHÓM CỦA TÔI
+                        </button>
+                        <button class="tab-btn" data-tab="all-groups">
+                            THAM GIA NHÓM
+                        </button>
+                        <button class="tab-btn" data-tab="pending-requests">
+                            <span class="tab-count">3</span>
+                            YÊU CẦU ĐANG CHỜ
+                        </button>
+                    </div>
+
+                    <div class="groups-content">
+                        <!-- Sidebar Filters (Giữ nguyên) -->
+                        <aside class="groups-sidebar">
+                            <div class="filter-card">
+                                <h3 class="filter-title">BỘ LỌC DỮ LIỆU</h3>
+                                <div class="filters">
+                                    <div class="filter-group">
+                                        <label class="filter-label">LOẠI ĐỒ ÁN</label>
+                                        <select class="filter-select" id="project-type-filter">
+                                            <option value="all">Tất cả đồ án</option>
+                                            <option value="architecture">Đồ án Kiến trúc 1</option>
+                                            <option value="urban">Đồ án Quy hoạch</option>
+                                            <option value="interior">Đồ án Nội thất</option>
+                                            <option value="structure">Đồ án Kết cấu</option>
+                                        </select>
+                                    </div>
+                                    <div class="filter-group">
+                                        <label class="filter-label">HỌC KỲ</label>
+                                        <select class="filter-select" id="semester-filter">
+                                            <option value="2024-1">Học kỳ 1 - 2024</option>
+                                            <option value="2023-2">Học kỳ 2 - 2023</option>
+                                            <option value="2023-1">Học kỳ 1 - 2023</option>
+                                        </select>
+                                    </div>
+                                    <div class="filter-group">
+                                        <label class="filter-label">TRẠNG THÁI</label>
+                                        <select class="filter-select" id="status-filter">
+                                            <option value="all">Tất cả</option>
+                                            <option value="active">Đang hoạt động</option>
+                                            <option value="submitted">Đã nộp</option>
+                                            <option value="archived">Đã lưu trữ</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="info-card">
+                                <h4 class="info-title">
+                                    <span class="material-symbols-outlined">info</span>
+                                    QUY ĐỊNH STUDIO
+                                </h4>
+                                <p class="info-text">
+                                    Mỗi nhóm tối đa 5 thành viên cho đồ án cơ sở và 3 thành viên cho đồ án chuyên ngành. 
+                                    Vui lòng tuân thủ quy định đặt tên bản vẽ.
+                                </p>
+                            </div>
+                        </aside>
+
+                        <!-- Groups Grid (Giữ nguyên) -->
+                        <div class="groups-grid" id="groups-container">
+                            <!-- Groups will be loaded here dynamically -->
+                            <div class="group-card" data-group-id="1">
+                                <div class="group-header">
+                                    <div class="group-info">
+                                        <span class="group-code">DA_KT3_2024</span>
+                                        <h4 class="group-name">STUDIO CẤU TẠO 2</h4>
+                                    </div>
+                                    <span class="group-status active">ACTIVE</span>
+                                </div>
+                                <p class="group-description">
+                                    Nghiên cứu chi tiết cấu tạo mái kính và vách ngăn di động cho đồ án trung tâm văn hóa.
+                                </p>
+                                <div class="group-footer">
+                                    <div class="group-members">
+                                        <div class="member-avatar">
+                                            <img src="../../assets/images/avatars/member1.jpg" alt="Thành viên">
+                                        </div>
+                                        <div class="member-avatar">
+                                            <img src="../../assets/images/avatars/member2.jpg" alt="Thành viên">
+                                        </div>
+                                        <div class="member-avatar">
+                                            <img src="../../assets/images/avatars/member3.jpg" alt="Thành viên">
+                                        </div>
+                                        <div class="member-count">+2</div>
+                                    </div>
+                                    <div class="group-stats">
+                                        <span class="stat-item">
+                                            <span class="material-symbols-outlined">attachment</span>
+                                            12
+                                        </span>
+                                        <button class="group-action" data-action="detail">CHI TIẾT</button>
+                                    </div>
+                                </div>
+                                <div class="group-icon">
+                                    <span class="material-symbols-outlined">architecture</span>
+                                </div>
+                            </div>
+
+                            <div class="group-card" data-group-id="2">
+                                <div class="group-header">
+                                    <div class="group-info">
+                                        <span class="group-code">QH_01_URBAN</span>
+                                        <h4 class="group-name">QUY HOẠCH CHI TIẾT 1/500</h4>
+                                    </div>
+                                    <span class="group-status active">ACTIVE</span>
+                                </div>
+                                <p class="group-description">
+                                    Phân tích hiện trạng khu vực quận Long Biên và đề xuất mạng lưới giao thông tĩnh.
+                                </p>
+                                <div class="group-footer">
+                                    <div class="group-members">
+                                        <div class="member-avatar">
+                                            <img src="../../assets/images/avatars/member4.jpg" alt="Thành viên">
+                                        </div>
+                                        <div class="member-avatar">
+                                            <img src="../../assets/images/avatars/member5.jpg" alt="Thành viên">
+                                        </div>
+                                    </div>
+                                    <div class="group-stats">
+                                        <span class="stat-item">
+                                            <span class="material-symbols-outlined">attachment</span>
+                                            4
+                                        </span>
+                                        <button class="group-action" data-action="detail">CHI TIẾT</button>
+                                    </div>
+                                </div>
+                                <div class="group-icon">
+                                    <span class="material-symbols-outlined">map</span>
+                                </div>
+                            </div>
+
+                            <div class="group-card" data-group-id="3">
+                                <div class="group-header">
+                                    <div class="group-info">
+                                        <span class="group-code">LS_ARCH_02</span>
+                                        <h4 class="group-name">LỊCH SỬ KT VIỆT NAM</h4>
+                                    </div>
+                                    <span class="group-status submitted">SUBMITTED</span>
+                                </div>
+                                <p class="group-description">
+                                    Nhóm đo đạc và vẽ ghi đình làng vùng Đồng bằng sông Hồng. Tài liệu di sản cấp Studio.
+                                </p>
+                                <div class="group-footer">
+                                    <div class="group-members">
+                                        <div class="member-avatar">
+                                            <img src="../../assets/images/avatars/member6.jpg" alt="Thành viên">
+                                        </div>
+                                        <div class="member-avatar">
+                                            <img src="../../assets/images/avatars/member7.jpg" alt="Thành viên">
+                                        </div>
+                                        <div class="member-avatar">
+                                            <img src="../../assets/images/avatars/member8.jpg" alt="Thành viên">
+                                        </div>
+                                    </div>
+                                    <div class="group-stats">
+                                        <span class="stat-item">
+                                            <span class="material-symbols-outlined">attachment</span>
+                                            28
+                                        </span>
+                                        <button class="group-action" data-action="archive">LƯU TRỮ</button>
+                                    </div>
+                                </div>
+                                <div class="group-icon">
+                                    <span class="material-symbols-outlined">history_edu</span>
+                                </div>
+                            </div>
+
+                            <div class="group-card create-group" id="create-group-card">
+                                <div class="create-group-content">
+                                    <div class="create-icon">
+                                        <span class="material-symbols-outlined">add</span>
+                                    </div>
+                                    <h4 class="create-title">TẠO NHÓM MỚI</h4>
+                                    <p class="create-subtitle">Khởi tạo Studio cho đồ án tiếp theo</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer sẽ được inject bởi JS (Thay thế footer cũ) -->
+    <footer></footer>
+
+    <!-- THÊM: AI Chat Widget Container (như trang home) -->
+    <div id="ai-chat-widget"></div>
+
+    <!-- Create Group Modal (Giữ nguyên) -->
+    <div class="modal" id="create-group-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">TẠO NHÓM HỌC TẬP MỚI</h3>
+                <button class="modal-close" id="close-modal">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <form id="create-group-form" class="modal-form">
+                <div class="form-group">
+                    <label class="form-label">TÊN NHÓM *</label>
+                    <input type="text" class="form-input" id="group-name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">MÃ NHÓM *</label>
+                    <input type="text" class="form-input" id="group-code" required>
+                    <small class="form-hint">Ví dụ: DA_KT1_2024</small>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">MÔ TẢ</label>
+                    <textarea class="form-textarea" id="group-description" rows="3"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">LOẠI ĐỒ ÁN *</label>
+                        <select class="form-select" id="group-project-type" required>
+                            <option value="">Chọn loại đồ án</option>
+                            <option value="architecture">Kiến trúc</option>
+                            <option value="urban">Quy hoạch</option>
+                            <option value="interior">Nội thất</option>
+                            <option value="structure">Kết cấu</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">SỐ THÀNH VIÊN *</label>
+                        <select class="form-select" id="group-max-members" required>
+                            <option value="3">3 thành viên</option>
+                            <option value="4">4 thành viên</option>
+                            <option value="5">5 thành viên</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancel-create">HỦY</button>
+                    <button type="submit" class="btn-primary">TẠO NHÓM</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript (Kết hợp cũ và mới) -->
+    <script type="module">
+        // Import các component mới (như trang home)
+        import { Header } from '../../js/components/header.js';
+        import { Footer } from '../../js/components/footer.js';
+        import { AIChatWidget } from '../../js/components/chat-widget.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inject Header, Footer, Chat Widget (như trang home)
+            new Header();
+            new Footer();
+            new AIChatWidget();
+            
+            // Khởi tạo JS cũ của groups (giữ nguyên chức năng)
+            initializeGroups();
+        });
+        
+        // Giữ nguyên hàm initializeGroups cũ (hoặc giữ script cũ)
+        function initializeGroups() {
+            // Tab navigation
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tabId = btn.dataset.tab;
+                    
+                    // Remove active class from all
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    
+                    // Add active class to clicked
+                    btn.classList.add('active');
+                    
+                    // Tab switching logic
+                    // (Giữ nguyên logic tab cũ của bạn)
+                });
+            });
+            
+            // Create group button
+            const createBtn = document.getElementById('create-group-btn');
+            if (createBtn) {
+                createBtn.addEventListener('click', () => {
+                    document.getElementById('create-group-modal').style.display = 'block';
+                });
+            }
+            
+            // Modal close button
+            const closeModal = document.getElementById('close-modal');
+            const cancelCreate = document.getElementById('cancel-create');
+            
+            if (closeModal) {
+                closeModal.addEventListener('click', () => {
+                    document.getElementById('create-group-modal').style.display = 'none';
+                });
+            }
+            
+            if (cancelCreate) {
+                cancelCreate.addEventListener('click', () => {
+                    document.getElementById('create-group-modal').style.display = 'none';
+                });
+            }
+            
+            // Create group form
+            const createForm = document.getElementById('create-group-form');
+            if (createForm) {
+                createForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    // Form submission logic
+                    alert('Tạo nhóm thành công!');
+                    document.getElementById('create-group-modal').style.display = 'none';
+                });
+            }
+            
+            // Group card actions
+            document.querySelectorAll('.group-action').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const action = this.dataset.action;
+                    const groupId = this.closest('.group-card').dataset.groupId;
+                    
+                    if (action === 'detail') {
+                        alert(`Xem chi tiết nhóm ${groupId}`);
+                    } else if (action === 'archive') {
+                        if (confirm('Bạn có chắc muốn lưu trữ nhóm này?')) {
+                            alert(`Đã lưu trữ nhóm ${groupId}`);
+                        }
+                    }
+                });
+            });
+        }
+    </script>
+    
+    <!-- Giữ các script cũ nếu cần (đảm bảo không bị mất chức năng) -->
+    <script type="module" src="../../js/components/modal.js"></script>
+    <script type="module" src="../../js/pages/groups.js"></script>
+    <script type="module" src="../../js/services/group-service.js"></script>
+</body>
+</html>

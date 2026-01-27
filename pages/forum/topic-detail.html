@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiến trúc bền vững | Diễn đàn - HauHub</title>
+    
+    <!-- CSS Files (Giữ nguyên) -->
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/pages/forum.css">
+    
+    <!-- Google Fonts (Giữ nguyên) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (Giữ nguyên) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1d81c9",
+                        "background-light": "#f7f7f8",
+                        "background-dark": "#22262a",
+                    },
+                    fontFamily: {
+                        "display": ["Noto Serif", "serif"],
+                        "sans": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    
+    <!-- Favicon (Thêm như trang home) -->
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+</head>
+<body class="min-h-screen">
+    <!-- Header sẽ được inject bởi JS (Thay thế header cũ) -->
+    <header></header>
+    
+    <!-- Main Content (Giữ nguyên) -->
+    <main class="main-content">
+        <div id="page-content">
+            <div class="container mx-auto px-4 py-8 max-w-6xl">
+                <!-- Breadcrumbs (Giữ nguyên) -->
+                <nav class="breadcrumbs mb-6">
+                    <!-- Breadcrumbs sẽ được tạo bởi JS -->
+                </nav>
+                
+                <!-- Moderator Toolbar (Giữ nguyên) -->
+                <div class="moderator-toolbar flex justify-end gap-3 mb-4">
+                    <button class="btn-toolbar" data-action="pin">
+                        <span class="material-symbols-outlined">push_pin</span>
+                        Ghim
+                    </button>
+                    <button class="btn-toolbar" data-action="lock">
+                        <span class="material-symbols-outlined">lock</span>
+                        Khóa
+                    </button>
+                </div>
+                
+                <!-- Topic Header (Giữ nguyên) -->
+                <article class="topic-header mb-8">
+                    <!-- Nội dung topic sẽ được tải bởi JS -->
+                </article>
+                
+                <!-- Main Post Content (Giữ nguyên) -->
+                <section class="main-post bg-white dark:bg-background-dark rounded-xl p-8 shadow-sm border border-gray-50 dark:border-gray-800 mb-10">
+                    <!-- Post content sẽ được tải bởi JS -->
+                </section>
+                
+                <!-- Comments Section (Giữ nguyên) -->
+                <section class="comments-section mb-10">
+                    <h3 class="section-title">Bình luận <span class="comment-count">0</span></h3>
+                    <div id="comments-container" class="space-y-6">
+                        <!-- Comments sẽ được tải bởi JS -->
+                    </div>
+                </section>
+                
+                <!-- Comment Input (Giữ nguyên) -->
+                <div class="comment-input sticky bottom-6 bg-white dark:bg-gray-800 rounded-xl p-4 shadow-xl border border-primary/20">
+                    <div class="flex items-start gap-4">
+                        <div class="user-avatar">
+                            <!-- Avatar sẽ được tải từ user data -->
+                        </div>
+                        <div class="flex-1 flex flex-col gap-3">
+                            <textarea id="comment-input" class="comment-textarea" 
+                                      placeholder="Chia sẻ ý kiến của bạn..." 
+                                      rows="1"></textarea>
+                            <div class="flex justify-between items-center">
+                                <div class="comment-actions">
+                                    <button class="btn-attachment" data-type="image">
+                                        <span class="material-symbols-outlined">image</span>
+                                    </button>
+                                    <button class="btn-attachment" data-type="file">
+                                        <span class="material-symbols-outlined">attachment</span>
+                                    </button>
+                                </div>
+                                <button id="submit-comment" class="btn-primary">
+                                    <span>Gửi bình luận</span>
+                                    <span class="material-symbols-outlined">send</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Spacer (Giữ nguyên) -->
+                <div class="h-12"></div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer sẽ được inject bởi JS (Thay thế footer cũ) -->
+    <footer></footer>
+    
+    <!-- THÊM: AI Chat Widget Container (như trang home) -->
+    <div id="ai-chat-widget"></div>
+    
+    <!-- JavaScript (Kết hợp cũ và mới) -->
+    <script type="module">
+        // Import các component mới (như trang home)
+        import { Header } from '../../js/components/header.js';
+        import { Footer } from '../../js/components/footer.js';
+        import { AIChatWidget } from '../../js/components/chat-widget.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inject Header, Footer, Chat Widget (như trang home)
+            new Header();
+            new Footer();
+            new AIChatWidget();
+            
+            // Khởi tạo JS cũ của forum (giữ nguyên chức năng)
+            initializeForum();
+        });
+        
+        // Giữ nguyên hàm initializeForum cũ (hoặc giữ script cũ)
+        function initializeForum() {
+            // Comment input functionality
+            const commentInput = document.getElementById('comment-input');
+            const submitBtn = document.getElementById('submit-comment');
+            const commentsContainer = document.getElementById('comments-container');
+            
+            if (submitBtn && commentInput) {
+                submitBtn.addEventListener('click', submitComment);
+                commentInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        submitComment();
+                    }
+                });
+            }
+            
+            function submitComment() {
+                const comment = commentInput.value.trim();
+                if (comment) {
+                    // Create new comment element
+                    const commentElement = document.createElement('div');
+                    commentElement.className = 'comment-item';
+                    commentElement.innerHTML = `
+                        <div class="flex gap-4 p-4 bg-gray-50 dark:bg-gray-800 rounded-lg">
+                            <div class="user-avatar w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
+                                <span class="text-primary font-semibold">U</span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-center mb-2">
+                                    <div class="font-semibold">Bạn</div>
+                                    <div class="text-sm text-gray-500">Vừa xong</div>
+                                </div>
+                                <div class="comment-content">
+                                    <p>${comment}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    if (commentsContainer) {
+                        commentsContainer.appendChild(commentElement);
+                        
+                        // Update comment count
+                        const commentCount = document.querySelector('.comment-count');
+                        if (commentCount) {
+                            const currentCount = parseInt(commentCount.textContent) || 0;
+                            commentCount.textContent = currentCount + 1;
+                        }
+                    }
+                    
+                    commentInput.value = '';
+                    
+                    // Scroll to new comment
+                    commentElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
+            
+            // Attachment buttons
+            document.querySelectorAll('.btn-attachment').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const type = this.dataset.type;
+                    
+                    if (type === 'image') {
+                        alert('Chức năng đính kèm hình ảnh');
+                    } else if (type === 'file') {
+                        alert('Chức năng đính kèm file');
+                    }
+                });
+            });
+            
+            // Moderator toolbar buttons
+            document.querySelectorAll('.btn-toolbar').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const action = this.dataset.action;
+                    
+                    if (action === 'pin') {
+                        if (confirm('Bạn có chắc muốn ghim bài viết này?')) {
+                            alert('Đã ghim bài viết');
+                        }
+                    } else if (action === 'lock') {
+                        if (confirm('Bạn có chắc muốn khóa bài viết này?')) {
+                            alert('Đã khóa bài viết');
+                        }
+                    }
+                });
+            });
+            
+            // Auto-resize textarea
+            if (commentInput) {
+                commentInput.addEventListener('input', function() {
+                    this.style.height = 'auto';
+                    this.style.height = (this.scrollHeight) + 'px';
+                });
+            }
+        }
+    </script>
+    
+    <!-- Giữ các script cũ nếu cần (đảm bảo không bị mất chức năng) -->
+    <script src="../../js/config/api-config.js"></script>
+    <script src="../../js/config/constants.js"></script>
+    <script src="../../js/utils/auth.js"></script>
+    <script src="../../js/utils/date-format.js"></script>
+    <script src="../../js/components/notification.js"></script>
+    <script src="../../js/services/forum-service.js"></script>
+    <script src="../../js/pages/forum-topic.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - HauHub</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/pages/admin.css">
+    <link rel="stylesheet" href="../../css/pages/statistics.css">
+    
+    <!-- External Libraries -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+</head>
+<body class="admin-dashboard">
+    <div class="dashboard-container">
+           <!-- Sidebar Navigation -->
+<aside class="dashboard-sidebar">
+    <div class="sidebar-header">
+        <div class="brand-logo">
+            <span class="material-symbols-outlined logo-icon">architecture</span>
+        </div>
+        <div class="brand-info">
+            <h1 class="brand-name">HauHub</h1>
+            <p class="brand-subtitle">Admin Portal</p>
+        </div>
+    </div>
+    
+    <nav class="sidebar-nav">
+        <ul class="nav-menu">
+            <li class="nav-item active">
+                <a href="../../pages/admin/admin-dashboard.html" class="nav-link" onclick="console.log('Navigating to dashboard'); return true;">
+                    <span class="nav-icon material-symbols-outlined">dashboard</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="../../pages/admin/user-management.html" class="nav-link" onclick="console.log('Navigating to user management'); return true;">
+                    <span class="nav-icon material-symbols-outlined">group</span>
+                    <span class="nav-text">Người dùng</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="../../pages/admin/department-management.html" class="nav-link" onclick="console.log('Navigating to department management'); return true;">
+                    <span class="nav-icon material-symbols-outlined">school</span>
+                    <span class="nav-text">Đào tạo</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="../../pages/admin/forum-management.html" class="nav-link" onclick="console.log('Navigating to forum management'); return true;">
+                    <span class="nav-icon material-symbols-outlined">forum</span>
+                    <span class="nav-text">Diễn đàn</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="../../pages/ai/ai-documents.html" class="nav-link" onclick="console.log('Navigating to AI documents'); return true;">
+                    <span class="nav-icon material-symbols-outlined">smart_toy</span>
+                    <span class="nav-text">Tài liệu AI</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="../../pages/admin/system-config.html" class="nav-link" onclick="console.log('Navigating to system config'); return true;">
+                    <span class="nav-icon material-symbols-outlined">settings</span>
+                    <span class="nav-text">Cấu hình</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    
+    <div class="sidebar-footer">
+        <div class="user-profile">
+            <div class="user-avatar">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtmkkJF4tN3dFTJCHA7Bxu1Ic0IRrDB4IBR7WvPZFBZK7zQ3IDRtglLgn95BjUJg2zxPJ4SXgKfgbM4VBr5s42AjUu9BIaedrCoskkTd94vc8PNqx1rc-KKUFFLqXbMVdSX6oYBCoLopANZGPZ0xzszKO6FvhbuvNmq7SGuSmtMAM-vHbuivZVNBb24mXMN7DWtHg4RIf4ExvqFdGjPhm5u7vDy-64-3Y7un7j9s5jeW5oqkl4-zZ6TIucjA8c61W6_K-v10TwUeg" alt="Admin Avatar">
+            </div>
+            <div class="user-info">
+                <p class="user-name">Admin HauHub</p>
+                <p class="user-role">System Overseer</p>
+            </div>
+            <button class="logout-btn">
+                <span class="material-symbols-outlined">logout</span>
+            </button>
+        </div>
+    </div>
+</aside>
+
+<script>
+// Debug script
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', function(e) {
+        console.log('Link clicked:', this.href);
+        console.log('Current page:', window.location.href);
+    });
+});
+</script>
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Top Navigation -->
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <div class="compass-icon">
+                        <svg class="compass-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <circle class="technical-line" cx="24" cy="24" r="18" stroke="currentColor" stroke-width="1.5"></circle>
+                            <path d="M24 8V12M24 36V40M8 24H12M36 24H40" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path>
+                            <path d="M24 16L20 24L24 32L28 24L24 16Z" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="1.5"></path>
+                            <circle cx="24" cy="24" fill="currentColor" r="2"></circle>
+                        </svg>
+                    </div>
+                    <div class="header-title">
+                        <h2>Thống kê Hệ thống</h2>
+                        <p>Phân tích dữ liệu và hiệu suất toàn hệ thống</p>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <div class="search-bar">
+                        <span class="material-symbols-outlined search-icon">search</span>
+                        <input type="text" placeholder="Tìm kiếm thống kê..." class="search-input" id="stats-search">
+                    </div>
+                    
+                    <div class="header-actions">
+                        <div class="system-status">
+                            <div class="status-dot online"></div>
+                            <span class="status-text">Live Data</span>
+                        </div>
+                        <button class="action-btn notification-btn" id="notifications-btn">
+                            <span class="material-symbols-outlined">notifications</span>
+                            <span class="notification-badge">3</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Breadcrumbs -->
+                <nav class="breadcrumbs">
+                    <a href="admin-dashboard.html" class="breadcrumb-link">Quản trị viên</a>
+                    <span class="breadcrumb-separator">/</span>
+                    <span class="breadcrumb-current">Thống kê & Phân tích</span>
+                </nav>
+                
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="header-content">
+                        <h1 class="page-title">Bảng điều khiển Thống kê</h1>
+                        <p class="page-subtitle">
+                            Phân tích dữ liệu thời gian thực và báo cáo hiệu suất toàn diện cho hệ thống HauHub.
+                            Theo dõi tăng trưởng, tối ưu hóa và đưa ra quyết định dựa trên dữ liệu.
+                        </p>
+                    </div>
+                    <div class="header-actions">
+                        <div class="period-selector">
+                            <button class="period-btn active" data-period="today">Hôm nay</button>
+                            <button class="period-btn" data-period="week">7 ngày</button>
+                            <button class="period-btn" data-period="month">Tháng này</button>
+                            <button class="period-btn" data-period="quarter">Quý</button>
+                            <button class="period-btn" data-period="year">Năm nay</button>
+                        </div>
+                        <button class="btn-primary" id="export-report-btn">
+                            <span class="material-symbols-outlined">download</span>
+                            Xuất báo cáo
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- KPI Cards -->
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <div class="kpi-icon primary">
+                                <span class="material-symbols-outlined">group</span>
+                            </div>
+                            <div class="kpi-trend success">+12.5%</div>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-value">8,562</div>
+                            <div class="kpi-label">Người dùng hoạt động</div>
+                            <div class="kpi-detail">+956 so với tuần trước</div>
+                        </div>
+                        <div class="kpi-chart">
+                            <canvas id="users-chart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <div class="kpi-icon success">
+                                <span class="material-symbols-outlined">forum</span>
+                            </div>
+                            <div class="kpi-trend success">+24.3%</div>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-value">3,245</div>
+                            <div class="kpi-label">Bài viết mới</div>
+                            <div class="kpi-detail">+634 so với tuần trước</div>
+                        </div>
+                        <div class="kpi-chart">
+                            <canvas id="posts-chart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <div class="kpi-icon warning">
+                                <span class="material-symbols-outlined">school</span>
+                            </div>
+                            <div class="kpi-trend warning">-2.1%</div>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-value">156</div>
+                            <div class="kpi-label">Môn học được truy cập</div>
+                            <div class="kpi-detail">-3 so với tuần trước</div>
+                        </div>
+                        <div class="kpi-chart">
+                            <canvas id="courses-chart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="kpi-card">
+                        <div class="kpi-header">
+                            <div class="kpi-icon danger">
+                                <span class="material-symbols-outlined">smart_toy</span>
+                            </div>
+                            <div class="kpi-trend success">+48.7%</div>
+                        </div>
+                        <div class="kpi-content">
+                            <div class="kpi-value">1,284</div>
+                            <div class="kpi-label">Tài liệu AI xử lý</div>
+                            <div class="kpi-detail">+422 so với tuần trước</div>
+                        </div>
+                        <div class="kpi-chart">
+                            <canvas id="ai-docs-chart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Main Charts Grid -->
+                <div class="charts-grid">
+                    <!-- User Growth Chart -->
+                    <div class="chart-card full-width">
+                        <div class="chart-header">
+                            <div>
+                                <h3 class="chart-title">Tăng trưởng Người dùng</h3>
+                                <p class="chart-subtitle">Tổng số người dùng đăng ký theo thời gian</p>
+                            </div>
+                            <div class="chart-controls">
+                                <select class="chart-select" id="user-growth-period">
+                                    <option value="month">30 ngày</option>
+                                    <option value="quarter">90 ngày</option>
+                                    <option value="year">365 ngày</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="user-growth-chart"></canvas>
+                        </div>
+                        <div class="chart-footer">
+                            <div class="chart-stats">
+                                <div class="stat-item">
+                                    <span class="stat-label">Tăng trưởng tuần</span>
+                                    <span class="stat-value success">+12.5%</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Tỷ lệ giữ chân</span>
+                                    <span class="stat-value success">86.4%</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Người dùng mới</span>
+                                    <span class="stat-value">956</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Activity Distribution -->
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <div>
+                                <h3 class="chart-title">Phân phối Hoạt động</h3>
+                                <p class="chart-subtitle">Hoạt động theo loại người dùng</p>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="activity-distribution-chart"></canvas>
+                        </div>
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <span class="legend-dot student"></span>
+                                <span class="legend-label">Sinh viên</span>
+                                <span class="legend-value">68%</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-dot teacher"></span>
+                                <span class="legend-label">Giảng viên</span>
+                                <span class="legend-value">22%</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-dot admin"></span>
+                                <span class="legend-label">Quản trị</span>
+                                <span class="legend-value">10%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Platform Usage -->
+                    <div class="chart-card">
+                        <div class="chart-header">
+                            <div>
+                                <h3 class="chart-title">Sử dụng Nền tảng</h3>
+                                <p class="chart-subtitle">Truy cập theo thiết bị</p>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="platform-usage-chart"></canvas>
+                        </div>
+                        <div class="chart-legend">
+                            <div class="legend-item">
+                                <span class="legend-dot desktop"></span>
+                                <span class="legend-label">Desktop</span>
+                                <span class="legend-value">54%</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-dot mobile"></span>
+                                <span class="legend-label">Mobile</span>
+                                <span class="legend-value">38%</span>
+                            </div>
+                            <div class="legend-item">
+                                <span class="legend-dot tablet"></span>
+                                <span class="legend-label">Tablet</span>
+                                <span class="legend-value">8%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Top Faculties Performance -->
+                    <div class="chart-card full-width">
+                        <div class="chart-header">
+                            <div>
+                                <h3 class="chart-title">Hiệu suất Khoa hàng đầu</h3>
+                                <p class="chart-subtitle">Hoạt động theo khoa trong 30 ngày</p>
+                            </div>
+                            <div class="chart-controls">
+                                <select class="chart-select" id="faculty-metric">
+                                    <option value="posts">Bài viết</option>
+                                    <option value="engagement">Tương tác</option>
+                                    <option value="users">Người dùng</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="faculty-performance-chart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <!-- System Performance -->
+                    <div class="chart-card full-width">
+                        <div class="chart-header">
+                            <div>
+                                <h3 class="chart-title">Hiệu suất Hệ thống</h3>
+                                <p class="chart-subtitle">Metrics trong 24 giờ qua</p>
+                            </div>
+                            <div class="chart-controls">
+                                <button class="chart-btn active" data-metric="cpu">CPU</button>
+                                <button class="chart-btn" data-metric="memory">Memory</button>
+                                <button class="chart-btn" data-metric="storage">Storage</button>
+                                <button class="chart-btn" data-metric="network">Network</button>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="system-performance-chart"></canvas>
+                        </div>
+                        <div class="chart-footer">
+                            <div class="chart-stats">
+                                <div class="stat-item">
+                                    <span class="stat-label">Avg Response Time</span>
+                                    <span class="stat-value success">142ms</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Uptime</span>
+                                    <span class="stat-value success">99.97%</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Peak Users</span>
+                                    <span class="stat-value">2,845</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Data Tables -->
+                <div class="tables-grid">
+                    <!-- Top Users Table -->
+                    <div class="table-card">
+                        <div class="table-header">
+                            <h3 class="table-title">
+                                <span class="material-symbols-outlined">leaderboard</span>
+                                Người dùng tích cực nhất
+                            </h3>
+                            <button class="btn-secondary btn-sm" id="view-all-users">
+                                Xem tất cả
+                            </button>
+                        </div>
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Tên</th>
+                                        <th>Khoa</th>
+                                        <th class="text-center">Bài viết</th>
+                                        <th class="text-center">Tương tác</th>
+                                        <th class="text-right">Điểm</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <div class="user-cell">
+                                                <div class="user-avatar">NV</div>
+                                                <div class="user-info">
+                                                    <div class="user-name">Nguyễn Văn An</div>
+                                                    <div class="user-role">Sinh viên năm 3</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Kiến trúc</td>
+                                        <td class="text-center"><span class="badge primary">42</span></td>
+                                        <td class="text-center"><span class="badge success">128</span></td>
+                                        <td class="text-right"><span class="score">1,245</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="user-cell">
+                                                <div class="user-avatar">TT</div>
+                                                <div class="user-info">
+                                                    <div class="user-name">Trần Thị Bình</div>
+                                                    <div class="user-role">Giảng viên</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>CNTT</td>
+                                        <td class="text-center"><span class="badge primary">38</span></td>
+                                        <td class="text-center"><span class="badge success">96</span></td>
+                                        <td class="text-right"><span class="score">987</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="user-cell">
+                                                <div class="user-avatar">LV</div>
+                                                <div class="user-info">
+                                                    <div class="user-name">Lê Văn Cường</div>
+                                                    <div class="user-role">Sinh viên năm 2</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Xây dựng</td>
+                                        <td class="text-center"><span class="badge primary">31</span></td>
+                                        <td class="text-center"><span class="badge success">84</span></td>
+                                        <td class="text-right"><span class="score">756</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="user-cell">
+                                                <div class="user-avatar">PH</div>
+                                                <div class="user-info">
+                                                    <div class="user-name">Phạm Hoàng</div>
+                                                    <div class="user-role">Sinh viên năm 4</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>Điện tử</td>
+                                        <td class="text-center"><span class="badge primary">28</span></td>
+                                        <td class="text-center"><span class="badge success">72</span></td>
+                                        <td class="text-right"><span class="score">642</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <!-- Recent Activity Log -->
+                    <div class="table-card">
+                        <div class="table-header">
+                            <h3 class="table-title">
+                                <span class="material-symbols-outlined">history</span>
+                                Hoạt động gần đây
+                            </h3>
+                            <button class="btn-secondary btn-sm" id="view-all-activity">
+                                Xem nhật ký
+                            </button>
+                        </div>
+                        <div class="activity-list">
+                            <div class="activity-item success">
+                                <div class="activity-icon">
+                                    <span class="material-symbols-outlined">forum</span>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-text">Nguyễn Văn An đã đăng bài mới trong "Thảo luận Kiến trúc"</div>
+                                    <div class="activity-time">2 phút trước</div>
+                                </div>
+                            </div>
+                            <div class="activity-item info">
+                                <div class="activity-icon">
+                                    <span class="material-symbols-outlined">school</span>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-text">20 sinh viên mới đăng ký môn "Lập trình C++"</div>
+                                    <div class="activity-time">15 phút trước</div>
+                                </div>
+                            </div>
+                            <div class="activity-item warning">
+                                <div class="activity-icon">
+                                    <span class="material-symbols-outlined">smart_toy</span>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-text">AI đã xử lý thành công 84 tài liệu PDF</div>
+                                    <div class="activity-time">1 giờ trước</div>
+                                </div>
+                            </div>
+                            <div class="activity-item danger">
+                                <div class="activity-icon">
+                                    <span class="material-symbols-outlined">warning</span>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-text">Hệ thống phát hiện 3 bài viết vi phạm chính sách</div>
+                                    <div class="activity-time">3 giờ trước</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Footer -->
+                <footer class="dashboard-footer">
+                    <div class="footer-left">
+                        <span>© 2024 HauHub University • Hệ thống thống kê thời gian thực</span>
+                    </div>
+                    <div class="footer-right">
+                        <a href="#" class="footer-link">Hướng dẫn phân tích</a>
+                        <a href="#" class="footer-link">API Analytics</a>
+                        <a href="#" class="footer-link">Chính sách dữ liệu</a>
+                    </div>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <!-- Export Modal -->
+    <div class="modal" id="export-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Xuất Báo cáo</h3>
+                <button class="modal-close" id="close-export-modal">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="export-form">
+                    <div class="form-group">
+                        <label class="form-label">Loại báo cáo</label>
+                        <select class="form-select" id="report-type">
+                            <option value="summary">Tổng quan hệ thống</option>
+                            <option value="users">Thống kê người dùng</option>
+                            <option value="activities">Hoạt động người dùng</option>
+                            <option value="performance">Hiệu suất hệ thống</option>
+                            <option value="full">Báo cáo đầy đủ</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Khoảng thời gian</label>
+                        <div class="date-range">
+                            <input type="date" class="form-input" id="start-date">
+                            <span class="date-separator">đến</span>
+                            <input type="date" class="form-input" id="end-date">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Định dạng</label>
+                        <div class="format-options">
+                            <label class="format-option">
+                                <input type="radio" name="format" value="pdf" checked>
+                                <span class="format-icon">
+                                    <span class="material-symbols-outlined">picture_as_pdf</span>
+                                </span>
+                                <span class="format-label">PDF</span>
+                            </label>
+                            <label class="format-option">
+                                <input type="radio" name="format" value="excel">
+                                <span class="format-icon">
+                                    <span class="material-symbols-outlined">table_chart</span>
+                                </span>
+                                <span class="format-label">Excel</span>
+                            </label>
+                            <label class="format-option">
+                                <input type="radio" name="format" value="csv">
+                                <span class="format-icon">
+                                    <span class="material-symbols-outlined">table_rows</span>
+                                </span>
+                                <span class="format-label">CSV</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Chu kỳ tự động (tuỳ chọn)</label>
+                        <select class="form-select" id="schedule-frequency">
+                            <option value="">Không lập lịch</option>
+                            <option value="daily">Hàng ngày</option>
+                            <option value="weekly">Hàng tuần</option>
+                            <option value="monthly">Hàng tháng</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-secondary" id="cancel-export">Hủy</button>
+                <button class="btn-primary" id="confirm-export">
+                    <span class="material-symbols-outlined">download</span>
+                    Tạo báo cáo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script type="module" src="../../js/components/modal.js"></script>
+    <script type="module" src="../../js/components/notification.js"></script>
+    <script type="module" src="../../js/pages/statistics.js"></script>
+    <script src="../../js/components/sidebar.js"></script>
+    <script src="../../js/services/admin-service.js"></script>
+    <script src="../../js/pages/admin-dashboard.js"></script>
+
+    <script>
+// Override any event listeners that prevent navigation
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.nav-link').forEach(link => {
+        // Remove all existing click listeners
+        const newLink = link.cloneNode(true);
+        link.parentNode.replaceChild(newLink, link);
+        
+        // Add new listener that allows navigation
+        newLink.addEventListener('click', function(e) {
+            console.log('Navigating to:', this.href);
+            // Allow default navigation behavior
+            return true;
+        });
+    });
+});
+</script>
+
+</body>
+</html>

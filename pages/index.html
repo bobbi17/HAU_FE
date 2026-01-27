@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAU HUB - Không gian học tập Studio</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/pages/home.css">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+</head>
+<body class="min-h-screen">
+    <!-- Header sẽ được inject bởi JS -->
+    <header></header>
+
+    <main class="main-content">
+        <!-- Nội dung trang chủ sẽ được inject bởi JS -->
+        <div id="home-content"></div>
+    </main>
+
+    <!-- Footer sẽ được inject bởi JS -->
+    <footer></footer>
+
+    <!-- AI Chat Widget Container -->
+    <div id="ai-chat-widget"></div>
+
+    <!-- JavaScript -->
+    <script type="module">
+        import { Header } from '../js/components/header.js';
+        import { Footer } from '../js/components/footer.js';
+        import { HomePage } from '../js/pages/home.js';
+        import { AIChatWidget } from '../js/components/chat-widget.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            new Header();
+            new Footer();
+            new HomePage();
+            new AIChatWidget();
+        });
+    </script>
+</body>
+</html>

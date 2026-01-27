@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Tài liệu AI - HauHub Admin</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/pages/admin.css">
+    <link rel="stylesheet" href="../../css/pages/ai-documents.css">
+    
+    <!-- External Libraries -->
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+</head>
+<body class="admin-dashboard">
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="dashboard-sidebar" id="admin-sidebar">
+            <div class="sidebar-header">
+                <div class="brand-logo">
+                    <span class="material-symbols-outlined logo-icon">architecture</span>
+                </div>
+                <div class="brand-info">
+                    <h1 class="brand-name">HauHub</h1>
+                    <p class="brand-subtitle">Admin Portal</p>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="../admin/admin-dashboard.html" class="nav-link">
+                            <span class="nav-icon material-symbols-outlined">dashboard</span>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../admin/user-management.html" class="nav-link">
+                            <span class="nav-icon material-symbols-outlined">group</span>
+                            <span class="nav-text">Người dùng</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../admin/department-management.html" class="nav-link">
+                            <span class="nav-icon material-symbols-outlined">school</span>
+                            <span class="nav-text">Đào tạo</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../admin/forum-management.html" class="nav-link">
+                            <span class="nav-icon material-symbols-outlined">forum</span>
+                            <span class="nav-text">Diễn đàn</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="ai-documents.html" class="nav-link">
+                            <span class="nav-icon material-symbols-outlined">smart_toy</span>
+                            <span class="nav-text">Tài liệu AI</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../admin/system-config.html" class="nav-link">
+                            <span class="nav-icon material-symbols-outlined">settings</span>
+                            <span class="nav-text">Cấu hình</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtmkkJF4tN3dFTJCHA7Bxu1Ic0IRrDB4IBR7WvPZFBZK7zQ3IDRtglLgn95BjUJg2zxPJ4SXgKfgbM4VBr5s42AjUu9BIaedrCoskkTd94vc8PNqx1rc-KKUFFLqXbMVdSX6oYBCoLopANZGPZ0xzszKO6FvhbuvNmq7SGuSmtMAM-vHbuivZVNBb24mXMN7DWtHg4RIf4ExvqFdGjPhm5u7vDy-64-3Y7un7j9s5jeW5oqkl4-zZ6TIucjA8c61W6_K-v10TwUeg" alt="Admin Avatar">
+                    </div>
+                    <div class="user-info">
+                        <p class="user-name">Admin HauHub</p>
+                        <p class="user-role">System Overseer</p>
+                    </div>
+                    <button class="logout-btn">
+                        <span class="material-symbols-outlined">logout</span>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Top Navigation -->
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <div class="compass-icon">
+                        <svg class="compass-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                            <circle class="technical-line" cx="24" cy="24" r="18" stroke="currentColor" stroke-width="1.5"></circle>
+                            <path d="M24 8V12M24 36V40M8 24H12M36 24H40" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path>
+                            <path d="M24 16L20 24L24 32L28 24L24 16Z" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="1.5"></path>
+                            <circle cx="24" cy="24" fill="currentColor" r="2"></circle>
+                        </svg>
+                    </div>
+                    <div class="header-title">
+                        <h2>Quản lý Tài liệu AI</h2>
+                        <p>Hệ thống xử lý tài liệu học thuật thông minh</p>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <div class="search-bar">
+                        <span class="material-symbols-outlined search-icon">search</span>
+                        <input type="text" placeholder="Search architectural documentation..." 
+                               class="search-input" id="document-search">
+                    </div>
+                    
+                    <div class="header-actions">
+                        <div class="system-status">
+                            <div class="status-dot online"></div>
+                            <span class="status-text">Node Online</span>
+                        </div>
+                        <button class="action-btn notification-btn" id="notifications-btn">
+                            <span class="material-symbols-outlined">notifications_none</span>
+                        </button>
+                    </div>
+                </div>
+            </header>
+            
+            <!-- Dashboard Content -->
+            <div class="dashboard-content">
+                <!-- Breadcrumbs -->
+                <nav class="breadcrumbs">
+                    <a href="admin-dashboard.html" class="breadcrumb-link">Cơ sở hạ tầng</a>
+                    <span class="breadcrumb-separator">/</span>
+                    <span class="breadcrumb-current">Kho tài nguyên</span>
+                </nav>
+                
+                <!-- Page Header -->
+                <div class="page-header">
+                    <div class="header-content">
+                        <h1 class="page-title">Quản Lý Tài Liệu AI</h1>
+                        <p class="page-subtitle">
+                            Kho tài liệu và hệ thống xử lý tri thức cho hệ sinh thái kiến trúc HauHub. 
+                            Tải lên tạp chí học thuật, bản vẽ, và bài nghiên cứu để xử lý thần kinh.
+                        </p>
+                    </div>
+                    <div class="header-actions">
+                        <button class="btn-secondary" id="sync-database-btn">
+                            <span class="material-symbols-outlined">cached</span>
+                            Đồng bộ Vector DB
+                        </button>
+                        <button class="btn-primary" id="upload-document-btn">
+                            <span class="material-symbols-outlined">add_box</span>
+                            Tải lên tài liệu
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Stats Cards -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div>
+                                <p class="stat-label">Tài liệu</p>
+                                <h3 class="stat-value" id="documents-count">1,284</h3>
+                            </div>
+                            <span class="stat-icon">
+                                <span class="material-symbols-outlined">auto_stories</span>
+                            </span>
+                        </div>
+                        <div class="stat-trend success">+12.5%</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div>
+                                <p class="stat-label">Dung lượng</p>
+                                <h3 class="stat-value" id="storage-used">4.2 GB</h3>
+                            </div>
+                            <span class="stat-icon">
+                                <span class="material-symbols-outlined">database</span>
+                            </span>
+                        </div>
+                        <div class="stat-trend capacity">84% Capacity</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div>
+                                <p class="stat-label">Tokens</p>
+                                <h3 class="stat-value" id="tokens-count">12.5M</h3>
+                            </div>
+                            <span class="stat-icon">
+                                <span class="material-symbols-outlined">token</span>
+                            </span>
+                        </div>
+                        <div class="stat-trend success">+840k</div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div>
+                                <p class="stat-label">Trạng thái</p>
+                                <h3 class="stat-value" id="processing-status">Processing</h3>
+                            </div>
+                            <span class="stat-icon">
+                                <span class="material-symbols-outlined">settings_slow_motion</span>
+                            </span>
+                        </div>
+                        <div class="stat-trend warning">3 Active</div>
+                    </div>
+                </div>
+                
+                <!-- Quick Actions -->
+                <div class="quick-actions-card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <span class="material-symbols-outlined">rocket_launch</span>
+                            Hành động nhanh
+                        </h3>
+                    </div>
+                    <div class="quick-actions-grid">
+                        <button class="quick-action-btn" id="quick-upload-btn">
+                            <span class="material-symbols-outlined">upload</span>
+                            <span>Tải lên tài liệu</span>
+                        </button>
+                        <button class="quick-action-btn" id="bulk-process-btn">
+                            <span class="material-symbols-outlined">play_arrow</span>
+                            <span>Xử lý hàng loạt</span>
+                        </button>
+                        <button class="quick-action-btn" id="export-data-btn">
+                            <span class="material-symbols-outlined">download</span>
+                            <span>Xuất dữ liệu</span>
+                        </button>
+                        <button class="quick-action-btn" id="analyze-stats-btn">
+                            <span class="material-symbols-outlined">analytics</span>
+                            <span>Phân tích</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Documents Table -->
+                <div class="content-card">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                            <span class="material-symbols-outlined">format_list_bulleted</span>
+                            Kho Tài liệu
+                        </h3>
+                        <div class="card-filters">
+                            <div class="filter-group">
+                                <label class="filter-label">Loại tệp</label>
+                                <select class="filter-select" id="file-type-filter">
+                                    <option value="all">Tất cả loại</option>
+                                    <option value="pdf">PDF</option>
+                                    <option value="dwg">DWG</option>
+                                    <option value="json">JSON</option>
+                                    <option value="docx">DOCX</option>
+                                    <option value="txt">TXT</option>
+                                </select>
+                            </div>
+                            
+                            <div class="filter-group">
+                                <label class="filter-label">Trạng thái</label>
+                                <select class="filter-select" id="processing-status-filter">
+                                    <option value="all">Tất cả trạng thái</option>
+                                    <option value="vectorized">Vectorized</option>
+                                    <option value="processing">Processing</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="failed">Failed</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th class="w-10">
+                                        <input type="checkbox" id="select-all" class="select-checkbox">
+                                    </th>
+                                    <th>Chi tiết Tài liệu</th>
+                                    <th class="text-center">Thông số</th>
+                                    <th class="text-center">Trạng thái Xử lý</th>
+                                    <th class="text-center">Thời gian</th>
+                                    <th class="text-right">Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody id="documents-table-body">
+                                <!-- Documents sẽ được tải bằng JavaScript -->
+                                <tr>
+                                    <td colspan="6" class="text-center py-8">
+                                        <div class="empty-state">
+                                            <span class="material-symbols-outlined text-4xl text-slate-300 mb-2">folder_open</span>
+                                            <p class="text-slate-500">Đang tải tài liệu...</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Pagination & Bulk Actions -->
+                    <div class="table-footer">
+                        <div class="bulk-actions">
+                            <button class="btn-secondary" id="process-selected-btn">
+                                <span class="material-symbols-outlined">play_arrow</span>
+                                Xử lý đã chọn
+                            </button>
+                            <button class="btn-secondary" id="delete-selected-btn">
+                                <span class="material-symbols-outlined">delete</span>
+                                Xóa đã chọn
+                            </button>
+                        </div>
+                        <div class="pagination-info">
+                            Trang <span class="highlight">1</span> trong <span class="highlight">1</span> (0 Tài sản)
+                        </div>
+                        <div class="pagination">
+                            <button class="pagination-btn prev" disabled>
+                                <span class="material-symbols-outlined">navigate_before</span>
+                                Trước
+                            </button>
+                            <button class="pagination-btn next" disabled>
+                                Trang tiếp
+                                <span class="material-symbols-outlined">navigate_next</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- System Monitor -->
+                <div class="system-monitor">
+                    <div class="monitor-header">
+                        <h4 class="monitor-title">
+                            <span class="material-symbols-outlined">terminal</span>
+                            Ingestion Logs
+                        </h4>
+                        <div class="monitor-stats">
+                            <span class="log-stat success">
+                                <span class="stat-dot"></span>
+                                24 OK
+                            </span>
+                            <span class="log-stat warning">
+                                <span class="stat-dot"></span>
+                                2 Warn
+                            </span>
+                            <span class="log-stat error">
+                                <span class="stat-dot"></span>
+                                1 Error
+                            </span>
+                        </div>
+                        <div class="monitor-controls">
+                            <button class="control-btn" id="clear-logs-btn">
+                                <span class="material-symbols-outlined">clear_all</span>
+                            </button>
+                            <button class="control-btn" id="expand-logs-btn">
+                                <span class="material-symbols-outlined">expand_more</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="logs-container" id="logs-container" style="max-height: 400px; overflow-y: auto;">
+                        <!-- Logs sẽ được thêm bằng JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Footer -->
+                <footer class="dashboard-footer">
+                    <div class="footer-left">
+                        <span>© 2024 HauHub University • Hệ thống xử lý tài liệu AI tiên tiến</span>
+                    </div>
+                    <div class="footer-right">
+                        <a href="#" class="footer-link">Hướng dẫn sử dụng</a>
+                        <a href="#" class="footer-link">API Documentation</a>
+                        <a href="#" class="footer-link">Chính sách bảo mật</a>
+                    </div>
+                </footer>
+            </div>
+        </main>
+        
+        <!-- Right Sidebar -->
+        <aside class="dashboard-sidebar right-sidebar" id="system-monitor-sidebar">
+            <div class="sidebar-header">
+                <h3 class="sidebar-title">
+                    <span class="material-symbols-outlined">analytics</span>
+                    System Monitoring
+                </h3>
+            </div>
+            
+            <div class="sidebar-content">
+                <!-- CPU Usage -->
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-label">CPU LOAD</span>
+                        <span class="metric-value">42%</span>
+                    </div>
+                    <div class="metric-bar">
+                        <div class="metric-progress cpu" style="width: 42%"></div>
+                    </div>
+                </div>
+                
+                <!-- RAM Usage -->
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-label">RAM USAGE</span>
+                        <span class="metric-value">78%</span>
+                    </div>
+                    <div class="metric-bar">
+                        <div class="metric-progress ram" style="width: 78%"></div>
+                    </div>
+                </div>
+                
+                <!-- Storage Usage -->
+                <div class="metric-card">
+                    <div class="metric-header">
+                        <span class="metric-label">STORAGE</span>
+                        <span class="metric-value">84%</span>
+                    </div>
+                    <div class="metric-bar">
+                        <div class="metric-progress storage" style="width: 84%"></div>
+                    </div>
+                </div>
+                
+                <!-- Activity Log -->
+                <div class="activity-log">
+                    <h4 class="activity-title">Activity Log</h4>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-indicator success"></div>
+                            <div class="activity-content">
+                                <div class="activity-text">New PDF Uploaded</div>
+                                <div class="activity-time">14:20 // ADMIN_01</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-indicator info"></div>
+                            <div class="activity-content">
+                                <div class="activity-text">Vector DB Backup</div>
+                                <div class="activity-time">13:10 // SYSTEM</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-indicator error"></div>
+                            <div class="activity-content">
+                                <div class="activity-text">Schema Validation Error</div>
+                                <div class="activity-time">11:45 // PARSER</div>
+                            </div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-indicator processing"></div>
+                            <div class="activity-content">
+                                <div class="activity-text">AI Model Retraining</div>
+                                <div class="activity-time">10:30 // TRAINER</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tip Card -->
+                <div class="tip-card">
+                    <div class="tip-header">
+                        <span class="material-symbols-outlined">school</span>
+                        <span class="tip-title">Mẹo Lưu trữ</span>
+                    </div>
+                    <p class="tip-content">
+                        Để tối ưu hóa khả năng truy xuất, hãy chia nhỏ thành các phần con theo chủ đề trước khi xử lý.
+                    </p>
+                </div>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Upload Modal -->
+     <!-- Upload Modal -->
+    <div class="modal" id="upload-modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3 class="modal-title">Tải lên Tài liệu</h3>
+                <button class="modal-close" id="close-upload-modal">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="upload-zone modal-upload-zone" id="modal-upload-zone">
+                    <div class="upload-icon">
+                        <span class="material-symbols-outlined">cloud_upload</span>
+                    </div>
+                    <h3 class="upload-title">Kéo & Thả tệp tại đây</h3>
+                    <p class="upload-description">
+                        Hỗ trợ PDF, DWG, JSON, DOCX, TXT<br/>
+                        <span class="upload-hint">Tối đa 50MB mỗi tệp</span>
+                    </p>
+                    <input type="file" id="modal-file-input" class="hidden" multiple accept=".pdf,.dwg,.json,.docx,.txt">
+                    <label for="modal-file-input" class="btn-primary mt-4 cursor-pointer">
+                        <span class="material-symbols-outlined">folder_open</span>
+                        Duyệt tệp
+                    </label>
+                </div>
+
+
+                <div class="upload-queue" id="upload-queue">
+                    <!-- Upload queue will be populated here -->
+                </div>
+                
+                <div class="upload-settings">
+                    <h4 class="settings-title">Cài đặt Xử lý</h4>
+                    <div class="settings-grid">
+                        <div class="setting-group">
+                            <label class="setting-label">
+                                <input type="checkbox" id="auto-process" checked>
+                                <span>Tự động xử lý sau khi tải lên</span>
+                            </label>
+                        </div>
+                        <div class="setting-group">
+                            <label class="setting-label">
+                                <input type="checkbox" id="generate-embeddings" checked>
+                                <span>Tạo embeddings vector</span>
+                            </label>
+                        </div>
+                        <div class="setting-group">
+                            <label class="setting-label">
+                                <input type="checkbox" id="extract-metadata" checked>
+                                <span>Trích xuất metadata</span>
+                            </label>
+                        </div>
+                        <div class="setting-group">
+                            <label class="setting-label">
+                                <input type="checkbox" id="ocr-if-needed">
+                                <span>OCR cho hình ảnh/PDF quét</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group full-width">
+                        <label class="setting-label">Thẻ phân loại</label>
+                        <input type="text" id="document-tags" class="form-input" placeholder="Nhập thẻ phân loại, cách nhau bằng dấu phẩy">
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label class="setting-label">Mô hình xử lý</label>
+                        <select id="processing-model" class="form-select">
+                            <option value="text-embedding-3-small">text-embedding-3-small</option>
+                            <option value="text-embedding-3-large">text-embedding-3-large</option>
+                            <option value="text-embedding-ada-002">text-embedding-ada-002</option>
+                            <option value="custom-model">Mô hình tùy chỉnh</option>
+                        </select>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label class="setting-label">Độ ưu tiên</label>
+                        <select id="processing-priority" class="form-select">
+                            <option value="low">Thấp</option>
+                            <option value="normal" selected>Bình thường</option>
+                            <option value="high">Cao</option>
+                            <option value="urgent">Khẩn cấp</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+           <div class="modal-actions">
+                <button class="btn-secondary" id="cancel-upload">Hủy bỏ</button>
+                <button class="btn-primary" id="start-upload">
+                    <span class="material-symbols-outlined">upload</span>
+                    Bắt đầu tải lên
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Document Detail Modal -->
+    <div class="modal" id="document-detail-modal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3 class="modal-title">Chi tiết Tài liệu</h3>
+                <button class="modal-close" id="close-detail-modal">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="modal-body" id="document-detail-content">
+                <!-- Document details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="../../js/components/modal.js"></script>
+    <script src="../../js/components/notification.js"></script>
+    <script src="../../js/services/ai-service.js"></script>
+    <script src="../../js/pages/ai-documents.js"></script>
+
+
+    <script>
+// Inline script để đảm bảo hoạt động ngay
+document.addEventListener('DOMContentLoaded', function() {
+    // Xử lý nút tải lên
+    const uploadBtn = document.getElementById('upload-document-btn');
+    if (uploadBtn) {
+        uploadBtn.addEventListener('click', function() {
+            document.getElementById('upload-modal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+    
+    // Xử lý upload zone
+    const uploadZone = document.getElementById('modal-upload-zone');
+    const fileInput = document.getElementById('modal-file-input');
+    
+    if (uploadZone && fileInput) {
+        uploadZone.addEventListener('click', function(e) {
+            // Ngăn sự kiện click trên label
+            if (!e.target.closest('label')) {
+                fileInput.click();
+            }
+        });
+    }
+    
+    // Xử lý đóng modal
+    const closeBtn = document.getElementById('close-upload-modal');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            document.getElementById('upload-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+    
+    // Xử lý cancel button
+    const cancelBtn = document.getElementById('cancel-upload');
+    if (cancelBtn) {
+        cancelBtn.addEventListener('click', function() {
+            document.getElementById('upload-modal').classList.remove('active');
+            document.body.style.overflow = '';
+        });
+    }
+});
+</script>
+
+
+</body>
+</html>

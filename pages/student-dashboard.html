@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Sinh viên - HauHub</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/pages/student-dashboard.css">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+</head>
+<body class="student-dashboard">
+    <!-- Header sẽ được inject bởi JS -->
+    <header></header>
+
+    <main class="student-main">
+        <div class="container">
+            
+            <!-- ========== PROFILE SECTION ========== -->
+            <section class="profile-section">
+                <div class="profile-card">
+                    <div class="profile-content">
+                        <!-- Avatar & Basic Info -->
+                        <div class="profile-header">
+                            <div class="profile-avatar">
+                                <img src="../assets/images/avatars/student.jpg" alt="Nguyễn Lâm Anh">
+                                <span class="online-status"></span>
+                            </div>
+                            <div class="profile-details">
+                                <div class="profile-name">
+                                    <h1>Nguyễn Lâm Anh</h1>
+                                    <div class="profile-badges">
+                                        <span class="badge badge-gpa">
+                                            <span class="material-symbols-outlined">star</span>
+                                            GPA 3.82
+                                        </span>
+                                        <span class="badge badge-year">SV Năm 3</span>
+                                    </div>
+                                </div>
+                                <p class="profile-major">Ngành CNTT • Khoa CNTT • MSSV: 2355010042</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Progress Stats -->
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <div class="stat-info">
+                                    <span class="stat-label">Tín chỉ đã tích lũy</span>
+                                    <span class="stat-value">84/145</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 58%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Actions -->
+                        <div class="profile-actions">
+                            <button class="btn btn-primary">Xem hồ sơ</button>
+                            <button class="btn btn-outline">Sửa thông tin</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== IMPORTANT REMINDERS ========== -->
+            <section class="reminders-section">
+                <div class="section-header">
+                    <h2 class="section-title">Nhắc việc quan trọng</h2>
+                    <div class="carousel-controls">
+                        <button class="control-btn" id="prevReminder">
+                            <span class="material-symbols-outlined">chevron_left</span>
+                        </button>
+                        <button class="control-btn" id="nextReminder">
+                            <span class="material-symbols-outlined">chevron_right</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="reminders-container" id="remindersCarousel">
+                    <!-- Reminder 1 - Assignment Deadline -->
+                    <div class="reminder-card deadline">
+                        <div class="reminder-icon">
+                            <span class="material-symbols-outlined">assignment</span>
+                        </div>
+                        <div class="reminder-content">
+                            <span class="reminder-category">Hạn nộp bài</span>
+                            <h3 class="reminder-title">Đồ án Phát triển Web</h3>
+                            <p class="reminder-desc">Còn 2 ngày • Sprint 3</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Reminder 2 - Upcoming Class -->
+                    <div class="reminder-card class">
+                        <div class="reminder-icon">
+                            <span class="material-symbols-outlined">schedule</span>
+                        </div>
+                        <div class="reminder-content">
+                            <span class="reminder-category">Lớp học</span>
+                            <h3 class="reminder-title">Cấu trúc dữ liệu</h3>
+                            <p class="reminder-desc">14:00 • Phòng B2-301</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Reminder 3 - Missing Document -->
+                    <div class="reminder-card warning">
+                        <div class="reminder-icon">
+                            <span class="material-symbols-outlined">warning</span>
+                        </div>
+                        <div class="reminder-content">
+                            <span class="reminder-category">Cần bổ sung</span>
+                            <h3 class="reminder-title">Hồ sơ thực tập</h3>
+                            <p class="reminder-desc">Văn phòng Khoa • Trước 30/05</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========== DASHBOARD CONTENT GRID ========== -->
+            <div class="dashboard-grid">
+                
+                <!-- LEFT COLUMN - Main Content -->
+                <div class="main-column">
+                    
+                    <!-- Today's Schedule -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <span class="material-symbols-outlined">calendar_today</span>
+                                </span>
+                                <h3>Lịch học hôm nay</h3>
+                            </div>
+                            <span class="card-date" id="currentDate">Thứ Hai, 20/05</span>
+                        </div>
+                        
+                        <div class="card-content">
+                            <!-- Class 1 -->
+                            <div class="schedule-item">
+                                <div class="time-slot">
+                                    <span class="time">07:00 - 09:30</span>
+                                    <span class="period">Sáng</span>
+                                </div>
+                                <div class="class-info">
+                                    <h4 class="class-name">Cơ sở dữ liệu</h4>
+                                    <p class="class-details">
+                                        <span class="material-symbols-outlined">location_on</span>
+                                        Phòng A1-201 • Thầy Nguyễn Văn A
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- Class 2 -->
+                            <div class="schedule-item">
+                                <div class="time-slot">
+                                    <span class="time">13:30 - 16:00</span>
+                                    <span class="period">Chiều</span>
+                                </div>
+                                <div class="class-info">
+                                    <h4 class="class-name">Phát triển ứng dụng Web</h4>
+                                    <p class="class-details">
+                                        <span class="material-symbols-outlined">computer</span>
+                                        Lab B3-102 • Cô Trần Thị B
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <!-- View All Button -->
+                            <button class="btn btn-outline btn-full mt-4">
+                                <span class="material-symbols-outlined">schedule</span>
+                                Xem toàn bộ thời khóa biểu
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Course Progress -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <span class="material-symbols-outlined">trending_up</span>
+                                </span>
+                                <h3>Tiến độ học tập</h3>
+                            </div>
+                            <button class="btn-icon">
+                                <span class="material-symbols-outlined">more_horiz</span>
+                            </button>
+                        </div>
+                        
+                        <div class="card-content">
+                            <!-- Progress Item 1 -->
+                            <div class="progress-item">
+                                <div class="progress-header">
+                                    <span class="course-name">Cấu trúc dữ liệu</span>
+                                    <span class="course-score">8.5 / 10.0</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Progress Item 2 -->
+                            <div class="progress-item">
+                                <div class="progress-header">
+                                    <span class="course-name">Phát triển Web</span>
+                                    <span class="course-score">9.0 / 10.0</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Progress Item 3 -->
+                            <div class="progress-item">
+                                <div class="progress-header">
+                                    <span class="course-name">Cơ sở dữ liệu</span>
+                                    <span class="course-score">7.8 / 10.0</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 78%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+                <!-- RIGHT COLUMN - Sidebar -->
+                <div class="sidebar-column">
+                    
+                    <!-- Study Groups -->
+                    <div class="dashboard-card">
+                       
+                    
+                    <!-- Quick Links -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <span class="material-symbols-outlined">bolt</span>
+                                </span>
+                                <h3>Truy cập nhanh</h3>
+                            </div>
+                        </div>
+                        
+                        <div class="card-content">
+                            <div class="quick-links-grid">
+                                <a href="../academic/learning-history.html" class="quick-link">
+                                    <div class="link-icon">
+                                        <span class="material-symbols-outlined">history_edu</span>
+                                    </div>
+                                    <span class="link-label">Lịch sử học tập</span>
+                                </a>
+                                
+                                <a href="../groups/study-groups.html" class="quick-link">
+                                    <div class="link-icon">
+                                        <span class="material-symbols-outlined">hub</span>
+                                    </div>
+                                    <span class="link-label">Nhóm học tập</span>
+                                </a>
+                                
+                                <a href="../academic/tuition.html" class="quick-link">
+                                    <div class="link-icon">
+                                        <span class="material-symbols-outlined">payments</span>
+                                    </div>
+                                    <span class="link-label">Học phí</span>
+                                </a>
+                                
+                                <a href="../forum/forum-home.html" class="quick-link">
+                                    <div class="link-icon">
+                                        <span class="material-symbols-outlined">forum</span>
+                                    </div>
+                                    <span class="link-label">Diễn đàn</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- HAU News -->
+                    <div class="dashboard-card">
+                        <div class="card-header">
+                            <div class="card-title">
+                                <span class="card-icon">
+                                    <span class="material-symbols-outlined">newspaper</span>
+                                </span>
+                                <h3>Tin tức HAU</h3>
+                            </div>
+                            <a href="#" class="text-link">Xem thêm</a>
+                        </div>
+                        
+                        <div class="card-content">
+                            <!-- News 1 -->
+                            <div class="news-item">
+                                <div class="news-image">
+                                    <img src="../assets/images/news/collaboration.jpg" alt="Hợp tác quốc tế">
+                                </div>
+                                <div class="news-content">
+                                    <h4 class="news-title">Lễ ký kết hợp tác với ĐH Bách Khoa</h4>
+                                    <p class="news-date">20/05/2024</p>
+                                </div>
+                            </div>
+                            
+                            <!-- News 2 -->
+                            <div class="news-item">
+                                <div class="news-image">
+                                    <img src="../assets/images/news/tech-fair.jpg" alt="Tech Fair 2024">
+                                </div>
+                                <div class="news-content">
+                                    <h4 class="news-title">Tech Fair 2024: Cơ hội thực tập</h4>
+                                    <p class="news-date">18/05/2024</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <!-- Footer sẽ được inject bởi JS -->
+    <footer></footer>
+
+    <!-- AI Chat Widget Container -->
+    <div id="ai-chat-widget"></div>
+
+    <!-- JavaScript -->
+    <script type="module">
+        import { Header } from '../js/components/header.js';
+        import { Footer } from '../js/components/footer.js';
+        import { AIChatWidget } from '../js/components/chat-widget.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Khởi tạo components
+            new Header();
+            new Footer();
+            new AIChatWidget();
+            
+            // Khởi tạo dashboard
+            initDashboard();
+        });
+        
+        function initDashboard() {
+            updateCurrentDate();
+            setupEventListeners();
+            initReminderCarousel();
+        }
+        
+        function updateCurrentDate() {
+            const now = new Date();
+            const options = { weekday: 'long', day: '2-digit', month: '2-digit' };
+            const dateText = now.toLocaleDateString('vi-VN', options);
+            document.getElementById('currentDate').textContent = dateText;
+        }
+        
+        function setupEventListeners() {
+            // Profile buttons
+            document.querySelector('.btn-primary').addEventListener('click', () => {
+                window.location.href = '../user/profile.html';
+            });
+            
+            document.querySelector('.btn-outline').addEventListener('click', () => {
+                window.location.href = '../user/settings.html';
+            });
+            
+            // Schedule button
+            document.querySelector('.btn-full .material-symbols-outlined')
+                .closest('.btn').addEventListener('click', () => {
+                    window.location.href = '../academic/schedule.html';
+                });
+            
+            // Join group button
+            document.querySelector('.btn-outline .material-symbols-outlined[innerText="add"]')
+                .closest('.btn').addEventListener('click', () => {
+                    window.location.href = '../groups/study-groups.html';
+                });
+            
+            // Group actions
+            document.querySelectorAll('.group-actions .btn-icon').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const action = btn.querySelector('.material-symbols-outlined').textContent;
+                    if (action === 'chat') {
+                        window.location.href = '../groups/group-chat.html';
+                    } else if (action === 'folder') {
+                        window.location.href = '../groups/group-detail.html';
+                    }
+                });
+            });
+            
+            // Quick links
+            document.querySelectorAll('.quick-link').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const href = link.getAttribute('href');
+                    window.location.href = href;
+                });
+            });
+        }
+        
+        function initReminderCarousel() {
+            const container = document.getElementById('remindersCarousel');
+            const prevBtn = document.getElementById('prevReminder');
+            const nextBtn = document.getElementById('nextReminder');
+            
+            let currentIndex = 0;
+            const reminderCards = container.querySelectorAll('.reminder-card');
+            const totalCards = reminderCards.length;
+            
+            // Show all cards on desktop, carousel on mobile
+            if (window.innerWidth >= 768) {
+                // Show all cards on desktop
+                reminderCards.forEach(card => {
+                    card.style.display = 'flex';
+                });
+                return;
+            }
+            
+            function updateCarousel() {
+                reminderCards.forEach((card, index) => {
+                    card.style.display = index === currentIndex ? 'flex' : 'none';
+                });
+            }
+            
+            prevBtn?.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + totalCards) % totalCards;
+                updateCarousel();
+            });
+            
+            nextBtn?.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % totalCards;
+                updateCarousel();
+            });
+            
+            // Auto rotate every 5 seconds
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % totalCards;
+                updateCarousel();
+            }, 5000);
+            
+            // Initial display
+            updateCarousel();
+        }
+        
+        // Handle window resize
+        window.addEventListener('resize', initReminderCarousel);
+    </script>
+</body>
+</html>

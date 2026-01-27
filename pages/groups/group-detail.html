@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Nhóm Studio - HauHub</title>
+    
+    <!-- CSS Files (Giữ nguyên) -->
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/pages/groups.css">
+    
+    <!-- Fonts (Giữ nguyên) -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <!-- Favicon (Giữ nguyên) -->
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+</head>
+<body class="groups-page min-h-screen">
+    <!-- Header sẽ được inject bởi JS (Thay thế header cũ) -->
+    <header></header>
+
+    <!-- Main Content (Giữ nguyên) -->
+    <main class="main-content">
+        <div id="page-content">
+            <div class="page-container">
+                <!-- Breadcrumbs (Giữ nguyên) -->
+                <nav class="breadcrumbs">
+                    <a href="../../index.html" class="breadcrumb-link">Trang chủ</a>
+                    <span class="breadcrumb-separator">/</span>
+                    <a href="study-groups.html" class="breadcrumb-link">Quản lý nhóm</a>
+                    <span class="breadcrumb-separator">/</span>
+                    <span class="breadcrumb-current">Chi tiết nhóm</span>
+                </nav>
+
+                <!-- Group Profile Header (Giữ nguyên) -->
+                <div class="group-profile-header">
+                    <div class="group-avatar">
+                        <div class="avatar-image">
+                            <span class="material-symbols-outlined">apartment</span>
+                            <div class="avatar-overlay"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="group-info">
+                        <div class="group-header">
+                            <h1 class="group-name">Nhóm 04 - Đồ án Kiến trúc Dân dụng</h1>
+                            <span class="status-badge active">Đang hoạt động</span>
+                        </div>
+                        
+                        <div class="group-meta">
+                            <div class="meta-item">
+                                <span class="material-symbols-outlined">tag</span>
+                                <span class="meta-label">Mã nhóm:</span>
+                                <span class="meta-value code">STUDIO-2023-04</span>
+                            </div>
+                            
+                            <div class="meta-item">
+                                <span class="material-symbols-outlined">school</span>
+                                <span class="meta-label">Khóa:</span>
+                                <span class="meta-value">K65-KTDN</span>
+                            </div>
+                            
+                            <div class="meta-item">
+                                <span class="material-symbols-outlined">group</span>
+                                <span class="meta-label">Thành viên:</span>
+                                <span class="meta-value">5 người</span>
+                            </div>
+                        </div>
+                        
+                        <div class="group-description">
+                            Nhóm chuyên nghiên cứu và phát triển đồ án kiến trúc dân dụng, tập trung vào thiết kế bền vững và hiện đại.
+                        </div>
+                    </div>
+                    
+                    <div class="group-actions">
+                        <button class="btn-primary" id="share-group-btn">
+                            <span class="material-symbols-outlined">share</span>
+                            Chia sẻ
+                        </button>
+                        <button class="btn-secondary" id="edit-group-btn">
+                            <span class="material-symbols-outlined">edit</span>
+                            Chỉnh sửa
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Tabs Navigation (Giữ nguyên) -->
+                <div class="group-tabs">
+                    <nav class="tabs-nav">
+                        <button class="tab-btn active" data-tab="members">
+                            <span class="material-symbols-outlined">groups</span>
+                            Thành viên
+                        </button>
+                        <button class="tab-btn" data-tab="documents">
+                            <span class="material-symbols-outlined">description</span>
+                            Tài liệu
+                            <span class="tab-badge">12</span>
+                        </button>
+                        <button class="tab-btn" data-tab="chat">
+                            <span class="material-symbols-outlined">chat_bubble</span>
+                            Tin nhắn
+                        </button>
+                        <button class="tab-btn" data-tab="schedule">
+                            <span class="material-symbols-outlined">event</span>
+                            Lịch họp
+                        </button>
+                        <button class="tab-btn" data-tab="tasks">
+                            <span class="material-symbols-outlined">checklist</span>
+                            Công việc
+                        </button>
+                    </nav>
+                </div>
+
+                <!-- Tab Content (Giữ nguyên) -->
+                <div class="tab-content">
+                    <!-- Members Tab (Giữ nguyên) -->
+                    <div class="tab-pane active" id="members-tab">
+                        <div class="tab-header">
+                            <h2 class="tab-title">Thành viên nhóm</h2>
+                            <button class="btn-secondary" id="add-member-btn">
+                                <span class="material-symbols-outlined">person_add</span>
+                                Thêm thành viên
+                            </button>
+                        </div>
+                        
+                        <div class="members-grid" id="members-list">
+                            <!-- Members will be loaded here -->
+                            <div class="member-card leader">
+                                <div class="member-header">
+                                    <div class="member-avatar">
+                                        <img src="../../assets/images/avatars/member-1.jpg" alt="Nguyễn Văn An">
+                                    </div>
+                                    <div class="member-info">
+                                        <div class="member-name">Nguyễn Văn An</div>
+                                        <div class="member-id">ID: 651203</div>
+                                        <div class="member-role">Trưởng nhóm</div>
+                                    </div>
+                                </div>
+                                <div class="member-contact">
+                                    <div class="contact-item">
+                                        <span class="material-symbols-outlined">mail</span>
+                                        <span>an.nguyen@hau.edu.vn</span>
+                                    </div>
+                                    <div class="contact-item">
+                                        <span class="material-symbols-outlined">call</span>
+                                        <span>0987 654 321</span>
+                                    </div>
+                                </div>
+                                <div class="member-skills">
+                                    <span class="skill-tag">Revit</span>
+                                    <span class="skill-tag">AutoCAD</span>
+                                    <span class="skill-tag">3Ds Max</span>
+                                </div>
+                            </div>
+                            
+                            <div class="member-card">
+                                <div class="member-header">
+                                    <div class="member-avatar">
+                                        <img src="../../assets/images/avatars/member-2.jpg" alt="Trần Thị Lan">
+                                    </div>
+                                    <div class="member-info">
+                                        <div class="member-name">Trần Thị Lan</div>
+                                        <div class="member-id">ID: 651245</div>
+                                        <div class="member-role">Thành viên</div>
+                                    </div>
+                                </div>
+                                <div class="member-contact">
+                                    <div class="contact-item">
+                                        <span class="material-symbols-outlined">mail</span>
+                                        <span>lan.tran@hau.edu.vn</span>
+                                    </div>
+                                </div>
+                                <div class="member-skills">
+                                    <span class="skill-tag">SketchUp</span>
+                                    <span class="skill-tag">Photoshop</span>
+                                    <span class="skill-tag">Lumion</span>
+                                </div>
+                            </div>
+                            
+                            <div class="member-card">
+                                <div class="member-header">
+                                    <div class="member-avatar">
+                                        <img src="../../assets/images/avatars/member-3.jpg" alt="Phạm Minh Đức">
+                                    </div>
+                                    <div class="member-info">
+                                        <div class="member-name">Phạm Minh Đức</div>
+                                        <div class="member-id">ID: 651289</div>
+                                        <div class="member-role">Thành viên</div>
+                                    </div>
+                                </div>
+                                <div class="member-contact">
+                                    <div class="contact-item">
+                                        <span class="material-symbols-outlined">mail</span>
+                                        <span>duc.pham@hau.edu.vn</span>
+                                    </div>
+                                </div>
+                                <div class="member-skills">
+                                    <span class="skill-tag">AutoCAD</span>
+                                    <span class="skill-tag">Revit</span>
+                                    <span class="skill-tag">Excel</span>
+                                </div>
+                            </div>
+                            
+                            <div class="member-card">
+                                <div class="member-header">
+                                    <div class="member-avatar">
+                                        <div class="avatar-placeholder">LH</div>
+                                    </div>
+                                    <div class="member-info">
+                                        <div class="member-name">Lê Hoàng</div>
+                                        <div class="member-id">ID: 651312</div>
+                                        <div class="member-role">Thành viên</div>
+                                    </div>
+                                </div>
+                                <div class="member-contact">
+                                    <div class="contact-item">
+                                        <span class="material-symbols-outlined">mail</span>
+                                        <span>hoang.le@hau.edu.vn</span>
+                                    </div>
+                                </div>
+                                <div class="member-skills">
+                                    <span class="skill-tag">SketchUp</span>
+                                    <span class="skill-tag">V-Ray</span>
+                                    <span class="skill-tag">Illustrator</span>
+                                </div>
+                            </div>
+                            
+                            <div class="member-card">
+                                <div class="member-header">
+                                    <div class="member-avatar">
+                                        <div class="avatar-placeholder">NT</div>
+                                    </div>
+                                    <div class="member-info">
+                                        <div class="member-name">Ngô Thanh</div>
+                                        <div class="member-id">ID: 651298</div>
+                                        <div class="member-role">Thành viên</div>
+                                    </div>
+                                </div>
+                                <div class="member-contact">
+                                    <div class="contact-item">
+                                        <span class="material-symbols-outlined">mail</span>
+                                        <span>thanh.ngo@hau.edu.vn</span>
+                                    </div>
+                                </div>
+                                <div class="member-skills">
+                                    <span class="skill-tag">AutoCAD</span>
+                                    <span class="skill-tag">3Ds Max</span>
+                                    <span class="skill-tag">Enscape</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Recent Documents Section (Giữ nguyên) -->
+                        <div class="recent-documents">
+                            <div class="section-header">
+                                <h3 class="section-title">Tài liệu đồ án mới nhất</h3>
+                                <a href="#" class="view-all-link">Xem tất cả tài liệu</a>
+                            </div>
+                            
+                            <div class="documents-grid">
+                                <div class="document-card">
+                                    <div class="document-icon pdf">
+                                        <span class="material-symbols-outlined">picture_as_pdf</span>
+                                    </div>
+                                    <div class="document-info">
+                                        <div class="document-name">Ban-ve-ky-thuat-Studio-v2.pdf</div>
+                                        <div class="document-meta">
+                                            <span class="meta-item">Cập nhật 2 giờ trước</span>
+                                            <span class="meta-divider">•</span>
+                                            <span class="meta-item">14.5 MB</span>
+                                        </div>
+                                        <div class="document-author">Nguyễn Văn An</div>
+                                    </div>
+                                    <button class="document-action download">
+                                        <span class="material-symbols-outlined">download</span>
+                                    </button>
+                                </div>
+                                
+                                <div class="document-card">
+                                    <div class="document-icon image">
+                                        <span class="material-symbols-outlined">image</span>
+                                    </div>
+                                    <div class="document-info">
+                                        <div class="document-name">Render-Phoi-Canh-3D-Chinh.jpg</div>
+                                        <div class="document-meta">
+                                            <span class="meta-item">Cập nhật bởi An</span>
+                                            <span class="meta-divider">•</span>
+                                            <span class="meta-item">5.2 MB</span>
+                                        </div>
+                                        <div class="document-author">Trần Thị Lan</div>
+                                    </div>
+                                    <button class="document-action download">
+                                        <span class="material-symbols-outlined">download</span>
+                                    </button>
+                                </div>
+                                
+                                <div class="document-card">
+                                    <div class="document-icon dwg">
+                                        <span class="material-symbols-outlined">architecture</span>
+                                    </div>
+                                    <div class="document-info">
+                                        <div class="document-name">Mat-bang-tang-1.dwg</div>
+                                        <div class="document-meta">
+                                            <span class="meta-item">Cập nhật 1 ngày trước</span>
+                                            <span class="meta-divider">•</span>
+                                            <span class="meta-item">8.7 MB</span>
+                                        </div>
+                                        <div class="document-author">Phạm Minh Đức</div>
+                                    </div>
+                                    <button class="document-action download">
+                                        <span class="material-symbols-outlined">download</span>
+                                    </button>
+                                </div>
+                                
+                                <div class="document-card">
+                                    <div class="document-icon docx">
+                                        <span class="material-symbols-outlined">description</span>
+                                    </div>
+                                    <div class="document-info">
+                                        <div class="document-name">Phan-tich-kien-truc.docx</div>
+                                        <div class="document-meta">
+                                            <span class="meta-item">Cập nhật 3 ngày trước</span>
+                                            <span class="meta-divider">•</span>
+                                            <span class="meta-item">3.1 MB</span>
+                                        </div>
+                                        <div class="document-author">Lê Hoàng</div>
+                                    </div>
+                                    <button class="document-action download">
+                                        <span class="material-symbols-outlined">download</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Upcoming Meeting Banner (Giữ nguyên) -->
+                        <div class="meeting-banner">
+                            <div class="meeting-date">
+                                <div class="date-day">TH 5</div>
+                                <div class="date-number">24</div>
+                            </div>
+                            <div class="meeting-info">
+                                <h3 class="meeting-title">Họp nhóm: Chỉnh sửa Mặt bằng tầng 1</h3>
+                                <div class="meeting-details">
+                                    <span class="detail-item">
+                                        <span class="material-symbols-outlined">schedule</span>
+                                        14:00 - 15:30
+                                    </span>
+                                    <span class="detail-item">
+                                        <span class="material-symbols-outlined">video_camera_front</span>
+                                        Trực tuyến
+                                    </span>
+                                </div>
+                                <p class="meeting-description">
+                                    Thảo luận về thiết kế mặt bằng tầng 1 và phân công công việc tuần tới.
+                                </p>
+                            </div>
+                            <button class="btn-primary join-meeting-btn">
+                                <span class="material-symbols-outlined">video_camera_front</span>
+                                Tham gia họp
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Documents Tab (Hidden by default) (Giữ nguyên) -->
+                    <div class="tab-pane" id="documents-tab">
+                        <!-- Content will be loaded dynamically -->
+                    </div>
+
+                    <!-- Chat Tab (Hidden by default) (Giữ nguyên) -->
+                    <div class="tab-pane" id="chat-tab">
+                        <!-- Content will be loaded dynamically -->
+                    </div>
+
+                    <!-- Schedule Tab (Hidden by default) (Giữ nguyên) -->
+                    <div class="tab-pane" id="schedule-tab">
+                        <!-- Content will be loaded dynamically -->
+                    </div>
+
+                    <!-- Tasks Tab (Hidden by default) (Giữ nguyên) -->
+                    <div class="tab-pane" id="tasks-tab">
+                        <!-- Content will be loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer sẽ được inject bởi JS (Thay thế footer cũ) -->
+    <footer></footer>
+
+    <!-- THÊM: AI Chat Widget Container (như trang home) -->
+    <div id="ai-chat-widget"></div>
+
+    <!-- Add Member Modal (Giữ nguyên) -->
+    <div class="modal" id="add-member-modal">
+        <div class="modal-content medium">
+            <div class="modal-header">
+                <h3 class="modal-title">Thêm Thành viên</h3>
+                <button class="modal-close" id="close-member-modal">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            
+            <form id="add-member-form" class="modal-form">
+                <div class="form-group">
+                    <label class="form-label" for="search-member">Tìm kiếm sinh viên</label>
+                    <div class="search-wrapper">
+                        <span class="material-symbols-outlined search-icon">search</span>
+                        <input type="text" id="search-member" class="form-input" 
+                               placeholder="Nhập mã số hoặc tên sinh viên...">
+                    </div>
+                </div>
+                
+                <div class="search-results" id="search-results">
+                    <!-- Search results will be displayed here -->
+                </div>
+                
+                <div class="selected-members" id="selected-members">
+                    <!-- Selected members will be displayed here -->
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="member-role">Vai trò trong nhóm</label>
+                    <select id="member-role" class="form-select">
+                        <option value="member">Thành viên</option>
+                        <option value="leader">Trưởng nhóm</option>
+                        <option value="secretary">Thư ký</option>
+                        <option value="treasurer">Thủ quỹ</option>
+                    </select>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancel-add-member">Hủy bỏ</button>
+                    <button type="submit" class="btn-primary">Thêm thành viên</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript (Kết hợp cũ và mới) -->
+    <script type="module">
+        // Import các component mới (như trang home)
+        import { Header } from '../../js/components/header.js';
+        import { Footer } from '../../js/components/footer.js';
+        import { AIChatWidget } from '../../js/components/chat-widget.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inject Header, Footer, Chat Widget (như trang home)
+            new Header();
+            new Footer();
+            new AIChatWidget();
+            
+            // Khởi tạo JS cũ của group detail (giữ nguyên chức năng)
+            initializeGroupDetail();
+        });
+        
+        // Giữ nguyên hàm initializeGroupDetail cũ (hoặc giữ script cũ)
+        function initializeGroupDetail() {
+            // Tab navigation
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            const tabPanes = document.querySelectorAll('.tab-pane');
+            
+            tabBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const tabId = btn.dataset.tab;
+                    
+                    // Remove active class from all
+                    tabBtns.forEach(b => b.classList.remove('active'));
+                    tabPanes.forEach(p => p.classList.remove('active'));
+                    
+                    // Add active class to clicked
+                    btn.classList.add('active');
+                    document.getElementById(`${tabId}-tab`)?.classList.add('active');
+                });
+            });
+            
+            // Add member button
+            const addMemberBtn = document.getElementById('add-member-btn');
+            const addMemberModal = document.getElementById('add-member-modal');
+            const closeMemberModal = document.getElementById('close-member-modal');
+            const cancelAddMember = document.getElementById('cancel-add-member');
+            
+            if (addMemberBtn && addMemberModal) {
+                addMemberBtn.addEventListener('click', () => {
+                    addMemberModal.style.display = 'block';
+                });
+            }
+            
+            if (closeMemberModal && addMemberModal) {
+                closeMemberModal.addEventListener('click', () => {
+                    addMemberModal.style.display = 'none';
+                });
+            }
+            
+            if (cancelAddMember && addMemberModal) {
+                cancelAddMember.addEventListener('click', () => {
+                    addMemberModal.style.display = 'none';
+                });
+            }
+            
+            // Share group button
+            const shareBtn = document.getElementById('share-group-btn');
+            if (shareBtn) {
+                shareBtn.addEventListener('click', () => {
+                    alert('Chức năng chia sẻ nhóm');
+                });
+            }
+            
+            // Edit group button
+            const editBtn = document.getElementById('edit-group-btn');
+            if (editBtn) {
+                editBtn.addEventListener('click', () => {
+                    alert('Chức năng chỉnh sửa thông tin nhóm');
+                });
+            }
+            
+            // Join meeting button
+            const joinMeetingBtn = document.querySelector('.join-meeting-btn');
+            if (joinMeetingBtn) {
+                joinMeetingBtn.addEventListener('click', () => {
+                    alert('Đang kết nối vào cuộc họp...');
+                });
+            }
+            
+            // Document download buttons
+            document.querySelectorAll('.document-action.download').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const docName = this.closest('.document-card').querySelector('.document-name').textContent;
+                    alert(`Tải xuống: ${docName}`);
+                });
+            });
+            
+            // Add member form
+            const addMemberForm = document.getElementById('add-member-form');
+            if (addMemberForm) {
+                addMemberForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('Thêm thành viên thành công!');
+                    addMemberModal.style.display = 'none';
+                });
+            }
+        }
+    </script>
+    
+    <!-- Giữ các script cũ nếu cần (đảm bảo không bị mất chức năng) -->
+    <script type="module" src="../../js/components/modal.js"></script>
+    <script type="module" src="../../js/components/notification.js"></script>
+    <script type="module" src="../../js/services/group-service.js"></script>
+    <script type="module" src="../../js/pages/group-detail.js"></script>
+</body>
+</html>

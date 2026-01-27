@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cài đặt - HauHub</title>
+    
+   <!-- CSS Files -->
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/pages/user.css">
+    <link rel="stylesheet" href="../../css/pages/settings.css">
+    
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+</head>
+<body class="settings-page min-h-screen">
+    <!-- Header sẽ được inject bởi JS -->
+    <header></header>
+
+    <main class="main-content">
+        <!-- Settings Page Content -->
+        <div id="page-content">
+            <!-- Giữ nguyên toàn bộ nội dung settings hiện tại -->
+            <div class="settings-header">
+                <div class="header-left">
+                    <button class="back-btn" onclick="history.back()">
+                        <span class="material-symbols-outlined">arrow_back</span>
+                    </button>
+                    <div class="header-title">
+                        <h1>Cài đặt Hệ thống</h1>
+                        <p>Quản lý tùy chỉnh và cấu hình toàn diện</p>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <div class="search-bar">
+                        <span class="material-symbols-outlined search-icon">search</span>
+                        <input type="text" placeholder="Tìm kiếm cài đặt..." class="search-input" id="settings-search">
+                    </div>
+                    <button class="btn-primary" id="save-all-settings">
+                        <span class="material-symbols-outlined">save</span>
+                        Lưu tất cả
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Main Settings Content -->
+            <div class="settings-container">
+                <div class="settings-layout">
+                    <!-- Sidebar Navigation -->
+                    <aside class="settings-sidebar">
+                        <nav class="settings-nav">
+                            <div class="nav-section">
+                                <h3 class="nav-section-title">Tài khoản & Hồ sơ</h3>
+                                <ul class="nav-list">
+                                    <li class="nav-item active" data-section="general">
+                                        <span class="nav-icon material-symbols-outlined">person</span>
+                                        <span class="nav-text">Thông tin chung</span>
+                                    </li>
+                                    <li class="nav-item" data-section="privacy">
+                                        <span class="nav-icon material-symbols-outlined">lock</span>
+                                        <span class="nav-text">Quyền riêng tư</span>
+                                    </li>
+                                    <li class="nav-item" data-section="notifications">
+                                        <span class="nav-icon material-symbols-outlined">notifications</span>
+                                        <span class="nav-text">Thông báo</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="nav-section">
+                                <h3 class="nav-section-title">Giao diện & Hiển thị</h3>
+                                <ul class="nav-list">
+                                    <li class="nav-item" data-section="appearance">
+                                        <span class="nav-icon material-symbols-outlined">palette</span>
+                                        <span class="nav-text">Giao diện</span>
+                                    </li>
+                                    <li class="nav-item" data-section="language">
+                                        <span class="nav-icon material-symbols-outlined">language</span>
+                                        <span class="nav-text">Ngôn ngữ & Vùng</span>
+                                    </li>
+                                    <li class="nav-item" data-section="accessibility">
+                                        <span class="nav-icon material-symbols-outlined">accessibility</span>
+                                        <span class="nav-text">Trợ năng</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="nav-section">
+                                <h3 class="nav-section-title">Hệ thống & Bảo mật</h3>
+                                <ul class="nav-list">
+                                    <li class="nav-item" data-section="security">
+                                        <span class="nav-icon material-symbols-outlined">shield</span>
+                                        <span class="nav-text">Bảo mật</span>
+                                    </li>
+                                    <li class="nav-item" data-section="storage">
+                                        <span class="nav-icon material-symbols-outlined">storage</span>
+                                        <span class="nav-text">Lưu trữ & Dữ liệu</span>
+                                    </li>
+                                    <li class="nav-item" data-section="api">
+                                        <span class="nav-icon material-symbols-outlined">api</span>
+                                        <span class="nav-text">API & Tích hợp</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            
+                            <div class="nav-section">
+                                <h3 class="nav-section-title">Nâng cao</h3>
+                                <ul class="nav-list">
+                                    <li class="nav-item" data-section="backup">
+                                        <span class="nav-icon material-symbols-outlined">backup</span>
+                                        <span class="nav-text">Sao lưu & Khôi phục</span>
+                                    </li>
+                                    <li class="nav-item" data-section="developer">
+                                        <span class="nav-icon material-symbols-outlined">code</span>
+                                        <span class="nav-text">Nhà phát triển</span>
+                                    </li>
+                                    <li class="nav-item" data-section="about">
+                                        <span class="nav-icon material-symbols-outlined">info</span>
+                                        <span class="nav-text">Về ứng dụng</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                        
+                        <div class="sidebar-footer">
+                            <div class="system-status">
+                                <div class="status-indicator active"></div>
+                                <span class="status-text">Hệ thống ổn định</span>
+                            </div>
+                            <div class="version-info">
+                                <span class="version-label">Phiên bản</span>
+                                <span class="version-number">2.4.1</span>
+                            </div>
+                        </div>
+                    </aside>
+                    
+                    <!-- Main Settings Area -->
+                    <main class="settings-main">
+                        <!-- General Settings -->
+                        <section class="settings-section active" id="general-section">
+                            <div class="section-header">
+                                <h2 class="section-title">Thông tin Tài khoản</h2>
+                                <p class="section-description">Quản lý thông tin cá nhân và tài khoản của bạn</p>
+                            </div>
+                            
+                            <div class="settings-card">
+                                <div class="settings-card-header">
+                                    <h3 class="card-title">Thông tin cá nhân</h3>
+                                    <p class="card-subtitle">Cập nhật thông tin cơ bản của bạn</p>
+                                </div>
+                                
+                                <div class="form-grid">
+                                    <div class="form-group">
+                                        <label class="form-label">Họ và tên</label>
+                                        <input type="text" class="form-input" value="Nguyễn Văn An" placeholder="Nhập họ và tên">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="form-label">Email</label>
+                                        <input type="email" class="form-input" value="nguyenvanan@hauhub.edu.vn" placeholder="Nhập địa chỉ email">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="form-label">Số điện thoại</label>
+                                        <input type="tel" class="form-input" value="(+84) 123 456 789" placeholder="Nhập số điện thoại">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="form-label">Chức vụ</label>
+                                        <select class="form-select">
+                                            <option>Sinh viên</option>
+                                            <option selected>Giảng viên</option>
+                                            <option>Quản trị viên</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="form-label">Khoa/Viện</label>
+                                        <input type="text" class="form-input" value="Công nghệ Thông tin" placeholder="Nhập khoa/viện">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="form-label">Ngày tham gia</label>
+                                        <input type="text" class="form-input" value="15/03/2023" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-card">
+                                <div class="settings-card-header">
+                                    <h3 class="card-title">Ảnh đại diện</h3>
+                                    <p class="card-subtitle">Cập nhật ảnh hồ sơ của bạn</p>
+                                </div>
+                                
+                                <div class="avatar-settings">
+                                    <div class="avatar-preview">
+                                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Avatar" class="avatar-image">
+                                        <div class="avatar-overlay">
+                                            <span class="material-symbols-outlined">photo_camera</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="avatar-controls">
+                                        <button class="btn-secondary">
+                                            <span class="material-symbols-outlined">upload</span>
+                                            Tải ảnh lên
+                                        </button>
+                                        <button class="btn-secondary">
+                                            <span class="material-symbols-outlined">delete</span>
+                                            Xóa ảnh
+                                        </button>
+                                    </div>
+                                    
+                                    <div class="avatar-info">
+                                        <p>• Kích thước tối đa: 5MB</p>
+                                        <p>• Định dạng: JPG, PNG, GIF</p>
+                                        <p>• Tỷ lệ khuyến nghị: 1:1</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <!-- Appearance Settings -->
+                        <section class="settings-section" id="appearance-section">
+                            <div class="section-header">
+                                <h2 class="section-title">Giao diện & Hiển thị</h2>
+                                <p class="section-description">Tùy chỉnh giao diện ứng dụng theo ý thích của bạn</p>
+                            </div>
+                            
+                            <div class="settings-card">
+                                <div class="settings-card-header">
+                                    <h3 class="card-title">Chế độ hiển thị</h3>
+                                    <p class="card-subtitle">Chọn chế độ hiển thị phù hợp với bạn</p>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label toggle-label">
+                                        <span>Chế độ tối</span>
+                                        <div class="toggle-switch">
+                                            <input type="checkbox" checked>
+                                            <span class="toggle-slider"></span>
+                                        </div>
+                                    </label>
+                                    <p class="form-hint">Kích hoạt chế độ tối để bảo vệ mắt và tiết kiệm pin</p>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Chủ đề màu</label>
+                                    <div class="color-scheme-options">
+                                        <div class="color-option active">
+                                            <div class="color-preview" style="background: linear-gradient(135deg, #287fbd, #2b7ac6)"></div>
+                                            <span>Mặc định</span>
+                                        </div>
+                                        <div class="color-option">
+                                            <div class="color-preview" style="background: linear-gradient(135deg, #7b1fa2, #9c27b0)"></div>
+                                            <span>Tím</span>
+                                        </div>
+                                        <div class="color-option">
+                                            <div class="color-preview" style="background: linear-gradient(135deg, #d32f2f, #f44336)"></div>
+                                            <span>Đỏ</span>
+                                        </div>
+                                        <div class="color-option">
+                                            <div class="color-preview" style="background: linear-gradient(135deg, #388e3c, #4caf50)"></div>
+                                            <span>Xanh lá</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Mật độ hiển thị</label>
+                                    <select class="form-select">
+                                        <option selected>Mặc định</option>
+                                        <option>Nhỏ gọn</option>
+                                        <option>Thoải mái</option>
+                                    </select>
+                                    <p class="form-hint">Điều chỉnh khoảng cách và kích thước phần tử</p>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-card">
+                                <div class="settings-card-header">
+                                    <h3 class="card-title">Trang chủ & Bố cục</h3>
+                                    <p class="card-subtitle">Tùy chỉnh trang chủ và bố cục ứng dụng</p>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label toggle-label">
+                                        <span>Hiển thị widget thời tiết</span>
+                                        <div class="toggle-switch">
+                                            <input type="checkbox" checked>
+                                            <span class="toggle-slider"></span>
+                                        </div>
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label toggle-label">
+                                        <span>Hiển thị lịch sử truy cập</span>
+                                        <div class="toggle-switch">
+                                            <input type="checkbox">
+                                            <span class="toggle-slider"></span>
+                                        </div>
+                                    </label>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Sắp xếp mục ưa thích</label>
+                                    <div class="sortable-list">
+                                        <div class="sortable-item">
+                                            <span class="material-symbols-outlined">dashboard</span>
+                                            <span>Dashboard</span>
+                                            <span class="material-symbols-outlined drag-handle">drag_handle</span>
+                                        </div>
+                                        <div class="sortable-item">
+                                            <span class="material-symbols-outlined">forum</span>
+                                            <span>Diễn đàn</span>
+                                            <span class="material-symbols-outlined drag-handle">drag_handle</span>
+                                        </div>
+                                        <div class="sortable-item">
+                                            <span class="material-symbols-outlined">school</span>
+                                            <span>Học tập</span>
+                                            <span class="material-symbols-outlined drag-handle">drag_handle</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <!-- Security Settings -->
+                        <section class="settings-section" id="security-section">
+                            <div class="section-header">
+                                <h2 class="section-title">Bảo mật & Đăng nhập</h2>
+                                <p class="section-description">Quản lý bảo mật tài khoản và thiết lập đăng nhập</p>
+                            </div>
+                            
+                            <div class="settings-card">
+                                <div class="settings-card-header">
+                                    <h3 class="card-title">Xác thực tài khoản</h3>
+                                    <p class="card-subtitle">Các phương thức xác thực và bảo mật</p>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label toggle-label">
+                                        <span>Xác thực 2 yếu tố (2FA)</span>
+                                        <div class="toggle-switch">
+                                            <input type="checkbox">
+                                            <span class="toggle-slider"></span>
+                                        </div>
+                                    </label>
+                                    <p class="form-hint">Thêm lớp bảo mật cho tài khoản của bạn</p>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Mức độ bảo mật</label>
+                                    <div class="security-level">
+                                        <div class="level-indicator medium"></div>
+                                        <span>Trung bình - Khuyến nghị cải thiện</span>
+                                    </div>
+                                    <p class="form-hint">Cập nhật mật khẩu và kích hoạt 2FA để nâng cao bảo mật</p>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button class="btn-primary">Đổi mật khẩu</button>
+                                    <button class="btn-secondary">Xem hoạt động đăng nhập</button>
+                                    <button class="btn-secondary">Quản lý thiết bị</button>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-card">
+                                <div class="settings-card-header">
+                                    <h3 class="card-title">Phiên đăng nhập</h3>
+                                    <p class="card-subtitle">Quản lý các phiên đăng nhập hiện tại</p>
+                                </div>
+                                
+                                <div class="sessions-list">
+                                    <div class="session-item active">
+                                        <div class="session-info">
+                                            <div class="session-icon">
+                                                <span class="material-symbols-outlined">laptop</span>
+                                            </div>
+                                            <div>
+                                                <h4>Windows 11 • Chrome</h4>
+                                                <p>Hiện tại • IP: 192.168.1.100</p>
+                                            </div>
+                                        </div>
+                                        <span class="session-status active">Đang hoạt động</span>
+                                    </div>
+                                    
+                                    <div class="session-item">
+                                        <div class="session-info">
+                                            <div class="session-icon">
+                                                <span class="material-symbols-outlined">smartphone</span>
+                                            </div>
+                                            <div>
+                                                <h4>Android • HauHub App</h4>
+                                                <p>2 giờ trước • IP: 192.168.1.101</p>
+                                            </div>
+                                        </div>
+                                        <button class="btn-secondary btn-sm">Đăng xuất</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <!-- Storage Settings -->
+                        <section class="settings-section" id="storage-section">
+                            <div class="section-header">
+                                <h2 class="section-title">Lưu trữ & Dữ liệu</h2>
+                                <p class="section-description">Quản lý không gian lưu trữ và dữ liệu ứng dụng</p>
+                            </div>
+                            
+                            <div class="settings-card">
+                                <div class="settings-card-header">
+                                    <h3 class="card-title">Sử dụng lưu trữ</h3>
+                                    <p class="card-subtitle">Tổng quan không gian lưu trữ của bạn</p>
+                                </div>
+                                
+                                <div class="storage-overview">
+                                    <div class="storage-info">
+                                        <div class="storage-label">Đã sử dụng</div>
+                                        <div class="storage-value">4.2 GB / 15 GB</div>
+                                    </div>
+                                    
+                                    <div class="storage-meter">
+                                        <div class="storage-progress" style="width: 28%"></div>
+                                    </div>
+                                    
+                                    <div class="storage-breakdown">
+                                        <div class="breakdown-item">
+                                            <div class="breakdown-label">
+                                                <span class="breakdown-color" style="background: #287fbd"></span>
+                                                <span>Tài liệu học tập</span>
+                                            </div>
+                                            <div class="breakdown-value">2.1 GB</div>
+                                        </div>
+                                        <div class="breakdown-item">
+                                            <div class="breakdown-label">
+                                                <span class="breakdown-color" style="background: #2b7ac6"></span>
+                                                <span>Ảnh & Video</span>
+                                            </div>
+                                            <div class="breakdown-value">1.4 GB</div>
+                                        </div>
+                                        <div class="breakdown-item">
+                                            <div class="breakdown-label">
+                                                <span class="breakdown-color" style="background: #3f8fd9"></span>
+                                                <span>Bộ nhớ đệm</span>
+                                            </div>
+                                            <div class="breakdown-value">0.7 GB</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button class="btn-secondary">Dọn dẹp bộ nhớ đệm</button>
+                                    <button class="btn-secondary">Xem tài liệu lớn</button>
+                                    <button class="btn-primary">Nâng cấp lưu trữ</button>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-card">
+                                <div class="settings-card-header">
+                                    <h3 class="card-title">Tự động xóa</h3>
+                                    <p class="card-subtitle">Cài đặt tự động dọn dẹp dữ liệu</p>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label toggle-label">
+                                        <span>Tự động xóa bộ nhớ đệm</span>
+                                        <div class="toggle-switch">
+                                            <input type="checkbox" checked>
+                                            <span class="toggle-slider"></span>
+                                        </div>
+                                    </label>
+                                    <p class="form-hint">Tự động xóa bộ nhớ đệm sau 30 ngày</p>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Giữ lịch sử tìm kiếm</label>
+                                    <select class="form-select">
+                                        <option>30 ngày</option>
+                                        <option selected>90 ngày</option>
+                                        <option>1 năm</option>
+                                        <option>Mãi mãi</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </section>
+                        
+                        <!-- Backup Settings -->
+                        <section class="settings-section" id="backup-section">
+                            <div class="section-header">
+                                <h2 class="section-title">Sao lưu & Khôi phục</h2>
+                                <p class="section-description">Quản lý sao lưu dữ liệu và khôi phục hệ thống</p>
+                            </div>
+                            
+                            <div class="settings-card">
+                                <div class="settings-card-header">
+                                    <h3 class="card-title">Sao lưu tự động</h3>
+                                    <p class="card-subtitle">Cài đặt sao lưu dữ liệu tự động</p>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label toggle-label">
+                                        <span>Sao lưu đám mây</span>
+                                        <div class="toggle-switch">
+                                            <input type="checkbox" checked>
+                                            <span class="toggle-slider"></span>
+                                        </div>
+                                    </label>
+                                    <p class="form-hint">Tự động sao lưu dữ liệu lên đám mây</p>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label class="form-label">Tần suất sao lưu</label>
+                                    <select class="form-select">
+                                        <option>Hàng ngày</option>
+                                        <option selected>Hàng tuần</option>
+                                        <option>Hàng tháng</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="backup-history">
+                                    <h4>Lịch sử sao lưu gần đây</h4>
+                                    <div class="backup-item">
+                                        <span>24/12/2024 02:00</span>
+                                        <span class="text-success">Thành công</span>
+                                    </div>
+                                    <div class="backup-item">
+                                        <span>17/12/2024 02:00</span>
+                                        <span class="text-success">Thành công</span>
+                                    </div>
+                                    <div class="backup-item">
+                                        <span>10/12/2024 02:00</span>
+                                        <span class="text-warning">Cảnh báo</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="settings-card">
+                                <div class="settings-card-header">
+                                    <h3 class="card-title">Khôi phục dữ liệu</h3>
+                                    <p class="card-subtitle">Khôi phục dữ liệu từ bản sao lưu</p>
+                                </div>
+                                
+                                <div class="form-actions">
+                                    <button class="btn-primary">
+                                        <span class="material-symbols-outlined">cloud_download</span>
+                                        Khôi phục từ đám mây
+                                    </button>
+                                    <button class="btn-secondary">
+                                        <span class="material-symbols-outlined">upload_file</span>
+                                        Tải lên bản sao lưu
+                                    </button>
+                                </div>
+                                
+                                <div class="warning-box">
+                                    <span class="material-symbols-outlined">warning</span>
+                                    <div>
+                                        <h4>Cảnh báo quan trọng</h4>
+                                        <p>Khôi phục dữ liệu sẽ ghi đè lên dữ liệu hiện tại. Hãy đảm bảo bạn đã sao lưu dữ liệu hiện tại trước khi thực hiện.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer sẽ được inject bởi JS -->
+    <footer></footer>
+
+    <!-- AI Chat Widget Container -->
+    <div id="ai-chat-widget"></div>
+
+    <!-- JavaScript -->
+    <script type="module">
+        import { Header } from '../js/components/header.js';
+        import { Footer } from '../js/components/footer.js';
+        import { AIChatWidget } from '../js/components/chat-widget.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inject Header, Footer, Chat Widget
+            new Header();
+            new Footer();
+            new AIChatWidget();
+            
+            // Khởi tạo chức năng settings
+            initializeSettings();
+        });
+        
+        function initializeSettings() {
+            // Tab navigation
+            const navItems = document.querySelectorAll('.nav-item');
+            const sections = document.querySelectorAll('.settings-section');
+            
+            navItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const sectionId = item.dataset.section + '-section';
+                    
+                    // Remove active class from all
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    sections.forEach(section => section.classList.remove('active'));
+                    
+                    // Add active class to clicked
+                    item.classList.add('active');
+                    document.getElementById(sectionId)?.classList.add('active');
+                });
+            });
+            
+            // Search functionality
+            const searchInput = document.getElementById('settings-search');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    const searchTerm = e.target.value.toLowerCase();
+                    // Implement search logic
+                });
+            }
+            
+            // Save all settings
+            const saveBtn = document.getElementById('save-all-settings');
+            if (saveBtn) {
+                saveBtn.addEventListener('click', () => {
+                    alert('Đã lưu tất cả cài đặt');
+                });
+            }
+        }
+    </script>
+
+        <!-- Giữ các script cũ để tương thích (nếu cần legacy code) -->
+    <script src="../../js/components/header.js"></script>
+    <script src="../../js/components/footer.js"></script>
+    <script src="../../js/components/sidebar.js"></script>
+    <script src="../../js/services/user-service.js"></script>
+    <!-- settings.js cũ có thể merge vào SettingsPage module -->
+</body>
+</html>

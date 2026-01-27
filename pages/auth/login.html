@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập - HauHub</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/pages/login.css">
+    
+    <!-- External Libraries -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;family=Merriweather:ital,wght@0,400;0,700;1,400&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <div class="login-wrapper">
+            <!-- Left Panel - Visual Section -->
+            <section class="login-left-panel">
+                <div class="architectural-grid-dark"></div>
+                <div class="architectural-subgrid opacity-50"></div>
+                <div class="blueprint-overlay"></div>
+                
+                <div class="panel-header-top">
+                    <div class="flex items-center gap-3">
+                        <span class="mono-label text-white/90"></span>
+                        <span class="tech-badge"></span>
+                    </div>
+                    <div class="divider-line"></div>
+                    <span class="mono-label text-white/40 text-xs"></span>
+                </div>
+                
+                <div class="panel-header-bottom">
+                    <div class="flex items-end gap-6">
+                        <div class="flex flex-col">
+                            <span class="mono-label text-white font-bold">HANOI UNIVERSITY OF ARCHITECTURE</span>
+                            <span class="mono-label text-white/50 text-xs">KM 10, NGUYEN TRAI, THANH XUAN, HANOI</span>
+                        </div>
+                        <div class="vertical-divider"></div>
+                        <div class="flex flex-col">
+                            <span class="mono-label text-white/90"></span>
+                            <span class="mono-label text-white/40 text-xs"></span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="compass-container">
+                    <div class="compass-circle">
+                        <div class="compass-needle"></div>
+                        <span class="compass-label">N</span>
+                        <div class="compass-line line-45"></div>
+                        <div class="compass-line line-minus-45"></div>
+                    </div>
+                </div>
+                
+                <div class="building-illustration-container">
+                    <div class="building-illustration-white"></div>
+                    <div class="axis-label-left">
+                        <span class="mono-label text-white/40"></span>
+                    </div>
+                    <div class="axis-label-bottom">
+                        <span class="mono-label text-white/40"></span>
+                    </div>
+                </div>
+                
+                <div class="border-frame"></div>
+            </section>
+            
+            <!-- Right Panel - Login Form -->
+            <section class="login-right-panel">
+                <div class="login-form-container">
+                    <div class="back-to-index">
+                        <a href="../index.html" class="back-link">
+                            <span class="material-symbols-outlined">arrow_back</span>
+                            <span>Quay lại trang chủ</span>
+                        </a>
+                    </div>
+                    
+                    <header class="login-header">
+                        <h2 class="login-title">Đăng nhập</h2>
+                        <p class="login-subtitle">HAU HUB</p>
+                    </header>
+                    
+                    <form id="loginForm" class="login-form" action="#" method="POST">
+                        <div class="form-section">
+                            <label class="form-section-label">
+                                <span class="label-text">Bạn là ?</span>
+                            </label>
+                            
+                            <div class="role-selection-grid">
+                                <button type="button" class="role-btn active" data-role="student">
+                                    <span class="material-symbols-outlined role-icon">school</span>
+                                    <span class="role-text">Sinh viên</span>
+                                </button>
+                                
+                                <button type="button" class="role-btn" data-role="teacher">
+                                    <span class="material-symbols-outlined role-icon">architecture</span>
+                                    <span class="role-text">Giảng viên</span>
+                                </button>
+                                
+                                <button type="button" class="role-btn" data-role="admin">
+                                    <span class="material-symbols-outlined role-icon">admin_panel_settings</span>
+                                    <span class="role-text">Quản trị</span>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-inputs">
+                            <div class="input-group">
+                                <label for="username" class="input-label">Mã định danh / ID</label>
+                                <input type="text" 
+                                       id="username" 
+                                       name="username" 
+                                       class="input-academic" 
+                                       placeholder="Ví dụ: 205106..." 
+                                       required>
+                                <div class="input-error" id="usernameError"></div>
+                            </div>
+                            
+                           <div class="input-group">
+                                 <label for="password" class="input-label">Mật khẩu / PASSWORD</label>
+                                 <div class="password-input-wrapper">
+                                  <input type="password" 
+                                  id="password" 
+                                   name="password" 
+                                   class="input-academic password-input" 
+                                      placeholder="••••••••" 
+                                   required>
+                                  <button type="button" 
+                                   class="password-toggle" 
+                                   id="passwordToggle"
+                                   aria-label="Hiển thị mật khẩu">
+                                <span class="material-symbols-outlined toggle-icon">visibility_off</span>
+                                 </button>
+                                </div>
+                               <div class="input-error" id="passwordError"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-options">
+                            <label class="remember-me">
+                                <input type="checkbox" id="remember" name="remember">
+                                <span class="checkbox-custom"></span>
+                                <span class="remember-text">Nhớ mật khẩu</span>
+                            </label>
+                            
+                            <a href="forgot-password.html" class="forgot-password">Quên mật khẩu?</a>
+                        </div>
+                        
+                        <button type="submit" class="btn-login" id="loginBtn">
+                            <span class="btn-text">Đăng nhập</span>
+                            <div class="btn-loader hidden" id="loginLoader"></div>
+                        </button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+    
+    <!-- JavaScript Files -->
+    <script src="../../js/utils/auth.js"></script>
+    <script src="../../js/utils/form-validation.js"></script>
+    <script src="../../js/services/auth-service.js"></script>
+    <script src="../../js/pages/login.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+{
+  "departments": [
+    {
+      "id": "architecture",
+      "slug": "architecture",
+      "name": "Khoa Kiến trúc",
+      "description": "Nơi thảo luận về đồ án, kiến trúc bền vững và không gian sống hiện đại của sinh viên HAU.",
+      "color": "#136dec",
+      "backgroundImage": "https://lh3.googleusercontent.com/aida-public/AB6AXuCOsuhd-cNP1MTUC8zd7008GHLAjpY3_iyQeKGOdlDvJa02i9T9U9ud5e_YYaXTPz7s7FtQ8WfP-8Trp5jMdQJmigXFpnNkptdDUfETSkrzdkZEOM7vINLs_StZofrqqj0B3F-Yiu16ICnc1hAtTe-wBxDrvWB5__Dj7gsO0JwqJVy32LmvMcPF-2FvKB0ckQnYsm6znmV8tqwCnIQ756m1mc2tSNcQ_wIX-xqYfly0bQ9V7ez7RJ5PPeuLRALAgOCskg8nzgNiDDE",
+      "memberCount": 1240,
+      "topicCount": 3521,
+      "onlineCount": 42,
+      "tags": ["DoAn", "GopY", "TaiLieu", "ThaoLuan", "KienThuc"],
+      "subCategories": [
+        { "id": "design", "slug": "design", "name": "Thiết kế kiến trúc" },
+        { "id": "urban", "slug": "urban", "name": "Quy hoạch đô thị" },
+        { "id": "sustainable", "slug": "sustainable", "name": "Kiến trúc bền vững" }
+      ]
+    },
+    {
+      "id": "construction",
+      "slug": "construction",
+      "name": "Khoa Xây dựng",
+      "description": "Diễn đàn trao đổi về kỹ thuật xây dựng, vật liệu và quản lý dự án.",
+      "color": "#10b981",
+      "backgroundImage": "https://example.com/construction-bg.jpg",
+      "memberCount": 980,
+      "topicCount": 2150,
+      "onlineCount": 28
+    },
+    {
+      "id": "it",
+      "slug": "it",
+      "name": "Khoa Công nghệ thông tin",
+      "description": "Nơi thảo luận về lập trình, công nghệ mới và dự án phần mềm.",
+      "color": "#8b5cf6",
+      "backgroundImage": "https://example.com/it-bg.jpg",
+      "memberCount": 1560,
+      "topicCount": 4210,
+      "onlineCount": 65
+    },
+    {
+      "id": "business",
+      "slug": "business",
+      "name": "Khoa Kinh doanh",
+      "description": "Diễn đàn về quản trị kinh doanh, marketing và khởi nghiệp.",
+      "color": "#f59e0b",
+      "backgroundImage": "https://example.com/business-bg.jpg",
+      "memberCount": 1120,
+      "topicCount": 2980,
+      "onlineCount": 35
+    }
+  ]
+}

@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">Khoa Kiến trúc | Diễn đàn - HauHub</title>
+    
+    <!-- CSS Files (Giữ nguyên) -->
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/pages/forum-category.css">
+    
+    <!-- Google Fonts & Icons (Giữ nguyên) -->
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (Giữ nguyên) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background-light": "#F9F7F2",
+                        "background-dark": "#101822",
+                    },
+                    fontFamily: {
+                        "display": ["Newsreader", "serif"],
+                        "sans": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body { font-family: 'Noto Sans', sans-serif; }
+        .font-display { font-family: 'Newsreader', serif; }
+        .ambient-shadow { box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05); }
+    </style>
+    
+    <!-- Favicon (Thêm như trang home) -->
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen">
+    <!-- Header sẽ được inject bởi JS (Thay thế header cũ) -->
+    <header></header>
+    
+    <!-- Main Content (Giữ nguyên) -->
+    <main class="main-content">
+        <div id="page-content">
+            <div class="container mx-auto px-4 py-8 max-w-6xl">
+                <!-- Category Banner (Giữ nguyên) -->
+                <section class="category-banner mb-8">
+                    <div class="banner-card">
+                        <div class="banner-background"></div>
+                        <div class="banner-content">
+                            <nav class="breadcrumb-nav" id="breadcrumb-nav">
+                                <!-- Breadcrumb sẽ được tạo bởi JS -->
+                            </nav>
+                            <h1 class="category-name" id="category-name">Khoa Kiến trúc</h1>
+                            <p class="category-description" id="category-description">
+                                Nơi thảo luận về đồ án, kiến trúc bền vững và không gian sống hiện đại của sinh viên HAU.
+                            </p>
+                        </div>
+                        <button id="create-topic-btn" class="btn-create-topic">
+                            <span class="material-symbols-outlined">add_circle</span>
+                            <span>Tạo chủ đề mới</span>
+                        </button>
+                    </div>
+                </section>
+                
+                <!-- Search & Filter Section (Giữ nguyên) -->
+                <section class="search-filter-section mb-10">
+                    <div class="search-container">
+                        <div class="search-box">
+                            <span class="material-symbols-outlined search-icon">search</span>
+                            <input type="text" 
+                                   id="search-input" 
+                                   class="search-input"
+                                   placeholder="Tìm kiếm thảo luận...">
+                        </div>
+                        <button id="filter-btn" class="btn-filter">
+                            <span class="material-symbols-outlined">tune</span>
+                            <span>Lọc</span>
+                        </button>
+                    </div>
+                    
+                    <!-- Tags Section (Giữ nguyên) -->
+                    <div class="tags-container">
+                        <div class="tags-list" id="tags-list">
+                            <!-- Tags sẽ được tạo bởi JS -->
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Topics List (Giữ nguyên) -->
+                <section class="topics-section">
+                    <div class="topics-header">
+                        <h2 class="section-title">Danh sách thảo luận</h2>
+                        <div class="sort-options">
+                            <span class="sort-option active" data-sort="popular">Phổ biến</span>
+                            <span class="sort-option" data-sort="newest">Mới nhất</span>
+                            <span class="sort-option" data-sort="unanswered">Chưa trả lời</span>
+                            <span class="sort-option" data-sort="top-rated">Đánh giá cao</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Topics Container (Giữ nguyên) -->
+                    <div id="topics-container" class="topics-list">
+                        <!-- Topics sẽ được tải bởi JS -->
+                        <div class="loading-indicator">
+                            <span class="material-symbols-outlined animate-spin">refresh</span>
+                            <p>Đang tải thảo luận...</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Load More (Giữ nguyên) -->
+                    <div class="load-more-section" id="load-more-section">
+                        <button id="load-more-btn" class="btn-load-more">
+                            Xem thêm thảo luận
+                        </button>
+                    </div>
+                </section>
+                
+                <!-- Stats Section (Giữ nguyên) -->
+                <section class="stats-section mt-12">
+                    <div class="stats-grid" id="stats-grid">
+                        <!-- Stats sẽ được tải bởi JS -->
+                    </div>
+                </section>
+                
+                <!-- Department Navigation (Giữ nguyên) -->
+                <section class="department-nav-section mt-12" id="department-nav-section">
+                    <h3 class="section-title">Các khoa khác</h3>
+                    <div class="department-grid" id="department-grid">
+                        <!-- Các khoa sẽ được tạo bởi JS -->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer sẽ được inject bởi JS (Thay thế footer cũ) -->
+    <footer></footer>
+    
+    <!-- THÊM: AI Chat Widget Container (như trang home) -->
+    <div id="ai-chat-widget"></div>
+    
+    <!-- Create Topic Modal (Giữ nguyên) -->
+    <div id="create-topic-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3 class="modal-title">Tạo chủ đề mới</h3>
+            <form id="create-topic-form">
+                <div class="form-group">
+                    <label for="topic-title">Tiêu đề</label>
+                    <input type="text" id="topic-title" placeholder="Nhập tiêu đề chủ đề..." required>
+                </div>
+                <div class="form-group">
+                    <label for="topic-tags">Tags (tối đa 3)</label>
+                    <div class="tags-input-container">
+                        <input type="text" id="topic-tags" placeholder="Nhập tags, phân cách bằng dấu phẩy...">
+                        <div class="suggested-tags" id="suggested-tags"></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="topic-content">Nội dung</label>
+                    <textarea id="topic-content" rows="6" placeholder="Nhập nội dung chủ đề..." required></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel">Hủy</button>
+                    <button type="submit" class="btn-submit">Đăng bài</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Filter Modal (Giữ nguyên) -->
+    <div id="filter-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3 class="modal-title">Lọc thảo luận</h3>
+            <form id="filter-form">
+                <div class="form-group">
+                    <label for="filter-category">Chuyên mục con</label>
+                    <select id="filter-category">
+                        <option value="">Tất cả chuyên mục</option>
+                        <!-- Options sẽ được tạo bởi JS -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="filter-time">Khoảng thời gian</label>
+                    <select id="filter-time">
+                        <option value="">Tất cả thời gian</option>
+                        <option value="today">Hôm nay</option>
+                        <option value="week">Tuần này</option>
+                        <option value="month">Tháng này</option>
+                        <option value="year">Năm nay</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="filter-author">Tác giả</label>
+                    <input type="text" id="filter-author" placeholder="Tên tác giả...">
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn-cancel">Hủy</button>
+                    <button type="submit" class="btn-submit">Áp dụng</button>
+                    <button type="button" class="btn-reset">Đặt lại</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- JavaScript (Kết hợp cũ và mới) -->
+    <script type="module">
+        // Import các component mới (như trang home)
+        import { Header } from '../../js/components/header.js';
+        import { Footer } from '../../js/components/footer.js';
+        import { AIChatWidget } from '../../js/components/chat-widget.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inject Header, Footer, Chat Widget (như trang home)
+            new Header();
+            new Footer();
+            new AIChatWidget();
+            
+            // Khởi tạo JS cũ của forum category (giữ nguyên chức năng)
+            initializeForumCategory();
+        });
+        
+        // Giữ nguyên hàm initializeForumCategory cũ (hoặc giữ script cũ)
+        function initializeForumCategory() {
+            // Create topic button
+            const createTopicBtn = document.getElementById('create-topic-btn');
+            const createTopicModal = document.getElementById('create-topic-modal');
+            const cancelCreateTopic = document.querySelector('.btn-cancel');
+            
+            if (createTopicBtn && createTopicModal) {
+                createTopicBtn.addEventListener('click', () => {
+                    createTopicModal.style.display = 'block';
+                });
+            }
+            
+            if (cancelCreateTopic && createTopicModal) {
+                cancelCreateTopic.addEventListener('click', () => {
+                    createTopicModal.style.display = 'none';
+                });
+            }
+            
+            // Filter button
+            const filterBtn = document.getElementById('filter-btn');
+            const filterModal = document.getElementById('filter-modal');
+            
+            if (filterBtn && filterModal) {
+                filterBtn.addEventListener('click', () => {
+                    filterModal.style.display = 'block';
+                });
+            }
+            
+            // Cancel filter modal
+            const cancelFilter = document.querySelector('#filter-form .btn-cancel');
+            if (cancelFilter && filterModal) {
+                cancelFilter.addEventListener('click', () => {
+                    filterModal.style.display = 'none';
+                });
+            }
+            
+            // Reset filter
+            const resetFilter = document.querySelector('.btn-reset');
+            if (resetFilter) {
+                resetFilter.addEventListener('click', () => {
+                    const filterForm = document.getElementById('filter-form');
+                    if (filterForm) {
+                        filterForm.reset();
+                    }
+                });
+            }
+            
+            // Search functionality
+            const searchInput = document.getElementById('search-input');
+            const searchIcon = document.querySelector('.search-icon');
+            
+            function performSearch() {
+                const query = searchInput?.value.trim();
+                if (query) {
+                    alert(`Tìm kiếm thảo luận: ${query}`);
+                }
+            }
+            
+            if (searchIcon) {
+                searchIcon.addEventListener('click', performSearch);
+            }
+            
+            if (searchInput) {
+                searchInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        performSearch();
+                    }
+                });
+            }
+            
+            // Sort options
+            const sortOptions = document.querySelectorAll('.sort-option');
+            sortOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const sortType = this.dataset.sort;
+                    
+                    // Remove active class from all
+                    sortOptions.forEach(opt => opt.classList.remove('active'));
+                    
+                    // Add active class to clicked
+                    this.classList.add('active');
+                    
+                    alert(`Sắp xếp theo: ${sortType}`);
+                });
+            });
+            
+            // Load more button
+            const loadMoreBtn = document.getElementById('load-more-btn');
+            if (loadMoreBtn) {
+                loadMoreBtn.addEventListener('click', () => {
+                    alert('Tải thêm thảo luận');
+                });
+            }
+            
+            // Create topic form
+            const createTopicForm = document.getElementById('create-topic-form');
+            if (createTopicForm) {
+                createTopicForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const title = document.getElementById('topic-title').value;
+                    const content = document.getElementById('topic-content').value;
+                    
+                    if (title && content) {
+                        alert(`Đăng bài thành công: ${title}`);
+                        createTopicModal.style.display = 'none';
+                        createTopicForm.reset();
+                    }
+                });
+            }
+            
+            // Filter form
+            const filterForm = document.getElementById('filter-form');
+            if (filterForm) {
+                filterForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('Áp dụng bộ lọc');
+                    filterModal.style.display = 'none';
+                });
+            }
+            
+            // Close modals when clicking outside
+            window.addEventListener('click', (e) => {
+                if (createTopicModal && e.target === createTopicModal) {
+                    createTopicModal.style.display = 'none';
+                }
+                if (filterModal && e.target === filterModal) {
+                    filterModal.style.display = 'none';
+                }
+            });
+            
+            // Demo tags
+            const tags = ['Đồ án', 'Kiến trúc', 'Quy hoạch', 'Nội thất', 'Bền vững', 'Thiết kế'];
+            const tagsList = document.getElementById('tags-list');
+            if (tagsList) {
+                tags.forEach(tag => {
+                    const tagElement = document.createElement('button');
+                    tagElement.className = 'tag-item';
+                    tagElement.textContent = tag;
+                    tagElement.addEventListener('click', () => {
+                        alert(`Lọc theo tag: ${tag}`);
+                    });
+                    tagsList.appendChild(tagElement);
+                });
+            }
+            
+            // Demo topics
+            const topicsContainer = document.getElementById('topics-container');
+            if (topicsContainer) {
+                const topics = [
+                    { title: 'Chia sẻ kinh nghiệm làm đồ án kiến trúc', author: 'Nguyễn Văn A', replies: 12, views: 150, time: '2 giờ trước' },
+                    { title: 'Thảo luận về xu hướng kiến trúc bền vững 2024', author: 'Trần Thị B', replies: 8, views: 89, time: '5 giờ trước' },
+                    { title: 'Hỏi về phần mềm render kiến trúc tốt nhất', author: 'Lê Văn C', replies: 24, views: 210, time: '1 ngày trước' }
+                ];
+                
+                topics.forEach(topic => {
+                    const topicElement = document.createElement('div');
+                    topicElement.className = 'topic-item';
+                    topicElement.innerHTML = `
+                        <div class="topic-main">
+                            <h3 class="topic-title">${topic.title}</h3>
+                            <div class="topic-meta">
+                                <span class="topic-author">${topic.author}</span>
+                                <span class="topic-time">${topic.time}</span>
+                            </div>
+                        </div>
+                        <div class="topic-stats">
+                            <div class="stat-item">
+                                <span class="material-symbols-outlined">chat_bubble</span>
+                                <span>${topic.replies}</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="material-symbols-outlined">visibility</span>
+                                <span>${topic.views}</span>
+                            </div>
+                        </div>
+                    `;
+                    topicElement.addEventListener('click', () => {
+                        alert(`Mở thảo luận: ${topic.title}`);
+                    });
+                    topicsContainer.appendChild(topicElement);
+                });
+                
+                // Remove loading indicator
+                const loadingIndicator = topicsContainer.querySelector('.loading-indicator');
+                if (loadingIndicator) {
+                    loadingIndicator.remove();
+                }
+            }
+        }
+    </script>
+    
+    <!-- Giữ các script cũ nếu cần (đảm bảo không bị mất chức năng) -->
+    <script src="../../js/config/api-config.js"></script>
+    <script src="../../js/config/constants.js"></script>
+    <script src="../../js/utils/auth.js"></script>
+    <script src="../../js/utils/date-format.js"></script>
+    <script src="../../js/utils/url-params.js"></script>
+    <script src="../../js/components/modal.js"></script>
+    <script src="../../js/components/notification.js"></script>
+    <script src="../../js/services/forum-service.js"></script>
+    <script src="../../js/pages/forum-category.js" type="module"></script>
+</body>
+</html>

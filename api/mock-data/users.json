@@ -1,0 +1,93 @@
+  {
+  "users": [
+    {
+      "id": 1,
+      "code": "HAU.2024.001",
+      "name": "Nguyễn Thành Trung",
+      "email": "trung.nt@hau.edu.vn",
+      "phone": "0987654321",
+      "role": "student",
+      "department": "Kiến trúc",
+      "status": "active",
+      "createdAt": "2024-03-12",
+      "lastLogin": "2024-05-15",
+      "avatar": null,
+      "notes": "Sinh viên năm cuối"
+    },
+    {
+      "id": 2,
+      "code": "HAU.2024.002",
+      "name": "Lê Anh Tuấn",
+      "email": "tuan.la@hau.edu.vn",
+      "phone": "0912345678",
+      "role": "teacher",
+      "department": "Quy hoạch",
+      "status": "active",
+      "createdAt": "2024-03-10",
+      "lastLogin": "2024-05-16",
+      "avatar": null,
+      "notes": "Giảng viên chính"
+    },
+    {
+      "id": 3,
+      "code": "HAU.2024.045",
+      "name": "Mai Hoa",
+      "email": "hoa.m@hau.edu.vn",
+      "phone": "0909123456",
+      "role": "student",
+      "department": "Xây dựng",
+      "status": "locked",
+      "createdAt": "2024-03-01",
+      "lastLogin": "2024-04-10",
+      "avatar": null,
+      "notes": "Tạm khóa do vi phạm nội quy"
+    },
+    {
+      "id": 4,
+      "code": "HAU.2024.089",
+      "name": "Vũ Tiến",
+      "email": "tien.v@hau.edu.vn",
+      "phone": "0978123456",
+      "role": "admin",
+      "department": "Công nghệ thông tin",
+      "status": "active",
+      "createdAt": "2024-02-28",
+      "lastLogin": "2024-05-17",
+      "avatar": null,
+      "notes": "Quản trị hệ thống"
+    }
+  ],
+  "stats": {
+    "total": 12540,
+    "active": 8210,
+    "pending": 45,
+    "locked": 128,
+    "byRole": {
+      "student": 10240,
+      "teacher": 2150,
+      "admin": 150
+    }
+  },
+  "pendingRequests": [
+    {
+      "id": 1,
+      "code": "HAU.2024.500",
+      "name": "Trần Minh Anh",
+      "email": "anh.tm@hau.edu.vn",
+      "role": "student",
+      "department": "Kiến trúc",
+      "submittedAt": "2024-05-15",
+      "reason": "Tài khoản mới cho sinh viên năm nhất"
+    },
+    {
+      "id": 2,
+      "code": "HAU.2024.501",
+      "name": "Phạm Văn Hải",
+      "email": "hai.pv@hau.edu.vn",
+      "role": "teacher",
+      "department": "Nội thất",
+      "submittedAt": "2024-05-14",
+      "reason": "Giảng viên mới tuyển dụng"
+    }
+  ]
+}

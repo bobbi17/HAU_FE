@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhắn Tin Nhóm Studio - HauHub</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/utilities.css">
+    <link rel="stylesheet" href="../../css/pages/group-chat.css">
+    
+    <!-- External Libraries -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+</head>
+<body class="chat-page">
+    <!-- Main Navigation -->
+    <nav class="chat-nav">
+        <div class="nav-container">
+            <div class="nav-left">
+                <div class="chat-logo">
+                    <div class="logo-icon">
+                        <span class="logo-letter">K</span>
+                    </div>
+                    <h1 class="logo-text">HauHub</h1>
+                </div>
+                <div class="nav-links">
+                    <a href="../../index.html" class="nav-link">Trang chủ</a>
+                    <a href="study-groups.html" class="nav-link active">Nhóm học tập</a>
+                    <a href="../ai/ai-chat.html" class="nav-link">Trợ giảng AI</a>
+                </div>
+            </div>
+            
+            <div class="nav-right">
+                <button class="user-badge">
+                    <div class="badge-avatar">
+                        <img src="../../assets/images/avatars/current-user.jpg" alt="User Avatar">
+                    </div>
+                    <span class="badge-text">STUDENT_24</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Chat Container -->
+    <main class="chat-main">
+        <!-- Left Sidebar - Group List -->
+        <aside class="chat-sidebar left-sidebar">
+            <div class="sidebar-header">
+                <div class="search-box">
+                    <span class="search-icon">
+                        <span class="material-symbols-outlined">search</span>
+                    </span>
+                    <input type="text" class="search-input" placeholder="Tìm kiếm Studio...">
+                </div>
+            </div>
+            
+            <div class="group-list">
+                <!-- Group 1 - Active -->
+                <div class="group-item active">
+                    <div class="group-icon">
+                        <span class="material-symbols-outlined">architecture</span>
+                    </div>
+                    <div class="group-info">
+                        <div class="group-header">
+                            <h4 class="group-name">STUDIO_A.01_ĐỒ ÁN 1</h4>
+                            <span class="group-time">10:45</span>
+                        </div>
+                        <p class="group-preview">KTS. Nam: "Mọi người cập nhật bản vẽ mặt cắt..."</p>
+                    </div>
+                </div>
+                
+                <!-- Group 2 -->
+                <div class="group-item">
+                    <div class="group-icon">
+                        <span class="material-symbols-outlined">foundation</span>
+                    </div>
+                    <div class="group-info">
+                        <div class="group-header">
+                            <h4 class="group-name">NHÓM KẾT CẤU_B2</h4>
+                            <span class="group-time">HÔM QUA</span>
+                        </div>
+                        <p class="group-preview">Bạn: Đã gửi một file đính kèm.</p>
+                    </div>
+                </div>
+                
+                <!-- Group 3 -->
+                <div class="group-item">
+                    <div class="group-icon">
+                        <span class="material-symbols-outlined">temple_buddhist</span>
+                    </div>
+                    <div class="group-info">
+                        <div class="group-header">
+                            <h4 class="group-name">DI SẢN HÀ NỘI_TEAM</h4>
+                            <span class="group-time">2 NGÀY</span>
+                        </div>
+                        <p class="group-preview">Linh: Ảnh khảo sát Đình Kim Liên nè.</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- Main Chat Area -->
+        <section class="chat-center">
+            <!-- Chat Header -->
+            <div class="chat-header">
+                <div class="header-left">
+                    <h3 class="chat-title">STUDIO_A.01_ĐỒ ÁN 1</h3>
+                    <div class="header-divider"></div>
+                    <div class="pinned-docs">
+                        <a href="#" class="doc-pin">
+                            <span class="material-symbols-outlined">description</span>
+                            NHIEM_VU_DO_AN.PDF
+                        </a>
+                        <a href="#" class="doc-pin">
+                            <span class="material-symbols-outlined">link</span>
+                            BẢN ĐỒ QUY HOẠCH
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <button class="header-btn">
+                        <span class="material-symbols-outlined">call</span>
+                    </button>
+                    <button class="header-btn">
+                        <span class="material-symbols-outlined">videocam</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Chat Messages -->
+            <div class="chat-messages" id="chat-messages">
+                <!-- Date Separator -->
+                <div class="date-separator">
+                    <span>24 MAY 2024 - SESSION_08</span>
+                </div>
+                
+                <!-- Received Message 1 -->
+                <div class="message received">
+                    <div class="message-avatar">
+                        <div class="avatar-placeholder"></div>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="message-author">KTS. HOÀNG NAM</span>
+                            <span class="message-time">10:42 AM</span>
+                        </div>
+                        <div class="message-bubble">
+                            <p class="message-text">Mọi người xem qua file nhiệm vụ thiết kế mới nhé. Chú ý phần mật độ xây dựng tại khu vực phố cũ, không được vượt quá 60%.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sent Message -->
+                <div class="message sent">
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="message-time">10:45 AM</span>
+                            <span class="message-author">BẠN</span>
+                        </div>
+                        <div class="message-bubble">
+                            <p class="message-text">Em đã nhận được ạ. Em đang triển khai mặt bằng tầng 1 theo hướng tiếp cận từ phía Đông.</p>
+                        </div>
+                    </div>
+                    <div class="message-avatar">
+                        <img src="../../assets/images/avatars/current-user.jpg" alt="Your Avatar">
+                    </div>
+                </div>
+                
+                <!-- Received Message with Attachment -->
+                <div class="message received">
+                    <div class="message-avatar">
+                        <div class="avatar-placeholder"></div>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-header">
+                            <span class="message-author">KHÁNH LINH</span>
+                            <span class="message-time">10:48 AM</span>
+                        </div>
+                        <div class="message-bubble">
+                            <p class="message-text">Tớ có sưu tầm được bản vẽ mẫu này, có thể áp dụng tỷ lệ này vào khối đế được không thầy?</p>
+                            <div class="message-attachment">
+                                <div class="attachment-preview">
+                                    <div class="preview-bg">
+                                        <span class="material-symbols-outlined">architecture</span>
+                                    </div>
+                                    <div class="attachment-label">REF_DWG_01.JPG</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Message Input -->
+            <div class="message-input">
+                <div class="input-container">
+                    <div class="input-tools">
+                        <button class="tool-btn">
+                            <span class="material-symbols-outlined">add_circle</span>
+                        </button>
+                        <button class="tool-btn">
+                            <span class="material-symbols-outlined">attach_file</span>
+                        </button>
+                    </div>
+                    <textarea 
+                        class="input-field" 
+                        placeholder="Nhập tin nhắn nội bộ Studio..." 
+                        rows="2"
+                        id="message-input"
+                    ></textarea>
+                    <div class="input-send">
+                        <button class="send-btn" id="send-message">
+                            <span class="material-symbols-outlined">send</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Right Sidebar - Group Info -->
+        <aside class="chat-sidebar right-sidebar">
+            <!-- Studio Info -->
+            <div class="sidebar-section">
+                <h3 class="section-title">THÔNG TIN STUDIO</h3>
+                <div class="studio-card">
+                    <div class="card-decor top-right"></div>
+                    <div class="card-decor bottom-left"></div>
+                    <div class="card-content">
+                        <span class="card-icon">
+                            <span class="material-symbols-outlined">apartment</span>
+                        </span>
+                        <p class="card-label">PROJECT_A.01<br/>RESIDENTIAL_COMPLEX</p>
+                    </div>
+                </div>
+                <div class="studio-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Mã học phần:</span>
+                        <span class="detail-value">ARC402</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Giảng viên:</span>
+                        <span class="detail-value">KTS. HOÀNG NAM</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Online Members -->
+            <div class="sidebar-section">
+                <h3 class="section-title">THÀNH VIÊN ONLINE_04</h3>
+                <div class="member-list">
+                    <div class="member-item online">
+                        <div class="member-avatar">
+                            <div class="avatar-placeholder"></div>
+                            <div class="status-indicator"></div>
+                        </div>
+                        <div class="member-info">
+                            <p class="member-name">Hoàng Nam</p>
+                            <p class="member-role">GIẢNG VIÊN HƯỚNG DẪN</p>
+                        </div>
+                    </div>
+                    
+                    <div class="member-item online">
+                        <div class="member-avatar">
+                            <div class="avatar-placeholder"></div>
+                            <div class="status-indicator"></div>
+                        </div>
+                        <div class="member-info">
+                            <p class="member-name">Nguyễn Linh</p>
+                            <p class="member-role">LỚP TRƯỞNG</p>
+                        </div>
+                    </div>
+                    
+                    <div class="member-item offline">
+                        <div class="member-avatar">
+                            <div class="avatar-placeholder"></div>
+                        </div>
+                        <div class="member-info">
+                            <p class="member-name">Trần Minh</p>
+                            <p class="member-role">OFFLINE</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Shared Files -->
+            <div class="sidebar-section">
+                <h3 class="section-title">DỮ LIỆU ĐÃ GỬI</h3>
+                <div class="file-grid">
+                    <div class="file-item">
+                        <span class="material-symbols-outlined">image</span>
+                    </div>
+                    <div class="file-item">
+                        <span class="material-symbols-outlined">picture_as_pdf</span>
+                    </div>
+                    <div class="file-item">
+                        <span class="material-symbols-outlined">folder_zip</span>
+                    </div>
+                </div>
+                <button class="view-all-btn">XEM TẤT CẢ_VIEW_ALL</button>
+            </div>
+        </aside>
+    </main>
+    
+    <!-- AI Assistant Button -->
+    <div class="ai-assistant">
+        <button class="ai-btn">
+            <span class="material-symbols-outlined">smart_toy</span>
+        </button>
+    </div>
+    
+    <!-- JavaScript Files -->
+    <script src="../../js/components/chat.js"></script>
+    <script src="../../js/services/chat-service.js"></script>
+    <script src="../../js/pages/group-chat.js"></script>
+</body>
+</html>

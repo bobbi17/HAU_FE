@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ Giảng viên - HauHub</title>
+    
+    <!-- CSS Global -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    
+    <!-- CSS Page Specific -->
+    <link rel="stylesheet" href="../css/pages/lecturer-dashboard.css">
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+</head>
+<body class="lecturer-dashboard">
+    <!-- Header sẽ được inject bởi JS -->
+    <header></header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <!-- Dashboard Content (giữ nguyên) -->
+        <div class="dashboard-content">
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-card">
+                    <div class="welcome-header">
+                        <h1>Chào buổi sáng, <span class="highlight">Thầy Nam</span>! 👋</h1>
+                        <p class="subtitle">Thứ Hai, 20 tháng 5, 2024</p>
+                    </div>
+                    
+                    <div class="quick-stats">
+                        <div class="stat">
+                            <div class="stat-icon" style="background: #e3f2fd;">
+                                <span class="material-symbols-outlined" style="color: #1976d2;">school</span>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number">12</span>
+                                <span class="stat-label">Lớp học</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat">
+                            <div class="stat-icon" style="background: #f3e5f5;">
+                                <span class="material-symbols-outlined" style="color: #7b1fa2;">groups</span>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number">245</span>
+                                <span class="stat-label">Sinh viên</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat">
+                            <div class="stat-icon" style="background: #e8f5e9;">
+                                <span class="material-symbols-outlined" style="color: #388e3c;">assignment</span>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number">8</span>
+                                <span class="stat-label">Đồ án</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat">
+                            <div class="stat-icon" style="background: #fff3e0;">
+                                <span class="material-symbols-outlined" style="color: #f57c00;">schedule</span>
+                            </div>
+                            <div class="stat-info">
+                                <span class="stat-number">4</span>
+                                <span class="stat-label">Lịch hôm nay</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Main Dashboard Grid (giữ nguyên các phần còn lại) -->
+            <div class="dashboard-grid">
+                <!-- Left Column -->
+                <div class="column-left">
+                    <!-- Current Classes -->
+                    <section class="card">
+                        <div class="card-header">
+                            <h3><span class="material-symbols-outlined">class</span> Lớp học đang diễn ra</h3>
+                            <a href="#" class="btn-link">Xem tất cả</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="classes-list">
+                                <div class="class-item">
+                                    <div class="class-badge" style="background: #bbdefb; color: #0d47a1;">
+                                        K66
+                                    </div>
+                                    <div class="class-info">
+                                        <h4>Kiến trúc 1</h4>
+                                        <p>08:00 - 10:30 • Phòng A1.2</p>
+                                    </div>
+                                    <button class="btn-icon">
+                                        <span class="material-symbols-outlined">arrow_forward</span>
+                                    </button>
+                                </div>
+                                
+                                <div class="class-item">
+                                    <div class="class-badge" style="background: #f8bbd9; color: #880e4f;">
+                                        D21
+                                    </div>
+                                    <div class="class-info">
+                                        <h4>Đồ án CS2</h4>
+                                        <p>13:30 - 16:00 • Studio X4</p>
+                                    </div>
+                                    <button class="btn-icon">
+                                        <span class="material-symbols-outlined">arrow_forward</span>
+                                    </button>
+                                </div>
+                                
+                                <div class="class-item">
+                                    <div class="class-badge" style="background: #c8e6c9; color: #1b5e20;">
+                                        M64
+                                    </div>
+                                    <div class="class-info">
+                                        <h4>Lý thuyết 3</h4>
+                                        <p>Thứ 4 • 07:00 - 09:30</p>
+                                    </div>
+                                    <button class="btn-icon">
+                                        <span class="material-symbols-outlined">arrow_forward</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Notifications -->
+                    <section class="card">
+                        <div class="card-header">
+                            <h3><span class="material-symbols-outlined">campaign</span> Thông báo mới</h3>
+                            <span class="badge">3</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="notifications-list">
+                                <div class="notification-item unread">
+                                    <div class="notification-icon">
+                                        <span class="material-symbols-outlined">meeting_room</span>
+                                    </div>
+                                    <div class="notification-content">
+                                        <h4>Lịch họp Hội đồng Khoa tháng 6</h4>
+                                        <p>Chi tiết cuộc họp đã được cập nhật</p>
+                                        <span class="time">1 giờ trước</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="notification-item unread">
+                                    <div class="notification-icon">
+                                        <span class="material-symbols-outlined">science</span>
+                                    </div>
+                                    <div class="notification-content">
+                                        <h4>Gia hạn nộp đề tài NCKH</h4>
+                                        <p>Hạn nộp đề tài nghiên cứu khoa học</p>
+                                        <span class="time">Hôm qua</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="notification-item">
+                                    <div class="notification-icon">
+                                        <span class="material-symbols-outlined">event</span>
+                                    </div>
+                                    <div class="notification-content">
+                                        <h4>Đánh giá giữa kỳ</h4>
+                                        <p>Nhắc nhở hoàn thành đánh giá giữa kỳ</p>
+                                        <span class="time">2 ngày trước</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Middle Column -->
+                <div class="column-middle">
+                    <!-- Teaching Schedule -->
+                    <section class="card schedule-card">
+                        <div class="card-header">
+                            <h3><span class="material-symbols-outlined">calendar_today</span> Lịch giảng dạy hôm nay</h3>
+                            <a href="#" class="btn-link">Xem lịch đầy đủ</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="schedule-list">
+                                <div class="schedule-item current">
+                                    <div class="time-slot">
+                                        <span class="time">07:00 - 10:30</span>
+                                        <span class="tag">Tiết 1-4</span>
+                                    </div>
+                                    <div class="schedule-details">
+                                        <h4>Lý thuyết Kiến trúc 1</h4>
+                                        <div class="meta">
+                                            <span><span class="material-symbols-outlined">location_on</span> Hội trường A1</span>
+                                            <span><span class="material-symbols-outlined">groups</span> 45 SV</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn-status btn-status-active">
+                                        Đang diễn ra
+                                    </button>
+                                </div>
+                                
+                                <div class="schedule-item">
+                                    <div class="time-slot">
+                                        <span class="time">13:30 - 16:00</span>
+                                        <span class="tag">Tiết 7-10</span>
+                                    </div>
+                                    <div class="schedule-details">
+                                        <h4>Đồ án Cơ sở 2</h4>
+                                        <div class="meta">
+                                            <span><span class="material-symbols-outlined">floor_lamp</span> Studio X4 - H3</span>
+                                            <span><span class="material-symbols-outlined">groups</span> 28 SV</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn-status">
+                                        Sắp tới
+                                    </button>
+                                </div>
+                                
+                                <div class="schedule-item">
+                                    <div class="time-slot">
+                                        <span class="time">16:30 - 18:00</span>
+                                        <span class="tag">Cuộc họp</span>
+                                    </div>
+                                    <div class="schedule-details">
+                                        <h4>Họp chuyên môn Khoa</h4>
+                                        <div class="meta">
+                                            <span><span class="material-symbols-outlined">meeting_room</span> Phòng họp 301</span>
+                                            <span><span class="material-symbols-outlined">groups</span> Bộ môn</span>
+                                        </div>
+                                    </div>
+                                    <button class="btn-status">
+                                        Chiều nay
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Project Management -->
+                    <section class="card project-card">
+                        <div class="card-header">
+                            <h3><span class="material-symbols-outlined">square_foot</span> Quản lý Đồ án</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="project-stats">
+                                <div class="project-progress">
+                                    <div class="progress-header">
+                                        <span>Tỉ lệ nộp bài (Nhóm 12)</span>
+                                        <span class="progress-percent">82%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 82%;"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="project-item highlighted">
+                                    <div class="project-badge">
+                                        <span class="material-symbols-outlined">star</span>
+                                    </div>
+                                    <div class="project-info">
+                                        <h4>Đồ án K66-B - Giai đoạn 1</h4>
+                                        <p>Chấm bài tập trung • 24/45 sinh viên đã nộp</p>
+                                    </div>
+                                    <button class="btn btn-primary">
+                                        Mở studio
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Right Column -->
+                <div class="column-right">
+                    <!-- Quick Tools -->
+                    <section class="card tools-card">
+                        <div class="card-header">
+                            <h3><span class="material-symbols-outlined">apps</span> Tiện ích nhanh</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="tools-grid">
+                                <a href="#" class="tool-item">
+                                    <div class="tool-icon">
+                                        <span class="material-symbols-outlined">edit_square</span>
+                                    </div>
+                                    <span class="tool-label">Nhập điểm</span>
+                                </a>
+                                
+                                <a href="#" class="tool-item">
+                                    <div class="tool-icon">
+                                        <span class="material-symbols-outlined">folder_open</span>
+                                    </div>
+                                    <span class="tool-label">Tài liệu</span>
+                                </a>
+                                
+                                <a href="#" class="tool-item">
+                                    <div class="tool-icon">
+                                        <span class="material-symbols-outlined">groups_3</span>
+                                    </div>
+                                    <span class="tool-label">Họp bộ môn</span>
+                                </a>
+                                
+                                <a href="#" class="tool-item">
+                                    <div class="tool-icon">
+                                        <span class="material-symbols-outlined">badge</span>
+                                    </div>
+                                    <span class="tool-label">Lý lịch KH</span>
+                                </a>
+                                
+                                <a href="#" class="tool-item">
+                                    <div class="tool-icon">
+                                        <span class="material-symbols-outlined">description</span>
+                                    </div>
+                                    <span class="tool-label">Báo cáo</span>
+                                </a>
+                                
+                                <a href="#" class="tool-item">
+                                    <div class="tool-icon">
+                                        <span class="material-symbols-outlined">settings</span>
+                                    </div>
+                                    <span class="tool-label">Cài đặt</span>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- HAU News -->
+                    <section class="card news-card">
+                        <div class="card-header">
+                            <h3><span class="material-symbols-outlined">newspaper</span> Tin tức HAU</h3>
+                            <a href="#" class="btn-link">Xem thêm</a>
+                        </div>
+                        <div class="card-body">
+                            <div class="news-list">
+                                <article class="news-item">
+                                    <div class="news-image">
+                                        <img src="../assets/images/news/kiet-uc.jpg" alt="Lễ ký kết hợp tác">
+                                    </div>
+                                    <div class="news-content">
+                                        <h4>Lễ ký kết hợp tác Đào tạo quốc tế</h4>
+                                        <p class="news-excerpt">Trường Đại học Kiến trúc Hà Nội ký kết hợp tác với các đối tác quốc tế...</p>
+                                        <span class="news-date">20/05/2024</span>
+                                    </div>
+                                </article>
+                                
+                                <article class="news-item">
+                                    <div class="news-image">
+                                        <img src="../assets/images/news/nckh.jpg" alt="NCKH 2024">
+                                    </div>
+                                    <div class="news-content">
+                                        <h4>Công bố Danh mục đề tài NCKH 2024</h4>
+                                        <p class="news-excerpt">Danh sách đề tài nghiên cứu khoa học năm 2024 đã được công bố...</p>
+                                        <span class="news-date">18/05/2024</span>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- AI Assistant Card (có thể ẩn vì đã có chat widget) -->
+                    <section class="card ai-card" style="display: none;">
+                        <div class="card-header">
+                            <h3><span class="material-symbols-outlined">auto_awesome</span> Thư đồng AI</h3>
+                            <span class="ai-badge">Beta</span>
+                        </div>
+                        <div class="card-body">
+                            <p class="ai-message">
+                                "Chào Thầy, tôi có thể hỗ trợ Thầy soạn giáo án cho lớp Lý thuyết KT 1 sáng nay không?"
+                            </p>
+                            <div class="ai-actions">
+                                <button class="btn btn-primary btn-sm">
+                                    <span class="material-symbols-outlined">auto_stories</span>
+                                    Soạn giáo án
+                                </button>
+                                <button class="btn btn-outline btn-sm">
+                                    <span class="material-symbols-outlined">folder_managed</span>
+                                    Gợi ý Portfolio
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer sẽ được inject bởi JS -->
+    <footer></footer>
+
+    <!-- AI Chat Widget Container -->
+    <div id="ai-chat-widget"></div>
+
+    <!-- JavaScript - Dùng ES6 modules như index.html -->
+    <script type="module">
+        import { Header } from '../js/components/header.js';
+        import { Footer } from '../js/components/footer.js';
+        import { AIChatWidget } from '../js/components/chat-widget.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Khởi tạo Header - Footer - Chat Widget
+            new Header();
+            new Footer();
+            new AIChatWidget();
+            
+            // Có thể thêm các hàm khởi tạo khác cho trang lecturer dashboard
+            initializeLecturerDashboard();
+        });
+        
+        // Hàm khởi tạo cho lecturer dashboard (giữ nguyên từ file cũ)
+        function initializeLecturerDashboard() {
+            console.log('Lecturer Dashboard initialized');
+            
+            // Set current date
+            updateCurrentDate();
+            
+            // Setup event listeners cho các thành phần riêng
+            setupLecturerEventListeners();
+        }
+        
+        function updateCurrentDate() {
+            const now = new Date();
+            const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+            const formattedDate = now.toLocaleDateString('vi-VN', options);
+            const capitalizedDate = formattedDate.charAt(0).toUpperCase() + formattedDate.slice(1);
+            
+            const dateElements = document.querySelectorAll('.subtitle');
+            dateElements.forEach(el => {
+                el.textContent = capitalizedDate;
+            });
+        }
+        
+        function setupLecturerEventListeners() {
+            // Các event listeners riêng cho trang lecturer dashboard
+            const classItems = document.querySelectorAll('.class-item');
+            classItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    console.log('Class item clicked');
+                });
+            });
+            
+            const notificationBtn = document.querySelector('.btn-notification');
+            if (notificationBtn) {
+                notificationBtn.addEventListener('click', () => {
+                    console.log('Notification clicked');
+                });
+            }
+            
+            // Thêm các event listeners khác...
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh mục Môn học | HauHub</title>
+    
+    <!-- CSS Files (Giữ nguyên) -->
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/pages/subjects.css">
+    
+    <!-- Google Fonts & Icons (Giữ nguyên) -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (Giữ nguyên) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0F4C81",
+                        "ivory-basic": "#F9F7F2",
+                        "ivory-card": "#FFFFFF",
+                        "accent-blue": "#136dec",
+                    },
+                    fontFamily: {
+                        "display": ["Noto Serif", "serif"],
+                        "sans": ["Noto Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft-ambient': '0 4px 20px -2px rgba(15, 76, 129, 0.05), 0 2px 10px -2px rgba(0, 0, 0, 0.02)',
+                        'soft-hover': '0 20px 40px -12px rgba(15, 76, 129, 0.12)',
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body { 
+            font-family: "Noto Sans", sans-serif;
+            background-color: #F9F7F2;
+            color: #374151;
+        }
+        .serif-font {
+            font-family: "Noto Serif", serif;
+        }
+        .architectural-watermark {
+            background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDPIFDqjqOJtzbYbc9uTP55x88rH4mASO9xMiIxWI8zf8nyPReHz9B-vySt06UL11O5y1inhmU0CrfsvyY6gOj2BvMtLzXGSYpS81NKGH6_f8Al2FbkB-4Nz7miZNK3G7QrH0sR7A8hRpJtxC6bGmTAyaB29R-F_SL1y8GLnYheKLW8PALha-NwIK-NKAbWZ7R-b_Y0TXe1C-1UKfFGr7GhmYhl0Jdh0fGfltEdTco9NiYSKRgr8B2YkptnBm8MrrDbMcclLtodgGI');
+            background-blend-mode: overlay;
+            opacity: 0.03;
+        }
+    </style>
+    
+    <!-- Favicon (Thêm như trang home) -->
+    <link rel="icon" type="image/x-icon" href="../../assets/images/favicon.ico">
+</head>
+<body class="min-h-screen relative overflow-x-hidden">
+    <div class="architectural-watermark fixed inset-0 pointer-events-none -z-10"></div>
+    
+    <!-- Header sẽ được inject bởi JS (Thay thế header cũ) -->
+    <header></header>
+    
+    <!-- Main Content (Giữ nguyên) -->
+    <main class="main-content">
+        <div id="page-content">
+            <div class="container mx-auto px-8 py-12 max-w-[1280px]">
+                <!-- Page Header (Giữ nguyên) -->
+                <section class="page-header mb-12">
+                    <div class="header-content">
+                        <div class="header-main">
+                            <nav class="breadcrumb-nav">
+                                <a href="/">Trang chủ</a>
+                                <span class="material-symbols-outlined">chevron_right</span>
+                                <span class="current">Danh mục môn học</span>
+                            </nav>
+                            <h1 class="page-title">Cơ sở dữ liệu Học thuật</h1>
+                            <p class="page-description">
+                                Hệ thống tra cứu thông tin môn học chuẩn hóa cho sinh viên khối ngành Kiến trúc & Xây dựng.
+                            </p>
+                        </div>
+                        <div class="header-filters">
+                            <button class="filter-btn" id="filter-faculty-btn">
+                                <span class="material-symbols-outlined">account_balance</span>
+                                <span>Tất cả Khoa</span>
+                                <span class="material-symbols-outlined">expand_more</span>
+                            </button>
+                            <button class="filter-btn" id="filter-credits-btn">
+                                <span class="material-symbols-outlined">grade</span>
+                                <span>Số tín chỉ</span>
+                                <span class="material-symbols-outlined">expand_more</span>
+                            </button>
+                            <button class="filter-advanced-btn" id="advanced-filter-btn">
+                                <span class="material-symbols-outlined">filter_list</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Search Section (Giữ nguyên) -->
+                <section class="search-section mb-8">
+                    <div class="search-container">
+                        <span class="material-symbols-outlined search-icon">search</span>
+                        <input type="text" 
+                               id="subject-search-input"
+                               class="search-input"
+                               placeholder="Tìm kiếm môn học hoặc mã môn...">
+                        <button class="search-action-btn" id="search-action-btn">
+                            <span class="material-symbols-outlined">search</span>
+                        </button>
+                    </div>
+                </section>
+                
+                <!-- Subjects Grid (Giữ nguyên) -->
+                <section class="subjects-section">
+                    <div id="subjects-grid" class="subjects-grid">
+                        <!-- Subjects will be loaded by JS -->
+                        <div class="loading-indicator">
+                            <span class="material-symbols-outlined animate-spin">refresh</span>
+                            <p>Đang tải danh mục môn học...</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Pagination (Giữ nguyên) -->
+                    <div class="pagination-section">
+                        <div class="pagination-controls" id="pagination-controls">
+                            <!-- Pagination will be generated by JS -->
+                        </div>
+                        <p class="pagination-info" id="pagination-info">
+                            HIỂN THỊ 6 TRÊN TỔNG SỐ 72 MÔN HỌC CHUYÊN NGÀNH
+                        </p>
+                    </div>
+                </section>
+                
+                <!-- Stats Section (Giữ nguyên) -->
+                <section class="stats-section mt-16">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <span class="material-symbols-outlined">school</span>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-number" id="total-subjects">72</p>
+                                <p class="stat-label">Môn học</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <span class="material-symbols-outlined">account_balance</span>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-number" id="total-faculties">4</p>
+                                <p class="stat-label">Khoa/Viện</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <span class="material-symbols-outlined">grade</span>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-number" id="total-credits">186</p>
+                                <p class="stat-label">Tín chỉ</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <span class="material-symbols-outlined">book</span>
+                            </div>
+                            <div class="stat-info">
+                                <p class="stat-number" id="updated-this-year">24</p>
+                                <p class="stat-label">Cập nhật 2024</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <!-- Download Section (Giữ nguyên) -->
+                <section class="download-section mt-16">
+                    <div class="download-card">
+                        <div class="download-content">
+                            <h3 class="download-title">Tải về danh mục môn học</h3>
+                            <p class="download-description">
+                                Tải file PDF danh mục môn học đầy đủ bao gồm thông tin chi tiết về mục tiêu học tập, tài liệu tham khảo và tiêu chuẩn đánh giá.
+                            </p>
+                            <div class="download-buttons">
+                                <button class="btn-download" id="download-pdf-btn">
+                                    <span class="material-symbols-outlined">picture_as_pdf</span>
+                                    Tải PDF (5.2 MB)
+                                </button>
+                                <button class="btn-download secondary" id="download-excel-btn">
+                                    <span class="material-symbols-outlined">table_chart</span>
+                                    Tải Excel
+                                </button>
+                            </div>
+                        </div>
+                        <div class="download-illustration">
+                            <span class="material-symbols-outlined">download</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer sẽ được inject bởi JS (Thay thế footer cũ) -->
+    <footer></footer>
+    
+    <!-- THÊM: AI Chat Widget Container (như trang home) -->
+    <div id="ai-chat-widget"></div>
+    
+    <!-- Subject Detail Modal (Giữ nguyên) -->
+    <div id="subject-detail-modal" class="modal" style="display: none;">
+        <div class="modal-content large-modal">
+            <h3 class="modal-title" id="modal-subject-name">Kiến trúc dân dụng 1</h3>
+            <div class="modal-body">
+                <div class="subject-detail-grid">
+                    <div class="subject-info-section">
+                        <div class="subject-header">
+                            <span class="subject-code" id="modal-subject-code">KTS102</span>
+                            <div class="subject-badges">
+                                <span class="badge badge-primary" id="modal-subject-type">Bắt buộc</span>
+                                <span class="badge badge-secondary" id="modal-subject-credits">3 Tín chỉ</span>
+                            </div>
+                        </div>
+                        
+                        <div class="subject-meta">
+                            <div class="meta-item">
+                                <span class="meta-label">Khoa:</span>
+                                <span class="meta-value" id="modal-subject-faculty">Khoa Kiến trúc</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Bộ môn:</span>
+                                <span class="meta-value" id="modal-subject-department">Kiến trúc dân dụng</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Học kỳ:</span>
+                                <span class="meta-value" id="modal-subject-semester">HK1, HK2</span>
+                            </div>
+                            <div class="meta-item">
+                                <span class="meta-label">Thời lượng:</span>
+                                <span class="meta-value" id="modal-subject-duration">45 tiết</span>
+                            </div>
+                        </div>
+                        
+                        <div class="subject-description">
+                            <h4>Mô tả môn học</h4>
+                            <p id="modal-subject-description">
+                                Nghiên cứu các nguyên lý thiết kế không gian chức năng trong nhà ở dân dụng hiện đại và các tiêu chuẩn quy hoạch cơ bản.
+                            </p>
+                        </div>
+                        
+                        <div class="subject-objectives">
+                            <h4>Mục tiêu học tập</h4>
+                            <ul id="modal-subject-objectives">
+                                <!-- Objectives will be loaded by JS -->
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="subject-details-section">
+                        <div class="details-card">
+                            <h4>Thông tin chi tiết</h4>
+                            <div class="details-list">
+                                <div class="detail-item">
+                                    <span class="detail-label">Môn học tiên quyết:</span>
+                                    <span class="detail-value" id="modal-prerequisites">Không có</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Môn học song hành:</span>
+                                    <span class="detail-value" id="modal-corequisites">KTS101, KTS103</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Hình thức đánh giá:</span>
+                                    <span class="detail-value" id="modal-assessment">Bài tập (30%), Thi cuối kỳ (70%)</span>
+                                </div>
+                                <div class="detail-item">
+                                    <span class="detail-label">Tài liệu tham khảo:</span>
+                                    <div class="detail-value" id="modal-references">
+                                        <!-- References will be loaded by JS -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="instructor-card">
+                            <h4>Giảng viên phụ trách</h4>
+                            <div class="instructor-info" id="modal-instructor-info">
+                                <!-- Instructor info will be loaded by JS -->
+                            </div>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <button class="btn-primary" id="modal-view-syllabus-btn">
+                                <span class="material-symbols-outlined">description</span>
+                                Xem đề cương
+                            </button>
+                            <button class="btn-outline" id="modal-view-classes-btn">
+                                <span class="material-symbols-outlined">class</span>
+                                Xem lớp học
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-cancel">Đóng</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Filter Modal (Giữ nguyên) -->
+    <div id="filter-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <h3 class="modal-title">Lọc môn học</h3>
+            <div class="modal-body">
+                <form id="filter-form">
+                    <div class="form-group">
+                        <label for="filter-faculty">Khoa/Viện</label>
+                        <select id="filter-faculty">
+                            <option value="">Tất cả khoa</option>
+                            <option value="architecture">Khoa Kiến trúc</option>
+                            <option value="construction">Khoa Xây dựng</option>
+                            <option value="interior">Khoa Nội thất</option>
+                            <option value="landscape">Khoa Kiến trúc Cảnh quan</option>
+                            <option value="urban">Khoa Quy hoạch Đô thị</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="filter-credits">Số tín chỉ</label>
+                        <select id="filter-credits">
+                            <option value="">Tất cả</option>
+                            <option value="1">1 tín chỉ</option>
+                            <option value="2">2 tín chỉ</option>
+                            <option value="3">3 tín chỉ</option>
+                            <option value="4">4 tín chỉ</option>
+                            <option value="5">5+ tín chỉ</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="filter-type">Loại môn học</label>
+                        <select id="filter-type">
+                            <option value="">Tất cả</option>
+                            <option value="required">Bắt buộc</option>
+                            <option value="elective">Tự chọn</option>
+                            <option value="project">Đồ án</option>
+                            <option value="theory">Lý thuyết</option>
+                            <option value="practice">Thực hành</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="filter-semester">Học kỳ</label>
+                        <select id="filter-semester">
+                            <option value="">Tất cả học kỳ</option>
+                            <option value="1">Học kỳ 1</option>
+                            <option value="2">Học kỳ 2</option>
+                            <option value="3">Học kỳ 3</option>
+                            <option value="4">Học kỳ 4</option>
+                            <option value="5">Học kỳ 5</option>
+                            <option value="6">Học kỳ 6</option>
+                            <option value="7">Học kỳ 7</option>
+                            <option value="8">Học kỳ 8</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="filter-year">Năm học</label>
+                        <select id="filter-year">
+                            <option value="">Tất cả năm</option>
+                            <option value="2024">2024-2025</option>
+                            <option value="2023">2023-2024</option>
+                            <option value="2022">2022-2023</option>
+                            <option value="2021">2021-2022</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="filter-level">Trình độ</label>
+                        <select id="filter-level">
+                            <option value="">Tất cả</option>
+                            <option value="basic">Cơ sở</option>
+                            <option value="intermediate">Nâng cao</option>
+                            <option value="advanced">Chuyên sâu</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-cancel" id="reset-filter-btn">Đặt lại</button>
+                <button class="btn-primary" id="apply-filter-btn">Áp dụng bộ lọc</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript (Kết hợp cũ và mới) -->
+    <script type="module">
+        // Import các component mới (như trang home)
+        import { Header } from '../../js/components/header.js';
+        import { Footer } from '../../js/components/footer.js';
+        import { AIChatWidget } from '../../js/components/chat-widget.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Inject Header, Footer, Chat Widget (như trang home)
+            new Header();
+            new Footer();
+            new AIChatWidget();
+            
+            // Khởi tạo JS cũ của subjects (giữ nguyên chức năng)
+            initializeSubjects();
+        });
+        
+        // Giữ nguyên hàm initializeSubjects cũ (hoặc giữ script cũ)
+        function initializeSubjects() {
+            // Filter buttons
+            const advancedFilterBtn = document.getElementById('advanced-filter-btn');
+            const filterModal = document.getElementById('filter-modal');
+            const applyFilterBtn = document.getElementById('apply-filter-btn');
+            const resetFilterBtn = document.getElementById('reset-filter-btn');
+            
+            if (advancedFilterBtn && filterModal) {
+                advancedFilterBtn.addEventListener('click', () => {
+                    filterModal.style.display = 'block';
+                });
+            }
+            
+            if (applyFilterBtn) {
+                applyFilterBtn.addEventListener('click', () => {
+                    alert('Áp dụng bộ lọc môn học');
+                    filterModal.style.display = 'none';
+                });
+            }
+            
+            if (resetFilterBtn) {
+                resetFilterBtn.addEventListener('click', () => {
+                    const filterForm = document.getElementById('filter-form');
+                    if (filterForm) {
+                        filterForm.reset();
+                        alert('Đã đặt lại bộ lọc');
+                    }
+                });
+            }
+            
+            // Search functionality
+            const searchInput = document.getElementById('subject-search-input');
+            const searchActionBtn = document.getElementById('search-action-btn');
+            
+            function performSearch() {
+                const query = searchInput?.value.trim();
+                if (query) {
+                    alert(`Tìm kiếm môn học: ${query}`);
+                }
+            }
+            
+            if (searchActionBtn) {
+                searchActionBtn.addEventListener('click', performSearch);
+            }
+            
+            if (searchInput) {
+                searchInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        performSearch();
+                    }
+                });
+            }
+            
+            // Download buttons
+            const downloadPdfBtn = document.getElementById('download-pdf-btn');
+            const downloadExcelBtn = document.getElementById('download-excel-btn');
+            
+            if (downloadPdfBtn) {
+                downloadPdfBtn.addEventListener('click', () => {
+                    alert('Đang tải file PDF danh mục môn học...');
+                });
+            }
+            
+            if (downloadExcelBtn) {
+                downloadExcelBtn.addEventListener('click', () => {
+                    alert('Đang tải file Excel danh mục môn học...');
+                });
+            }
+            
+            // Subject detail modal
+            const subjectDetailModal = document.getElementById('subject-detail-modal');
+            const closeModalBtn = subjectDetailModal?.querySelector('.btn-cancel');
+            
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', () => {
+                    subjectDetailModal.style.display = 'none';
+                });
+            }
+            
+            // Modal action buttons
+            const viewSyllabusBtn = document.getElementById('modal-view-syllabus-btn');
+            const viewClassesBtn = document.getElementById('modal-view-classes-btn');
+            
+            if (viewSyllabusBtn) {
+                viewSyllabusBtn.addEventListener('click', () => {
+                    alert('Mở đề cương môn học');
+                });
+            }
+            
+            if (viewClassesBtn) {
+                viewClassesBtn.addEventListener('click', () => {
+                    alert('Xem danh sách lớp học');
+                });
+            }
+            
+            // Demo subjects
+            const subjectsGrid = document.getElementById('subjects-grid');
+            if (subjectsGrid) {
+                const subjects = [
+                    { 
+                        code: 'KTS101', 
+                        name: 'Kiến trúc Dân dụng 1', 
+                        faculty: 'Khoa Kiến trúc',
+                        credits: 3,
+                        type: 'Bắt buộc',
+                        description: 'Nguyên lý thiết kế không gian chức năng'
+                    },
+                    { 
+                        code: 'QH201', 
+                        name: 'Quy hoạch Đô thị', 
+                        faculty: 'Khoa Quy hoạch',
+                        credits: 4,
+                        type: 'Bắt buộc',
+                        description: 'Phân tích và thiết kế không gian đô thị'
+                    },
+                    { 
+                        code: 'XD301', 
+                        name: 'Kết cấu Bê tông', 
+                        faculty: 'Khoa Xây dựng',
+                        credits: 3,
+                        type: 'Bắt buộc',
+                        description: 'Thiết kế kết cấu bê tông cốt thép'
+                    },
+                    { 
+                        code: 'NT401', 
+                        name: 'Nội thất Căn hộ', 
+                        faculty: 'Khoa Nội thất',
+                        credits: 2,
+                        type: 'Tự chọn',
+                        description: 'Thiết kế nội thất không gian sống'
+                    },
+                    { 
+                        code: 'KTS501', 
+                        name: 'Kiến trúc Bền vững', 
+                        faculty: 'Khoa Kiến trúc',
+                        credits: 3,
+                        type: 'Tự chọn',
+                        description: 'Nguyên lý kiến trúc xanh và tiết kiệm năng lượng'
+                    },
+                    { 
+                        code: 'QH601', 
+                        name: 'Giao thông Đô thị', 
+                        faculty: 'Khoa Quy hoạch',
+                        credits: 3,
+                        type: 'Bắt buộc',
+                        description: 'Thiết kế hệ thống giao thông đô thị'
+                    }
+                ];
+                
+                // Remove loading indicator
+                const loadingIndicator = subjectsGrid.querySelector('.loading-indicator');
+                if (loadingIndicator) {
+                    loadingIndicator.remove();
+                }
+                
+                subjects.forEach(subject => {
+                    const subjectCard = document.createElement('div');
+                    subjectCard.className = 'subject-card';
+                    subjectCard.innerHTML = `
+                        <div class="subject-header">
+                            <span class="subject-code">${subject.code}</span>
+                            <span class="subject-type ${subject.type === 'Bắt buộc' ? 'required' : 'elective'}">
+                                ${subject.type}
+                            </span>
+                        </div>
+                        <h3 class="subject-name">${subject.name}</h3>
+                        <p class="subject-description">${subject.description}</p>
+                        <div class="subject-footer">
+                            <div class="faculty-badge">
+                                <span class="material-symbols-outlined">account_balance</span>
+                                <span>${subject.faculty}</span>
+                            </div>
+                            <div class="credits-badge">
+                                <span class="material-symbols-outlined">grade</span>
+                                <span>${subject.credits} tín chỉ</span>
+                            </div>
+                        </div>
+                        <div class="subject-action">
+                            <button class="view-details-btn">
+                                <span class="material-symbols-outlined">info</span>
+                                Chi tiết
+                            </button>
+                        </div>
+                    `;
+                    
+                    // View details button
+                    const viewDetailsBtn = subjectCard.querySelector('.view-details-btn');
+                    viewDetailsBtn.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        // Set modal content
+                        document.getElementById('modal-subject-name').textContent = subject.name;
+                        document.getElementById('modal-subject-code').textContent = subject.code;
+                        document.getElementById('modal-subject-type').textContent = subject.type;
+                        document.getElementById('modal-subject-credits').textContent = `${subject.credits} Tín chỉ`;
+                        document.getElementById('modal-subject-faculty').textContent = subject.faculty;
+                        document.getElementById('modal-subject-description').textContent = subject.description;
+                        
+                        // Show modal
+                        subjectDetailModal.style.display = 'block';
+                    });
+                    
+                    // Card click
+                    subjectCard.addEventListener('click', () => {
+                        alert(`Chọn môn học: ${subject.name}`);
+                    });
+                    
+                    subjectsGrid.appendChild(subjectCard);
+                });
+            }
+            
+            // Close modals when clicking outside
+            window.addEventListener('click', (e) => {
+                if (filterModal && e.target === filterModal) {
+                    filterModal.style.display = 'none';
+                }
+                if (subjectDetailModal && e.target === subjectDetailModal) {
+                    subjectDetailModal.style.display = 'none';
+                }
+            });
+        }
+    </script>
+    
+    <!-- Giữ các script cũ nếu cần (đảm bảo không bị mất chức năng) -->
+    <script src="../../js/config/api-config.js"></script>
+    <script src="../../js/config/constants.js"></script>
+    <script src="../../js/utils/auth.js"></script>
+    <script src="../../js/components/modal.js"></script>
+    <script src="../../js/components/notification.js"></script>
+    <script src="../../js/services/course-service.js"></script>
+    <script src="../../js/pages/subjects.js" type="module"></script>
+</body>
+</html>
