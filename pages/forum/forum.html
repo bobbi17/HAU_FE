@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html class="light" lang="vi">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>HauHub Diễn đàn thảo luận</title>
+
+     <!-- CSS Global -->
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Public+Sans:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet"/>
+    
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./forum.css">
+</head>
+
+
+<body class="bg-background-light dark:bg-background-dark text-[#0d131b] min-h-screen font-display">
+
+       <!-- Header sẽ được inject bởi JS -->
+    <header></header>
+
+    <!-- Create Post Modal -->
+    <div id="createPostModal" class="modal-overlay hidden">
+        <div class="modal-container">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h1>Tạo Bài Viết Mới</h1>
+                    <p>Lưu bản nháp tự động lúc <span id="draftTime">10:45</span></p>
+                </div>
+                <button class="modal-close-btn" id="closeModalBtn">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <!-- Content Container -->
+            <div class="modal-content">
+                <form class="create-post-form" id="createPostForm">
+                    <!-- Category Selection -->
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <p class="form-label">Chuyên mục đăng bài</p>
+                            <div class="relative">
+                                <select class="form-select" id="postCategory">
+                                    <option value="all">Toàn trường</option>
+                                    <option selected value="arch">Khoa Kiến trúc</option>
+                                    <option value="plan">Khoa Quy hoạch</option>
+                                    <option value="civil">Khoa Xây dựng</option>
+                                    <option value="art">Khoa Mỹ thuật công nghiệp</option>
+                                </select>
+                                <span class="select-icon">expand_more</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <p class="form-label">Phân loại</p>
+                            <div class="flex gap-2">
+                                <button class="post-type-btn active" type="button" data-type="discussion">Thảo luận</button>
+                                <button class="post-type-btn" type="button" data-type="project">Chia sẻ đồ án</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Title -->
+                    <div class="pt-4">
+                        <input class="post-title-input" type="text" id="postTitle" placeholder="Tiêu đề bài viết (Ví dụ: Đồ án quy hoạch khu đô thị loại 1)"/>
+                    </div>
+
+                    <!-- Toolbar -->
+                    <div class="editor-toolbar">
+                        <button class="toolbar-btn" type="button" data-tool="bold">
+                            <span class="material-symbols-outlined">format_bold</span>
+                        </button>
+                        <button class="toolbar-btn" type="button" data-tool="italic">
+                            <span class="material-symbols-outlined">format_italic</span>
+                        </button>
+                        <button class="toolbar-btn" type="button" data-tool="list">
+                            <span class="material-symbols-outlined">format_list_bulleted</span>
+                        </button>
+                        <div class="toolbar-divider"></div>
+                        <button class="toolbar-btn" type="button" data-tool="quote">
+                            <span class="material-symbols-outlined">format_quote</span>
+                        </button>
+                        <button class="toolbar-btn" type="button" data-tool="link">
+                            <span class="material-symbols-outlined">link</span>
+                        </button>
+                        <button class="toolbar-btn active" type="button" data-tool="image">
+                            <span class="material-symbols-outlined">image</span>
+                        </button>
+                        <button class="toolbar-btn" type="button" data-tool="attachment">
+                            <span class="material-symbols-outlined">attach_file</span>
+                        </button>
+                        <div class="flex-1"></div>
+                        <button class="toolbar-btn help" type="button">
+                            <span class="material-symbols-outlined">help_outline</span>
+                        </button>
+                    </div>
+
+                    <!-- Editor Content -->
+                    <textarea class="post-content" id="postContent" placeholder="Chia sẻ kiến thức hoặc đồ án của bạn tại đây..."></textarea>
+
+                    <!-- Attachment Area -->
+                    <div class="attachment-area" id="attachmentArea">
+                        <div class="upload-icon">
+                            <span class="material-symbols-outlined">cloud_upload</span>
+                        </div>
+                        <h3>Đính kèm tệp/hình ảnh</h3>
+                        <p>Tải lên bản vẽ, sơ đồ hoặc bản nháp đồ án (JPG, PNG, PDF up to 20MB)</p>
+                        <input type="file" id="fileUpload" class="hidden" multiple accept=".jpg,.jpeg,.png,.pdf">
+                    </div>
+
+                    <!-- Tags Selector -->
+                    <div class="tags-section">
+                        <p class="form-label">Thẻ (Tags)</p>
+                        <div class="tags-container">
+                            <button class="tag-btn active" type="button" data-tag="DoAn">
+                                <span>#DoAn</span>
+                                <span class="material-symbols-outlined">close</span>
+                            </button>
+                            <button class="tag-btn active" type="button" data-tag="KienThuc">
+                                <span>#KienThuc</span>
+                                <span class="material-symbols-outlined">close</span>
+                            </button>
+                            <button class="tag-btn" type="button" data-tag="GopY">#GopY</button>
+                            <button class="tag-btn" type="button" data-tag="Architecture">#Architecture</button>
+                            <button class="tag-btn add-tag" type="button" id="addTagBtn">
+                                <span class="material-symbols-outlined">add</span>
+                                <span>Thêm thẻ</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <div class="draft-status">
+                    <span class="material-symbols-outlined">check_circle</span>
+                    <span>Bản nháp đã được lưu</span>
+                </div>
+                <div class="footer-buttons">
+                    <button class="secondary-btn" type="button" id="saveDraftBtn">Lưu bản nháp</button>
+                    <button class="primary-btn" type="submit" id="submitPostBtn">Đăng bài</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-left">
+                <div class="logo-section">
+                    <div class="logo-icon">
+                        <span class="material-symbols-outlined">architecture</span>
+                    </div>
+                    <h1>HauHub <span class="logo-sub"></span></h1>
+                </div>
+                <div class="search-container hidden md:block">
+                    <span class="search-icon">search</span>
+                    <input class="search-input" type="text" id="searchInput" placeholder="Tìm kiếm đồ án, vật liệu, kiến thức..."/>
+                </div>
+            </div>
+            <nav class="main-nav hidden lg:flex">
+                <a class="nav-link active" href="#">Khám phá</a>
+                <a class="nav-link" href="#">Tài liệu</a>
+                <a class="nav-link" href="#">Cuộc thi</a>
+                <a class="nav-link" href="#">Hỗ trợ</a>
+            </nav>
+            <div class="header-right">
+                <button class="create-post-btn" id="createPostBtn">
+                    <span class="material-symbols-outlined">add_circle</span>
+                    <span class="hidden sm:inline">Tạo bài viết mới</span>
+                </button>
+                <div class="user-profile">
+                    <div class="profile-avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDPWlF7T-MKxMFkz0lef0b_50kEC3oCUqP-a0Amp4pWJuVCAEa1oKab5lo5eqP6rtrl9a3e9CAf4TmbdFrAIyv2G06Eg532jBfy6thEg7D_qqQgYgKxhiZWkhMNlcRZfDjjb_NLZPfJWjPVtTWNY8RkuXAC581u_t9VqX0i95tePcM2LqKzzHXBwjezXR4A1b7eiyrQ4b_tZpv1g5Sd2zvlC_uWIOH8wUwzJGmZ_XnwIpl8_rmJ4dZ9FUlydE5AMKhQktKP_SZjdbU');"></div>
+                    <div class="online-status"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Left Sidebar: Categories -->
+        <aside class="left-sidebar">
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Danh mục chính</h3>
+                <nav class="sidebar-nav">
+                    <a class="sidebar-link active" href="#" data-category="all">
+                        <span class="material-symbols-outlined">public</span>
+                        <span>Toàn trường</span>
+                    </a>
+                    <a class="sidebar-link" href="#" data-category="trending">
+                        <span class="material-symbols-outlined">trending_up</span>
+                        <span>Xu hướng</span>
+                     </a>
+                    </a>
+                </nav>
+            </div>
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Theo Khoa</h3>
+                <nav class="sidebar-nav">
+                    <a class="sidebar-link" href="#" data-faculty="arch">
+                        <span class="material-symbols-outlined">domain</span>
+                        <span>Kiến trúc (K)</span>
+                    </a>
+                    <a class="sidebar-link" href="#" data-faculty="plan">
+                        <span class="material-symbols-outlined">map</span>
+                        <span>Quy hoạch (QH)</span>
+                    </a>
+                    <a class="sidebar-link" href="#" data-faculty="interior">
+                        <span class="material-symbols-outlined">chair</span>
+                        <span>Nội thất (NT)</span>
+                    </a>
+                    <a class="sidebar-link" href="#" data-faculty="civil">
+                        <span class="material-symbols-outlined">engineering</span>
+                        <span>Xây dựng (XD)</span>
+                    </a>
+                    <a class="sidebar-link" href="#" data-faculty="infra">
+                        <span class="material-symbols-outlined">electric_bolt</span>
+                        <span>Kỹ thuật hạ tầng</span>
+                    </a>
+                </nav>
+            </div>
+            <div class="pro-tips">
+                <p class="tips-title">HauHub Tips</p>
+                <p class="tips-content">Sử dụng tag #diagram để chia sẻ ý đồ thiết kế của bạn.</p>
+            </div>
+        </aside>
+
+        <!-- Main Content: Feed -->
+        <section class="feed-section">
+            <!-- Filter Chips -->
+            <div class="filter-chips">
+                <button class="filter-chip active" data-filter="all">Tất cả</button>
+                <button class="filter-chip" data-filter="graduation">Đồ án tốt nghiệp</button>
+                <button class="filter-chip" data-filter="material">Vật liệu bền vững</button>
+                <button class="filter-chip" data-filter="theory">Lý thuyết</button>
+            </div>
+            
+            <div class="feed-header">
+                <h2>Studio Board</h2>
+                <div class="sort-control">
+                    <span>Sắp xếp:</span>
+                    <button class="sort-btn" id="sortBtn">
+                        Mới nhất <span class="material-symbols-outlined">expand_more</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Academic Post Cards Container -->
+            <div id="postsContainer">
+                <!-- Posts will be loaded here via JS -->
+            </div>
+        </section>
+
+        <!-- Right Sidebar: Trends & Top Members -->
+        <aside class="right-sidebar">
+            <!-- Trending Board -->
+            <div class="trending-board">
+                <div class="trending-header">
+                    <h3>
+                        <span class="material-symbols-outlined">analytics</span>
+                        Xu hướng thảo luận
+                    </h3>
+                    <span class="material-symbols-outlined">info</span>
+                </div>
+                <div class="trending-list">
+                    <div class="trending-item" data-tag="material">
+                        <span class="trending-tag">#VatLieuXanh</span>
+                        <span class="trending-title">Kiến trúc bền vững 2024</span>
+                        <span class="trending-count">2.4k bài viết</span>
+                    </div>
+                    <div class="trending-item" data-tag="graduation">
+                        <span class="trending-tag">#DoAnTotNghiep</span>
+                        <span class="trending-title">Hướng dẫn làm Portfolio</span>
+                        <span class="trending-count">1.1k bài viết</span>
+                    </div>
+                    <div class="trending-item" data-tag="all">
+                        <span class="trending-tag">#HauHubStudio</span>
+                        <span class="trending-title">Review đồ án K64</span>
+                        <span class="trending-count">850 bài viết</span>
+                    </div>
+                </div>
+                <button class="view-all-btn" id="viewAllTrendsBtn">Xem tất cả xu hướng</button>
+            </div>
+
+            <!-- Active Members -->
+            <div class="active-members">
+                <h3>
+                    <span class="material-symbols-outlined">workspace_premium</span>
+                    Thành viên nổi bật
+                </h3>
+                <div class="members-list">
+                    <div class="member-item">
+                        <div class="member-avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDGeezOlPeh_B1ieLzqENT-jrXNjhWmumPIZl3nV-bdXRtnWEM_mEMjlclgXbBfFhPapCybML8yXYdbKMWfomvCP-WXIGSgiqIAcAhrczQroYL9nhABKYD0RrHlLJjWGhKt4dF2oMNu5OqnFspOUF6rDvLz49OkKO4SDposGlNeHi7h8lBTKl2ggF0LkXQ3MV5W9Z6W83dEBffmd1wj6stAUAtGAtgJTpCUA9ocuwvI3jej0MkrgJ7QBYd5yFKk0au1JmLMHgrWWNM');"></div>
+                        <div class="member-info">
+                            <p class="member-name">Nguyễn Văn Khải</p>
+                            <div class="member-title">
+                                <span>Chuyên gia Portfolio</span>
+                                <span class="material-symbols-outlined">verified</span>
+                            </div>
+                        </div>
+                        <span class="member-rank">#1</span>
+                    </div>
+                    <div class="member-item">
+                        <div class="member-avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAtOlmsCHltCmBv6wZolpGQq2ejr3LxvUzmkoKW5iALyv3srz75B1wwNCKWFM0t_5TEDvKgATeV9iRpHo6RqjoOJUvbBSYk9mc3WXI58Jr5DgSXmhpbEE2j3vSs_3HanvInq4If1b7FKhyCWIUSRPEND6DOytJEq21vfa3Fn0GCa8zQZFh63hhzB15AFor-OuA8szVIX2JvT-HxLUDdROo7L1knSoUUxfjdbDArg-kEcOKaJPvOWa9hRZlifJ2r_zCi_tyNd2qopJM');"></div>
+                        <div class="member-info">
+                            <p class="member-name">Đặng Thu Thảo</p>
+                            <p class="member-role">Chuyên gia Diễn họa</p>
+                        </div>
+                        <span class="member-rank">#2</span>
+                    </div>
+                    <div class="member-item">
+                        <div class="member-avatar" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAwj3zlMWKqs3sfBY9eJWPKNA1jjEII9TE-bYSYw856LLlRUzkUTZj2HlTsEvXZOqjiRCGkvWTESH0NAYuq2EB1GtZhavM0DTd0X9C2QiDI_6xhPvDgHz8-oNAuaqFB-K20NK3qtw6TvJLsPiZZQIyTCVyZvIxwZiffR3EMIHC_yXRkABM4dzW4KpQT8bLkbv8dPcMfG1OMmdAarHxddoO03Nlsgq9SDJs6zmDktHx1DcJehD1ZFs-SUobuoXbTvg7FqnL_NT7zjog');"></div>
+                        <div class="member-info">
+                            <p class="member-name">Vũ Phương Thảo</p>
+                            <p class="member-role">Cố vấn Quy hoạch</p>
+                        </div>
+                        <span class="member-rank">#3</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+           <!-- Footer sẽ được inject bởi JS -->
+    <footer></footer>
+
+    <!-- AI Chat Widget Container -->
+    <div id="ai-chat-widget"></div>
+
+    <!-- Post Creation FAB for Mobile -->
+    <button class="fab-mobile" id="mobileFabBtn">
+        <span class="material-symbols-outlined">edit</span>
+    </button>
+
+    <!-- JavaScript -->
+    <script>
+        // Tailwind config
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background-light": "#FDFCF8",
+                        "background-dark": "#101822",
+                        "studio-gray": "#e7ecf3",
+                        "drafting-line": "#d1d5db",
+                        "ivory": "#FCFAF7",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "sans": ["Public Sans", "sans-serif"],
+                        "serif": ["Merriweather", "serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "studio": "2rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <script src="./forum.js"></script>
+
+    <!-- JavaScript - Dùng ES6 modules như index.html -->
+<script type="module">
+    // Đường dẫn tương đối từ pages/forum.html đến js/components/
+    import { Header } from '../js/components/header.js';
+    import { Footer } from '../js/components/footer.js';
+    import { AIChatWidget } from '../js/components/chat-widget.js';
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('DOM loaded, initializing components...');
+        
+        try {
+            // Khởi tạo Header - Footer - Chat Widget
+            new Header();
+            new Footer();
+            new AIChatWidget();
+            
+            console.log('Components initialized successfully');
+        } catch (error) {
+            console.error('Error initializing components:', error);
+        }
+    });
+</script>
+
+</body>
+</html>

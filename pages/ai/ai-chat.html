@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../../css/variables.css">
     <link rel="stylesheet" href="../../css/components.css">
     <link rel="stylesheet" href="../../css/layout.css">
-    <link rel="stylesheet" href="../../css/pages/ai-chat.css">
+    <link rel="stylesheet" href="./ai-chat.css">
     
     <!-- Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
@@ -32,7 +32,7 @@
                             <span class="material-symbols-outlined">face_6</span>
                         </div>
                         <div>
-                            <h2 class="ai-title">Trợ giảng AI <span class="ai-subtitle">HauAssistant</span></h2>
+                            <h2 class="ai-title">Trợ lý AI <span class="ai-subtitle">HauAssistant</span></h2>
                             <div class="ai-status">
                                 <span class="status-indicator"></span>
                                 <p class="status-text">Đang trực tuyến để hỗ trợ bạn</p>
@@ -48,7 +48,9 @@
                         </button>
                     </div>
                 </div>
-                
+
+
+
                 <div class="chat-messages-container" id="chat-messages">
                     <!-- Messages sẽ được render bởi JavaScript -->
                     <div class="message-loading" id="loading-template">
@@ -80,25 +82,21 @@
                     </div>
                     <div class="quick-suggestions">
                         <span class="suggestions-label">Gợi ý nhanh:</span>
-                        <button class="quick-suggestion" data-suggestion="Cấu tạo dầm phụ">Cấu tạo dầm phụ</button>
-                        <button class="quick-suggestion" data-suggestion="Quy chuẩn 06">Quy chuẩn 06</button>
-                        <button class="quick-suggestion" data-suggestion="Tính hoạt tải sàn">Tính hoạt tải sàn</button>
+                        <button class="quick-suggestion" data-suggestion="Đăng kí tín chỉ">Đăng kí tín chỉ</button>
+                        <button class="quick-suggestion" data-suggestion="Thi đua- khen thưởng">Thi đua- khen thưởng</button>
+                        <button class="quick-suggestion" data-suggestion="Tiếng Anh đầu vào">Tiếng Anh đầu vào</button>
                     </div>
                 </div>
             </section>
         </main>
         
-        <!-- Chat Widget Floating Button -->
-        <div class="chat-widget-float" id="chat-widget">
-            <!-- Widget sẽ được inject bởi chat-widget.js -->
-        </div>
     </div>
 
     <!-- JavaScript Files -->
     <script type="module" src="../../js/components/header.js"></script>
     <script type="module" src="../../js/components/sidebar.js"></script>
     <script type="module" src="../../js/components/chat-widget.js"></script>
-    <script type="module" src="../../js/pages/ai-chat.js"></script>
     <script type="module" src="../../js/services/ai-service.js"></script>
+    <script type="module" src="./ai-chat.js"></script>
 </body>
 </html>

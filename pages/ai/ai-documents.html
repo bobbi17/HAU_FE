@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../../css/components.css">
     <link rel="stylesheet" href="../../css/layout.css">
     <link rel="stylesheet" href="../../css/pages/admin.css">
-    <link rel="stylesheet" href="../../css/pages/ai-documents.css">
+    <link rel="stylesheet" href="./ai-documents.css">
     
     <!-- External Libraries -->
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -30,7 +30,7 @@
                 </div>
                 <div class="brand-info">
                     <h1 class="brand-name">HauHub</h1>
-                    <p class="brand-subtitle">Admin Portal</p>
+                    <p class="brand-subtitle">Admin</p>
                 </div>
             </div>
             
@@ -105,7 +105,7 @@
                         </svg>
                     </div>
                     <div class="header-title">
-                        <h2>Quản lý Tài liệu AI</h2>
+                        <h2>Quản lý tài liệu AI</h2>
                         <p>Hệ thống xử lý tài liệu học thuật thông minh</p>
                     </div>
                 </div>
@@ -133,25 +133,21 @@
             <div class="dashboard-content">
                 <!-- Breadcrumbs -->
                 <nav class="breadcrumbs">
-                    <a href="admin-dashboard.html" class="breadcrumb-link">Cơ sở hạ tầng</a>
+                    <a href="admin-dashboard.html" class="breadcrumb-link">Admin</a>
                     <span class="breadcrumb-separator">/</span>
-                    <span class="breadcrumb-current">Kho tài nguyên</span>
+                    <span class="breadcrumb-current">Tài liệu AI</span>
                 </nav>
                 
                 <!-- Page Header -->
                 <div class="page-header">
                     <div class="header-content">
-                        <h1 class="page-title">Quản Lý Tài Liệu AI</h1>
+                        <h1 class="page-title">QUẢN LÝ TÀI LIỆU AI</h1>
                         <p class="page-subtitle">
                             Kho tài liệu và hệ thống xử lý tri thức cho hệ sinh thái kiến trúc HauHub. 
-                            Tải lên tạp chí học thuật, bản vẽ, và bài nghiên cứu để xử lý thần kinh.
+                            Tải lên tạp chí học thuật, bản vẽ, và bài nghiên cứu để xử lý.
                         </p>
                     </div>
                     <div class="header-actions">
-                        <button class="btn-secondary" id="sync-database-btn">
-                            <span class="material-symbols-outlined">cached</span>
-                            Đồng bộ Vector DB
-                        </button>
                         <button class="btn-primary" id="upload-document-btn">
                             <span class="material-symbols-outlined">add_box</span>
                             Tải lên tài liệu
@@ -186,20 +182,6 @@
                         </div>
                         <div class="stat-trend capacity">84% Capacity</div>
                     </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <div>
-                                <p class="stat-label">Tokens</p>
-                                <h3 class="stat-value" id="tokens-count">12.5M</h3>
-                            </div>
-                            <span class="stat-icon">
-                                <span class="material-symbols-outlined">token</span>
-                            </span>
-                        </div>
-                        <div class="stat-trend success">+840k</div>
-                    </div>
-                    
                     <div class="stat-card">
                         <div class="stat-header">
                             <div>
@@ -213,163 +195,88 @@
                         <div class="stat-trend warning">3 Active</div>
                     </div>
                 </div>
-                
-                <!-- Quick Actions -->
-                <div class="quick-actions-card">
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            <span class="material-symbols-outlined">rocket_launch</span>
-                            Hành động nhanh
-                        </h3>
-                    </div>
-                    <div class="quick-actions-grid">
-                        <button class="quick-action-btn" id="quick-upload-btn">
-                            <span class="material-symbols-outlined">upload</span>
-                            <span>Tải lên tài liệu</span>
-                        </button>
-                        <button class="quick-action-btn" id="bulk-process-btn">
-                            <span class="material-symbols-outlined">play_arrow</span>
-                            <span>Xử lý hàng loạt</span>
-                        </button>
-                        <button class="quick-action-btn" id="export-data-btn">
-                            <span class="material-symbols-outlined">download</span>
-                            <span>Xuất dữ liệu</span>
-                        </button>
-                        <button class="quick-action-btn" id="analyze-stats-btn">
-                            <span class="material-symbols-outlined">analytics</span>
-                            <span>Phân tích</span>
-                        </button>
-                    </div>
-                </div>
 
-                <!-- Documents Table -->
-                <div class="content-card">
-                    <div class="card-header">
-                        <h3 class="card-title">
-                            <span class="material-symbols-outlined">format_list_bulleted</span>
-                            Kho Tài liệu
-                        </h3>
-                        <div class="card-filters">
-                            <div class="filter-group">
-                                <label class="filter-label">Loại tệp</label>
-                                <select class="filter-select" id="file-type-filter">
-                                    <option value="all">Tất cả loại</option>
-                                    <option value="pdf">PDF</option>
-                                    <option value="dwg">DWG</option>
-                                    <option value="json">JSON</option>
-                                    <option value="docx">DOCX</option>
-                                    <option value="txt">TXT</option>
-                                </select>
-                            </div>
-                            
-                            <div class="filter-group">
-                                <label class="filter-label">Trạng thái</label>
-                                <select class="filter-select" id="processing-status-filter">
-                                    <option value="all">Tất cả trạng thái</option>
-                                    <option value="vectorized">Vectorized</option>
-                                    <option value="processing">Processing</option>
-                                    <option value="pending">Pending</option>
-                                    <option value="failed">Failed</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="table-container">
-                        <table class="data-table">
-                            <thead>
-                                <tr>
-                                    <th class="w-10">
-                                        <input type="checkbox" id="select-all" class="select-checkbox">
-                                    </th>
-                                    <th>Chi tiết Tài liệu</th>
-                                    <th class="text-center">Thông số</th>
-                                    <th class="text-center">Trạng thái Xử lý</th>
-                                    <th class="text-center">Thời gian</th>
-                                    <th class="text-right">Hành động</th>
-                                </tr>
-                            </thead>
-                            <tbody id="documents-table-body">
-                                <!-- Documents sẽ được tải bằng JavaScript -->
-                                <tr>
-                                    <td colspan="6" class="text-center py-8">
-                                        <div class="empty-state">
-                                            <span class="material-symbols-outlined text-4xl text-slate-300 mb-2">folder_open</span>
-                                            <p class="text-slate-500">Đang tải tài liệu...</p>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    
-                    <!-- Pagination & Bulk Actions -->
-                    <div class="table-footer">
-                        <div class="bulk-actions">
-                            <button class="btn-secondary" id="process-selected-btn">
-                                <span class="material-symbols-outlined">play_arrow</span>
-                                Xử lý đã chọn
-                            </button>
-                            <button class="btn-secondary" id="delete-selected-btn">
-                                <span class="material-symbols-outlined">delete</span>
-                                Xóa đã chọn
-                            </button>
-                        </div>
-                        <div class="pagination-info">
-                            Trang <span class="highlight">1</span> trong <span class="highlight">1</span> (0 Tài sản)
-                        </div>
-                        <div class="pagination">
-                            <button class="pagination-btn prev" disabled>
-                                <span class="material-symbols-outlined">navigate_before</span>
-                                Trước
-                            </button>
-                            <button class="pagination-btn next" disabled>
-                                Trang tiếp
-                                <span class="material-symbols-outlined">navigate_next</span>
-                            </button>
-                        </div>
-                    </div>
+                <!-- Document List -->
+ <div class="card">
+    <div class="card-header-flex">
+        <h3>Tài liệu</h3>
+    </div>
+    
+    <!-- Container có scroll -->
+    <div class="documents-container">
+        <div class="document-item">
+            <div class="doc-info">
+                <span class="material-symbols-outlined doc-icon">description</span>
+                <div class="doc-text">
+                    <p class="doc-name">Báo_cáo_AI_2026.pdf</p>
+                    <span class="doc-time">10 phút trước</span>
                 </div>
-                
-                <!-- System Monitor -->
-                <div class="system-monitor">
-                    <div class="monitor-header">
-                        <h4 class="monitor-title">
-                            <span class="material-symbols-outlined">terminal</span>
-                            Ingestion Logs
-                        </h4>
-                        <div class="monitor-stats">
-                            <span class="log-stat success">
-                                <span class="stat-dot"></span>
-                                24 OK
-                            </span>
-                            <span class="log-stat warning">
-                                <span class="stat-dot"></span>
-                                2 Warn
-                            </span>
-                            <span class="log-stat error">
-                                <span class="stat-dot"></span>
-                                1 Error
-                            </span>
-                        </div>
-                        <div class="monitor-controls">
-                            <button class="control-btn" id="clear-logs-btn">
-                                <span class="material-symbols-outlined">clear_all</span>
-                            </button>
-                            <button class="control-btn" id="expand-logs-btn">
-                                <span class="material-symbols-outlined">expand_more</span>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="logs-container" id="logs-container" style="max-height: 400px; overflow-y: auto;">
-                        <!-- Logs sẽ được thêm bằng JavaScript -->
-                    </div>
+            </div>
+            <button class="delete-btn" title="Xóa tài liệu">
+                <span class="material-symbols-outlined">delete</span>
+            </button>
+        </div>
+
+        <div class="document-item">
+            <div class="doc-info">
+                <span class="material-symbols-outlined doc-icon">description</span>
+                <div class="doc-text">
+                    <p class="doc-name">Đề_tài_NCKH.docx</p>
+                    <span class="doc-time">Hôm nay · 08:32</span>
                 </div>
-                
+            </div>
+            <button class="delete-btn" title="Xóa tài liệu">
+                <span class="material-symbols-outlined">delete</span>
+            </button>
+        </div>
+
+        <!-- Thêm 3 document items mới -->
+        <div class="document-item">
+            <div class="doc-info">
+                <span class="material-symbols-outlined doc-icon">description</span>
+                <div class="doc-text">
+                    <p class="doc-name">Thuyết_trình_Thiết_kế_UI.pptx</p>
+                    <span class="doc-time">Hôm qua · 14:20</span>
+                </div>
+            </div>
+            <button class="delete-btn" title="Xóa tài liệu">
+                <span class="material-symbols-outlined">delete</span>
+            </button>
+        </div>
+
+        <div class="document-item">
+            <div class="doc-info">
+                <span class="material-symbols-outlined doc-icon">description</span>
+                <div class="doc-text">
+                    <p class="doc-name">Hợp_đồng_Đối_tác_2024.pdf</p>
+                    <span class="doc-time">2 ngày trước</span>
+                </div>
+            </div>
+            <button class="delete-btn" title="Xóa tài liệu">
+                <span class="material-symbols-outlined">delete</span>
+            </button>
+        </div>
+
+        <div class="document-item">
+            <div class="doc-info">
+                <span class="material-symbols-outlined doc-icon">description</span>
+                <div class="doc-text">
+                    <p class="doc-name">Bảng_tính_Chi_phí.xlsx</p>
+                    <span class="doc-time">3 ngày trước · 09:15</span>
+                </div>
+            </div>
+            <button class="delete-btn" title="Xóa tài liệu">
+                <span class="material-symbols-outlined">delete</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+ 
                 <!-- Footer -->
                 <footer class="dashboard-footer">
                     <div class="footer-left">
-                        <span>© 2024 HauHub University • Hệ thống xử lý tài liệu AI tiên tiến</span>
+                        <span>© 2026 HauHub • Hệ thống xử lý tài liệu AI</span>
                     </div>
                     <div class="footer-right">
                         <a href="#" class="footer-link">Hướng dẫn sử dụng</a>
@@ -423,41 +330,6 @@
                     </div>
                 </div>
                 
-                <!-- Activity Log -->
-                <div class="activity-log">
-                    <h4 class="activity-title">Activity Log</h4>
-                    <div class="activity-list">
-                        <div class="activity-item">
-                            <div class="activity-indicator success"></div>
-                            <div class="activity-content">
-                                <div class="activity-text">New PDF Uploaded</div>
-                                <div class="activity-time">14:20 // ADMIN_01</div>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <div class="activity-indicator info"></div>
-                            <div class="activity-content">
-                                <div class="activity-text">Vector DB Backup</div>
-                                <div class="activity-time">13:10 // SYSTEM</div>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <div class="activity-indicator error"></div>
-                            <div class="activity-content">
-                                <div class="activity-text">Schema Validation Error</div>
-                                <div class="activity-time">11:45 // PARSER</div>
-                            </div>
-                        </div>
-                        <div class="activity-item">
-                            <div class="activity-indicator processing"></div>
-                            <div class="activity-content">
-                                <div class="activity-text">AI Model Retraining</div>
-                                <div class="activity-time">10:30 // TRAINER</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
                 <!-- Tip Card -->
                 <div class="tip-card">
                     <div class="tip-header">
@@ -465,7 +337,7 @@
                         <span class="tip-title">Mẹo Lưu trữ</span>
                     </div>
                     <p class="tip-content">
-                        Để tối ưu hóa khả năng truy xuất, hãy chia nhỏ thành các phần con theo chủ đề trước khi xử lý.
+                        Để tối ưu hóa khả năng truy xuất, hãy chia nhỏ dữ liệu thành các phần con theo chủ đề trước khi xử lý.
                     </p>
                 </div>
             </div>
@@ -504,62 +376,11 @@
                 <div class="upload-queue" id="upload-queue">
                     <!-- Upload queue will be populated here -->
                 </div>
-                
-                <div class="upload-settings">
-                    <h4 class="settings-title">Cài đặt Xử lý</h4>
-                    <div class="settings-grid">
-                        <div class="setting-group">
-                            <label class="setting-label">
-                                <input type="checkbox" id="auto-process" checked>
-                                <span>Tự động xử lý sau khi tải lên</span>
-                            </label>
-                        </div>
-                        <div class="setting-group">
-                            <label class="setting-label">
-                                <input type="checkbox" id="generate-embeddings" checked>
-                                <span>Tạo embeddings vector</span>
-                            </label>
-                        </div>
-                        <div class="setting-group">
-                            <label class="setting-label">
-                                <input type="checkbox" id="extract-metadata" checked>
-                                <span>Trích xuất metadata</span>
-                            </label>
-                        </div>
-                        <div class="setting-group">
-                            <label class="setting-label">
-                                <input type="checkbox" id="ocr-if-needed">
-                                <span>OCR cho hình ảnh/PDF quét</span>
-                            </label>
-                        </div>
-                    </div>
                     
                     <div class="setting-group full-width">
                         <label class="setting-label">Thẻ phân loại</label>
                         <input type="text" id="document-tags" class="form-input" placeholder="Nhập thẻ phân loại, cách nhau bằng dấu phẩy">
                     </div>
-                    
-                    <div class="setting-group">
-                        <label class="setting-label">Mô hình xử lý</label>
-                        <select id="processing-model" class="form-select">
-                            <option value="text-embedding-3-small">text-embedding-3-small</option>
-                            <option value="text-embedding-3-large">text-embedding-3-large</option>
-                            <option value="text-embedding-ada-002">text-embedding-ada-002</option>
-                            <option value="custom-model">Mô hình tùy chỉnh</option>
-                        </select>
-                    </div>
-                    
-                    <div class="setting-group">
-                        <label class="setting-label">Độ ưu tiên</label>
-                        <select id="processing-priority" class="form-select">
-                            <option value="low">Thấp</option>
-                            <option value="normal" selected>Bình thường</option>
-                            <option value="high">Cao</option>
-                            <option value="urgent">Khẩn cấp</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
             
            <div class="modal-actions">
                 <button class="btn-secondary" id="cancel-upload">Hủy bỏ</button>
@@ -590,7 +411,7 @@
     <script src="../../js/components/modal.js"></script>
     <script src="../../js/components/notification.js"></script>
     <script src="../../js/services/ai-service.js"></script>
-    <script src="../../js/pages/ai-documents.js"></script>
+    <script src="./ai-documents.js"></script>
 
 
     <script>
@@ -637,7 +458,5 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
-
-
 </body>
 </html>
