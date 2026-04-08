@@ -8,9 +8,9 @@ import {
     getReportStats,
     getViolationTrends,
     getModeratorStats 
-} from '../services/admin-service.js';
-import { showModal, closeModal } from '../components/modal.js';
-import { showNotification } from '../components/notification.js';
+} from '../../js/services/admin-service.js';
+import { showModal, closeModal } from '../../js/components/modal.js';
+import { showNotification } from '../../js/components/notification.js';
 
 class ForumManagement {
     constructor() {

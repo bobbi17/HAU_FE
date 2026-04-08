@@ -23,7 +23,7 @@ export class HomePage {
                     </p>
                 </div>
                 <div class="hero-actions">
-                    <button class="btn-arch btn-arch-primary">Vào Studio</button>
+                    <button class="btn-arch btn-arch-primary">Đăng nhập</button>
                     <button class="btn-arch">Khám phá </button>
                 </div>
             </div>

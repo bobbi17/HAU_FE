@@ -25,8 +25,11 @@
       <!-- Sidebar Navigation -->
 <aside class="dashboard-sidebar" id="admin-sidebar">
     <div class="sidebar-header">
-        <div class="brand-logo">
-            <span class="material-symbols-outlined logo-icon">architecture</span>
+         <div class="logo">
+            <svg class="logo-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="M7 4V20M17 4L7 12L17 20M11 12H7" stroke-linecap="square"></path>
+            </svg>
+            <div class="logo-corner"></div>
         </div>
         <div class="brand-info">
             <h1 class="brand-name">HauHub</h1>
@@ -95,16 +98,14 @@
             <!-- Top Navigation -->
             <header class="dashboard-header">
                 <div class="header-left">
-                    <div class="compass-icon">
-                        <svg class="compass-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                            <circle class="technical-line" cx="24" cy="24" r="18" stroke="currentColor" stroke-width="1.5"></circle>
-                            <path d="M24 8V12M24 36V40M8 24H12M36 24H40" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path>
-                            <path d="M24 16L20 24L24 32L28 24L24 16Z" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="1.5"></path>
-                            <circle cx="24" cy="24" fill="currentColor" r="2"></circle>
-                        </svg>
-                    </div>
-                    <div class="header-title">
-                        <h2>Cấu hình Hệ thống</h2>
+                     <div class="logo">
+            <svg class="logo-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="M7 4V20M17 4L7 12L17 20M11 12H7" stroke-linecap="square"></path>
+            </svg>
+            <div class="logo-corner"></div>
+        </div>
+                    <div class="page-header1">
+                        <h2>Cấu hình hệ thống</h2>
                         <p>Điều chỉnh và tối ưu hóa cài đặt nền tảng</p>
                     </div>
                 </div>
@@ -139,13 +140,15 @@
                 
                 <!-- Page Header -->
                 <div class="page-header">
-                    <div class="header-content">
-                        <h1 class="page-title">Cấu hình Hệ thống</h1>
-                        <p class="page-subtitle">
-                            Quản lý cài đặt hệ thống toàn diện, tối ưu hóa hiệu suất và bảo mật cho nền tảng HauHub.
-                            Mọi thay đổi sẽ ảnh hưởng trực tiếp đến trải nghiệm người dùng.
-                        </p>
-                    </div>
+
+                     <div class="stats-header-content">
+        <h1 class="stats-page-title">Cấu hình hệ thống</h1>
+        <p class="stats-page-subtitle">
+        Quản lý cài đặt hệ thống toàn diện, tối ưu hóa hiệu suất và bảo mật cho nền tảng HauHub.
+        Mọi thay đổi sẽ ảnh hưởng trực tiếp đến trải nghiệm người dùng.
+        </p>
+    </div>  
+                   
                     <div class="header-actions">
                         <button class="btn-secondary" id="import-config-btn">
                             <span class="material-symbols-outlined">upload</span>
@@ -1120,10 +1123,20 @@
         </main>
     </div>
 
+    <!-- Footer -->
+<footer class="stats-dashboard-footer">
+    <div class="stats-footer-left">
+        <span>© HauHub • Hệ thống quản trị HauHub</span>
+    </div>
+    <div class="stats-footer-right">
+        <a href="#" class="stats-footer-link">Trợ giúp</a>
+    </div>
+</footer>
+
     <!-- JavaScript Files -->
     <script src="../../js/utils.js"></script>
     <script src="../../js/components/sidebar.js"></script>
-    <script src="../../js/pages/system-config.js"></script>
+    <script src="./system-config.js"></script>
     <script src="../../js/auth/logout.js"></script>
 </body>
 </html>

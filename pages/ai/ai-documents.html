@@ -24,15 +24,18 @@
     <div class="dashboard-container">
         <!-- Sidebar Navigation -->
         <aside class="dashboard-sidebar" id="admin-sidebar">
-            <div class="sidebar-header">
-                <div class="brand-logo">
-                    <span class="material-symbols-outlined logo-icon">architecture</span>
-                </div>
-                <div class="brand-info">
-                    <h1 class="brand-name">HauHub</h1>
-                    <p class="brand-subtitle">Admin</p>
-                </div>
-            </div>
+             <div class="sidebar-header">
+        <div class="logo">
+            <svg class="logo-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="M7 4V20M17 4L7 12L17 20M11 12H7" stroke-linecap="square"></path>
+            </svg>
+            <div class="logo-corner"></div>
+        </div>
+        <div class="brand-info">
+            <h1 class="brand-name">HauHub</h1>
+            <p class="brand-subtitle">Admin Portal</p>
+        </div>
+    </div>
             
             <nav class="sidebar-nav">
                 <ul class="nav-menu">
@@ -94,17 +97,20 @@
         <!-- Main Content -->
         <main class="dashboard-main">
             <!-- Top Navigation -->
-            <header class="dashboard-header">
+                  <header class="dashboard-header">
                 <div class="header-left">
-                    <div class="compass-icon">
-                        <svg class="compass-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                            <circle class="technical-line" cx="24" cy="24" r="18" stroke="currentColor" stroke-width="1.5"></circle>
-                            <path d="M24 8V12M24 36V40M8 24H12M36 24H40" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path>
-                            <path d="M24 16L20 24L24 32L28 24L24 16Z" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="1.5"></path>
-                            <circle cx="24" cy="24" fill="currentColor" r="2"></circle>
-                        </svg>
-                    </div>
-                    <div class="header-title">
+                   <div class="logo-section">
+                     <a href="#" class="logo-link group">
+                   <div class="logo">
+            <svg class="logo-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <path d="M7 4V20M17 4L7 12L17 20M11 12H7" stroke-linecap="square"></path>
+            </svg>
+            <div class="logo-corner"></div>
+        </div>
+    </a>
+</div>
+
+                    <div class="page-header1">
                         <h2>Quản lý tài liệu AI</h2>
                         <p>Hệ thống xử lý tài liệu học thuật thông minh</p>
                     </div>
@@ -113,15 +119,11 @@
                 <div class="header-right">
                     <div class="search-bar">
                         <span class="material-symbols-outlined search-icon">search</span>
-                        <input type="text" placeholder="Search architectural documentation..." 
+                        <input type="text" placeholder="Tìm kiếm tài liệu..." 
                                class="search-input" id="document-search">
                     </div>
                     
                     <div class="header-actions">
-                        <div class="system-status">
-                            <div class="status-dot online"></div>
-                            <span class="status-text">Node Online</span>
-                        </div>
                         <button class="action-btn notification-btn" id="notifications-btn">
                             <span class="material-symbols-outlined">notifications_none</span>
                         </button>
@@ -140,13 +142,13 @@
                 
                 <!-- Page Header -->
                 <div class="page-header">
-                    <div class="header-content">
-                        <h1 class="page-title">QUẢN LÝ TÀI LIỆU AI</h1>
-                        <p class="page-subtitle">
-                            Kho tài liệu và hệ thống xử lý tri thức cho hệ sinh thái kiến trúc HauHub. 
-                            Tải lên tạp chí học thuật, bản vẽ, và bài nghiên cứu để xử lý.
-                        </p>
-                    </div>
+                     <div class="stats-header-content">
+        <h1 class="stats-page-title">Quản lý tài liệu AI</h1>
+        <p class="stats-page-subtitle">
+        Kho tài liệu và hệ thống xử lý tri thức cho hệ sinh thái HauHub. 
+        </p>
+    </div>  
+                    
                     <div class="header-actions">
                         <button class="btn-primary" id="upload-document-btn">
                             <span class="material-symbols-outlined">add_box</span>
@@ -157,43 +159,58 @@
                 
                 <!-- Stats Cards -->
                 <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <div>
-                                <p class="stat-label">Tài liệu</p>
-                                <h3 class="stat-value" id="documents-count">1,284</h3>
-                            </div>
-                            <span class="stat-icon">
-                                <span class="material-symbols-outlined">auto_stories</span>
-                            </span>
-                        </div>
-                        <div class="stat-trend success">+12.5%</div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <div>
-                                <p class="stat-label">Dung lượng</p>
-                                <h3 class="stat-value" id="storage-used">4.2 GB</h3>
-                            </div>
-                            <span class="stat-icon">
-                                <span class="material-symbols-outlined">database</span>
-                            </span>
-                        </div>
-                        <div class="stat-trend capacity">84% Capacity</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <div>
-                                <p class="stat-label">Trạng thái</p>
-                                <h3 class="stat-value" id="processing-status">Processing</h3>
-                            </div>
-                            <span class="stat-icon">
-                                <span class="material-symbols-outlined">settings_slow_motion</span>
-                            </span>
-                        </div>
-                        <div class="stat-trend warning">3 Active</div>
-                    </div>
+                    <div class="ai-stats-grid">
+    <div class="ai-stat-card">
+        <div class="ai-stat-header">
+            <div class="ai-stat-info">
+                <p class="ai-stat-label">Tổng tài liệu</p>
+                <h3 class="ai-stat-value" id="documents-count">1,284</h3>
+            </div>
+            <div class="ai-stat-icon">
+                <span class="material-symbols-outlined">auto_stories</span>
+            </div>
+        </div>
+        <div class="ai-stat-footer success">
+            <span class="trend-up">↑ 12.5%</span>
+            <span class="trend-text">so với tháng trước</span>
+        </div>
+    </div>
+    
+    <div class="ai-stat-card">
+        <div class="ai-stat-header">
+            <div class="ai-stat-info">
+                <p class="ai-stat-label">Dung lượng lưu trữ</p>
+                <h3 class="ai-stat-value" id="storage-used">4.2 GB</h3>
+            </div>
+            <div class="ai-stat-icon">
+                <span class="material-symbols-outlined">database</span>
+            </div>
+        </div>
+        <div class="ai-stat-footer capacity">
+            <div class="capacity-bar">
+                <div class="capacity-progress" style="width: 84%"></div>
+            </div>
+            <span class="capacity-text">84% đã sử dụng</span>
+        </div>
+    </div>
+    
+    <div class="ai-stat-card">
+        <div class="ai-stat-header">
+            <div class="ai-stat-info">
+                <p class="ai-stat-label">Đang xử lý</p>
+                <h3 class="ai-stat-value" id="processing-status">3</h3>
+            </div>
+            <div class="ai-stat-icon">
+                <span class="material-symbols-outlined">settings_slow_motion</span>
+            </div>
+        </div>
+        <div class="ai-stat-footer warning">
+            <span class="status-dot active"></span>
+            <span class="status-text">Đang xử lý</span>
+            <span class="status-count">3 tài liệu</span>
+        </div>
+    </div>
+</div>
                 </div>
 
                 <!-- Document List -->
@@ -273,17 +290,15 @@
 </div>
 
  
-                <!-- Footer -->
-                <footer class="dashboard-footer">
-                    <div class="footer-left">
-                        <span>© 2026 HauHub • Hệ thống xử lý tài liệu AI</span>
-                    </div>
-                    <div class="footer-right">
-                        <a href="#" class="footer-link">Hướng dẫn sử dụng</a>
-                        <a href="#" class="footer-link">API Documentation</a>
-                        <a href="#" class="footer-link">Chính sách bảo mật</a>
-                    </div>
-                </footer>
+              <!-- Footer -->
+<footer class="stats-dashboard-footer">
+    <div class="stats-footer-left">
+        <span>© HauHub • Hệ thống quản trị HauHub</span>
+    </div>
+    <div class="stats-footer-right">
+        <a href="#" class="stats-footer-link">Trợ giúp</a>
+    </div>
+</footer>
             </div>
         </main>
         

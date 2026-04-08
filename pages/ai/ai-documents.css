@@ -9,6 +9,9 @@
     --text-muted: #6B7280;
     --white: #FFFFFF;
 }
+
+
+
 /* System Status */
 .system-status {
     display: flex;
@@ -155,7 +158,7 @@
 
 .document-icon.docx {
     background-color: rgba(59, 130, 246, 0.1);
-    color: #3b82f6;
+    color: --arch-blue-deep;
     border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
@@ -2166,6 +2169,224 @@ body.admin-dashboard {
 }
 
 
+
+/* ===== AI STATS GRID ===== */
+.ai-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    .ai-stats-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .ai-stats-grid {
+        gap: 1rem;
+    }
+}
+
+/* ===== AI STAT CARD ===== */
+.ai-stat-card {
+    background: var(--ivory);
+    border-radius: 1rem;
+    padding: 1.25rem;
+    border: 1px solid var(--line-art);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.ai-stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--arch-blue), var(--blueprint-blue));
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.ai-stat-card:hover::before {
+    transform: scaleX(1);
+}
+
+.ai-stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(10, 36, 99, 0.08);
+    border-color: var(--drafting-light);
+}
+
+/* ===== AI STAT HEADER ===== */
+.ai-stat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.ai-stat-info {
+    flex: 1;
+}
+
+.ai-stat-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--drafting-gray);
+    margin-bottom: 0.25rem;
+}
+
+.ai-stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--arch-blue);
+    line-height: 1.2;
+    margin: 0;
+}
+
+.ai-stat-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: rgba(10, 36, 99, 0.08);
+    border-radius: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--arch-blue);
+    transition: all 0.3s ease;
+}
+
+.ai-stat-card:hover .ai-stat-icon {
+    background: var(--arch-blue);
+    color: white;
+    transform: scale(1.05);
+}
+
+.ai-stat-icon .material-symbols-outlined {
+    font-size: 1.25rem;
+}
+
+/* ===== AI STAT FOOTER ===== */
+.ai-stat-footer {
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--line-art);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.7rem;
+}
+
+/* Success Footer */
+.ai-stat-footer.success {
+    color: var(--success);
+}
+
+.trend-up {
+    font-weight: 700;
+    background: rgba(16, 185, 129, 0.1);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+}
+
+.trend-text {
+    color: var(--drafting-gray);
+    font-weight: 500;
+}
+
+/* Capacity Footer */
+.ai-stat-footer.capacity {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+}
+
+.capacity-bar {
+    height: 0.375rem;
+    background: var(--line-art);
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+.capacity-progress {
+    height: 100%;
+    background: linear-gradient(90deg, var(--arch-blue), var(--blueprint-blue));
+    border-radius: 0.25rem;
+    transition: width 0.3s ease;
+}
+
+.capacity-text {
+    color: var(--drafting-gray);
+    font-size: 0.65rem;
+    text-align: right;
+}
+
+/* Warning Footer */
+.ai-stat-footer.warning {
+    gap: 0.75rem;
+}
+
+.status-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+}
+
+.status-dot.active {
+    background-color: var(--warning);
+    box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.status-text {
+    color: var(--warning);
+    font-weight: 600;
+}
+
+.status-count {
+    color: var(--drafting-gray);
+    margin-left: auto;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .ai-stat-value {
+        font-size: 1.5rem;
+    }
+    
+    .ai-stat-icon {
+        width: 2rem;
+        height: 2rem;
+    }
+    
+    .ai-stat-icon .material-symbols-outlined {
+        font-size: 1rem;
+    }
+    
+    .trend-text,
+    .capacity-text,
+    .status-text,
+    .status-count {
+        font-size: 0.6rem;
+    }
+}
 
 
 

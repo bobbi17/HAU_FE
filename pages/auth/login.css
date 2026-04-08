@@ -1551,3 +1551,48 @@
         gap: 0.75rem;
     }
 }
+
+/* ============================================ */
+/* LOGO FULLSCREEN - BAO TRỌN, BO TRÒN GÓC */
+/* ============================================ */
+
+.login-left-panel {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 24px 0 0 24px;
+    display: flex;
+     justify-content: center; /* ngang */
+    align-items: center; /* dọc */
+}
+
+.logo-fullscreen {
+
+    overflow: hidden;
+    border-radius: 24px 0 0 24px;
+
+    justify-content: center; /* ngang */
+    align-items: center; 
+}
+
+.logo-fullscreen-img {
+
+    object-fit: cover;
+    display: block;
+      justify-content: center; /* ngang */
+    align-items: center; 
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .login-left-panel {
+        display: none;
+    }
+    
+    .login-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .login-right-panel {
+        border-radius: 24px;
+    }
+}

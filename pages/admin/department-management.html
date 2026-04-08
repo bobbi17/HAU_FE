@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../../css/components.css">
     <link rel="stylesheet" href="../../css/layout.css">
     <link rel="stylesheet" href="../../css/pages/admin.css">
-    <link rel="stylesheet" href="../../css/pages/subjects.css">
+  
     
     <!-- External Libraries -->
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -23,89 +23,90 @@
 <body class="admin-dashboard">
     <div class="dashboard-container">
         <!-- Sidebar Navigation -->
-<aside class="dashboard-sidebar" id="admin-sidebar">
-    <div class="sidebar-header">
-        <div class="brand-logo">
-            <span class="material-symbols-outlined logo-icon">architecture</span>
-        </div>
-        <div class="brand-info">
-            <h1 class="brand-name">HauHub</h1>
-            <p class="brand-subtitle">Admin Portal</p>
-        </div>
-    </div>
-    
-    <nav class="sidebar-nav">
-        <ul class="nav-menu">
-            <li class="nav-item">
-                <a href="admin-dashboard.html" class="nav-link">
-                    <span class="nav-icon material-symbols-outlined">dashboard</span>
-                    <span class="nav-text">Dashboard</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="user-management.html" class="nav-link">
-                    <span class="nav-icon material-symbols-outlined">group</span>
-                    <span class="nav-text">Người dùng</span>
-                </a>
-            </li>
-            <li class="nav-item active">
-                <a href="department-management.html" class="nav-link">
-                    <span class="nav-icon material-symbols-outlined">school</span>
-                    <span class="nav-text">Đào tạo</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="forum-management.html" class="nav-link">
-                    <span class="nav-icon material-symbols-outlined">forum</span>
-                    <span class="nav-text">Diễn đàn</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="../ai/ai-documents.html" class="nav-link">
-                    <span class="nav-icon material-symbols-outlined">smart_toy</span>
-                    <span class="nav-text">Tài liệu AI</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="system-config.html" class="nav-link">
-                    <span class="nav-icon material-symbols-outlined">settings</span>
-                    <span class="nav-text">Cấu hình</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-    
-    <div class="sidebar-footer">
-        <div class="user-profile">
-            <div class="user-avatar">
-                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtmkkJF4tN3dFTJCHA7Bxu1Ic0IRrDB4IBR7WvPZFBZK7zQ3IDRtglLgn95BjUJg2zxPJ4SXgKfgbM4VBr5s42AjUu9BIaedrCoskkTd94vc8PNqx1rc-KKUFFLqXbMVdSX6oYBCoLopANZGPZ0xzszKO6FvhbuvNmq7SGuSmtMAM-vHbuivZVNBb24mXMN7DWtHg4RIf4ExvqFdGjPhm5u7vDy-64-3Y7un7j9s5jeW5oqkl4-zZ6TIucjA8c61W6_K-v10TwUeg" alt="Admin Avatar">
+        <aside class="dashboard-sidebar" id="admin-sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <svg class="logo-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path d="M7 4V20M17 4L7 12L17 20M11 12H7" stroke-linecap="square"></path>
+                    </svg>
+                    <div class="logo-corner"></div>
+                </div>
+                <div class="brand-info">
+                    <h1 class="brand-name">HauHub</h1>
+                    <p class="brand-subtitle">Admin Portal</p>
+                </div>
             </div>
-            <div class="user-info">
-                <p class="user-name">Admin HauHub</p>
-                <p class="user-role">System Overseer</p>
+            
+            <nav class="sidebar-nav">
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="admin-dashboard.html" class="nav-link">
+                            <span class="nav-icon material-symbols-outlined">dashboard</span>
+                            <span class="nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="user-management.html" class="nav-link">
+                            <span class="nav-icon material-symbols-outlined">group</span>
+                            <span class="nav-text">Người dùng</span>
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="department-management.html" class="nav-link">
+                            <span class="nav-icon material-symbols-outlined">school</span>
+                            <span class="nav-text">Đào tạo</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="forum-management.html" class="nav-link">
+                            <span class="nav-icon material-symbols-outlined">forum</span>
+                            <span class="nav-text">Diễn đàn</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="../ai/ai-documents.html" class="nav-link">
+                            <span class="nav-icon material-symbols-outlined">smart_toy</span>
+                            <span class="nav-text">Tài liệu AI</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="system-config.html" class="nav-link">
+                            <span class="nav-icon material-symbols-outlined">settings</span>
+                            <span class="nav-text">Cấu hình</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar">
+                        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtmkkJF4tN3dFTJCHA7Bxu1Ic0IRrDB4IBR7WvPZFBZK7zQ3IDRtglLgn95BjUJg2zxPJ4SXgKfgbM4VBr5s42AjUu9BIaedrCoskkTd94vc8PNqx1rc-KKUFFLqXbMVdSX6oYBCoLopANZGPZ0xzszKO6FvhbuvNmq7SGuSmtMAM-vHbuivZVNBb24mXMN7DWtHg4RIf4ExvqFdGjPhm5u7vDy-64-3Y7un7j9s5jeW5oqkl4-zZ6TIucjA8c61W6_K-v10TwUeg" alt="Admin Avatar">
+                    </div>
+                    <div class="user-info">
+                        <p class="user-name">Admin HauHub</p>
+                        <p class="user-role">System Overseer</p>
+                    </div>
+                    <button class="logout-btn" id="logout-button">
+                        <span class="material-symbols-outlined">logout</span>
+                    </button>
+                </div>
             </div>
-            <button class="logout-btn" id="logout-button">
-                <span class="material-symbols-outlined">logout</span>
-            </button>
-        </div>
-    </div>
-</aside>
+        </aside>
         
         <!-- Main Content -->
         <main class="dashboard-main">
             <!-- Top Navigation -->
             <header class="dashboard-header">
                 <div class="header-left">
-                    <div class="compass-icon">
-                        <svg class="compass-svg" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                            <circle class="technical-line" cx="24" cy="24" r="18" stroke="currentColor" stroke-width="1.5"></circle>
-                            <path d="M24 8V12M24 36V40M8 24H12M36 24H40" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"></path>
-                            <path d="M24 16L20 24L24 32L28 24L24 16Z" fill="currentColor" fill-opacity="0.2" stroke="currentColor" stroke-width="1.5"></path>
-                            <circle cx="24" cy="24" fill="currentColor" r="2"></circle>
+                    <div class="logo">
+                        <svg class="logo-icon" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path d="M7 4V20M17 4L7 12L17 20M11 12H7" stroke-linecap="square"></path>
                         </svg>
+                        <div class="logo-corner"></div>
                     </div>
-                    <div class="header-title">
-                        <h2>Quản lý Đào tạo</h2>
+                    <div class="page-header1">
+                        <h2>Quản lý đào tạo</h2>
                         <p>Hệ thống quản lý chương trình đào tạo HauHub</p>
                     </div>
                 </div>
@@ -139,12 +140,12 @@
                 
                 <!-- Page Header -->
                 <div class="page-header">
-                    <div class="header-content">
-                        <h1 class="page-title">Hệ thống Đào tạo</h1>
-                        <p class="page-subtitle">
-                            Quản lý toàn diện cấu trúc đào tạo: Khoa, Ngành và Môn học. Đảm bảo tính nhất quán và cập nhật kịp thời.
-                        </p>
-                    </div>
+                     <div class="stats-header-content">
+        <h1 class="stats-page-title">Hệ thống đào tạo</h1>
+        <p class="stats-page-subtitle">
+        Quản lý toàn diện cấu trúc đào tạo: Khoa, Ngành và Môn học. Đảm bảo tính nhất quán và cập nhật kịp thời.
+        </p>
+    </div> 
                     <div class="header-actions">
                         <button class="btn-secondary" id="export-data-btn">
                             <span class="material-symbols-outlined">file_download</span>
@@ -152,89 +153,53 @@
                         </button>
                         <button class="btn-primary" id="quick-action-btn">
                             <span class="material-symbols-outlined">rocket_launch</span>
-                            Hành động nhanh
+                            Thêm mới
                         </button>
                     </div>
                 </div>
                 
-                <!-- Stats Cards -->
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <div>
-                                <p class="stat-label">Tổng Khoa</p>
-                                <h3 class="stat-value" id="total-faculties">8</h3>
-                            </div>
-                            <span class="stat-badge success">+2 năm nay</span>
-                        </div>
-                        <div class="stat-chart">
-                            <svg class="chart-svg" viewBox="0 0 100 30" preserveAspectRatio="none">
-                                <path d="M0 25 Q10 20 20 22 T40 15 T60 18 T80 5 T100 12" fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"></path>
-                                <path d="M0 25 Q10 20 20 22 T40 15 T60 18 T80 5 T100 12 V30 H0 Z" fill="url(#facultyGradient)"></path>
-                                <defs>
-                                    <linearGradient id="facultyGradient" x1="0%" x2="0%" y1="0%" y2="100%">
-                                        <stop offset="0%" stop-color="currentColor" stop-opacity="0.1"></stop>
-                                        <stop offset="100%" stop-color="currentColor" stop-opacity="0"></stop>
-                                    </linearGradient>
-                                </defs>
-                            </svg>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <div>
-                                <p class="stat-label">Tổng Ngành</p>
-                                <h3 class="stat-value" id="total-majors">24</h3>
-                            </div>
-                            <div class="live-indicator">
-                                <span class="live-dot"></span>
-                                <span class="live-text">LIVE</span>
-                            </div>
-                        </div>
-                        <div class="stat-chart">
-                            <svg class="chart-svg" viewBox="0 0 100 30" preserveAspectRatio="none">
-                                <path d="M0 20 L10 18 L20 25 L30 15 L40 22 L50 10 L60 20 L70 5 L80 15 L90 8 L100 12" 
-                                      fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                </path>
-                            </svg>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <div>
-                                <p class="stat-label">Môn học</p>
-                                <h3 class="stat-value" id="total-subjects">156</h3>
-                            </div>
-                            <span class="stat-badge info">+15 mới</span>
-                        </div>
-                        <div class="stat-chart">
-                            <svg class="chart-svg" viewBox="0 0 100 30" preserveAspectRatio="none">
-                                <path d="M0 28 C20 28 30 10 50 10 C70 10 80 25 100 25" 
-                                      fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2">
-                                </path>
-                            </svg>
-                        </div>
-                    </div>
-                    
-                    <div class="stat-card">
-                        <div class="stat-header">
-                            <div>
-                                <p class="stat-label">Sinh viên</p>
-                                <h3 class="stat-value" id="active-students">8,560</h3>
-                            </div>
-                            <span class="stat-badge warning">+2.4%</span>
-                        </div>
-                        <div class="stat-chart">
-                            <svg class="chart-svg" viewBox="0 0 100 30" preserveAspectRatio="none">
-                                <path d="M0 15 Q15 25 30 20 T60 28 T90 10 T100 15" 
-                                      fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2">
-                                </path>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
+                                <!-- Stats Cards -->
+ <div class="stats-grid">
+    <div class="stat-card">
+        <div class="stat-icon">
+            <span class="material-symbols-outlined">apartment</span>
+        </div>
+        <div class="stat-header">
+            <p class="stat-label">Tổng Khoa</p>
+            <h3 class="stat-value" id="total-faculties">8</h3>
+        </div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="stat-icon">
+            <span class="material-symbols-outlined">account_tree</span>
+        </div>
+        <div class="stat-header">
+            <p class="stat-label">Tổng Ngành</p>
+            <h3 class="stat-value" id="total-majors">24</h3>
+        </div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="stat-icon">
+            <span class="material-symbols-outlined">menu_book</span>
+        </div>
+        <div class="stat-header">
+            <p class="stat-label">Môn học</p>
+            <h3 class="stat-value" id="total-subjects">156</h3>
+        </div>
+    </div>
+    
+    <div class="stat-card">
+        <div class="stat-icon">
+            <span class="material-symbols-outlined">groups</span>
+        </div>
+        <div class="stat-header">
+            <p class="stat-label">Sinh viên</p>
+            <h3 class="stat-value" id="active-students">8,560</h3>
+        </div>
+    </div>
+</div>
                 
                 <!-- Navigation Tabs -->
                 <div class="tabs-navigation">
@@ -721,73 +686,52 @@
                 </div>
                 
                 <!-- Footer -->
-                <footer class="dashboard-footer">
-                    <div class="footer-left">
-                        <span>© 2024 HauHub University • Hệ thống quản lý đào tạo toàn diện</span>
+                <footer class="stats-dashboard-footer">
+                    <div class="stats-footer-left">
+                        <span>© HauHub • Hệ thống quản trị HauHub</span>
                     </div>
-                    <div class="footer-right">
-                        <a href="#" class="footer-link">Hướng dẫn sử dụng</a>
-                        <a href="#" class="footer-link">API Documentation</a>
-                        <a href="#" class="footer-link">Support</a>
+                    <div class="stats-footer-right">
+                        <a href="#" class="stats-footer-link">Trợ giúp</a>
                     </div>
                 </footer>
             </div>
         </main>
     </div>
 
-    <!-- Add Faculty Modal -->
-    <div class="modal" id="add-faculty-modal">
-        <!-- Modal content from previous file -->
-    </div>
-
-    <!-- Add/Edit Subject Modal -->
-    <div class="modal" id="subject-modal">
-        <!-- Modal content from previous file -->
-    </div>
-
     <!-- JavaScript Files -->
-    <script type="module" src="../../js/components/modal.js"></script>
-    <script type="module" src="../../js/components/notification.js"></script>
-    <script type="module" src="../../js/services/admin-service.js"></script>
-    <script type="module" src="../../js/pages/admin-dashboard.js"></script>
-    <script type="module" src="../../js/pages/department-management.js"></script>
-    <script type="module" src="../../js/pages/subject-management.js"></script>
-
-
-    <script>
-// Debug navigation
-console.log('=== DEBUG NAVIGATION ===');
-document.querySelectorAll('.nav-link').forEach((link, index) => {
-    console.log(`Link ${index}:`, link.href);
-    
-    // Thêm event listener để debug
-    link.addEventListener('click', function(e) {
-        console.log('Clicked on:', this.href);
-        console.log('Event details:', e);
+    <script type="module">
+        // Simple JavaScript để kiểm tra
+        console.log('Department Management Page Loaded');
         
-        // Kiểm tra nếu có preventDefault
-        e.stopImmediatePropagation();
+        // Tab switching
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tabId = this.dataset.tab;
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                this.classList.add('active');
+                const activeTab = document.getElementById(`${tabId}-tab`);
+                if (activeTab) activeTab.classList.add('active');
+            });
+        });
         
-        // Force navigation
-        window.location.href = this.href;
-    }, true); // Capture phase
-    
-    // Thêm onclick attribute
-    link.setAttribute('onclick', `window.location.href='${link.href}'; return false;`);
-});
-
-// Kiểm tra xem có overlay nào chặn không
-const overlays = document.querySelectorAll('*');
-overlays.forEach(el => {
-    const style = window.getComputedStyle(el);
-    if (style.pointerEvents === 'none' && 
-        style.position !== 'static' &&
-        (el.offsetWidth > 100 || el.offsetHeight > 100)) {
-        console.log('Possible overlay blocking:', el);
-    }
-});
-</script>
-
-
+        // Logout
+        const logoutBtn = document.getElementById('logout-button');
+        if (logoutBtn) {
+            logoutBtn.addEventListener('click', () => {
+                if (confirm('Bạn có chắc muốn đăng xuất?')) {
+                    window.location.href = '../../index.html';
+                }
+            });
+        }
+        
+        // Add Faculty button
+        const addFacultyBtn = document.getElementById('add-faculty-btn');
+        if (addFacultyBtn) {
+            addFacultyBtn.addEventListener('click', () => {
+                alert('Mở form thêm khoa');
+            });
+        }
+    </script>
 </body>
 </html>

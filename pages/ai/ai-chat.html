@@ -1,102 +1,237 @@
 <!DOCTYPE html>
 <html class="light" lang="vi">
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HauHub AI Assistant - Hỗ trợ học thuật</title>
-    
-    <!-- Liên kết CSS theo cấu trúc của bạn -->
+
+    <!-- CSS Global - Đồng bộ với class-management -->
     <link rel="stylesheet" href="../../css/reset.css">
     <link rel="stylesheet" href="../../css/variables.css">
-    <link rel="stylesheet" href="../../css/components.css">
     <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    
+    <!-- Page CSS -->
     <link rel="stylesheet" href="./ai-chat.css">
     
-    <!-- Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 </head>
-<body>
-    <div id="app" class="ai-chat-container">
-        <!-- Header sẽ được inject bởi header.js -->
-        <header id="main-header"></header>
-        
-        <main class="ai-chat-main">
-            <!-- Sidebar sẽ được inject bởi sidebar.js -->
-            <aside id="chat-sidebar" class="ai-chat-sidebar"></aside>
-            
-            <section class="ai-chat-content">
-                <div class="ai-chat-header">
-                    <div class="ai-assistant-info">
-                        <div class="ai-avatar">
-                            <span class="material-symbols-outlined">face_6</span>
+
+<body class="bg-background-light dark:bg-background-dark text-[#0d131b] min-h-screen font-display">
+
+    <!-- Header sẽ được inject bởi JS (đồng bộ với class-management) -->
+    <header></header>
+
+    <!-- ============================================ -->
+    <!-- MAIN CONTENT - AI CHAT ASSISTANT -->
+    <!-- ============================================ -->
+    <main class="ai-chat-main">
+        <!-- Left Sidebar - Lịch sử chat (đồng bộ style với learning-sidebar-left) -->
+        <aside class="ai-chat-sidebar">
+            <div class="sidebar-content">
+                <button class="new-chat-btn" id="newChatBtn">
+                    <span class="material-symbols-outlined">add_comment</span>
+                    <span>Đoạn chat mới</span>
+                </button>
+
+                <div class="chat-history" id="chatHistory">
+                    <div class="chat-history-section">
+                        <h3 class="section-title">Hôm nay</h3>
+                        <div class="chat-item active" data-chat-id="1">
+                            <div class="chat-item-content">
+                                <span class="material-symbols-outlined chat-item-icon">chat</span>
+                                <span class="chat-item-title">Hướng dẫn đăng ký tín chỉ</span>
+                            </div>
                         </div>
-                        <div>
-                            <h2 class="ai-title">Trợ lý AI <span class="ai-subtitle">HauAssistant</span></h2>
-                            <div class="ai-status">
-                                <span class="status-indicator"></span>
-                                <p class="status-text">Đang trực tuyến để hỗ trợ bạn</p>
+                        <div class="chat-item" data-chat-id="2">
+                            <div class="chat-item-content">
+                                <span class="material-symbols-outlined chat-item-icon">chat</span>
+                                <span class="chat-item-title">Thông tin học bổng 2025</span>
                             </div>
                         </div>
                     </div>
-                    <div class="ai-chat-actions">
-                        <button class="btn-secondary" id="share-chat">
-                            <span class="material-symbols-outlined">ios_share</span> Chia sẻ
-                        </button>
-                        <button class="btn-secondary" id="export-pdf">
-                            <span class="material-symbols-outlined">picture_as_pdf</span> PDF
-                        </button>
-                    </div>
-                </div>
-
-
-
-                <div class="chat-messages-container" id="chat-messages">
-                    <!-- Messages sẽ được render bởi JavaScript -->
-                    <div class="message-loading" id="loading-template">
-                        <div class="loading-dots">
-                            <span></span><span></span><span></span>
+                    <div class="chat-history-section">
+                        <h3 class="section-title">Hôm qua</h3>
+                        <div class="chat-item" data-chat-id="3">
+                            <div class="chat-item-content">
+                                <span class="material-symbols-outlined chat-item-icon">chat</span>
+                                <span class="chat-item-title">Lịch thi cuối kỳ</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <div class="chat-input-container">
-                    <div class="chat-input-wrapper">
-                        <button class="btn-attach" id="attach-file">
-                            <span class="material-symbols-outlined">add_circle</span>
-                        </button>
-                        <textarea 
-                            class="chat-input" 
-                            id="message-input" 
-                            placeholder="Hỏi HauAssistant về kiến trúc, kết cấu..." 
-                            rows="1"
-                        ></textarea>
-                        <div class="input-actions">
-                            <button class="btn-action" id="voice-input">
-                                <span class="material-symbols-outlined">mic</span>
-                            </button>
-                            <button class="btn-send" id="send-message">
-                                <span class="material-symbols-outlined">send</span>
-                            </button>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area - Nội dung chat chính -->
+        <section class="ai-chat-content">
+            <!-- Chat Header -->
+            <div class="ai-chat-header">
+                <div class="ai-assistant-info">
+                    <div class="ai-avatar">
+                        <span class="material-symbols-outlined">smart_toy</span>
+                    </div>
+                    <div>
+                        <h2 class="ai-title">Trợ lý AI <span class="ai-subtitle">HauAssistant</span></h2>
+                        <div class="ai-status">
+                            <span class="status-indicator"></span>
+                            <p class="status-text">Đang trực tuyến</p>
                         </div>
                     </div>
-                    <div class="quick-suggestions">
-                        <span class="suggestions-label">Gợi ý nhanh:</span>
-                        <button class="quick-suggestion" data-suggestion="Đăng kí tín chỉ">Đăng kí tín chỉ</button>
-                        <button class="quick-suggestion" data-suggestion="Thi đua- khen thưởng">Thi đua- khen thưởng</button>
-                        <button class="quick-suggestion" data-suggestion="Tiếng Anh đầu vào">Tiếng Anh đầu vào</button>
+                </div>
+                <div class="ai-chat-actions">
+                    <button class="btn-icon" id="shareChat" title="Chia sẻ">
+                        <span class="material-symbols-outlined">ios_share</span>
+                    </button>
+                    <button class="btn-icon" id="exportChat" title="Xuất PDF">
+                        <span class="material-symbols-outlined">picture_as_pdf</span>
+                    </button>
+                    <button class="btn-icon" id="clearChat" title="Xóa chat">
+                        <span class="material-symbols-outlined">delete_outline</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chat Messages Container - Vùng tin nhắn có thanh cuộn -->
+            <div class="chat-messages-container" id="chatMessages">
+                <!-- Welcome Message -->
+                <div class="chat-message assistant">
+                    <div class="message-avatar">
+                        <div class="ai-avatar-small">
+                            <span class="material-symbols-outlined">smart_toy</span>
+                        </div>
+                    </div>
+                    <div class="message-content">
+                        <div class="message-sender ai">HauAssistant AI</div>
+                        <div class="message-bubble ai">
+                            Xin chào! Tôi là trợ lý AI của HauHub. Tôi có thể giúp gì cho bạn trong học tập hôm nay?
+                            <div class="quick-actions">
+                                <button class="quick-action-chip" data-question="Hướng dẫn đăng ký tín chỉ">📚 Đăng ký tín chỉ</button>
+                                <button class="quick-action-chip" data-question="Thông tin học bổng">🎓 Học bổng</button>
+                                <button class="quick-action-chip" data-question="Lịch thi">📅 Lịch thi</button>
+                            </div>
+                        </div>
+                        <div class="message-time">Vừa xong</div>
                     </div>
                 </div>
-            </section>
-        </main>
-        
+            </div>
+
+            <!-- Chat Input Container - Cố định dưới đáy -->
+            <div class="chat-input-container">
+                <div class="chat-input-wrapper">
+                    <button class="btn-attach" id="attachFile" title="Đính kèm file">
+                        <span class="material-symbols-outlined">attach_file</span>
+                    </button>
+                    <textarea 
+                        class="chat-input" 
+                        id="messageInput" 
+                        placeholder="Hỏi HauAssistant về kiến trúc, kết cấu, đăng ký môn học..."
+                        rows="1"
+                    ></textarea>
+                    <div class="input-actions">
+                        <button class="btn-action" id="voiceInput" title="Nhập giọng nói">
+                            <span class="material-symbols-outlined">mic</span>
+                        </button>
+                        <button class="btn-send" id="sendMessage" title="Gửi tin nhắn">
+                            <span class="material-symbols-outlined">send</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="quick-suggestions">
+                    <span class="suggestions-label">Gợi ý nhanh:</span>
+                    <button class="quick-suggestion" data-suggestion="Đăng ký tín chỉ học kỳ tới">Đăng ký tín chỉ</button>
+                    <button class="quick-suggestion" data-suggestion="Điều kiện xét học bổng">Học bổng</button>
+                    <button class="quick-suggestion" data-suggestion="Yêu cầu tiếng Anh đầu ra">Tiếng Anh đầu ra</button>
+                    <button class="quick-suggestion" data-suggestion="Lịch thi học kỳ">Lịch thi</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Sidebar - Thông tin hỗ trợ -->
+        <aside class="ai-chat-sidebar-right">
+            
+
+            <div class="faq-section">
+                <h3>
+                    <span class="material-symbols-outlined">quiz</span>
+                    Câu hỏi thường gặp
+                </h3>
+                <div class="faq-list">
+                    <div class="faq-item" data-question="Làm thế nào để đăng ký tín chỉ?">
+                        <span class="faq-question">📌 Đăng ký tín chỉ như thế nào?</span>
+                    </div>
+                    <div class="faq-item" data-question="Thời gian đăng ký học phần?">
+                        <span class="faq-question">⏰ Thời gian đăng ký học phần?</span>
+                    </div>
+                    <div class="faq-item" data-question="Cách tính điểm trung bình tích lũy?">
+                        <span class="faq-question">📊 Cách tính điểm trung bình?</span>
+                    </div>
+                    <div class="faq-item" data-question="Thủ tục xin nghỉ học?">
+                        <span class="faq-question">📝 Thủ tục xin nghỉ học?</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contact-support">
+                <h3>
+                    <span class="material-symbols-outlined">support_agent</span>
+                    Hỗ trợ sinh viên
+                </h3>
+                <div class="contact-buttons">
+                    <button class="contact-btn" id="contactEmail">
+                        <span>📧</span> Email
+                    </button>
+                    <button class="contact-btn" id="contactPhone">
+                        <span>📞</span> Hotline
+                    </button>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Footer -->
+    <footer></footer>
+
+
+    <!-- ============================================ -->
+    <!-- MODAL CHI TIẾT (nếu cần) -->
+    <!-- ============================================ -->
+    <div id="infoModal" class="modal-overlay hidden">
+        <div class="modal-container">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h1>Thông báo</h1>
+                </div>
+                <button class="modal-close-btn" id="closeModal">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="modal-content">
+                <p id="modalMessage"></p>
+            </div>
+            <div class="modal-footer">
+                <div class="footer-buttons">
+                    <button class="primary-btn" id="modalConfirmBtn">Đóng</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- JavaScript Files -->
-    <script type="module" src="../../js/components/header.js"></script>
-    <script type="module" src="../../js/components/sidebar.js"></script>
-    <script type="module" src="../../js/components/chat-widget.js"></script>
-    <script type="module" src="../../js/services/ai-service.js"></script>
+    <!-- Scripts - Đồng bộ với class-management -->
+    <script type="module">
+        import { Header } from '../../js/components/header.js';
+        import { Footer } from '../../js/components/footer.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            // Khởi tạo header và footer (đồng bộ)
+            new Header();
+            new Footer();
+ 
+        });
+    </script>
     <script type="module" src="./ai-chat.js"></script>
+
+    
 </body>
 </html>

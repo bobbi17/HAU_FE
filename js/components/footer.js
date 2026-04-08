@@ -52,7 +52,7 @@ export class Footer {
                             </div>
                         </div>
                         
-                        <!-- Cột 2: HỖ TRỢ (CHỮ HOA) -->
+                        <!-- Cột 2: HỖ TRỢ -->
                         <div class="footer-column">
                              <h4 class="footer-column-title">TÀI NGUYÊN</h4>
                             <ul class="footer-links">
@@ -71,7 +71,7 @@ export class Footer {
                             </ul>
                         </div>
                         
-                        <!-- Cột 3: TÀI NGUYÊN (CHỮ HOA) -->
+                        <!-- Cột 3: TÀI NGUYÊN -->
                         <div class="footer-column">
                              <h4 class="footer-column-title">HỖ TRỢ</h4>
                             <ul class="footer-links">
@@ -87,7 +87,7 @@ export class Footer {
                             </ul>
                         </div>
                         
-                        <!-- Cột 4: LIÊN HỆ (chữ thường) -->
+                        <!-- Cột 4: LIÊN HỆ -->
                         <div class="footer-column">
                             <h4 class="footer-column-title">LIÊN HỆ</h4>
                             <div class="contact-info">
@@ -110,7 +110,7 @@ export class Footer {
                     <!-- Footer Bottom -->
                     <div class="footer-bottom">
                         <div class="footer-bottom-left">
-                            <span class="copyright">© ${currentYear} HAU HUB SYSTEM</span>
+                            <span class="copyright">© HAU UNIVERSITY</span>
                             <span class="divider"></span>
                         </div>
                         <div class="footer-bottom-right">

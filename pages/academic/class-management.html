@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html class="light" lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Học tập | HauHub</title>
+
+    <!-- CSS Global -->
+    <link rel="stylesheet" href="../../css/reset.css">
+    <link rel="stylesheet" href="../../css/variables.css">
+    <link rel="stylesheet" href="../../css/layout.css">
+    <link rel="stylesheet" href="../../css/components.css">
+    <link rel="stylesheet" href="./class-management.css">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <!-- Page CSS -->
+    <link rel="stylesheet" href="./class-management.css">
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#0d131b] min-h-screen font-display">
+
+    <!-- Header sẽ được inject bởi JS -->
+    <header></header>
+
+    <!-- ============================================ -->
+    <!-- MAIN CONTENT - QUẢN LÝ HỌC TẬP -->
+    <!-- ============================================ -->
+    <main class="learning-main">
+        <!-- Left Sidebar - Danh mục -->
+        <aside class="learning-sidebar-left">
+            <div class="sidebar-section">
+                <h3 class="sidebar-title">Học tập</h3>
+                <nav class="sidebar-nav">
+                    <a href="#" class="sidebar-link active" data-tab="subjects">
+                        <span class="material-symbols-outlined">menu_book</span>
+                        <span>Danh mục môn học</span>
+                    </a>
+                    <a href="#" class="sidebar-link" data-tab="classes">
+                        <span class="material-symbols-outlined">class</span>
+                        <span>Lớp học phần</span>
+                    </a>
+                    <a href="#" class="sidebar-link" data-tab="my-learning">
+                        <span class="material-symbols-outlined">school</span>
+                        <span>Lớp của tôi</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="pro-tips">
+                <p class="tips-title">💡 HauHub Tips</p>
+                <p class="tips-content">Đăng ký lớp học phần trước hạn để đảm bảo chỗ ngồi tốt nhất.</p>
+            </div>
+        </aside>
+
+        <!-- Main Feed - Nội dung chính -->
+        <section class="learning-feed">
+            <div class="feed-header">
+                <div class="feed-header-left">
+                    <div class="filter-chips" id="filterChips">
+                        <button class="filter-chip active" data-filter="all">Tất cả</button>
+                        <button class="filter-chip" data-filter="required">Bắt buộc</button>
+                        <button class="filter-chip" data-filter="elective">Tự chọn</button>
+                    </div>
+                    <div class="sort-control">
+                        <span>Sắp xếp:</span>
+                        <button class="sort-btn" id="sortBtn">
+                            Theo tên <span class="material-symbols-outlined">expand_more</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nội dung động theo tab -->
+            <div id="dynamicContent">
+                <div class="loading-indicator">
+                    <span class="material-symbols-outlined animate-spin">refresh</span>
+                    <p>Đang tải dữ liệu...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Sidebar - Thống kê -->
+        <aside class="learning-sidebar-right">
+            <div class="stats-board">
+                <h3>
+                    <span class="material-symbols-outlined">analytics</span>
+                    Thống kê học tập
+                </h3>
+                <div class="stats-list">
+                    <div class="stat-item">
+                        <span class="stat-label">Môn học</span>
+                        <span class="stat-value" id="totalSubjects">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Lớp học phần</span>
+                        <span class="stat-value" id="totalClasses">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Đã đăng ký</span>
+                        <span class="stat-value" id="registeredCount">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Chỗ trống</span>
+                        <span class="stat-value" id="availableSlots">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="active-members">
+                <h3>
+                    <span class="material-symbols-outlined">workspace_premium</span>
+                    Khoa/Viện
+                </h3>
+                <div class="faculty-list">
+                    <div class="faculty-item" data-faculty="arch">
+                        <span class="faculty-dot" style="background: #136dec;"></span>
+                        <span>Kiến trúc</span>
+                    </div>
+                    <div class="faculty-item" data-faculty="plan">
+                        <span class="faculty-dot" style="background: #10b981;"></span>
+                        <span>Quy hoạch</span>
+                    </div>
+                    <div class="faculty-item" data-faculty="civil">
+                        <span class="faculty-dot" style="background: #f59e0b;"></span>
+                        <span>Xây dựng</span>
+                    </div>
+                    <div class="faculty-item" data-faculty="interior">
+                        <span class="faculty-dot" style="background: #8b5cf6;"></span>
+                        <span>Nội thất</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Footer sẽ được inject bởi JS -->
+    <footer></footer>
+
+    <!-- AI Chat Widget -->
+    <div id="ai-chat-widget"></div>
+
+    <!-- ============================================ -->
+    <!-- MODAL CHI TIẾT MÔN HỌC -->
+    <!-- ============================================ -->
+    <div id="subjectModal" class="modal-overlay hidden">
+        <div class="modal-container">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h1 id="modalSubjectName">Kiến trúc Dân dụng 1</h1>
+                    <p><span id="modalSubjectCode">KTS101</span> • <span id="modalSubjectType">Bắt buộc</span></p>
+                </div>
+                <button class="modal-close-btn" id="closeSubjectModal">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="modal-content">
+                <div class="subject-detail">
+                    <div class="detail-row">
+                        <span class="detail-label">Khoa:</span>
+                        <span class="detail-value" id="modalSubjectFaculty"></span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Số tín chỉ:</span>
+                        <span class="detail-value" id="modalSubjectCredits"></span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Mô tả:</span>
+                        <span class="detail-value" id="modalSubjectDescription"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="footer-buttons">
+                    <button class="secondary-btn" id="closeSubjectModalBtn">Đóng</button>
+                    <button class="primary-btn" id="viewClassesFromModal">Xem lớp học</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- MODAL CHI TIẾT LỚP HỌC -->
+    <!-- ============================================ -->
+    <div id="classModal" class="modal-overlay hidden">
+        <div class="modal-container">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h1 id="modalClassName">Thiết kế Kiến trúc Dân dụng 3</h1>
+                    <p><span id="modalClassCode">ARC302</span></p>
+                </div>
+                <button class="modal-close-btn" id="closeClassModal">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div class="modal-content">
+                <div class="class-detail">
+                    <div class="detail-row">
+                        <span class="detail-label">Giảng viên:</span>
+                        <span class="detail-value" id="modalClassInstructor"></span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Lịch học:</span>
+                        <span class="detail-value" id="modalClassSchedule"></span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Sĩ số:</span>
+                        <span class="detail-value" id="modalClassCapacity"></span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Trạng thái:</span>
+                        <span class="detail-value" id="modalClassStatus"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="footer-buttons">
+                    <button class="secondary-btn" id="closeClassModalBtn">Đóng</button>
+                    <button class="primary-btn" id="registerFromModal">Đăng ký</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module">
+        import { Header } from '../../js/components/header.js';
+        import { Footer } from '../../js/components/footer.js';
+        import { AIChatWidget } from '../../js/components/chat-widget.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            new Header();
+            new Footer();
+            new AIChatWidget();
+        });
+    </script>
+    <script type="module" src="./class-management.js"></script>
+
+</body>
+</html>

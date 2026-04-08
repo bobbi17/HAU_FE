@@ -33,8 +33,8 @@ export class Header {
                             <div class="logo-corner"></div>
                         </div>
                         <div class="logo-text">
-                            <span class="logo-title">HAU HUB</span>
-                            <span class="logo-subtitle">Architecture</span>
+                            <span class="logo-title">HAU </span>
+                            <span class="logo-subtitle"> University</span>
                         </div>
                     </a>
                 </div>
@@ -43,22 +43,22 @@ export class Header {
                 <nav class="main-nav">
                     <ul class="nav-list">
                         <li class="nav-item">
-                            <a href="../../pages/index.html" class="nav-link active">
+                            <a href="../../pages/index.html" class="nav-link">
                                 <span>Trang chủ</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="../../pages/academic/subjects.html" class="nav-link">
+                            <a href="../../pages/academic/class-management.html" class="nav-link">
                                 <span>Học vụ</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="../../pages/groups/study-groups.html" class="nav-link">
+                            <a href="../../pages/groups/group-chat.html" class="nav-link">
                                 <span>Nhóm học tập</span>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="../../pages/forum/forum-home.html" class="nav-link">
+                            <a href="../../pages/forum/forum.html" class="nav-link">
                                 <span>Diễn đàn</span>
                             </a>
                         </li>
@@ -75,7 +75,7 @@ export class Header {
                 <div class="user-actions">
                     <div class="search-container">
                         <span class="material-symbols-outlined search-icon">search</span>
-                        <input class="search-input" type="text" placeholder="Tìm kiếm học liệu...">
+                        <input class="search-input" type="text" placeholder="Tìm kiếm...">
                     </div>
                     
                     <button class="notification-btn">
@@ -113,15 +113,15 @@ export class Header {
                         <span class="material-symbols-outlined">home</span>
                         <span>Trang chủ</span>
                     </a></li>
-                    <li><a href="../../pages/academic/subjects.html" class="mobile-nav-link">
+                    <li><a href="../../pages/academic/class-management.html" class="mobile-nav-link">
                         <span class="material-symbols-outlined">school</span>
                         <span>Học vụ</span>
                     </a></li>
-                    <li><a href="../../pages/groups/study-groups.html" class="mobile-nav-link">
+                    <li><a href="../../pages/groups/group-chat.html" class="mobile-nav-link">
                         <span class="material-symbols-outlined">groups</span>
                         <span>Nhóm học tập</span>
                     </a></li>
-                    <li><a href="../../pages/forum/forum-home.html" class="mobile-nav-link">
+                    <li><a href="../../pages/forum/forum.html" class="mobile-nav-link">
                         <span class="material-symbols-outlined">forum</span>
                         <span>Diễn đàn</span>
                     </a></li>
